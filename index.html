@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Ninja - Jogos e Ferramentas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+            margin-bottom: 3rem;
+            border-radius: 15px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00ff88;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+        }
+
+        .section {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+            border: 1px solid #2a2a2a;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #00ffff;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .game-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .game-card {
+            background: #2a2a2a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #00ff88;
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .note {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border-left: 4px solid #00ff88;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .game-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-gamepad"></i> Lista de Jogos e Ferramentas Ninja</h1>
+            <p>Seu guia definitivo para diversão e produtividade!</p>
+        </header>
+
+        <!-- Seção de Jogos para PC -->
+        <section class="section">
+            <h2><i class="fas fa-desktop"></i> Jogos para PC (Sem Instalação)</h2>
+            <div class="game-list">
+                <!-- Geometry Dash -->
+                <div class="game-card">
+                    <h3>Geometry Dash</h3>
+                    <a href="https://drive.usercontent.google.com/download?id=1t8MmMzsL3yXW3RnDGnCobBJdiOVM2Bme&export=download&authuser=0" class="download-btn">Download</a>
+                </div>
+
+                <!-- Need for Speed - Clássicos -->
+                <div class="game-card">
+                    <h3>Need for Speed - Clássicos</h3>
+                    <p>Jogos clássicos de corrida.</p>
+                    <a href="https://drive.google.com/drive/u/4/folders/1pWDmMc2EZ-Ocs0BpL1QqCaRlq76Cum_K" class="download-btn">The Need for Speed (1994)</a>
+                    <a href="https://1fichier.com/?m3ou72ohzk2b6jie230k" class="download-btn">Need for Speed II SE</a>
+                    <a href="https://1fichier.com/?akqomqdtstot8wnlsjgb" class="download-btn">Need for Speed III - Hot Pursuit</a>
+                    <a href="https://drive.google.com/drive/u/3/folders/1SSaiWDv9capoqb_LV_34jwyYeh_Dcuhk" class="download-btn">Need for Speed: High Stakes</a>
+                    <a href="https://1fichier.com/?a7n0b4yjgf8l1cddgokm" class="download-btn">Need for Speed: Porsche Unleashed</a>
+                    <a href="https://1fichier.com/?cxwhnowjsqre8f0eyemw" class="download-btn">Need for Speed: Hot Pursuit 2</a>
+                    <a href="https://1fichier.com/?wg3v32cqoelm5x062dpw" class="download-btn">Need for Speed: Underground</a>
+                    <a href="https://1fichier.com/?bhc5plxo7tmj3vf3mfip" class="download-btn">Need for Speed: Underground 2</a>
+                    <a href="https://1fichier.com/?dvi1pehq13udj4l8c8yz" class="download-btn">Need for Speed: Most Wanted (2005)</a>
+                    <a href="https://1fichier.com/?idgjp4xj752dyikhp3iz" class="download-btn">Need for Speed: Carbon</a>
+                    <a href="https://1fichier.com/?pjxdlksbu4mhglud2xw6" class="download-btn">Need for Speed: ProStreet</a>
+                    <a href="https://1fichier.com/?g91q4qo2ngzynp66il38" class="download-btn">Need for Speed: Undercover</a>
+                    <a href="https://1fichier.com/?75p7yro4qcc1jm50kn8w" class="download-btn">Need for Speed: Shift</a>
+                    <a href="https://drive.google.com/drive/folders/1POPvzDqxHNTvqmZHQt79OKF8RXO9Yh-b?usp=sharing" class="download-btn">Need for Speed: The Run</a>
+                    <a href="https://1fichier.com/?az4d96ptbm8qz0vu6478" class="download-btn">Need for Speed: Shift 2 Unleashed</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Jogos de Navegador -->
+        <section class="section">
+            <h2><i class="fas fa-globe"></i> Jogos de Navegador</h2>
+            <div class="game-list">
+                <div class="game-card">
+                    <h3>Counter-Strike 1.6 Online</h3>
+                    <a href="https://play-cs.com/pt/servers" class="download-btn">Jogar CS 1.6</a>
+                </div>
+                <div class="game-card">
+                    <h3>Jogos de Flash</h3>
+                    <a href="https://chstextbook.github.io/pages/nav/flash.html" class="download-btn">Acessar</a>
+                </div>
+                <div class="game-card">
+                    <h3>Jogos em HTML5</h3>
+                    <a href="https://chstextbook.github.io/pages/nav/games5.html" class="download-btn">Acessar</a>
+                </div>
+                <div class="game-card">
+                    <h3>Jogos de Emulador</h3>
+                    <a href="https://chstextbook.github.io/pages/nav/emulibrary.html" class="download-btn">Acessar</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Ferramentas -->
+        <section class="section">
+            <h2><i class="fas fa-tools"></i> Ferramentas para Contornar Restrições</h2>
+            <div class="game-list">
+                <div class="game-card">
+                    <h3>ProtonVPN</h3>
+                    <p>Acesso seguro à internet.</p>
+                    <a href="https://protonvpn.com/" class="download-btn">Acessar</a>
+                </div>
+                <div class="game-card">
+                    <h3>Windscribe VPN</h3>
+                    <p>Navegação anônima.</p>
+                    <a href="https://windscribe.com/download" class="download-btn">Acessar</a>
+                </div>
+                <div class="game-card">
+                    <h3>ProxySite</h3>
+                    <p>Acesso a sites bloqueados.</p>
+                    <a href="https://www.proxysite.com/" class="download-btn">Acessar</a>
+                </div>
+                <div class="game-card">
+                    <h3>Hide.me Proxy</h3>
+                    <p>Navegação anônima.</p>
+                    <a href="https://hide.me/en/proxy/" class="download-btn">Acessar</a>
+                </div>
+                <div class="game-card">
+                    <h3>Tor Browser</h3>
+                    <p>Navegação segura e anônima.</p>
+                    <a href="https://www.torproject.org/download/" class="download-btn">Download</a>
+                </div>
+                <div class="game-card">
+                    <h3>Google Tradutor (Proxy Improvisado)</h3>
+                    <p>Acesso a sites bloqueados.</p>
+                    <a href="https://translate.google.com/" class="download-btn">Acessar</a>
+                </div>
+                <div class="game-card">
+                    <h3>ZenMate VPN</h3>
+                    <p>Extensão para navegador.</p>
+                    <a href="https://zenmate.com/" class="download-btn">Acessar</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Hacks para Sites Educacionais -->
+        <section class="section">
+            <h2><i class="fas fa-graduation-cap"></i> Hacks para Sites Educacionais</h2>
+            <div class="game-list">
+                <div class="game-card">
+                    <h3>CMSP/Sala do Futuro Doritus</h3>
+                    <a href="https://doritus.mmrcoss.tech/" class="download-btn">Acessar</a>
+                </div>
+                <div class="game-card">
+                    <h3>Khan Destroyer</h3>
+                    <a href="https://github.com/Snowxyrzk/Khan-Destroyer/blob/main/README.md" class="download-btn">Acessar</a>
+                </div>
+                <div class="game-card">
+                    <h3>SPeak Hack</h3>
+                    <a href="https://speakify.cupiditys.lol/" class="download-btn">Acessar</a>
+                </div>
+                <div class="game-card">
+                    <h3>Alura Destroyer</h3>
+                    <a href="https://github.com/marcos10pc/Alura-Destroyer/blob/main/script.js" class="download-btn">Acessar</a>
+                </div>
+                <div class="game-card">
+                    <h3>Matific Hack</h3>
+                    <a href="https://matific.cupiditys.lol/" class="download-btn">Acessar</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="note">
+            📌 Observação: Alguns links podem estar bloqueados dependendo da rede.
+        </div>
+    </div>
+
+    <script>
+        // Animação de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animação ao rolar
+        const sections = document.querySelectorAll('.section');
+        window.addEventListener('scroll', checkSections);
+        
+        function checkSections() {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if(sectionTop < window.innerHeight * 0.8) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        checkSections();
+    </script>
+</body>
+</html>
