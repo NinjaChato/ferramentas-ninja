@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista do Ninja・Jogos e Ferramentas</title>
+    <title>Lista do Ninja</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -178,10 +178,76 @@
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
+
+        /* Estilos da página de login */
+        .login-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #2a1a40, #3b2a4d);
+        }
+
+        .login-box {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-box h2 {
+            color: #d8b4fe;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 1rem;
+            border: 1px solid #4a3b5a;
+            border-radius: 8px;
+            background: #2a1a40;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .login-box button {
+            background: #a855f7;
+            color: #fff;
+            padding: 0.7rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-box button:hover {
+            background: #9333ea;
+            transform: scale(1.05);
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            margin-top: 1rem;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Página de Login -->
+    <div class="login-page" id="loginPage">
+        <div class="login-box">
+            <h2><i class="fas fa-lock"></i> Acesso Restrito</h2>
+            <input type="password" id="passwordInput" placeholder="Digite a senha">
+            <button onclick="checkPassword()">Acessar</button>
+            <p class="error-message" id="errorMessage">Senha incorreta! Tente novamente.</p>
+        </div>
+    </div>
+
+    <!-- Conteúdo do Site (inicialmente oculto) -->
+    <div class="container" id="content" style="display: none;">
         <header>
             <h1><i class="fas fa-mask"></i> Lista do Ninja・Jogos e Ferramentas</h1>
             <p>Acesso a diversão e conhecimento em ambientes restritos</p>
@@ -195,14 +261,6 @@
                 <div class="game-card">
                     <h3>Geometry Dash</h3>
                     <a href="https://drive.usercontent.google.com/download?id=1t8MmMzsL3yXW3RnDGnCobBJdiOVM2Bme&export=download&authuser=0" class="download-btn">
-                        <i class="fas fa-download"></i>Download
-                    </a>
-                </div>
-
-                <!-- Counter-Strike 1.6 -->
-                <div class="game-card">
-                    <h3>Counter-Strike 1.6</h3>
-                    <a href="https://www.mediafire.com/file/ymbzda797kigu9i/Counter-Strike.exe/file" class="download-btn">
                         <i class="fas fa-download"></i>Download
                     </a>
                 </div>
@@ -262,52 +320,38 @@
             <h2><i class="fas fa-tools"></i> Ferramentas para Contornar Restrições</h2>
             <div class="game-list">
                 <div class="game-card">
-                    <h3>ProtonVPN</h3>
-                    <p>Acesso seguro à internet.</p>
-                    <a href="https://protonvpn.com/" class="download-btn">
-                        <i class="fas fa-shield-alt"></i>Acessar
+                    <h3>Psiphon</h3>
+                    <p>VPN leve e eficaz para redes restritivas.</p>
+                    <a href="https://psiphon.ca" class="download-btn">
+                        <i class="fas fa-shield-alt"></i>Download
                     </a>
                 </div>
                 <div class="game-card">
-                    <h3>Windscribe VPN</h3>
-                    <p>Navegação anônima.</p>
-                    <a href="https://windscribe.com/download" class="download-btn">
-                        <i class="fas fa-user-secret"></i>Acessar
+                    <h3>UltraSurf</h3>
+                    <p>Proxy simples e portátil.</p>
+                    <a href="https://ultrasurf.us" class="download-btn">
+                        <i class="fas fa-user-secret"></i>Download
                     </a>
                 </div>
                 <div class="game-card">
-                    <h3>ProxySite</h3>
-                    <p>Acesso a sites bloqueados.</p>
-                    <a href="https://www.proxysite.com/" class="download-btn">
-                        <i class="fas fa-unlock"></i>Acessar
-                    </a>
-                </div>
-                <div class="game-card">
-                    <h3>Hide.me Proxy</h3>
-                    <p>Navegação anônima.</p>
-                    <a href="https://hide.me/en/proxy/" class="download-btn">
-                        <i class="fas fa-mask"></i>Acessar
+                    <h3>Lantern</h3>
+                    <p>Proxy P2P para acessar sites bloqueados.</p>
+                    <a href="https://getlantern.org" class="download-btn">
+                        <i class="fas fa-plug"></i>Download
                     </a>
                 </div>
                 <div class="game-card">
                     <h3>Tor Browser</h3>
-                    <p>Navegação segura e anônima.</p>
+                    <p>Navegação anônima e segura.</p>
                     <a href="https://www.torproject.org/download/" class="download-btn">
                         <i class="fas fa-user-ninja"></i>Download
                     </a>
                 </div>
                 <div class="game-card">
-                    <h3>Google Tradutor (Proxy Improvisado)</h3>
-                    <p>Acesso a sites bloqueados.</p>
-                    <a href="https://translate.google.com/" class="download-btn">
-                        <i class="fas fa-language"></i>Acessar
-                    </a>
-                </div>
-                <div class="game-card">
-                    <h3>ZenMate VPN</h3>
-                    <p>Extensão para navegador.</p>
-                    <a href="https://zenmate.com/" class="download-btn">
-                        <i class="fas fa-plug"></i>Acessar
+                    <h3>GoodbyeDPI</h3>
+                    <p>Desativa inspeção de pacotes (DPI).</p>
+                    <a href="https://github.com/ValdikSS/GoodbyeDPI" class="download-btn">
+                        <i class="fas fa-unlock"></i>Download
                     </a>
                 </div>
             </div>
@@ -354,35 +398,27 @@
             <i class="fas fa-exclamation-triangle"></i>
             <div>
                 <p>📌 Observação: A disponibilidade dos links pode variar conforme a rede</p>
-                <p>💻 Discord: ninjachato | Atualizado em: 20/02/2025</p>
+                <p>💻 Discord: ninjachato | Atualizado em: 2023</p>
             </div>
         </div>
     </div>
 
-    <!-- Script mantido com melhorias -->
+    <!-- Script para o sistema de login -->
     <script>
-        // Scroll suave otimizado
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
+        function checkPassword() {
+            const password = "ninja123"; // Senha definida
+            const input = document.getElementById("passwordInput").value;
+            const errorMessage = document.getElementById("errorMessage");
+            const loginPage = document.getElementById("loginPage");
+            const content = document.getElementById("content");
 
-        // Animação de aparecimento das seções
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
+            if (input === password) {
+                loginPage.style.display = "none"; // Oculta a página de login
+                content.style.display = "block"; // Exibe o conteúdo do site
+            } else {
+                errorMessage.style.display = "block"; // Exibe mensagem de erro
+            }
+        }
     </script>
 </body>
 </html>
