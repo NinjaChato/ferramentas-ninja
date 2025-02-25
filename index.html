@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista do Ninja</title>
+    <title>Ferramentas Ninja</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -29,18 +29,18 @@
         header {
             text-align: center;
             padding: 4rem 0;
-            background: linear-gradient(45deg, #2a1a40, #3b2a4d);
+            background: linear-gradient(45deg, #1a1a2e, #2a2a40);
             margin-bottom: 3rem;
             border-radius: 15px;
             animation: fadeIn 1s ease-in;
-            border: 1px solid #4a3b5a;
+            border: 1px solid #3a3a5a;
         }
 
         h1 {
             font-size: 2.8rem;
             margin-bottom: 1rem;
-            color: #a855f7;
-            text-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+            color: #2196F3; /* Azul */
+            text-shadow: 0 0 15px rgba(33, 150, 243, 0.4); /* Azul */
         }
 
         .section {
@@ -55,11 +55,11 @@
 
         .section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.1);
+            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.1); /* Azul */
         }
 
         h2 {
-            color: #d8b4fe;
+            color: #90caf9; /* Azul mais claro */
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
             display: flex;
@@ -74,7 +74,7 @@
         }
 
         .game-card {
-            background: #2a1a40;
+            background: #1a1a2e; /* Azul escuro */
             padding: 1.5rem;
             border-radius: 8px;
             position: relative;
@@ -83,7 +83,7 @@
         }
 
         .game-card:hover {
-            background: #3b2a4d;
+            background: #2a2a40; /* Azul mais claro */
         }
 
         .game-card::before {
@@ -93,7 +93,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(168, 85, 247, 0.2), transparent);
+            background: linear-gradient(45deg, transparent, rgba(33, 150, 243, 0.2), transparent); /* Azul */
             transform: rotate(45deg);
             animation: shine 3s infinite;
         }
@@ -102,7 +102,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #a855f7;
+            background: #2196F3; /* Azul */
             color: #fff;
             padding: 0.7rem 1.2rem;
             border-radius: 8px;
@@ -110,13 +110,13 @@
             font-weight: 600;
             margin-top: 1rem;
             transition: all 0.3s ease;
-            border: 1px solid #c084fc;
+            border: 1px solid #64b5f6; /* Azul mais claro */
         }
 
         .download-btn:hover {
             transform: scale(1.05);
-            background: #9333ea;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+            background: #1976D2; /* Azul mais escuro */
+            box-shadow: 0 0 20px rgba(33, 150, 243, 0.3); /* Azul */
         }
 
         .note {
@@ -124,7 +124,7 @@
             padding: 1.5rem;
             border-radius: 12px;
             margin-top: 2rem;
-            border-left: 4px solid #a855f7;
+            border-left: 4px solid #2196F3; /* Azul */
             font-size: 0.95rem;
             display: flex;
             gap: 10px;
@@ -170,225 +170,53 @@
 
         .game-card h3 {
             margin-bottom: 1rem;
-            color: #e9d5ff;
+            color: #bbdefb; /* Azul mais claro */
         }
 
         .game-card p {
-            color: #c084fc;
+            color: #64b5f6; /* Azul mais claro */
             font-size: 0.9rem;
             margin-bottom: 1rem;
-        }
-
-        /* Estilos da página de login */
-        .login-page {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(45deg, #2a1a40, #3b2a4d);
-        }
-
-        .login-box {
-            background: #1a1a1a;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .login-box h2 {
-            color: #d8b4fe;
-            margin-bottom: 1.5rem;
-        }
-
-        .login-box input {
-            width: 100%;
-            padding: 0.7rem;
-            margin-bottom: 1rem;
-            border: 1px solid #4a3b5a;
-            border-radius: 8px;
-            background: #2a1a40;
-            color: #fff;
-            font-size: 1rem;
-        }
-
-        .login-box button {
-            background: #a855f7;
-            color: #fff;
-            padding: 0.7rem 1.2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .login-box button:hover {
-            background: #9333ea;
-            transform: scale(1.05);
-        }
-
-        .error-message {
-            color: #ff6b6b;
-            margin-top: 1rem;
-            display: none;
         }
     </style>
 </head>
 <body>
-    <!-- Página de Login -->
-    <div class="login-page" id="loginPage">
-        <div class="login-box">
-            <h2><i class="fas fa-lock"></i> Acesso Restrito</h2>
-            <input type="password" id="passwordInput" placeholder="Digite a senha">
-            <button onclick="checkPassword()">Acessar</button>
-            <p class="error-message" id="errorMessage">Senha incorreta! Tente novamente.</p>
-        </div>
-    </div>
-
-    <!-- Conteúdo do Site (inicialmente oculto) -->
-    <div class="container" id="content" style="display: none;">
+    <div class="container">
         <header>
-            <h1><i class="fas fa-mask"></i> Lista do Ninja・Jogos e Ferramentas</h1>
-            <p>Acesso a diversão e conhecimento em ambientes restritos</p>
+            <h1><i class="fas fa-mask"></i> School Tools</h1>
+            <p>Jogos, ferramentas e hacks para o dia a dia escolar</p>
         </header>
 
-        <!-- Seção de Jogos para PC -->
+        <!-- Seção de Jogos -->
         <section class="section">
-            <h2><i class="fas fa-desktop"></i> Jogos para PC (Só baixar e extrair)</h2>
-            <div class="game-list">
-                <!-- Geometry Dash -->
-                <div class="game-card">
-                    <h3>Geometry Dash</h3>
-                    <a href="https://drive.usercontent.google.com/download?id=1t8MmMzsL3yXW3RnDGnCobBJdiOVM2Bme&export=download&authuser=0" class="download-btn">
-                        <i class="fas fa-download"></i>Download
-                    </a>
-                </div>
-
-                <!-- Need for Speed - Clássicos -->
-                <div class="game-card">
-                    <h3>Need for Speed - Clássicos</h3>
-                    <p>Jogos clássicos de corrida.</p>
-                    <div class="multi-links">
-                        <a href="https://drive.google.com/drive/u/4/folders/1pWDmMc2EZ-Ocs0BpL1QqCaRlq76Cum_K" class="download-btn">The Need for Speed (1994)</a>
-                        <a href="https://1fichier.com/?m3ou72ohzk2b6jie230k" class="download-btn">Need for Speed II SE</a>
-                        <a href="https://1fichier.com/?akqomqdtstot8wnlsjgb" class="download-btn">Need for Speed III - Hot Pursuit</a>
-                        <a href="https://drive.google.com/drive/u/3/folders/1SSaiWDv9capoqb_LV_34jwyYeh_Dcuhk" class="download-btn">Need for Speed: High Stakes</a>
-                        <a href="https://1fichier.com/?a7n0b4yjgf8l1cddgokm" class="download-btn">Need for Speed: Porsche Unleashed</a>
-                        <a href="https://1fichier.com/?cxwhnowjsqre8f0eyemw" class="download-btn">Need for Speed: Hot Pursuit 2</a>
-                        <a href="https://1fichier.com/?wg3v32cqoelm5x062dpw" class="download-btn">Need for Speed: Underground</a>
-                        <a href="https://1fichier.com/?bhc5plxo7tmj3vf3mfip" class="download-btn">Need for Speed: Underground 2</a>
-                        <a href="https://1fichier.com/?dvi1pehq13udj4l8c8yz" class="download-btn">Need for Speed: Most Wanted (2005)</a>
-                        <a href="https://1fichier.com/?idgjp4xj752dyikhp3iz" class="download-btn">Need for Speed: Carbon</a>
-                        <a href="https://1fichier.com/?pjxdlksbu4mhglud2xw6" class="download-btn">Need for Speed: ProStreet</a>
-                        <a href="https://1fichier.com/?g91q4qo2ngzynp66il38" class="download-btn">Need for Speed: Undercover</a>
-                        <a href="https://1fichier.com/?75p7yro4qcc1jm50kn8w" class="download-btn">Need for Speed: Shift</a>
-                        <a href="https://drive.google.com/drive/folders/1POPvzDqxHNTvqmZHQt79OKF8RXO9Yh-b?usp=sharing" class="download-btn">Need for Speed: The Run</a>
-                        <a href="https://1fichier.com/?az4d96ptbm8qz0vu6478" class="download-btn">Need for Speed: Shift 2 Unleashed</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Jogos de Navegador -->
-        <section class="section">
-            <h2><i class="fas fa-globe"></i> Jogos de Navegador</h2>
+            <h2><i class="fas fa-gamepad"></i> Jogos</h2>
             <div class="game-list">
                 <div class="game-card">
-                    <h3>Jogos de Flash</h3>
-                    <a href="https://chstextbook.github.io/pages/nav/flash.html" class="download-btn">
+                    <h3>Jogos de Navegador</h3>
+                    <p>Jogos leves para jogar diretamente no navegador.</p>
+                    <a href="jogos.html" class="download-btn">
                         <i class="fas fa-play-circle"></i>Acessar
                     </a>
                 </div>
                 <div class="game-card">
-                    <h3>Jogos em HTML5</h3>
-                    <a href="https://chstextbook.github.io/pages/nav/games5.html" class="download-btn">
+                    <h3>Jogos para PC</h3>
+                    <p>Jogos para baixar e jogar offline.</p>
+                    <a href="jogos-pc.html" class="download-btn">
+                        <i class="fas fa-download"></i>Download
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Hacks -->
+        <section class="section">
+            <h2><i class="fas fa-graduation-cap"></i> Hacks</h2>
+            <div class="game-list">
+                <div class="game-card">
+                    <h3>Hacks para Plataformas Escolares</h3>
+                    <p>Truques para burlar o uso de plataformas educacionais.</p>
+                    <a href="hacks.html" class="download-btn">
                         <i class="fas fa-code"></i>Acessar
-                    </a>
-                </div>
-                <div class="game-card">
-                    <h3>Jogos de Emulador</h3>
-                    <a href="https://chstextbook.github.io/pages/nav/emulibrary.html" class="download-btn">
-                        <i class="fas fa-archive"></i>Acessar
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Ferramentas -->
-        <section class="section">
-            <h2><i class="fas fa-tools"></i> Ferramentas para Contornar Restrições</h2>
-            <div class="game-list">
-                <div class="game-card">
-                    <h3>Psiphon</h3>
-                    <p>VPN leve e eficaz para redes restritivas.</p>
-                    <a href="https://psiphon.ca" class="download-btn">
-                        <i class="fas fa-shield-alt"></i>Download
-                    </a>
-                </div>
-                <div class="game-card">
-                    <h3>UltraSurf</h3>
-                    <p>Proxy simples e portátil.</p>
-                    <a href="https://ultrasurf.us" class="download-btn">
-                        <i class="fas fa-user-secret"></i>Download
-                    </a>
-                </div>
-                <div class="game-card">
-                    <h3>Lantern</h3>
-                    <p>Proxy P2P para acessar sites bloqueados.</p>
-                    <a href="https://getlantern.org" class="download-btn">
-                        <i class="fas fa-plug"></i>Download
-                    </a>
-                </div>
-                <div class="game-card">
-                    <h3>Tor Browser</h3>
-                    <p>Navegação anônima e segura.</p>
-                    <a href="https://www.torproject.org/download/" class="download-btn">
-                        <i class="fas fa-user-ninja"></i>Download
-                    </a>
-                </div>
-                <div class="game-card">
-                    <h3>GoodbyeDPI</h3>
-                    <p>Desativa inspeção de pacotes (DPI).</p>
-                    <a href="https://github.com/ValdikSS/GoodbyeDPI" class="download-btn">
-                        <i class="fas fa-unlock"></i>Download
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Hacks para Sites Educacionais -->
-        <section class="section">
-            <h2><i class="fas fa-graduation-cap"></i> Hacks para Sites Educacionais</h2>
-            <div class="game-list">
-                <div class="game-card">
-                    <h3>CMSP/Sala do Futuro Doritus</h3>
-                    <a href="https://doritus.mmrcoss.tech/" class="download-btn">
-                        <i class="fas fa-school"></i>Acessar
-                    </a>
-                </div>
-                <div class="game-card">
-                    <h3>Khan Destroyer</h3>
-                    <a href="https://github.com/Snowxyrzk/Khan-Destroyer/blob/main/README.md" class="download-btn">
-                        <i class="fab fa-github"></i>Acessar
-                    </a>
-                </div>
-                <div class="game-card">
-                    <h3>SPeak Hack</h3>
-                    <a href="https://speakify.cupiditys.lol/" class="download-btn">
-                        <i class="fas fa-microphone-alt"></i>Acessar
-                    </a>
-                </div>
-                <div class="game-card">
-                    <h3>Alura Destroyer</h3>
-                    <a href="https://github.com/marcos10pc/Alura-Destroyer/blob/main/script.js" class="download-btn">
-                        <i class="fas fa-laptop-code"></i>Acessar
-                    </a>
-                </div>
-                <div class="game-card">
-                    <h3>Matific Hack</h3>
-                    <a href="https://matific.cupiditys.lol/" class="download-btn">
-                        <i class="fas fa-calculator"></i>Acessar
                     </a>
                 </div>
             </div>
@@ -397,28 +225,10 @@
         <div class="note">
             <i class="fas fa-exclamation-triangle"></i>
             <div>
-                <p>📌 Observação: A disponibilidade dos links pode variar conforme a rede</p>
-                <p>💻 Discord: ninjachato | Atualizado em: 2023</p>
+                <p>📌 Observação: O site é otimizado para funcionar mesmo com internet limitada.</p>
+                <p>💻 Atualizado em: 25/02/2025</p>
             </div>
         </div>
     </div>
-
-    <!-- Script para o sistema de login -->
-    <script>
-        function checkPassword() {
-            const password = "nilo2025"; // Senha definida
-            const input = document.getElementById("passwordInput").value;
-            const errorMessage = document.getElementById("errorMessage");
-            const loginPage = document.getElementById("loginPage");
-            const content = document.getElementById("content");
-
-            if (input === password) {
-                loginPage.style.display = "none"; // Oculta a página de login
-                content.style.display = "block"; // Exibe o conteúdo do site
-            } else {
-                errorMessage.style.display = "block"; // Exibe mensagem de erro
-            }
-        }
-    </script>
 </body>
 </html>
