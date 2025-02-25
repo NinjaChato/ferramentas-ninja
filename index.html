@@ -1,54 +1,65 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferramentas Ninja</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1><i class="fas fa-mask"></i> Ferramentas Ninja</h1>
-            <p>Jogos, ferramentas e hacks para o dia a dia escolar</p>
-        </header>
-
-        <!-- Seção de Jogos -->
-        <section class="section">
-            <h2><i class="fas fa-gamepad"></i> Jogos</h2>
-            <div class="game-list">
-                <div class="game-card">
-                    <h3>Jogos</h3>
-                    <p>Jogos de PC e Navegador.</p>
-                    <a href="jogos.html" class="download-btn">
-                        <i class="fas fa-play-circle"></i>Acessar
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Hacks -->
-        <section class="section">
-            <h2><i class="fas fa-graduation-cap"></i> Hacks</h2>
-            <div class="game-list">
-                <div class="game-card">
-                    <h3>Hacks para Plataformas Escolares</h3>
-                    <p>Truques para burlar o uso de plataformas educacionais.</p>
-                    <a href="hacks.html" class="download-btn">
-                        <i class="fas fa-code"></i>Acessar
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <div class="note">
-            <i class="fas fa-exclamation-triangle"></i>
-            <div>
-                <p>📌 Observação: O site é otimizado para funcionar mesmo com internet limitada.</p>
-                <p>💻 Atualizado em: 25/02/2025</p>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mask"></i> Ferramentas Ninja
+            </a>
+            <div class="nav-links">
+                <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
+                <a href="hacks.html"><i class="fas fa-code"></i> Hacks</a>
+                <a href="ferramentas.html"><i class="fas fa-tools"></i> Ferramentas</a>
             </div>
         </div>
-    </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Ferramentas para o dia a dia escolar</h1>
+            <p>Jogos, utilitários e hacks otimizados para redes restritas</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="features">
+            <div class="feature-card">
+                <i class="fas fa-gamepad"></i>
+                <h3>Jogos</h3>
+                <p>Leves e divertidos</p>
+                <a href="jogos.html" class="btn">Acessar</a>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-code"></i>
+                <h3>Hacks</h3>
+                <p>Desbloqueie possibilidades</p>
+                <a href="hacks.html" class="btn">Acessar</a>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-tools"></i>
+                <h3>Ferramentas</h3>
+                <p>Produtividade acelerada</p>
+                <a href="ferramentas.html" class="btn">Acessar</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Ferramentas Ninja. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
