@@ -1,1 +1,173 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
+body {
+    background: #0a0a0a;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(45deg, #1a1a2e, #2a2a40);
+    margin-bottom: 3rem;
+    border-radius: 15px;
+    animation: fadeIn 1s ease-in;
+    border: 1px solid #3a3a5a;
+}
+
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #2196F3; /* Azul */
+    text-shadow: 0 0 15px rgba(33, 150, 243, 0.4); /* Azul */
+}
+
+.section {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+    border: 1px solid #2a2a2a;
+    position: relative;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(33, 150, 243, 0.1); /* Azul */
+}
+
+h2 {
+    color: #90caf9; /* Azul mais claro */
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.game-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.game-card {
+    background: #1a1a2e; /* Azul escuro */
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.game-card:hover {
+    background: #2a2a40; /* Azul mais claro */
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(33, 150, 243, 0.2), transparent); /* Azul */
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #2196F3; /* Azul */
+    color: #fff;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid #64b5f6; /* Azul mais claro */
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+    background: #1976D2; /* Azul mais escuro */
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.3); /* Azul */
+}
+
+.note {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+    border-left: 4px solid #2196F3; /* Azul */
+    font-size: 0.95rem;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shine {
+    0% { left: -50%; }
+    100% { left: 150%; }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .game-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Melhorias na organização dos links */
+.multi-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.game-card h3 {
+    margin-bottom: 1rem;
+    color: #bbdefb; /* Azul mais claro */
+}
+
+.game-card p {
+    color: #64b5f6; /* Azul mais claro */
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
