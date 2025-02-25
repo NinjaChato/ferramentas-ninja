@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css completo e corrigido */
 :root {
     --primary: #2563eb;
     --secondary: #1e40af;
@@ -18,12 +18,16 @@ body {
     background-color: var(--dark);
     color: var(--light);
     line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+    flex: 1;
 }
 
 .navbar {
@@ -33,6 +37,12 @@ body {
     top: 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar .logo {
@@ -53,6 +63,9 @@ body {
     color: var(--light);
     text-decoration: none;
     transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .nav-links a:hover {
@@ -64,6 +77,7 @@ body {
     padding: 4rem 0;
     text-align: center;
     margin-bottom: 2rem;
+    border-radius: 1rem;
 }
 
 .hero h1 {
@@ -71,45 +85,70 @@ body {
     margin-bottom: 1rem;
 }
 
-.features {
+/* Cards Section */
+.cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     padding: 2rem 0;
 }
 
-.feature-card {
+.card {
     background: rgba(30, 41, 59, 0.5);
     padding: 2rem;
     border-radius: 1rem;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.feature-card:hover {
+.card:hover {
     transform: translateY(-5px);
+    background: rgba(30, 41, 59, 0.8);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
-.feature-card i {
+.card-icon {
     font-size: 2.5rem;
     color: var(--primary);
     margin-bottom: 1rem;
 }
 
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--light);
+}
+
+.card p {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     background: var(--primary);
     color: var(--light);
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     text-decoration: none;
-    margin-top: 1rem;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn:hover {
     background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.btn i {
+    font-size: 1rem;
 }
 
 .footer {
@@ -117,12 +156,13 @@ body {
     padding: 2rem 0;
     margin-top: 4rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(16, 16, 16, 0.95);
 }
 
+/* Responsividade */
 @media (max-width: 768px) {
     .navbar .container {
         flex-direction: column;
-        align-items: center;
         gap: 1rem;
     }
     
@@ -130,49 +170,12 @@ body {
         font-size: 2rem;
     }
     
-    .features {
+    .cards-grid {
         grid-template-columns: 1fr;
     }
-}
-
-/* Estilos específicos para as páginas */
-.games-section, .hacks-section, .tools-section {
-    margin: 2rem 0;
-}
-
-.games-grid, .hacks-grid, .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.game-card, .hack-card, .tool-card {
-    background: rgba(30, 41, 59, 0.5);
-    padding: 1.5rem;
-    border-radius: 1rem;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.game-card:hover, .hack-card:hover, .tool-card:hover {
-    transform: translateY(-5px);
-    background: rgba(30, 41, 59, 0.8);
-}
-
-.game-card i, .hack-card i, .tool-card i {
-    font-size: 2rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-.game-card h3, .hack-card h3, .tool-card h3 {
-    margin-bottom: 0.5rem;
-    color: var(--light);
-}
-
-.game-card p, .hack-card p, .tool-card p {
-    color: var(--gray);
-    margin-bottom: 1rem;
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
