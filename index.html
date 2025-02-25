@@ -1,65 +1,368 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferramentas Ninja</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Ferramentas do Ninja</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos globais */
+        :root {
+            --font-primary: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --primary-color: #8A2BE2;
+            --secondary-color: #4B0082;
+            --background-color: rgba(0, 0, 0, 0.85);
+            --text-color: #ffffff;
+            --card-background: rgba(26, 26, 26, 0.8);
+            --hover-color: #9400D3;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-primary);
+        }
+
+        body {
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('https://via.placeholder.com/1920x1080'); /* Substitua pelo seu background */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            backdrop-filter: blur(5px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .navbar a:hover {
+            color: var(--primary-color);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar a.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* Seções */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        h1 i {
+            margin-right: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Grid de cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .card {
+            background: var(--card-background);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.1), transparent 70%);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+        }
+
+        .card:hover::before {
+            top: 0;
+            left: 0;
+        }
+
+        .card a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1rem;
+            transition: var(--transition);
+            color: var(--text-color);
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar nav {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            section {
+                padding: 7rem 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-mask"></i> Ferramentas Ninja
-            </a>
-            <div class="nav-links">
-                <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
-                <a href="hacks.html"><i class="fas fa-code"></i> Hacks</a>
-                <a href="ferramentas.html"><i class="fas fa-tools"></i> Ferramentas</a>
-            </div>
-        </div>
+        <nav>
+            <a href="#hacks">Hacks</a>
+            <a href="#jogos">Jogos Web</a>
+            <a href="#pc">Jogos PC</a>
+        </nav>
     </nav>
 
-    <header class="hero">
-        <div class="container">
-            <h1>Ferramentas para o dia a dia escolar</h1>
-            <p>Jogos, utilitários e hacks otimizados para redes restritas</p>
+    <section id="hacks">
+        <h1><i class="fas fa-shield-alt"></i>Hacks das Plataformas</h1>
+        <div class="grid">
+            <div class="card">
+                <a href="https://github.com/Snowxyrzk/Khan-Destroyer" target="_blank">
+                    <h3>Khan Academy</h3>
+                    <p>Hack completo para a plataforma de educação</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://github.com/marcos10pc/Alura-Destroyer" target="_blank">
+                    <h3>Alura</h3>
+                    <p>Hack para a plataforma Alura</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://speakify.cupiditys.lol/" target="_blank">
+                    <h3>SPeak</h3>
+                    <p>Ferramenta para a plataforma SPeak</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://matific.cupiditys.lol/" target="_blank">
+                    <h3>Matific</h3>
+                    <p>Hack para a plataforma Matific</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://doritus.mmrcoss.tech/" target="_blank">
+                    <h3>Sala do Futuro</h3>
+                    <p>Ferramenta para a Sala do Futuro</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://kahootdestroyer.squareweb.app/" target="_blank">
+                    <h3>Kahoot</h3>
+                    <p>Hack para a plataforma Kahoot</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main class="container">
-        <section class="features">
-            <div class="feature-card">
-                <i class="fas fa-gamepad"></i>
-                <h3>Jogos</h3>
-                <p>Leves e divertidos</p>
-                <a href="jogos.html" class="btn">Acessar</a>
+    <section id="jogos">
+        <h1><i class="fas fa-gamepad"></i>Jogos de Navegador</h1>
+        <div class="grid">
+            <div class="card">
+                <a href="https://ball-bang.github.io/" target="_blank">
+                    <h3>Ball Bang</h3>
+                    <p>Jogos de navegador de vários estilos</p>
+                    <div class="btn">Jogar</div>
+                </a>
             </div>
-            
-            <div class="feature-card">
-                <i class="fas fa-code"></i>
-                <h3>Hacks</h3>
-                <p>Desbloqueie possibilidades</p>
-                <a href="hacks.html" class="btn">Acessar</a>
+            <div class="card">
+                <a href="https://chstextbook.github.io/pages/nav/emulibrary.html" target="_blank">
+                    <h3>EmuLibrary</h3>
+                    <p>Jogos de emulador</p>
+                    <div class="btn">Jogar</div>
+                </a>
             </div>
-            
-            <div class="feature-card">
-                <i class="fas fa-tools"></i>
-                <h3>Ferramentas</h3>
-                <p>Produtividade acelerada</p>
-                <a href="ferramentas.html" class="btn">Acessar</a>
+            <div class="card">
+                <a href="https://chstextbook.github.io/pages/nav/games5.html" target="_blank">
+                    <h3>HTML Games</h3>
+                    <p>Jogos HTML5</p>
+                    <div class="btn">Jogar</div>
+                </a>
             </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Ferramentas Ninja. Todos os direitos reservados.</p>
+            <div class="card">
+                <a href="https://chstextbook.github.io/pages/nav/flash.html" target="_blank">
+                    <h3>Flash Games</h3>
+                    <p>Jogos clássicos em Flash</p>
+                    <div class="btn">Jogar</div>
+                </a>
+            </div>
         </div>
-    </footer>
+    </section>
 
-    <script src="js/script.js"></script>
+    <section id="pc">
+        <h1><i class="fas fa-desktop"></i>Jogos de PC</h1>
+        <div class="grid">
+            <div class="card">
+                <a href="https://drive.usercontent.google.com/download?id=1t8MmMzsL3yXW3RnDGnCobBJdiOVM2Bme&export=download&authuser=0" download>
+                    <h3>Geometry Dash</h3>
+                    <p>Versão completa para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animação suave ao scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animação ao rolar
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.grid').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Efeito de highlight na navbar
+        window.addEventListener('scroll', () => {
+            let sections = document.querySelectorAll('section');
+            let navLinks = document.querySelectorAll('.navbar a');
+            
+            sections.forEach(sec => {
+                let top = window.scrollY;
+                let offset = sec.offsetTop - 150;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute('id');
+
+                if(top >= offset && top < offset + height) {
+                    navLinks.forEach(links => {
+                        links.classList.remove('active');
+                        if(links.getAttribute('href') === '#'+id) {
+                            links.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
