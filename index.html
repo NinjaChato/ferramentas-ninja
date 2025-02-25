@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,46 +8,47 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav class="main-nav">
-        <a href="index.html" class="nav-brand"><i class="fas fa-mask"></i> Ninja Tools</a>
-        <div class="nav-links">
-            <a href="jogos.html"><i class="fas fa-gamepad"></i> Jogos</a>
-            <a href="hacks.html"><i class="fas fa-code"></i> Hacks</a>
-            <a href="ferramentas.html"><i class="fas fa-tools"></i> Ferramentas</a>
-        </div>
-    </nav>
-
     <div class="container">
-        <header class="hero">
+        <header>
             <h1><i class="fas fa-mask"></i> Ferramentas Ninja</h1>
             <p>Jogos, ferramentas e hacks para o dia a dia escolar</p>
         </header>
 
-        <main>
-            <section class="card-grid">
-                <a href="jogos.html" class="card">
-                    <i class="fas fa-gamepad card-icon"></i>
+        <!-- Seção de Jogos -->
+        <section class="section">
+            <h2><i class="fas fa-gamepad"></i> Jogos</h2>
+            <div class="game-list">
+                <div class="game-card">
                     <h3>Jogos</h3>
-                    <p>Leves e otimizados para escola</p>
-                </a>
+                    <p>Jogos de PC e Navegador.</p>
+                    <a href="jogos.html" class="download-btn">
+                        <i class="fas fa-play-circle"></i>Acessar
+                    </a>
+                </div>
+            </div>
+        </section>
 
-                <a href="hacks.html" class="card">
-                    <i class="fas fa-code card-icon"></i>
-                    <h3>Hacks</h3>
-                    <p>Desbloqueie todo potencial</p>
-                </a>
+        <!-- Seção de Hacks -->
+        <section class="section">
+            <h2><i class="fas fa-graduation-cap"></i> Hacks</h2>
+            <div class="game-list">
+                <div class="game-card">
+                    <h3>Hacks para Plataformas Escolares</h3>
+                    <p>Truques para burlar o uso de plataformas educacionais.</p>
+                    <a href="hacks.html" class="download-btn">
+                        <i class="fas fa-code"></i>Acessar
+                    </a>
+                </div>
+            </div>
+        </section>
 
-                <a href="ferramentas.html" class="card">
-                    <i class="fas fa-tools card-icon"></i>
-                    <h3>Ferramentas</h3>
-                    <p>Produtividade acelerada</p>
-                </a>
-            </section>
-        </main>
-
-        <footer class="site-footer">
-            <p>📌 Otimizado para redes restritas - 🕹 Atualizado em: 25/02/2025</p>
-        </footer>
+        <div class="note">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+                <p>📌 Observação: O site é otimizado para funcionar mesmo com internet limitada.</p>
+                <p>💻 Atualizado em: 25/02/2025</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
