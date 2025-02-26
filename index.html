@@ -1,425 +1,597 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferramentas do Ninja</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-      /* Estilos globais */
-      :root {
-        --font-primary: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        --primary-color: #8A2BE2;
-        --secondary-color: #4B0082;
-        --background-color: rgba(0, 0, 0, 0.85);
-        --text-color: #ffffff;
-        --card-background: rgba(26, 26, 26, 0.8);
-        --hover-color: #9400D3;
-        --transition: all 0.3s ease;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: var(--font-primary);
-      }
-
-      body {
-        background: var(--background-color);
-        color: var(--text-color);
-        line-height: 1.6;
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-
-      body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: linear-gradient(45deg,
-            rgba(34, 34, 34, 0.95),
-            rgba(58, 12, 94, 0.95)), url('https://motionbgs.com/media/3364/abstract-purple-topo.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-      }
-
-      /* Navbar */
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 5%;
-        backdrop-filter: blur(5px);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        background: rgba(0, 0, 0, 0.5);
-        border-bottom: 1px solid rgba(138, 43, 226, 0.2);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .navbar a {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: 500;
-        transition: var(--transition);
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .navbar a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--primary-color);
-        transition: var(--transition);
-      }
-
-      .navbar a:hover::after {
-        width: 100%;
-      }
-
-      .navbar a.active {
-        color: var(--primary-color);
-      }
-
-      /* Seções */
-      section {
-        padding: 6rem 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        text-align: center;
-        color: var(--text-color);
-        letter-spacing: -0.03em;
-        position: relative;
-        display: inline-block;
-        padding-bottom: 10px;
-      }
-
-      h1::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60px;
-        height: 3px;
-        background: var(--primary-color);
-        border-radius: 2px;
-      }
-
-      h1 i {
-        margin-right: 1rem;
-        color: var(--primary-color);
-      }
-
-      /* Grid de cards */
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.8s ease-out forwards;
-      }
-
-      .card {
-        background: var(--card-background);
-        border-radius: 15px;
-        padding: 1.5rem;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: var(--transition);
-        cursor: pointer;
-        overflow: hidden;
-        position: relative;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .card:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 8px 15px rgba(138, 43, 226, 0.3);
-      }
-
-      .card::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(138, 43, 226, 0.1), transparent 70%);
-        transition: 0.5s;
-        pointer-events: none;
-      }
-
-      .card:hover::before {
-        opacity: 0.3;
-        transform: scale(1.5);
-      }
-
-      .card a {
-        color: var(--text-color);
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .card h3 {
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
-        font-size: 1.25rem;
-        position: relative;
-        padding-left: 24px;
-      }
-
-      .card h3::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 12px;
-        height: 12px;
-        background: var(--primary-color);
-        border-radius: 2px;
-      }
-
-      .card p {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 0.9rem;
-      }
-
-      .btn {
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-        padding: 0.8rem 1.5rem;
-        border-radius: 8px;
-        text-align: center;
-        margin-top: 1rem;
-        transition: var(--transition);
-        color: var(--text-color);
-        font-weight: 500;
-        border: none;
-        cursor: pointer;
-      }
-
-      .btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
-      }
-
-      /* Animações */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
+        /* Estilos globais */
+        :root {
+            --font-primary: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --primary-color: #8A2BE2;
+            --secondary-color: #4B0082;
+            --background-color: rgba(0, 0, 0, 0.85);
+            --text-color: #ffffff;
+            --card-background: rgba(26, 26, 26, 0.8);
+            --hover-color: #9400D3;
+            --transition: all 0.3s ease;
         }
 
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Responsividade */
-      @media (max-width: 768px) {
-        .navbar nav {
-          flex-direction: column;
-          text-align: center;
-          gap: 1rem;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-primary);
         }
 
+        body {
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(
+                45deg,
+                rgba(34, 34, 34, 0.95),
+                rgba(58, 12, 94, 0.95)
+            ), url('https://motionbgs.com/media/3364/abstract-purple-topo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            backdrop-filter: blur(5px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        .navbar a.active {
+            color: var(--primary-color);
+        }
+
+        /* Seções */
         section {
-          padding: 7rem 1rem;
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 480px) {
         h1 {
-          font-size: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-color);
+            letter-spacing: -0.03em;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        h1 i {
+            margin-right: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Grid de cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
         .card {
-          margin: 0 10px;
+            background: var(--card-background);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-      }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.1), transparent 70%);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .card:hover::before {
+            opacity: 0.3;
+            transform: scale(1.5);
+        }
+
+        .card a {
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .card h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1rem;
+            transition: var(--transition);
+            color: var(--text-color);
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+            background: linear-gradient(45deg, var(--hover-color), var(--secondary-color));
+        }
+
+        /* Botão de voltar ao topo */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary-color);
+            color: var(--text-color);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #backToTop:hover {
+            background: var(--hover-color);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: var(--text-color);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar nav {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            section {
+                padding: 7rem 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .card {
+                margin: 0 10px;
+            }
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+
     <nav class="navbar">
-      <nav>
-        <a href="#hacks">
-          <i class="fas fa-shield-alt"></i> Hacks </a>
-        <a href="#jogos">
-          <i class="fas fa-gamepad"></i> Jogos Web </a>
-        <a href="#pc">
-          <i class="fas fa-desktop"></i> Jogos PC </a>
-      </nav>
+        <nav>
+            <a href="#hacks"><i class="fas fa-shield-alt"></i> Hacks</a>
+            <a href="#jogos"><i class="fas fa-gamepad"></i> Jogos Web</a>
+            <a href="#pc"><i class="fas fa-desktop"></i> Jogos PC</a>
+        </nav>
     </nav>
+
     <section id="hacks">
-      <h1>
-        <i class="fas fa-shield-alt"></i>Hacks das Plataformas
-      </h1>
-      <div class="grid">
-        <div class="card">
-          <a href="https://github.com/Snowxyrzk/Khan-Destroyer" target="_blank">
-            <h3>Khan Academy</h3>
-            <p>Hack completo para a plataforma de educação</p>
-            <div class="btn">Acessar Ferramenta</div>
-          </a>
+        <h1><i class="fas fa-shield-alt"></i>Hacks das Plataformas</h1>
+        <div class="grid">
+            <div class="card">
+                <a href="https://github.com/Snowxyrzk/Khan-Destroyer" target="_blank">
+                    <h3>Khan Academy</h3>
+                    <p>Hack completo para a plataforma de educação</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://github.com/marcos10pc/Alura-Destroyer" target="_blank">
+                    <h3>Alura</h3>
+                    <p>Hack para a plataforma Alura</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://speakify.cupiditys.lol/" target="_blank">
+                    <h3>SPeak</h3>
+                    <p>Ferramenta para a plataforma SPeak</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://matific.cupiditys.lol/" target="_blank">
+                    <h3>Matific</h3>
+                    <p>Hack para a plataforma Matific</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://doritus.mmrcoss.tech/" target="_blank">
+                    <h3>Sala do Futuro</h3>
+                    <p>Ferramenta para a Sala do Futuro</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://kahootdestroyer.squareweb.app/" target="_blank">
+                    <h3>Kahoot</h3>
+                    <p>Hack para a plataforma Kahoot</p>
+                    <div class="btn">Acessar Ferramenta</div>
+                </a>
+            </div>
         </div>
-        <div class="card">
-          <a href="https://github.com/marcos10pc/Alura-Destroyer" target="_blank">
-            <h3>Alura</h3>
-            <p>Hack para a plataforma Alura</p>
-            <div class="btn">Acessar Ferramenta</div>
-          </a>
-        </div>
-        <div class="card">
-          <a href="https://speakify.cupiditys.lol/" target="_blank">
-            <h3>SPeak</h3>
-            <p>Ferramenta para a plataforma SPeak</p>
-            <div class="btn">Acessar Ferramenta</div>
-          </a>
-        </div>
-        <div class="card">
-          <a href="https://matific.cupiditys.lol/" target="_blank">
-            <h3>Matific</h3>
-            <p>Hack para a plataforma Matific</p>
-            <div class="btn">Acessar Ferramenta</div>
-          </a>
-        </div>
-        <div class="card">
-          <a href="https://doritus.mmrcoss.tech/" target="_blank">
-            <h3>Sala do Futuro</h3>
-            <p>Ferramenta para a Sala do Futuro</p>
-            <div class="btn">Acessar Ferramenta</div>
-          </a>
-        </div>
-        <div class="card">
-          <a href="https://kahootdestroyer.squareweb.app/" target="_blank">
-            <h3>Kahoot</h3>
-            <p>Hack para a plataforma Kahoot</p>
-            <div class="btn">Acessar Ferramenta</div>
-          </a>
-        </div>
-      </div>
     </section>
+
     <section id="jogos">
-      <h1>
-        <i class="fas fa-gamepad"></i>Jogos de Navegador
-      </h1>
-      <div class="grid">
-        <div class="card">
-          <a href="https://ball-bang.github.io/" target="_blank">
-            <h3>Ball Bang</h3>
-            <p>Jogos de navegador de vários estilos</p>
-            <div class="btn">Jogar</div>
-          </a>
+        <h1><i class="fas fa-gamepad"></i>Jogos de Navegador</h1>
+        <div class="grid">
+            <div class="card">
+                <a href="https://ball-bang.github.io/" target="_blank">
+                    <h3>Ball Bang</h3>
+                    <p>Jogos de navegador de vários estilos</p>
+                    <div class="btn">Jogar</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://chstextbook.github.io/pages/nav/emulibrary.html" target="_blank">
+                    <h3>EmuLibrary</h3>
+                    <p>Jogos de emulador</p>
+                    <div class="btn">Jogar</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://chstextbook.github.io/pages/nav/games5.html" target="_blank">
+                    <h3>HTML Games</h3>
+                    <p>Jogos HTML5</p>
+                    <div class="btn">Jogar</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://chstextbook.github.io/pages/nav/flash.html" target="_blank">
+                    <h3>Flash Games</h3>
+                    <p>Jogos clássicos em Flash</p>
+                    <div class="btn">Jogar</div>
+                </a>
+            </div>
         </div>
-        <div class="card">
-          <a href="https://chstextbook.github.io/pages/nav/emulibrary.html" target="_blank">
-            <h3>EmuLibrary</h3>
-            <p>Jogos de emulador</p>
-            <div class="btn">Jogar</div>
-          </a>
-        </div>
-        <div class="card">
-          <a href="https://chstextbook.github.io/pages/nav/games5.html" target="_blank">
-            <h3>HTML Games</h3>
-            <p>Jogos HTML5</p>
-            <div class="btn">Jogar</div>
-          </a>
-        </div>
-        <div class="card">
-          <a href="https://chstextbook.github.io/pages/nav/flash.html" target="_blank">
-            <h3>Flash Games</h3>
-            <p>Jogos clássicos em Flash</p>
-            <div class="btn">Jogar</div>
-          </a>
-        </div>
-      </div>
     </section>
+
     <section id="pc">
-      <h1>
-        <i class="fas fa-desktop"></i>Jogos de PC
-      </h1>
-      <div class="grid">
-        <div class="card">
-          <a href="https://drive.usercontent.google.com/download?id=1t8MmMzsL3yXW3RnDGnCobBJdiOVM2Bme&export=download&authuser=0" download>
-            <h3>Geometry Dash</h3>
-            <p>Versão completa para download</p>
-            <div class="btn">Download</div>
-          </a>
+        <h1><i class="fas fa-desktop"></i>Jogos de PC</h1>
+        <div class="grid">
+            <div class="card">
+                <a href="https://drive.usercontent.google.com/download?id=1t8MmMzsL3yXW3RnDGnCobBJdiOVM2Bme&export=download&authuser=0" download>
+                    <h3>Geometry Dash</h3>
+                    <p>Versão completa para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://www.mediafire.com/file/uhhw63l31awpfjy/MotoGP.17-CODEX.1.torrent/file" download>
+                    <h3>MotoGP 17</h3>
+                    <p>Torrent para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://www.mediafire.com/file/7eonw0natmgrpcz/Dark_Souls_3_Deluxe_Edition_t1.torrent/file" download>
+                    <h3>Dark Souls 3</h3>
+                    <p>Torrent para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://www.mediafire.com/file/wiz7nky01wup1uy/Diablo_3.torrent/file" download>
+                    <h3>Diablo III</h3>
+                    <p>Torrent para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://www.mediafire.com/file/xfcf6s5z6ysbjpu/Diablo_IV_Reflection_.torrent/file" download>
+                    <h3>Diablo IV</h3>
+                    <p>Torrent para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://www.mediafire.com/file/2ekg3xpl3sw84o1/Descenders.torrent/file" download>
+                    <h3>Descenders</h3>
+                    <p>Torrent para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://www.mediafire.com/file/4bst0b4a0qnjqfy/OUTLAST.rar/file" download>
+                    <h3>Outlast</h3>
+                    <p>Arquivo .rar para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://www.mediafire.com/file/c162jfc5kj7l4hz" download>
+                    <h3>Letal Company</h3>
+                    <p>Arquivo .rar para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://www.mediafire.com/file/y4fkp8cgyu2wj6s/Overcooked.2.Build.01102020-OFME.torrent/file" download>
+                    <h3>Overcooked 2</h3>
+                    <p>Torrent para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://www.mediafire.com/file/0y7dx1zqn7se9q2/Need.For.Speed.Heat.Deluxe.Edition-ZED.torrent/file" download>
+                    <h3>Need for Speed Heat</h3>
+                    <p>Torrent para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://www.mediafire.com/file/kekdwpuutyo8qoc/Euro+Truck+Simulator.torrent/file" download>
+                    <h3>Euro Truck Simulator</h3>
+                    <p>Torrent para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://drive.google.com/file/d/1lT6p9CrmdoG_w2yx6PiYC4GX7x2XJjd4/view" download>
+                    <h3>Euro Truck Simulator 2</h3>
+                    <p>Torrent para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://drive.google.com/file/d/1VliOmTCIwdKT-ldxsy4I4EPLB3oMnu3H/view" download>
+                    <h3>Microsoft Flight Simulator</h3>
+                    <p>Torrent para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://www.mediafire.com/file/dy5x2o1me5b4y4m" download>
+                    <h3>Internet Cafe Simulator</h3>
+                    <p>Arquivo .rar para download</p>
+                    <div class="btn">Download</div>
+                </a>
+            </div>
         </div>
-      </div>
     </section>
+
+    <footer>
+        <p>© 2023 Ferramentas do Ninja. Todos os direitos reservados.</p>
+        <div>
+            <a href="https://discord.com/users/@ninjachato" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+        </div>
+    </footer>
+
+    <button id="backToTop" title="Voltar ao topo">↑</button>
+
     <script>
-      // Animação suave ao scroll
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
-        });
-      });
-      // Animação ao rolar
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      });
-      document.querySelectorAll('.grid').forEach((el) => {
-        observer.observe(el);
-      });
-      // Efeito de highlight na navbar
-      window.addEventListener('scroll', () => {
-        let sections = document.querySelectorAll('section');
-        let navLinks = document.querySelectorAll('.navbar a');
-        sections.forEach(sec => {
-          let top = window.scrollY;
-          let offset = sec.offsetTop - 150;
-          let height = sec.offsetHeight;
-          let id = sec.getAttribute('id');
-          if (top >= offset && top < offset + height) {
-            navLinks.forEach(links => {
-              links.classList.remove('active');
-              if (links.getAttribute('href') === '#' + id) {
-                links.classList.add('active');
-              }
+        // Animação suave ao scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
-          }
         });
-      });
+
+        // Animação ao rolar
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.grid').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Efeito de highlight na navbar
+        window.addEventListener('scroll', () => {
+            let sections = document.querySelectorAll('section');
+            let navLinks = document.querySelectorAll('.navbar a');
+            
+            sections.forEach(sec => {
+                let top = window.scrollY;
+                let offset = sec.offsetTop - 150;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute('id');
+
+                if(top >= offset && top < offset + height) {
+                    navLinks.forEach(links => {
+                        links.classList.remove('active');
+                        if(links.getAttribute('href') === '#'+id) {
+                            links.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Botão de voltar ao topo
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("backToTop").style.display = "block";
+            } else {
+                document.getElementById("backToTop").style.display = "none";
+            }
+        };
+        document.getElementById("backToTop").addEventListener("click", function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Efeito de loading
+        window.addEventListener('load', function() {
+            document.getElementById('loading').style.display = 'none';
+        });
     </script>
-  </body>
+</body>
 </html>
