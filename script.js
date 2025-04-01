@@ -1,5 +1,5 @@
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
@@ -35,19 +35,19 @@ window.addEventListener('scroll', () => {
         }
     });
 });
-window.onscroll = function() {
+window.onscroll = function () {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         document.getElementById("backToTop").style.display = "block";
     } else {
         document.getElementById("backToTop").style.display = "none";
     }
 };
-document.getElementById("backToTop").addEventListener("click", function() {
+document.getElementById("backToTop").addEventListener("click", function () {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
 });
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     document.getElementById('loading').style.display = 'none';
 });
