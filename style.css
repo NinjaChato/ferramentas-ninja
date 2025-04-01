@@ -4,65 +4,78 @@ body::before {
   width: 100%;
   left: 0;
 }
+
 .navbar,
 .navbar a:hover::after {
   width: 100%;
 }
+
 .navbar a,
 h1 {
   position: relative;
 }
+
 .navbar a::after,
 h1::after {
   bottom: 0;
   background: var(--primary-color);
 }
+
 .navbar a.active,
 footer a:hover,
 h1 i {
   color: var(--primary-color);
 }
+
 .card,
 .navbar a {
   overflow: hidden;
 }
+
 .card a,
 .navbar a {
   text-decoration: none;
 }
+
 .btn,
 .navbar a {
   font-weight: 500;
   color: var(--text-color);
 }
+
 #backToTop,
 .card h3::before,
 .navbar a::after,
 h1::after {
   background: var(--primary-color);
 }
+
 #backToTop,
 .btn,
 .card {
   cursor: pointer;
   transition: var(--transition);
 }
+
 #backToTop,
 .navbar {
   position: fixed;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
+
 .btn,
 footer,
 h1 {
   text-align: center;
 }
+
 .navbar,
 footer {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
 }
+
 #backToTop,
 .btn,
 .card a,
@@ -72,6 +85,7 @@ footer a,
 h1 {
   color: var(--text-color);
 }
+
 #backToTop,
 .btn,
 .card,
@@ -80,6 +94,7 @@ h1 {
 footer a {
   transition: var(--transition);
 }
+
 :root {
   --font-primary: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --primary-color: #8a2be2;
@@ -90,42 +105,45 @@ footer a {
   --hover-color: #9400d3;
   --transition: all 0.3s ease;
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-primary);
 }
+
 body {
   background: var(--background-color);
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
 }
+
 body::before {
   content: "";
   position: fixed;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(
-        45deg,
-        rgba(34, 34, 34, 0.95),
-        rgba(58, 12, 94, 0.95)
-      )
-      center/cover no-repeat fixed,
-    url("https://motionbgs.com/media/3364/abstract-purple-topo.jpg")
-      center/cover no-repeat fixed;
+  background: linear-gradient(45deg,
+      rgba(34, 34, 34, 0.95),
+      rgba(58, 12, 94, 0.95)) center/cover no-repeat fixed,
+    url("https://motionbgs.com/media/3364/abstract-purple-topo.jpg") center/cover no-repeat fixed;
   animation: 10s infinite gradientAnimation;
 }
+
 @keyframes gradientAnimation {
+
   0%,
   100% {
     background-position: 0 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -133,10 +151,12 @@ body::before {
   padding: 1rem 5%;
   border-bottom: 1px solid rgba(138, 43, 226, 0.2);
 }
+
 .navbar a {
   padding: 0.5rem 1rem;
   border-radius: 8px;
 }
+
 .card h3::before,
 .card::before,
 .navbar a::after,
@@ -144,16 +164,19 @@ h1::after {
   content: "";
   position: absolute;
 }
+
 .navbar a::after {
   left: 0;
   width: 0;
   height: 2px;
 }
+
 section {
   padding: 6rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
+
 h1 {
   font-size: 2.5rem;
   margin-bottom: 3rem;
@@ -161,6 +184,7 @@ h1 {
   display: inline-block;
   padding-bottom: 10px;
 }
+
 h1::after {
   left: 50%;
   transform: translateX(-50%);
@@ -168,13 +192,16 @@ h1::after {
   height: 3px;
   border-radius: 2px;
 }
+
 .card,
 .card h3 {
   position: relative;
 }
+
 h1 i {
   margin-right: 1rem;
 }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -183,6 +210,7 @@ h1 i {
   transform: translateY(20px);
   animation: 0.8s ease-out forwards fadeInUp;
 }
+
 .card {
   background: var(--card-background);
   border-radius: 15px;
@@ -191,10 +219,12 @@ h1 i {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .card:hover {
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 8px 15px rgba(138, 43, 226, 0.3);
 }
+
 .card::before {
   top: -50%;
   left: -50%;
@@ -204,21 +234,25 @@ h1 i {
   transition: 0.5s;
   pointer-events: none;
 }
+
 .card:hover::before {
   opacity: 0.3;
   transform: scale(1.5);
 }
+
 .card a {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+
 .card h3 {
   color: var(--primary-color);
   margin-bottom: 0.5rem;
   font-size: 1.25rem;
   padding-left: 24px;
 }
+
 .card h3::before {
   left: 0;
   top: 50%;
@@ -227,30 +261,30 @@ h1 i {
   height: 12px;
   border-radius: 2px;
 }
+
 .card p {
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
 }
+
 .btn {
-  background: linear-gradient(
-    45deg,
-    var(--primary-color),
-    var(--secondary-color)
-  );
+  background: linear-gradient(45deg,
+      var(--primary-color),
+      var(--secondary-color));
   padding: 0.8rem 1.5rem;
   border-radius: 8px;
   margin-top: 1rem;
   border: none;
 }
+
 .btn:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
-  background: linear-gradient(
-    45deg,
-    var(--hover-color),
-    var(--secondary-color)
-  );
+  background: linear-gradient(45deg,
+      var(--hover-color),
+      var(--secondary-color));
 }
+
 #backToTop {
   display: none;
   bottom: 20px;
@@ -260,45 +294,55 @@ h1 i {
   width: 40px;
   height: 40px;
 }
+
 #backToTop:hover {
   background: var(--hover-color);
   transform: scale(1.1);
 }
+
 footer {
   padding: 2rem;
   margin-top: 2rem;
 }
+
 footer a {
   margin: 0 10px;
   font-size: 1.5rem;
 }
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 @media (max-width: 768px) {
   .navbar nav {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
   }
+
   section {
     padding: 7rem 1rem;
   }
+
   .grid {
     grid-template-columns: 1fr;
   }
 }
+
 @media (max-width: 480px) {
   h1 {
     font-size: 2rem;
   }
+
   .card {
     margin: 0 10px;
   }
