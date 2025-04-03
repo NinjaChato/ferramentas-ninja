@@ -430,6 +430,11 @@
     <script>
       const updates = [{
         date: "03/04/2025",
+        type: "new",
+        title: "Mais Jogos Mobile",
+        desc: "Foram adicionados mais jogos de celular ao site."
+      }, {
+        date: "03/04/2025",
         type: "improve",
         title: "Design Novo",
         desc: "O Design do site foi retrabalhado do zero, com um visual mais moderno e estiloso, mas mantendo a performance original. O design também foi atualizado na página de changelog."
@@ -469,6 +474,7 @@
         return `
                 
 							
+							
 							<div class="update ${update.type}" style="animation-delay: ${0.2 + (index * 0.2)}s">
 								<div class="update-header">
 									<h3 class="update-title">${update.title}</h3>
@@ -483,6 +489,7 @@
 									<i class="far fa-calendar-alt"></i>
                         ${update.date}
                     
+								
 								
 								</div>
 							</div>
