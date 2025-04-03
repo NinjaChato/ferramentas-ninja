@@ -1,276 +1,315 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Changelog - Ferramentas Ninja</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #8a2be2;
-            --primary-dark: #4b0082;
-            --bg: #121016;
-            --card-bg: rgba(26, 26, 26, 0.8);
-            --text: #E4E4E7;
-            --text-light: rgba(228, 228, 231, 0.7);
-            --new: #2ecc71;
-            --improve: #3498db;
-            --fix: #f39c12;
-            --remove: #e74c3c;
+      :root {
+        --primary: #8a2be2;
+        --primary-dark: #4b0082;
+        --bg: #121016;
+        --card-bg: rgba(26, 26, 26, 0.8);
+        --text: #E4E4E7;
+        --text-light: rgba(228, 228, 231, 0.7);
+        --new: #2ecc71;
+        --improve: #3498db;
+        --fix: #f39c12;
+        --remove: #e74c3c;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        padding: 2rem;
+        background-image:
+          radial-gradient(circle at 25% 25%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 75% 75%, rgba(75, 0, 130, 0.1) 0%, transparent 50%);
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 2rem auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        animation: fadeInDown 0.8s ease-out;
+      }
+
+      h1 {
+        color: var(--primary);
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .subtitle {
+        color: var(--text-light);
+        font-weight: 300;
+        font-size: 1.1rem;
+      }
+
+      .changelog-grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .update {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.5rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        transform: translateY(20px);
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-out forwards;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .update::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+      }
+
+      .update:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);
+      }
+
+      .update.new::before {
+        background: var(--new);
+      }
+
+      .update.improve::before {
+        background: var(--improve);
+      }
+
+      .update.fix::before {
+        background: var(--fix);
+      }
+
+      .update.remove::before {
+        background: var(--remove);
+      }
+
+      .update-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .tag {
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .tag.new {
+        background: rgba(46, 204, 113, 0.2);
+        color: var(--new);
+      }
+
+      .tag.improve {
+        background: rgba(52, 152, 219, 0.2);
+        color: var(--improve);
+      }
+
+      .tag.fix {
+        background: rgba(243, 156, 18, 0.2);
+        color: var(--fix);
+      }
+
+      .tag.remove {
+        background: rgba(231, 76, 60, 0.2);
+        color: var(--remove);
+      }
+
+      .update-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: white;
+      }
+
+      .update-desc {
+        color: var(--text-light);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      .update-date {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .update-date i {
+        font-size: 0.9rem;
+      }
+
+      /* Animações */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Atrasos para animação em cascata */
+      .update:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+
+      .update:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+
+      .update:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      .update:nth-child(4) {
+        animation-delay: 0.8s;
+      }
+
+      /* Responsivo */
+      @media (max-width: 768px) {
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            padding: 2rem;
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(75, 0, 130, 0.1) 0%, transparent 50%);
+          padding: 1rem;
         }
-        
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            animation: fadeInDown 0.8s ease-out;
-        }
-        
+
         h1 {
-            color: var(--primary);
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
+          font-size: 2rem;
         }
-        
-        .subtitle {
-            color: var(--text-light);
-            font-weight: 300;
-            font-size: 1.1rem;
-        }
-        
-        .changelog-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-        
+
         .update {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+          padding: 1.2rem;
         }
-        
-        .update::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-        }
-        
-        .update:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);
-        }
-        
-        .update.new::before { background: var(--new); }
-        .update.improve::before { background: var(--improve); }
-        .update.fix::before { background: var(--fix); }
-        .update.remove::before { background: var(--remove); }
-        
-        .update-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .tag {
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .tag.new { background: rgba(46, 204, 113, 0.2); color: var(--new); }
-        .tag.improve { background: rgba(52, 152, 219, 0.2); color: var(--improve); }
-        .tag.fix { background: rgba(243, 156, 18, 0.2); color: var(--fix); }
-        .tag.remove { background: rgba(231, 76, 60, 0.2); color: var(--remove); }
-        
-        .update-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-        
-        .update-desc {
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-        
-        .update-date {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .update-date i {
-            font-size: 0.9rem;
-        }
-        
-        /* Animações */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Atrasos para animação em cascata */
-        .update:nth-child(1) { animation-delay: 0.2s; }
-        .update:nth-child(2) { animation-delay: 0.4s; }
-        .update:nth-child(3) { animation-delay: 0.6s; }
-        .update:nth-child(4) { animation-delay: 0.8s; }
-        
-        /* Responsivo */
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .update {
-                padding: 1.2rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1><i class="fas fa-history"></i> Changelog</h1>
-            <p class="subtitle">Acompanhe todas as atualizações das Ferramentas Ninja</p>
-        </header>
-        
-        <div class="changelog-grid" id="changelog"></div>
+      <header>
+        <h1>
+          <i class="fas fa-history"></i> Changelog
+        </h1>
+        <p class="subtitle">Acompanhe todas as atualizações das Ferramentas Ninja</p>
+      </header>
+      <div class="changelog-grid" id="changelog"></div>
     </div>
-
     <script>
-        const updates = [
-            { 
-                date: "01/04/2025", 
-                type: "new", 
-                title: "Nova Página de Changelog", 
-                desc: "Implementei um sistema completo de changelog para você acompanhar todas as novidades e atualizações do site." 
-            },
-            { 
-                date: "30/03/2025", 
-                type: "improve", 
-                title: "Melhoria no Design", 
-                desc: "Redesenhei toda a interface do usuário para oferecer uma experiência mais fluida e moderna, com melhor organização das ferramentas." 
-            },
-            { 
-                date: "28/03/2025", 
-                type: "fix", 
-                title: "Correção de Bug", 
-                desc: "Resolvi um problema crítico que impedia o carregamento correto das ferramentas em dispositivos móveis." 
-            },
-            { 
-                date: "20/03/2025", 
-                type: "improve", 
-                title: "Otimização de Performance", 
-                desc: "Melhorei significativamente o tempo de carregamento do site, com redução média de 40% no TTI (Time to Interactive)." 
-            },
-            { 
-                date: "15/03/2025", 
-                type: "new", 
-                title: "Nova Seção de Jogos", 
-                desc: "Adicionei uma coleção completa de jogos HTML5 para diversão instantânea no navegador." 
-            }
-        ];
+      const updates = [{
+        date: "03/04/2025",
+        type: "new",
+        title: "Jogos Mobile",
+        desc: "Adicionei uma categoria nova para futuros jogos mobile. Para estreiar, adicionei a série completa de Five Nights at Freddy's remasterizada e dublada para mobile: FNAF 1, 2, 3, 4, Sister Location, Pizzeria Simulator e Ultimate Custom Night."
+      }, {
+        date: "01/04/2025",
+        type: "new",
+        title: "Nova Página de Changelog",
+        desc: "Implementei um sistema completo de changelog para você acompanhar todas as novidades e atualizações do site."
+      }, {
+        date: "30/03/2025",
+        type: "improve",
+        title: "Melhoria no Design",
+        desc: "Redesenhei toda a interface do usuário para oferecer uma experiência mais fluida e moderna, com melhor organização das ferramentas."
+      }, {
+        date: "28/03/2025",
+        type: "fix",
+        title: "Correção de Bug",
+        desc: "Resolvi um problema crítico que impedia o carregamento correto das ferramentas em dispositivos móveis."
+      }, {
+        date: "20/03/2025",
+        type: "improve",
+        title: "Otimização de Performance",
+        desc: "Melhorei significativamente o tempo de carregamento do site, com redução média de 40% no TTI (Time to Interactive)."
+      }, {
+        date: "15/03/2025",
+        type: "new",
+        title: "Nova Seção de Jogos",
+        desc: "Adicionei uma coleção completa de jogos HTML5 para diversão instantânea no navegador."
+      }];
 
-        function getUpdateHTML(update, index) {
-            return `
-                <div class="update ${update.type}" style="animation-delay: ${0.2 + (index * 0.2)}s">
-                    <div class="update-header">
-                        <span class="tag ${update.type}">
+      function getUpdateHTML(update, index) {
+        return `
+                
+							<div class="update ${update.type}" style="animation-delay: ${0.2 + (index * 0.2)}s">
+								<div class="update-header">
+									<span class="tag ${update.type}">
                             ${update.type === 'new' ? 'Novidade' : 
                               update.type === 'improve' ? 'Melhoria' : 
                               update.type === 'fix' ? 'Correção' : 'Remoção'}
                         </span>
-                    </div>
-                    <h3 class="update-title">${update.title}</h3>
-                    <p class="update-desc">${update.desc}</p>
-                    <div class="update-date">
-                        <i class="far fa-calendar-alt"></i>
+								</div>
+								<h3 class="update-title">${update.title}</h3>
+								<p class="update-desc">${update.desc}</p>
+								<div class="update-date">
+									<i class="far fa-calendar-alt"></i>
                         ${update.date}
-                    </div>
-                </div>
+                    
+								</div>
+							</div>
             `;
-        }
+      }
 
-        function loadChangelog() {
-            let html = "";
-            updates.forEach((update, index) => {
-                html += getUpdateHTML(update, index);
-            });
-            document.getElementById("changelog").innerHTML = html;
-        }
-
-        // Carrega o changelog quando a página estiver pronta
-        document.addEventListener('DOMContentLoaded', loadChangelog);
+      function loadChangelog() {
+        let html = "";
+        updates.forEach((update, index) => {
+          html += getUpdateHTML(update, index);
+        });
+        document.getElementById("changelog").innerHTML = html;
+      }
+      // Carrega o changelog quando a página estiver pronta
+      document.addEventListener('DOMContentLoaded', loadChangelog);
     </script>
-</body>
+  </body>
 </html>
