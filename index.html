@@ -10,35 +10,29 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <script>
-  // Cria partículas flutuantes
-  function createParticles() {
-    const colors = ['rgba(138, 43, 226, 0.3)', 'rgba(148, 0, 211, 0.3)', 'rgba(75, 0, 130, 0.3)'];
-    
-    for (let i = 0; i < 15; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      
-      // Posição e tamanho aleatórios
-      const size = Math.random() * 10 + 5;
-      const posX = Math.random() * window.innerWidth;
-      const posY = Math.random() * window.innerHeight;
-      
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.left = `${posX}px`;
-      particle.style.top = `${posY}px`;
-      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-      
-      // Animação
-      particle.style.animation = `float ${Math.random() * 5 + 5}s ease-in-out infinite`;
-      
-      document.body.appendChild(particle);
+    // Cria partículas flutuantes
+    function createParticles() {
+      const colors = ['rgba(138, 43, 226, 0.3)', 'rgba(148, 0, 211, 0.3)', 'rgba(75, 0, 130, 0.3)'];
+      for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        // Posição e tamanho aleatórios
+        const size = Math.random() * 10 + 5;
+        const posX = Math.random() * window.innerWidth;
+        const posY = Math.random() * window.innerHeight;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}px`;
+        particle.style.top = `${posY}px`;
+        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        // Animação
+        particle.style.animation = `float ${Math.random() * 5 + 5}s ease-in-out infinite`;
+        document.body.appendChild(particle);
+      }
     }
-  }
-  
-  // Chama após o carregamento
-  window.addEventListener('load', createParticles);
-</script>
+    // Chama após o carregamento
+    window.addEventListener('load', createParticles);
+  </script>
   <body>
     <div id="loading">
       <div class="loader"></div>
@@ -309,6 +303,55 @@
           <a href="https://www.mediafire.com/file/m3cb44l57h375uf/Ultimate_Custom_Night_v1.0.3_Dublado.apks/file?dkey=kr20shlfl5q&r=1248#" download>
             <h3>FNAF Ultimate Custom Night</h3>
             <p>Versão dublada e remasterizada</p>
+            <div class="btn">Download APK</div>
+          </a>
+        </div>
+        <div class="card">
+          <a href="https://www.mediafire.com/file_premium/mn52rch1xw8qvn6/NARUTO-Ultimate-Ninja-STORM-1.0.16_androidtunado.com.apk/file" download>
+            <h3>Naruto Ultimate Ninja Storm</h3>
+            <p>Versão completa</p>
+            <div class="btn">Download APK</div>
+          </a>
+        </div>
+        <div class="card">
+          <a href="https://www.mediafire.com/file_premium/sh0o4e46cn03bdz/Cuphead_F1_v7.2_%257BForce_War%257D.zip/file" download>
+            <h3>Cuphead</h3>
+            <p>Versão completa e atualizada</p>
+            <div class="btn">Download APK</div>
+          </a>
+        </div>
+        <div class="card">
+          <a href="https://www.mediafire.com/download/f1n6o6irzueqf0w" download>
+            <h3>Terraria</h3>
+            <p>Versão completa e atualizada</p>
+            <div class="btn">Download APK</div>
+          </a>
+        </div>
+        <div class="card">
+          <a href="https://www.mediafire.com/file_premium/82w9rjhwrmawn3y/Bloons_TD_6_v44.1_%257BForce_War%257D.zip/file" download>
+            <h3>Bloons TD 6</h3>
+            <p>Versão completa e atualizada</p>
+            <div class="btn">Download APK</div>
+          </a>
+        </div>
+        <div class="card">
+          <a href="https://www.mediafire.com/file_premium/7fdv0vdzr3sc0tk/Bully_Legendado_%257BForce_War%257D.zip/file" download>
+            <h3>Bully</h3>
+            <p>Versão legendada (Senha: 6868)</p>
+            <div class="btn">Download APK</div>
+          </a>
+        </div>
+        <div class="card">
+          <a href="https://www.mediafire.com/file_premium/p7jvs1mxk9a0o4i/Gta_San_Andreas_v2.11.217_%257BForce_War%257D.zip/file" download>
+            <h3>GTA San Andreas</h3>
+            <p>Versão completa</p>
+            <div class="btn">Download APK</div>
+          </a>
+        </div>
+        <div class="card">
+          <a href="https://www.mediafire.com/file_premium/30opbdn2jzs7j17/Undertale_v1.0_Portugu%25C3%25AAs_%257BForce_War%257D.zip/file" download>
+            <h3>Undertale</h3>
+            <p>Versão completa</p>
             <div class="btn">Download APK</div>
           </a>
         </div>
