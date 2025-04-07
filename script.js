@@ -164,7 +164,7 @@ function addCategoriesToCards() {
     
     // Jogos Mobile
     const mobileCategories = {
-        "FNAF 1": "terro",
+        "FNAF 1": "terror",
         "FNAF 2": "terror",
         "FNAF 3": "terror",
         "FNAF 4": "terror",
