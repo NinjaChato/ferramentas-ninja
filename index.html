@@ -800,6 +800,58 @@
         }
       }
 
+      /* Mensagem para não salvar a senha */
+      #noSavePasswordMessage {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        color: var(--text-light);
+        padding: 30px 40px;
+        border-radius: 20px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+        z-index: 10002;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        max-width: 90%;
+      }
+
+      #noSavePasswordMessage.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      #noSavePasswordMessage i {
+        font-size: 2.5rem;
+        color: var(--hacks-yellow);
+      }
+
+      #noSavePasswordMessage button {
+        background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      #noSavePasswordMessage button:hover {
+        filter: brightness(1.1);
+        transform: translateY(-2px);
+      }
+
 
       /* Responsividade para telas menores */
       @media (max-width: 768px) {
@@ -887,6 +939,11 @@
           bottom: 20px;
           right: 20px;
         }
+
+        #noSavePasswordMessage {
+          font-size: 1.2rem;
+          padding: 20px 30px;
+        }
       }
 
       @media (max-width: 480px) {
@@ -930,17 +987,20 @@
           <i class="fas fa-lock"></i>
         </div>
         <h1 class="login-title">Acesso Restrito</h1>
-        <p class="login-subtitle">Digite a senha para acessar o conteúdo</p>
-        <div class="password-container">
-          <input type="password" id="passwordInput" class="password-input" placeholder="Digite sua senha" autocomplete="off">
-          <span class="toggle-password" id="togglePassword" aria-label="Alternar visibilidade da senha">
-            <i class="fas fa-eye"></i>
-          </span>
-        </div>
-        <button class="login-btn" id="loginButton">
-          <span id="loginBtnText"><i class="fas fa-unlock-alt"></i> Acessar</span>
-          <span id="loginSpinner" class="hidden fas fa-spinner fa-spin"></span>
-        </button>
+        <p class="login-subtitle">Digite a senha para acessar o conteúdo premium</p>
+        <form autocomplete="off">
+          <div class="password-container">
+            <input type="text" id="passwordInput" class="password-input" placeholder="Digite sua senha" autocomplete="new-password">
+            <span class="toggle-password" id="togglePassword" aria-label="Alternar visibilidade da senha">
+              <i class="fas fa-eye"></i>
+            </span>
+          </div>
+          <button type="submit" class="login-btn" id="loginButton">
+            <span id="loginBtnText">
+              <i class="fas fa-unlock-alt"></i> Acessar </span>
+            <span id="loginSpinner" class="hidden fas fa-spinner fa-spin"></span>
+          </button>
+        </form>
         <div class="error-message" id="errorMessage"> Senha incorreta! Tente novamente. </div>
       </div>
     </div>
@@ -1038,11 +1098,8 @@
                     <i class="fas fa-user-astronaut"></i>
                   </div>
                   <h3 class="text-2xl font-semibold mb-3">Among Us</h3>
-                  <p class="text-base opacity-85 mb-4">Um jogo de dedução social e trabalho em equipe... ou traição.
-                    <br>
-                    <span class="text-sm opacity-70 mt-2 block">
-                      Nota: Para jogar Online, execute o arquivo GDK_Helper.bat que está na pasta do jogo, ative o modo de programador (digite 3 no cmd e pressione Enter), instale o jogo (digite 1 no cmd e pressione Enter), desligue o modo de desenvolvedor (digite 4 no cmd e pressione Enter), e então execute o jogo pelo atalho no menu Iniciar. Ao entrar no jogo, serão solicitadas as informações de login com uma conta Microsoft—NÃO USE SUA CONTA EXISTENTE, POIS HÁ RISCO DE BANIMENTO; crie uma nova conta que você não se importe de utilizar.
-                    </span>
+                  <p class="text-base opacity-85 mb-4">Um jogo de dedução social e trabalho em equipe... ou traição. <br>
+                    <span class="text-sm opacity-70 mt-2 block"> Nota: Para jogar Online, execute o arquivo GDK_Helper.bat que está na pasta do jogo, ative o modo de programador (digite 3 no cmd e pressione Enter), instale o jogo (digite 1 no cmd e pressione Enter), desligue o modo de desenvolvedor (digite 4 no cmd e pressione Enter), e então execute o jogo pelo atalho no menu Iniciar. Ao entrar no jogo, serão solicitadas as informações de login com uma conta Microsoft—NÃO USE SUA CONTA EXISTENTE, POIS HÁ RISCO DE BANIMENTO; crie uma nova conta que você não se importe de utilizar. </span>
                   </p>
                 </div>
                 <a href="https://megadb.net/32sojdqkqmqy" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
@@ -1390,16 +1447,12 @@
                     <i class="fas fa-graduation-cap"></i>
                   </div>
                   <h3 class="text-2xl font-semibold mb-3">KHAN ACADEMY</h3>
-                  <p class="text-base opacity-85 mb-4">Script para recursos adicionais na Khan Academy.
-                    <br>
-                    <span class="text-sm opacity-70 mt-2 block">
-                      Para usar, copie o script, adicione-o aos seus favoritos e clique nele com a Khan Academy aberta.
-                    </span>
+                  <p class="text-base opacity-85 mb-4">Script para recursos adicionais na Khan Academy. <br>
+                    <span class="text-sm opacity-70 mt-2 block"> Para usar, copie o script, adicione-o aos seus favoritos e clique nele com a Khan Academy aberta. </span>
                   </p>
                 </div>
                 <button class="copy-script-btn" data-script='javascript:fetch("https://corsproxy.io/?url=https://raw.githubusercontent.com/DarkModde/Dark-Scripts/refs/heads/main/KhanResolver.js").then(t=>t.text()).then(eval);'>
-                  <i class="fas fa-copy"></i> Copiar Script
-                </button>
+                  <i class="fas fa-copy"></i> Copiar Script </button>
               </div>
             </div>
           </div>
@@ -1448,6 +1501,12 @@
     <div id="copyMessage" class="copy-message hidden">
       <i class="fas fa-check-circle"></i> Script copiado! Adicione aos seus favoritos.
     </div>
+    <!-- Mensagem para não salvar a senha -->
+    <div id="noSavePasswordMessage">
+      <i class="fas fa-exclamation-triangle"></i>
+      <p>Para evitar o vazamento de suas credenciais, por favor, não salve esta senha no navegador.</p>
+      <button id="dismissNoSavePassword">Entendi</button>
+    </div>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         // Elementos do login
@@ -1459,6 +1518,8 @@
         const errorMessage = document.getElementById('errorMessage');
         const togglePassword = document.getElementById('togglePassword');
         const mainContainer = document.getElementById('mainContainer');
+        const noSavePasswordMessage = document.getElementById('noSavePasswordMessage');
+        const dismissNoSavePasswordBtn = document.getElementById('dismissNoSavePassword');
 
         // Hash SHA-256 da senha
         const correctPasswordHash = "1c704a8630b9fcf5f3a2e4460df609f78537d6bd05b2342ff2b68f0827b782d3";
@@ -1469,6 +1530,17 @@
         document.body.classList.add('no-scroll');
         document.documentElement.classList.add('no-scroll');
         passwordInput.focus();
+
+        // Manipulação do tipo de input para evitar salvamento de senha
+        passwordInput.addEventListener('focus', () => {
+          passwordInput.setAttribute('type', 'password');
+        });
+
+        passwordInput.addEventListener('blur', () => {
+          if (passwordInput.value === '') {
+            passwordInput.setAttribute('type', 'text');
+          }
+        });
 
         // Função para tentar o login
         async function tryLogin() {
@@ -1486,14 +1558,25 @@
           if (passwordHash === correctPasswordHash) {
             sessionStorage.setItem('isAuthenticated', 'true');
             passwordInput.value = ''; // Limpa o campo de senha após o login
+            passwordInput.setAttribute('type', 'text'); // Volta para text após login
+
             loginOverlay.classList.add('hidden');
             mainContainer.classList.add('visible');
             document.body.classList.remove('no-scroll');
             document.documentElement.classList.remove('no-scroll');
             initMainContent();
+
+            // Mostrar mensagem para não salvar a senha
+            noSavePasswordMessage.classList.add('visible');
+            // Oculta a mensagem após 7 segundos, ou pode ser fechada pelo botão
+            setTimeout(() => {
+              noSavePasswordMessage.classList.remove('visible');
+            }, 7000); 
+
           } else {
             showError("Senha incorreta! Tente novamente.");
             passwordInput.value = '';
+            passwordInput.setAttribute('type', 'text'); // Volta para text após erro
             passwordInput.focus();
           }
 
@@ -1507,18 +1590,17 @@
         function showError(message) {
           errorMessage.textContent = message;
           errorMessage.classList.add('visible');
-          void errorMessage.offsetWidth;
+          void errorMessage.offsetWidth; // Força reflow para garantir a transição
           setTimeout(() => {
             errorMessage.classList.remove('visible');
           }, 3000);
         }
 
         // Event listeners para o login
-        loginButton.addEventListener('click', tryLogin);
-        passwordInput.addEventListener('keypress', (event) => {
-          if (event.key === 'Enter') {
-            tryLogin();
-          }
+        // Alterado para escutar o submit do formulário
+        document.querySelector('.login-box form').addEventListener('submit', (event) => {
+          event.preventDefault(); // Impede o envio padrão do formulário
+          tryLogin();
         });
 
         // Alternar visibilidade da senha
@@ -1527,6 +1609,11 @@
           passwordInput.setAttribute('type', type);
           togglePassword.querySelector('i').classList.toggle('fa-eye');
           togglePassword.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+
+        // Event listener para o botão de fechar a mensagem de "não salvar senha"
+        dismissNoSavePasswordBtn.addEventListener('click', () => {
+            noSavePasswordMessage.classList.remove('visible');
         });
 
         // Verifica o estado de autenticação *após* a inicialização visual do login
@@ -1567,7 +1654,6 @@
               backToTopBtn.classList.remove('visible');
             }
           });
-
           backToTopBtn.addEventListener('click', () => {
             window.scrollTo({
               top: 0,
@@ -1582,7 +1668,6 @@
               btn.classList.add('active');
               const category = btn.dataset.category;
               filterContent(category, searchInput.value.toLowerCase());
-
               // Rolagem suave para a seção
               if (category !== 'todos') {
                 const targetSection = document.querySelector(`.${category}`);
@@ -1608,7 +1693,6 @@
           // Função para filtrar conteúdo
           function filterContent(category, searchTerm = '') {
             let anyCardVisible = false;
-
             cards.forEach(card => {
               // Encontra a div da seção pai (ex: .jogos-pc, .jogos-navegador)
               const sectionDiv = card.closest('.jogos-pc, .jogos-navegador, .hacks, .ferramentas');
@@ -1619,14 +1703,11 @@
                 card.style.display = 'none'; // Oculta se não estiver em uma seção categorizada
                 return; // Pula para o próximo card
               }
-
               const sectionCategoryClass = sectionDiv.classList[0]; // Pega a primeira classe da seção, que é a categoria
               const title = card.querySelector('h3').textContent.toLowerCase();
               const description = card.querySelector('p').textContent.toLowerCase();
-
               const cardCategoryMatch = category === 'todos' || sectionCategoryClass === category;
               const searchMatch = searchTerm === '' || title.includes(searchTerm) || description.includes(searchTerm);
-
               if (cardCategoryMatch && searchMatch) {
                 card.style.display = 'flex'; /* Exibe o card */
                 anyCardVisible = true;
