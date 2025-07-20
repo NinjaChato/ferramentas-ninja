@@ -332,7 +332,8 @@
         transition: all var(--transition-time) cubic-bezier(0.25, 0.8, 0.25, 1);
         /* Transição geral */
         cursor: pointer;
-        display: flex; /* Mantém flex para layout interno do card */
+        display: flex;
+        /* Mantém flex para layout interno do card */
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
@@ -387,7 +388,8 @@
       /* Novo: Efeito de hover para links dentro dos cards */
       .card a:hover {
         filter: brightness(1.1);
-        transform: translateY(-2px); /* Adicionado para um leve "lift" */
+        transform: translateY(-2px);
+        /* Adicionado para um leve "lift" */
       }
 
       /* Botões coloridos por categoria */
@@ -651,6 +653,14 @@
         color: rgba(224, 231, 255, 0.6);
         font-size: 0.9rem;
         margin-top: auto;
+        display: flex;
+        /* Adicionado para centralizar o conteúdo do footer */
+        flex-direction: column;
+        /* Para empilhar texto e imagem verticalmente */
+        align-items: center;
+        /* Centraliza horizontalmente */
+        gap: 10px;
+        /* Espaço entre os elementos do footer */
       }
 
       /* Botões de categoria */
@@ -852,6 +862,22 @@
         transform: translateY(-2px);
       }
 
+      /* Estilo para o easter egg no rodapé */
+      .footer .easter-egg-img {
+        width: 80px;
+        /* Tamanho do easter egg */
+        height: auto;
+        opacity: 0.2;
+        /* Sutilmente visível */
+        transition: opacity 0.3s ease-in-out;
+        margin-top: 10px;
+        /* Espaçamento do texto */
+      }
+
+      .footer .easter-egg-img:hover {
+        opacity: 1;
+        /* Fica totalmente visível ao passar o mouse */
+      }
 
       /* Responsividade para telas menores */
       @media (max-width: 768px) {
@@ -943,6 +969,11 @@
         #noSavePasswordMessage {
           font-size: 1.2rem;
           padding: 20px 30px;
+        }
+
+        .footer .easter-egg-img {
+          width: 60px;
+          /* Ajusta o tamanho para telas menores */
         }
       }
 
@@ -1490,7 +1521,9 @@
         </div>
       </div>
       <footer class="footer">
-        <p>Ferramentas Ninja © 2023 - Todos os direitos reservados</p>
+        <p>Ferramentas Ninja © 2025 - Todos os direitos reservados</p>
+        <!-- Easter Egg Image movido para o rodapé -->
+        <img src="https://media.discordapp.net/attachments/1348033961170829433/1396538034383487026/Sem_titulo-removebg-preview.png?ex=687e72e5&is=687d2165&hm=6a5511a47b5e37c87e612f276b15dbec0b8f89690078cfa6d89d193bc9611cdf&=&format=webp&quality=lossless" class="easter-egg-img">
       </footer>
     </div>
     <!-- Botão de voltar ao topo -->
@@ -1520,72 +1553,59 @@
         const mainContainer = document.getElementById('mainContainer');
         const noSavePasswordMessage = document.getElementById('noSavePasswordMessage');
         const dismissNoSavePasswordBtn = document.getElementById('dismissNoSavePassword');
-
         // Hash SHA-256 da senha
         const correctPasswordHash = "1c704a8630b9fcf5f3a2e4460df609f78537d6bd05b2342ff2b68f0827b782d3";
-
         // Inicialmente, assume que a tela de login deve ser visível e o scroll desabilitado
         loginOverlay.classList.remove('hidden');
         mainContainer.classList.remove('visible');
         document.body.classList.add('no-scroll');
         document.documentElement.classList.add('no-scroll');
         passwordInput.focus();
-
         // Manipulação do tipo de input para evitar salvamento de senha
         passwordInput.addEventListener('focus', () => {
           passwordInput.setAttribute('type', 'password');
         });
-
         passwordInput.addEventListener('blur', () => {
           if (passwordInput.value === '') {
             passwordInput.setAttribute('type', 'text');
           }
         });
-
         // Função para tentar o login
         async function tryLogin() {
           const password = passwordInput.value;
           const passwordHash = CryptoJS.SHA256(password).toString();
-
           // Mostrar spinner e desabilitar botão
           loginBtnText.classList.add('hidden');
           loginSpinner.classList.remove('hidden');
           loginButton.disabled = true;
-
           // Simular um pequeno atraso para a animação do spinner (opcional, para UX)
           await new Promise(resolve => setTimeout(resolve, 800));
-
           if (passwordHash === correctPasswordHash) {
             // Removido: sessionStorage.setItem('isAuthenticated', 'true');
             passwordInput.value = ''; // Limpa o campo de senha após o login
             passwordInput.setAttribute('type', 'text'); // Volta para text após login
-
             loginOverlay.classList.add('hidden');
             mainContainer.classList.add('visible');
             document.body.classList.remove('no-scroll');
             document.documentElement.classList.remove('no-scroll');
             initMainContent();
-
             // Mostrar mensagem para não salvar a senha
             noSavePasswordMessage.classList.add('visible');
             // Oculta a mensagem após 7 segundos, ou pode ser fechada pelo botão
             setTimeout(() => {
               noSavePasswordMessage.classList.remove('visible');
-            }, 7000); 
-
+            }, 7000);
           } else {
             showError("Senha incorreta! Tente novamente.");
             passwordInput.value = '';
             passwordInput.setAttribute('type', 'text'); // Volta para text após erro
             passwordInput.focus();
           }
-
           // Esconder spinner e reabilitar botão
           loginBtnText.classList.remove('hidden');
           loginSpinner.classList.add('hidden');
           loginButton.disabled = false;
         }
-
         // Função para mostrar mensagem de erro
         function showError(message) {
           errorMessage.textContent = message;
@@ -1595,14 +1615,12 @@
             errorMessage.classList.remove('visible');
           }, 3000);
         }
-
         // Event listeners para o login
         // Alterado para escutar o submit do formulário
         document.querySelector('.login-box form').addEventListener('submit', (event) => {
           event.preventDefault(); // Impede o envio padrão do formulário
           tryLogin();
         });
-
         // Alternar visibilidade da senha
         togglePassword.addEventListener('click', () => {
           const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -1610,12 +1628,10 @@
           togglePassword.querySelector('i').classList.toggle('fa-eye');
           togglePassword.querySelector('i').classList.toggle('fa-eye-slash');
         });
-
         // Event listener para o botão de fechar a mensagem de "não salvar senha"
         dismissNoSavePasswordBtn.addEventListener('click', () => {
-            noSavePasswordMessage.classList.remove('visible');
+          noSavePasswordMessage.classList.remove('visible');
         });
-
         // Removido: Verifica o estado de autenticação *após* a inicialização visual do login
         // if (sessionStorage.getItem('isAuthenticated') === 'true') {
         //   loginOverlay.classList.add('hidden');
@@ -1624,7 +1640,6 @@
         //   document.documentElement.classList.remove('no-scroll');
         //   initMainContent();
         // }
-
         // Função para inicializar o conteúdo principal (após login)
         function initMainContent() {
           const searchInput = document.getElementById('searchInput');
@@ -1635,7 +1650,6 @@
           const backToTopBtn = document.getElementById('backToTop');
           const copyScriptBtns = document.querySelectorAll('.copy-script-btn');
           const copyMessage = document.getElementById('copyMessage');
-
           // Função debounce para otimizar a pesquisa
           const debounce = (func, delay) => {
             let timeout;
@@ -1645,7 +1659,6 @@
               timeout = setTimeout(() => func.apply(context, args), delay);
             };
           };
-
           // Botão de voltar ao topo
           window.addEventListener('scroll', () => {
             if (window.scrollY > 500) {
@@ -1660,7 +1673,6 @@
               behavior: 'smooth'
             });
           });
-
           // Filtro de categorias
           categoryBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1689,14 +1701,12 @@
               }
             });
           });
-
           // Função para filtrar conteúdo
           function filterContent(category, searchTerm = '') {
             let anyCardVisible = false;
             cards.forEach(card => {
               // Encontra a div da seção pai (ex: .jogos-pc, .jogos-navegador)
               const sectionDiv = card.closest('.jogos-pc, .jogos-navegador, .hacks, .ferramentas');
-              
               // Se não encontrar uma seção pai com essas classes, algo está errado na estrutura HTML ou o card não deveria ser filtrado por categoria.
               // Para este caso, vamos assumir que todo card tem uma seção pai relevante.
               if (!sectionDiv) {
@@ -1715,7 +1725,6 @@
                 card.style.display = 'none'; /* Oculta o card e remove do fluxo */
               }
             });
-
             // Ajusta a exibição das seções (Jogos PC, Navegador, etc.)
             document.querySelectorAll('.jogos-pc, .jogos-navegador, .hacks, .ferramentas').forEach(section => {
               const sectionCards = section.querySelectorAll('.card');
@@ -1726,7 +1735,6 @@
                 section.style.display = 'block';
               }
             });
-
             if (anyCardVisible) {
               noResultsMessage.classList.remove('visible');
               noResultsMessage.classList.add('hidden');
@@ -1736,14 +1744,12 @@
               noResultsMessage.classList.add('visible');
             }
           }
-
           // Pesquisa com debounce
           searchInput.addEventListener('keyup', debounce((event) => {
             const searchTerm = event.target.value.toLowerCase();
             const activeCategory = document.querySelector('.category-btn.active').dataset.category;
             filterContent(activeCategory, searchTerm);
           }, 300));
-
           // Adiciona evento de clique para os botões de copiar script
           copyScriptBtns.forEach(button => {
             button.addEventListener('click', () => {
@@ -1767,10 +1773,8 @@
               }
             });
           });
-
           // Filtro inicial
           filterContent('todos');
-
           // Focar no campo de pesquisa após login (se já não estiver focado)
           setTimeout(() => {
             searchInput.focus();
