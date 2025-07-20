@@ -1,412 +1,1666 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <script type="text/javascript" src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<html lang="pt-BR">
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferramentas do Ninja</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="loading">
-        <div class="loader"></div>
-    </div>
-    <nav class="navbar">
-        <a href="#hacks">
-            <i class="fas fa-shield-alt"></i> Hacks
-        </a>
-        <a href="#jogos">
-            <i class="fas fa-gamepad"></i> Jogos Web
-        </a>
-        <a href="#pc">
-            <i class="fas fa-desktop"></i> Jogos PC
-        </a>
-        <a href="#mobile">
-            <i class="fas fa-mobile-alt"></i> Jogos Mobile
-        </a>
-        <a href="changelogs.html" rel="noopener noreferrer" style="margin-left: auto;">
-            <i class="fas fa-history"></i> Changelog
-        </a>
-    </nav>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <style>
+      :root {
+        --primary-purple: #A78BFA;
+        --secondary-pink: #F472B6;
+        --browser-blue: #60A5FA;
+        --pc-green: #34D399;
+        --hacks-yellow: #FBBF24;
+        --tools-orange: #F59E0B;
+        --dark-bg-start: #1A002A;
+        --dark-bg-end: #0D001A;
+        --text-light: #E0E7FF;
+        --glass-bg-color: rgba(0, 0, 0, 0.6);
+        --card-bg-color: rgba(20, 27, 39, 0.8);
+        --border-glass: rgba(255, 255, 255, 0.08);
+        --shadow-color: rgba(0, 0, 0, 0.6);
+        /* Sombra mais suave e um pouco mais escura */
+        --transition-time: 0.4s;
+      }
 
-    <div class="main-container">
-        <!-- Seção Hacks -->
-        <section id="hacks">
-            <h1><i class="fas fa-shield-alt"></i>Hacks das Plataformas</h1>
-            <div class="grid">
-                <div class="card">
-                    <a href="https://github.com/Snowxyrzk/Khan-Destroyer" target="_blank">
-                        <h3>Khan Academy</h3>
-                        <p>Hack completo para a plataforma de educação</p>
-                        <div class="btn">Acessar Ferramenta</div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="https://github.com/marcos10pc/Alura-Destroyer" target="_blank">
-                        <h3>Alura</h3>
-                        <p>Hack para a plataforma Alura</p>
-                        <div class="btn">Acessar Ferramenta</div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="https://speakify.cupiditys.lol/" target="_blank">
-                        <h3>SPeak</h3>
-                        <p>Ferramenta para a plataforma SPeak</p>
-                        <div class="btn">Acessar Ferramenta</div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="https://matific.cupiditys.lol/" target="_blank">
-                        <h3>Matific</h3>
-                        <p>Hack para a plataforma Matific</p>
-                        <div class="btn">Acessar Ferramenta</div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="https://taskitos.cupiditys.lol" target="_blank">
-                        <h3>Sala do Futuro</h3>
-                        <p>Ferramenta para a Sala do Futuro</p>
-                        <div class="btn">Acessar Ferramenta</div>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="https://kahootdestroyer.squareweb.app/" target="_blank">
-                        <h3>Kahoot</h3>
-                        <p>Hack para a plataforma Kahoot</p>
-                        <div class="btn">Acessar Ferramenta</div>
-                    </a>
-                </div>
-            </div>
-        </section>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-        <!-- Seção Jogos Web -->
-        <section id="jogos">
-            <h1><i class="fas fa-gamepad"></i>Jogos de Navegador</h1>
-            
-            <div class="search-filter-container">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="search-web" placeholder="Pesquisar jogos web..." onkeyup="searchGames('web')">
-                </div>
-                <div class="filter-box">
-                    <select id="filter-web" onchange="filterGames('web')">
-                        <option value="todos">Todos</option>
-                        <option value="classico">Clássicos</option>
-                        <option value="emulador">Emuladores</option>
-                        <option value="html5">HTML5</option>
-                        <option value="flash">Flash</option>
-                        <option value="colecao">Coleções</option>
-                    </select>
-                </div>
-            </div>
+      html,
+      body {
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
 
-            <div class="grid" id="web-games-container">
-                <div class="card" data-category="colecao">
-                    <a href="https://ball-bang.github.io/" target="_blank">
-                        <h3>Ball Bang</h3>
-                        <p>Jogos de navegador de vários estilos</p>
-                        <div class="btn">Jogar</div>
-                    </a>
-                </div>
-                <div class="card" data-category="emulador">
-                    <a href="https://chstextbook.github.io/pages/nav/emulibrary.html" target="_blank">
-                        <h3>EmuLibrary</h3>
-                        <p>Jogos de emulador</p>
-                        <div class="btn">Jogar</div>
-                    </a>
-                </div>
-                <div class="card" data-category="html5">
-                    <a href="https://chstextbook.github.io/pages/nav/games5.html" target="_blank">
-                        <h3>HTML Games</h3>
-                        <p>Jogos HTML5</p>
-                        <div class="btn">Jogar</div>
-                    </a>
-                </div>
-                <div class="card" data-category="flash">
-                    <a href="https://chstextbook.github.io/pages/nav/flash.html" target="_blank">
-                        <h3>Flash Games</h3>
-                        <p>Jogos clássicos em Flash</p>
-                        <div class="btn">Jogar</div>
-                    </a>
-                </div>
-                <div class="card" data-category="colecao">
-                    <a href="https://games-site.github.io/" target="_blank" rel="noopener noreferrer">
-                        <h3>Games Site</h3>
-                        <p>Coleção diversificada de jogos online</p>
-                        <div class="btn">Jogar</div>
-                    </a>
-                </div>
-                <div class="card" data-category="colecao">
-                    <a href="https://ug17.github.io/Games.html" target="_blank" rel="noopener noreferrer">
-                        <h3>UG17 Games Collection</h3>
-                        <p>Diversos jogos de navegador em uma única coleção</p>
-                        <div class="btn">Jogar</div>
-                    </a>
-                </div>
-            </div>
-        </section>
+      /* Garante que o scroll vertical seja ocultado em todo o documento quando a tela de login estiver ativa */
+      body.no-scroll,
+      body.no-scroll html {
+        overflow: hidden;
+      }
 
-        <!-- Seção Jogos PC -->
-        <section id="pc">
-            <h1><i class="fas fa-desktop"></i>Jogos de PC</h1>
-            
-            <div class="search-filter-container">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="search-pc" placeholder="Pesquisar jogos PC..." onkeyup="searchGames('pc')">
-                </div>
-                <div class="filter-box">
-                    <select id="filter-pc" onchange="filterGames('pc')">
-                        <option value="todos">Todos</option>
-                        <option value="corrida">Corrida</option>
-                        <option value="terror">Terror</option>
-                        <option value="acao">Ação</option>
-                        <option value="rpg">RPG</option>
-                        <option value="simulacao">Simulação</option>
-                        <option value="aventura">Aventura</option>
-                        <option value="estrategia">Estratégia</option>
-                    </select>
-                </div>
-            </div>
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, var(--dark-bg-start) 0%, var(--dark-bg-end) 100%);
+        color: var(--text-light);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding: 20px;
+      }
 
-            <div class="grid" id="pc-games-container">
-                <div class="card" data-category="acao">
-                    <a href="https://drive.usercontent.google.com/download?id=1t8MmMzsL3yXW3RnDGnCobBJdiOVM2Bme&export=download&authuser=0" download>
-                        <h3>Geometry Dash</h3>
-                        <p>Versão completa para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="corrida">
-                    <a href="https://www.mediafire.com/file/uhhw63l31awpfjy/MotoGP.17-CODEX.1.torrent/file" download>
-                        <h3>MotoGP 17</h3>
-                        <p>Torrent para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="acao">
-                    <a href="https://www.mediafire.com/file/7eonw0natmgrpcz/Dark_Souls_3_Deluxe_Edition_t1.torrent/file" download>
-                        <h3>Dark Souls 3</h3>
-                        <p>Torrent para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="rpg">
-                    <a href="https://www.mediafire.com/file/wiz7nky01wup1uy/Diablo_3.torrent/file" download>
-                        <h3>Diablo III</h3>
-                        <p>Torrent para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="rpg">
-                    <a href="https://www.mediafire.com/file/xfcf6s5z6ysbjpu/Diablo_IV_Reflection_.torrent/file" download>
-                        <h3>Diablo IV</h3>
-                        <p>Torrent para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="corrida">
-                    <a href="https://www.mediafire.com/file/2ekg3xpl3sw84o1/Descenders.torrent/file" download>
-                        <h3>Descenders</h3>
-                        <p>Torrent para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="terror">
-                    <a href="https://www.mediafire.com/file/4bst0b4a0qnjqfy/OUTLAST.rar/file" download>
-                        <h3>Outlast</h3>
-                        <p>Arquivo .rar para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="terror">
-                    <a href="https://www.mediafire.com/file/c162jfc5kj7l4hz" download>
-                        <h3>Letal Company</h3>
-                        <p>Arquivo .rar para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="estrategia">
-                    <a href="https://www.mediafire.com/file/y4fkp8cgyu2wj6s/Overcooked.2.Build.01102020-OFME.torrent/file" download>
-                        <h3>Overcooked 2</h3>
-                        <p>Torrent para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="corrida">
-                    <a href="https://www.mediafire.com/file/0y7dx1zqn7se9q2/Need.For.Speed.Heat.Deluxe.Edition-ZED.torrent/file" download>
-                        <h3>Need for Speed Heat</h3>
-                        <p>Torrent para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="simulacao">
-                    <a href="https://www.mediafire.com/file/kekdwpuutyo8qoc/Euro+Truck+Simulator.torrent/file" download>
-                        <h3>Euro Truck Simulator</h3>
-                        <p>Torrent para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="simulacao">
-                    <a href="https://drive.google.com/file/d/1lT6p9CrmdoG_w2yx6PiYC4GX7x2XJjd4/view" download>
-                        <h3>Euro Truck Simulator 2</h3>
-                        <p>Torrent para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="simulacao">
-                    <a href="https://drive.google.com/file/d/1VliOmTCIwdKT-ldxsy4I4EPLB3oMnu3H/view" download>
-                        <h3>Microsoft Flight Simulator</h3>
-                        <p>Torrent para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-                <div class="card" data-category="simulacao">
-                    <a href="https://www.mediafire.com/file/dy5x2o1me5b4y4m" download>
-                        <h3>Internet Cafe Simulator</h3>
-                        <p>Arquivo .rar para download</p>
-                        <div class="btn">Download</div>
-                    </a>
-                </div>
-            </div>
-        </section>
+      /* Overlay de login */
+      .login-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 0, 20, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+      }
 
-        <!-- Seção Jogos Mobile -->
-        <section id="mobile">
-            <h1><i class="fas fa-mobile-alt"></i>Jogos Mobile</h1>
-            
-            <div class="search-filter-container">
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="search-mobile" placeholder="Pesquisar jogos mobile..." onkeyup="searchGames('mobile')">
-                </div>
-                <div class="filter-box">
-                    <select id="filter-mobile" onchange="filterGames('mobile')">
-                        <option value="todos">Todos</option>
-                        <option value="terror">Terror</option>
-                        <option value="acao">Ação</option>
-                        <option value="aventura">Aventura</option>
-                        <option value="rpg">RPG</option>
-                        <option value="simulacao">Simulação</option>
-                        <option value="estrategia">Estratégia</option>
-                    </select>
-                </div>
-            </div>
+      .login-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
 
-            <div class="grid" id="mobile-games-container">
-                <div class="card" data-category="terror">
-                    <a href="https://www.mediafire.com/file/gtwjvqj4fklxkt7/five-nights-at-freddys-2.0.4.apk/file" download>
-                        <h3>FNAF 1</h3>
-                        <p>Versão dublada e remasterizada</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="terror">
-                    <a href="https://www.mediafire.com/file/vdrn6u2r0qqmplu/FNaF+2+Remastered+Dublado+v2.0.3+by+hopkins.apk/file?dkey=dl8g2m37jxb&r=1184" download>
-                        <h3>FNAF 2</h3>
-                        <p>Versão dublada e remasterizada</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="terror">
-                    <a href="https://www.mediafire.com/file/fvho6qy7tbjat9x/FNaF_3_Remastered_Dublado_by_GAMER26083.apk/file" download>
-                        <h3>FNAF 3</h3>
-                        <p>Versão dublada e remasterizada</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="terror">
-                    <a href="https://www.mediafire.com/file/qgwyulx91dyt6ww/Five_Nights_at_Freddy%2527s_4_v2.0.apk/file" download>
-                        <h3>FNAF 4</h3>
-                        <p>Versão dublada e remasterizada</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="terror">
-                    <a href="https://www.mediafire.com/file/157o4xe4isquf78/Fnaf_SL_Dublado.apk/file" download>
-                        <h3>FNAF Sister Location</h3>
-                        <p>Versão dublada e remasterizada</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="terror">
-                    <a href="https://www.mediafire.com/file/u6zdjgv4d1sg2bm/FNaF+6%3B+%28Dublado%29+Dubbing+Night.apk/file" download>
-                        <h3>FNAF 6: Pizzeria Simulator</h3>
-                        <p>Versão dublada e remasterizada</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="terror">
-                    <a href="https://www.mediafire.com/file/m3cb44l57h375uf/Ultimate_Custom_Night_v1.0.3_Dublado.apks/file?dkey=kr20shlfl5q&r=1248#" download>
-                        <h3>FNAF Ultimate Custom Night</h3>
-                        <p>Versão dublada e remasterizada</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="acao">
-                    <a href="https://www.mediafire.com/file_premium/mn52rch1xw8qvn6/NARUTO-Ultimate-Ninja-STORM-1.0.16_androidtunado.com.apk/file" download>
-                        <h3>Naruto Ultimate Ninja Storm</h3>
-                        <p>Versão completa</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="aventura">
-                    <a href="https://www.mediafire.com/file_premium/sh0o4e46cn03bdz/Cuphead_F1_v7.2_%257BForce_War%257D.zip/file" download>
-                        <h3>Cuphead</h3>
-                        <p>Versão completa e atualizada</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="aventura">
-                    <a href="https://www.mediafire.com/download/f1n6o6irzueqf0w" download>
-                        <h3>Terraria</h3>
-                        <p>Versão completa e atualizada</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="estrategia">
-                    <a href="https://www.mediafire.com/file_premium/82w9rjhwrmawn3y/Bloons_TD_6_v44.1_%257BForce_War%257D.zip/file" download>
-                        <h3>Bloons TD 6</h3>
-                        <p>Versão completa e atualizada</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="aventura">
-                    <a href="https://www.mediafire.com/file_premium/7fdv0vdzr3sc0tk/Bully_Legendado_%257BForce_War%257D.zip/file" download>
-                        <h3>Bully</h3>
-                        <p>Versão legendada (Senha: 6868)</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="acao">
-                    <a href="https://www.mediafire.com/file_premium/p7jvs1mxk9a0o4i/Gta_San_Andreas_v2.11.217_%257BForce_War%257D.zip/file" download>
-                        <h3>GTA San Andreas</h3>
-                        <p>Versão completa</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-                <div class="card" data-category="rpg">
-                    <a href="https://www.mediafire.com/file_premium/30opbdn2jzs7j17/Undertale_v1.0_Portugu%25C3%25AAs_%257BForce_War%257D.zip/file" download>
-                        <h3>Undertale</h3>
-                        <p>Versão completa</p>
-                        <div class="btn">Download APK</div>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </div>
+      .login-box {
+        background: var(--glass-bg-color);
+        backdrop-filter: blur(30px);
+        border-radius: 2.5rem;
+        padding: 3.5rem;
+        box-shadow: 0 30px 80px var(--shadow-color), inset 0 0 0 1px var(--border-glass);
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        transform: scale(0.95);
+        animation: loginAppear 0.6s ease-out forwards;
+      }
 
-    <footer>
-        <p>© 2025 Ferramentas Ninja. Feito por Luis Guilherme (1ºA)</p>
-        <div>
-            <a href="https://chat.whatsapp.com/BAP3adZ2iLjIB88N0wgO1W" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i>
-            </a>
+      @keyframes loginAppear {
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .login-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .login-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .login-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.8;
+      }
+
+      .password-container {
+        position: relative;
+        margin-bottom: 2rem;
+      }
+
+      .password-input {
+        width: 100%;
+        padding: 1.2rem 3.5rem 1.2rem 1.5rem;
+        border-radius: 1.8rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--border-glass);
+        color: var(--text-light);
+        font-size: 1.1rem;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      .password-input:focus {
+        border-color: var(--primary-purple);
+        box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.3);
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 1.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: rgba(224, 231, 255, 0.6);
+        transition: color 0.2s ease;
+      }
+
+      .toggle-password:hover {
+        color: var(--primary-purple);
+      }
+
+      .login-btn {
+        background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
+        color: white;
+        border: none;
+        padding: 1.2rem 2.5rem;
+        border-radius: 1.8rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-shadow: 0 10px 30px rgba(167, 139, 250, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .login-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(167, 139, 250, 0.4);
+      }
+
+      .login-btn:active {
+        transform: translateY(1px);
+        box-shadow: 0 5px 15px rgba(167, 139, 250, 0.2);
+      }
+
+      /* Spinner para o botão de login */
+      .login-btn .fa-spinner {
+        margin-left: 8px;
+      }
+
+      .login-btn .hidden {
+        display: none;
+      }
+
+      .error-message {
+        color: #ff6b6b;
+        margin-top: 1rem;
+        height: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .error-message.visible {
+        opacity: 1;
+      }
+
+      /* Container principal ajustado */
+      .main-container {
+        width: 100%;
+        max-width: 1200px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease 0.2s;
+      }
+
+      .main-container.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Animação para título e subtítulo */
+      @keyframes fadeInSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .main-title {
+        animation: fadeInSlideUp 0.8s ease-out forwards;
+        animation-delay: 0.3s;
+        /* Atraso para aparecer após o container */
+      }
+
+      .subtitle {
+        animation: fadeInSlideUp 0.8s ease-out forwards;
+        animation-delay: 0.5s;
+        /* Atraso para aparecer após o título */
+      }
+
+      body::before,
+      body::after {
+        content: '';
+        position: fixed;
+        width: 80vmax;
+        height: 80vmax;
+        background: radial-gradient(circle, var(--primary-purple) 0%, transparent 60%);
+        opacity: 0.05;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -1;
+        animation: backgroundPulse 20s infinite alternate ease-in-out;
+      }
+
+      body::before {
+        top: -20%;
+        left: -20%;
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      body::after {
+        bottom: -20%;
+        right: -20%;
+        transform: translate(50%, 50%) rotate(180deg);
+        animation-delay: 5s;
+        background: radial-gradient(circle, var(--secondary-pink) 0%, transparent 60%);
+      }
+
+      @keyframes backgroundPulse {
+        0% {
+          transform: scale(1) rotate(0deg);
+          opacity: 0.05;
+        }
+
+        50% {
+          transform: scale(1.1) rotate(10deg);
+          opacity: 0.08;
+        }
+
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 0.05;
+        }
+      }
+
+      /* Header com efeito de vidro */
+      .header-glass {
+        position: sticky;
+        top: 20px;
+        z-index: 1000;
+        background-color: var(--glass-bg-color);
+        backdrop-filter: blur(30px) saturate(200%);
+        border-radius: 3.5rem;
+        padding: 2rem 4.5rem;
+        box-shadow: 0 25px 70px var(--shadow-color), inset 0 0 0 1px var(--border-glass);
+        /* Sombra aprimorada */
+        width: 100%;
+        margin: 0 auto 40px;
+      }
+
+      .container {
+        background-color: var(--glass-bg-color);
+        backdrop-filter: blur(30px) saturate(200%);
+        border-radius: 3.5rem;
+        padding: 4.5rem;
+        box-shadow: 0 30px 80px var(--shadow-color), inset 0 0 0 1px var(--border-glass);
+        /* Sombra aprimorada */
+        width: 100%;
+        margin: 0 auto 40px;
+        position: relative;
+        z-index: 10;
+        flex: 1;
+      }
+
+      .card {
+        background-color: var(--card-bg-color);
+        border-radius: 2.8rem;
+        padding: 2.8rem;
+        margin-bottom: 1.8rem;
+        transition: all var(--transition-time) cubic-bezier(0.25, 0.8, 0.25, 1);
+        /* Transição geral */
+        cursor: pointer;
+        display: flex;
+        /* Mantém flex para layout interno do card */
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        border: 1px solid var(--border-glass);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.7s ease-out;
+      }
+
+      .card:hover::before {
+        transform: translateX(100%);
+      }
+
+      .card:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 45px 100px var(--shadow-color), inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+        /* Sombra aprimorada no hover */
+        background-color: rgba(30, 39, 50, 0.95);
+      }
+
+      .card h3 {
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        /* Sombra sutil no texto do título do card */
+      }
+
+      .card a {
+        display: inline-block;
+        color: white;
+        padding: 1.1rem 2.2rem;
+        border-radius: 1.8rem;
+        text-decoration: none;
+        font-weight: 700;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Novo: Efeito de hover para links dentro dos cards */
+      .card a:hover {
+        filter: brightness(1.1);
+        transform: translateY(-2px);
+        /* Adicionado para um leve "lift" */
+      }
+
+      /* Botões coloridos por categoria */
+      .jogos-pc .card a {
+        background: linear-gradient(45deg, var(--pc-green), #10B981);
+      }
+
+      .jogos-navegador .card a {
+        background: linear-gradient(45deg, var(--browser-blue), #3B82F6);
+      }
+
+      .hacks .card a {
+        background: linear-gradient(45deg, var(--hacks-yellow), #F59E0B);
+      }
+
+      .ferramentas .card a {
+        background: linear-gradient(45deg, var(--tools-orange), #EF4444);
+      }
+
+      /* Estilo específico para o botão de copiar script */
+      .card .copy-script-btn {
+        background: linear-gradient(45deg, #6B7280, #4B5563);
+        color: white;
+        border: none;
+        padding: 1.1rem 2.2rem;
+        border-radius: 1.8rem;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        margin-top: 1.8rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .card .copy-script-btn:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        filter: brightness(1.15);
+      }
+
+      .card .copy-script-btn:active {
+        transform: translateY(0px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        filter: brightness(0.9);
+        animation: pulse 0.3s ease-out;
+        /* Animação de pulso ao clicar */
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(0.98);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .search-container {
+        position: relative;
+        width: 100%;
+        margin-bottom: 3.5rem;
+      }
+
+      .search-input {
+        background-color: rgba(255, 255, 255, 0.08);
+        border: none;
+        border-radius: 2.2rem;
+        padding: 1.2rem 2.4rem 1.2rem 4.5rem;
+        color: var(--text-light);
+        width: 100%;
+        font-size: 1.35rem;
+        outline: none;
+        box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease-in-out;
+      }
+
+      .search-input:focus {
+        background-color: rgba(255, 255, 255, 0.15);
+        box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 0 5px rgba(167, 139, 250, 0.7);
+      }
+
+      /* Posicionamento do ícone de busca */
+      .search-icon {
+        position: absolute;
+        left: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(224, 231, 255, 0.6);
+        font-size: 1.35rem;
+      }
+
+      .main-title {
+        font-size: 4rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 1.2rem;
+        line-height: 1.1;
+        background-image: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        position: relative;
+        display: inline-block;
+        opacity: 0;
+        /* Inicialmente oculto para animação */
+        transform: translateY(20px);
+        /* Inicialmente deslocado para animação */
+      }
+
+      .main-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary-purple), var(--secondary-pink));
+        border-radius: 3px;
+      }
+
+      .subtitle {
+        font-size: 1.6rem;
+        font-weight: 400;
+        text-align: center;
+        margin-bottom: 3.5rem;
+        opacity: 0.98;
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0;
+        /* Inicialmente oculto para animação */
+        transform: translateY(20px);
+        /* Inicialmente deslocado para animação */
+      }
+
+      .section-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 2.8rem;
+        text-align: center;
+        color: var(--text-light);
+        text-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+        position: relative;
+        padding-bottom: 12px;
+      }
+
+      .section-title::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 5px;
+        margin: 12px auto 0;
+        border-radius: 3px;
+      }
+
+      /* Cores diferentes para cada categoria */
+      .jogos-pc .section-title::after {
+        background: linear-gradient(90deg, var(--pc-green), #10B981);
+      }
+
+      .jogos-navegador .section-title::after {
+        background: linear-gradient(90deg, var(--browser-blue), #3B82F6);
+      }
+
+      .hacks .section-title::after {
+        background: linear-gradient(90deg, var(--hacks-yellow), #F59E0B);
+      }
+
+      .ferramentas .section-title::after {
+        background: linear-gradient(90deg, var(--tools-orange), #EF4444);
+      }
+
+      #noResultsMessage {
+        text-align: center;
+        color: rgba(224, 231, 255, 0.9);
+        font-size: 1.4rem;
+        margin-top: 3.5rem;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 2rem;
+      }
+
+      #noResultsMessage i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--secondary-pink);
+      }
+
+      #noResultsMessage.visible {
+        display: block;
+        opacity: 1;
+      }
+
+      .card-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .card:hover .card-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      /* Cores de ícone por categoria */
+      .jogos-pc .card-icon {
+        background: linear-gradient(45deg, var(--pc-green), #10B981);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .jogos-navegador .card-icon {
+        background: linear-gradient(45deg, var(--browser-blue), #3B82F6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hacks .card-icon {
+        background: linear-gradient(45deg, var(--hacks-yellow), #F59E0B);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .ferramentas .card-icon {
+        background: linear-gradient(45deg, var(--tools-orange), #EF4444);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Footer ajustado */
+      .footer {
+        width: 100%;
+        text-align: center;
+        padding: 2rem 0;
+        color: rgba(224, 231, 255, 0.6);
+        font-size: 0.9rem;
+        margin-top: auto;
+      }
+
+      /* Botões de categoria */
+      .category-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+      }
+
+      .category-btn {
+        padding: 12px 25px;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .category-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        z-index: -1;
+        transition: all 0.3s ease;
+      }
+
+      .category-btn:hover::before,
+      .category-btn.active::before {
+        filter: brightness(1.2);
+      }
+
+      .category-btn:hover,
+      .category-btn.active {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .category-btn[data-category="jogos-pc"] {
+        background: linear-gradient(45deg, var(--pc-green), #10B981);
+      }
+
+      .category-btn[data-category="jogos-navegador"] {
+        background: linear-gradient(45deg, var(--browser-blue), #3B82F6);
+      }
+
+      .category-btn[data-category="hacks"] {
+        background: linear-gradient(45deg, var(--hacks-yellow), #F59E0B);
+      }
+
+      .category-btn[data-category="ferramentas"] {
+        background: linear-gradient(45deg, var(--tools-orange), #EF4444);
+      }
+
+      .category-btn[data-category="todos"] {
+        background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
+      }
+
+      /* Botão de voltar ao topo */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        z-index: 100;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .back-to-top:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      }
+
+      /* Mensagem de cópia do script */
+      .copy-message {
+        position: fixed;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        font-size: 1rem;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        z-index: 10001;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .copy-message.visible {
+        opacity: 1;
+      }
+
+      .copy-message i {
+        animation: bounceIn 0.6s ease-out;
+      }
+
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0.3);
+          opacity: 0;
+        }
+
+        50% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+
+        70% {
+          transform: scale(0.9);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Responsividade para telas menores */
+      @media (max-width: 768px) {
+        .header-glass {
+          padding: 1.5rem;
+          border-radius: 2.5rem;
+        }
+
+        .container {
+          padding: 2.5rem;
+          border-radius: 2.5rem;
+          margin: 0 auto 20px;
+        }
+
+        .login-box {
+          padding: 2.5rem;
+          border-radius: 2rem;
+        }
+
+        .login-title {
+          font-size: 2rem;
+        }
+
+        .main-title {
+          font-size: 3rem;
+        }
+
+        .subtitle {
+          font-size: 1.2rem;
+        }
+
+        .section-title {
+          font-size: 2.2rem;
+        }
+
+        .card {
+          padding: 2rem;
+          border-radius: 2rem;
+        }
+
+        .card h3 {
+          font-size: 1.8rem;
+        }
+
+        .card p {
+          font-size: 0.95rem;
+        }
+
+        .card a {
+          padding: 0.9rem 1.8rem;
+          font-size: 0.9rem;
+        }
+
+        .search-input {
+          font-size: 1rem;
+          padding: 1rem 1.5rem 1rem 3.5rem;
+        }
+
+        .search-icon {
+          left: 1.3rem;
+          font-size: 1.2rem;
+        }
+
+        .card-icon {
+          font-size: 2rem;
+          width: 50px;
+          height: 50px;
+          margin-bottom: 1rem;
+        }
+
+        .category-buttons {
+          gap: 10px;
+          margin-bottom: 20px;
+        }
+
+        .category-btn {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+        }
+
+        .back-to-top {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+          bottom: 20px;
+          right: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .main-title {
+          font-size: 2.5rem;
+        }
+
+        .login-title {
+          font-size: 1.8rem;
+        }
+
+        .login-box {
+          padding: 1.8rem;
+          border-radius: 1.8rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .container {
+          padding: 1.5rem;
+        }
+
+        .card {
+          padding: 1.5rem;
+        }
+
+        .category-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Overlay de login -->
+    <div class="login-overlay" id="loginOverlay">
+      <div class="login-box">
+        <div class="login-icon">
+          <i class="fas fa-lock"></i>
         </div>
-    </footer>
-    <button id="backToTop" title="Voltar ao topo">↑</button>
-    <script src="script.js"></script>
-</body>
+        <h1 class="login-title">Acesso Restrito</h1>
+        <p class="login-subtitle">Digite a senha para acessar o conteúdo</p>
+        <div class="password-container">
+          <input type="password" id="passwordInput" class="password-input" placeholder="Digite sua senha" autocomplete="off">
+          <span class="toggle-password" id="togglePassword" aria-label="Alternar visibilidade da senha">
+            <i class="fas fa-eye"></i>
+          </span>
+        </div>
+        <button class="login-btn" id="loginButton">
+          <span id="loginBtnText">
+            <i class="fas fa-unlock-alt"></i> Acessar </span>
+          <span id="loginSpinner" class="hidden fas fa-spinner fa-spin"></span>
+        </button>
+        <div class="error-message" id="errorMessage"> Senha incorreta! Tente novamente. </div>
+      </div>
+    </div>
+    <div class="main-container" id="mainContainer">
+      <!-- Header com efeito de vidro -->
+      <div class="header-glass">
+        <h1 class="main-title">Ferramentas do Ninja</h1>
+        <p class="subtitle">Seu portal seguro e estiloso para jogos, ferramentas e recursos essenciais.</p>
+        <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="searchInput" class="search-input" placeholder="Busque jogos, hacks, ferramentas..." aria-label="Pesquisar por jogos, hacks ou ferramentas">
+        </div>
+        <div class="category-buttons">
+          <button class="category-btn active" data-category="todos">
+            <i class="fas fa-th"></i> Todos </button>
+          <button class="category-btn" data-category="jogos-pc">
+            <i class="fas fa-desktop"></i> Jogos PC </button>
+          <button class="category-btn" data-category="jogos-navegador">
+            <i class="fas fa-globe"></i> Navegador </button>
+          <button class="category-btn" data-category="hacks">
+            <i class="fas fa-user-secret"></i> Hacks </button>
+          <button class="category-btn" data-category="ferramentas">
+            <i class="fas fa-tools"></i> Ferramentas </button>
+        </div>
+      </div>
+      <div class="container">
+        <div id="linksContainer">
+          <!-- Jogos para PC Section -->
+          <div class="jogos-pc">
+            <h2 class="section-title">Jogos para PC</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-cube"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Geometry Dash</h3>
+                  <p class="text-base opacity-85 mb-4">Um jogo de ritmo baseado em plataforma com desafios intensos.</p>
+                </div>
+                <a href="https://megadb.net/521qrfktmdf2" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-ghost"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">FNAF 1</h3>
+                  <p class="text-base opacity-85 mb-4">O primeiro jogo da aterrorizante série Five Nights at Freddy's.</p>
+                </div>
+                <a href="https://megadb.net/5fdmhxhldqku" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-ghost"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">FNAF 2</h3>
+                  <p class="text-base opacity-85 mb-4">A sequência ainda mais assustadora de Five Nights at Freddy's.</p>
+                </div>
+                <a href="https://megadb.net/wr2cnmengp95" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-ghost"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">FNAF 3</h3>
+                  <p class="text-base opacity-85 mb-4">O terceiro capítulo da saga de terror dos animatrônicos.</p>
+                </div>
+                <a href="https://megadb.net/j763dt2ip8j0" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-ghost"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">FNAF 4</h3>
+                  <p class="text-base opacity-85 mb-4">O final da história original de Five Nights at Freddy's.</p>
+                </div>
+                <a href="https://megadb.net/pmmx9gmcqy48" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-ghost"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">FNAF SL</h3>
+                  <p class="text-base opacity-85 mb-4">Five Nights at Freddy's: Sister Location, com novos personagens e mistérios.</p>
+                </div>
+                <a href="https://megadb.net/xcxu1y39nz35" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-user-astronaut"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Among Us</h3>
+                  <p class="text-base opacity-85 mb-4">Um jogo de dedução social e trabalho em equipe... ou traição. <br>
+                    <span class="text-sm opacity-70 mt-2 block"> Nota: Para jogar Online, execute o arquivo GDK_Helper.bat que está na pasta do jogo, ative o modo de programador (digite 3 no cmd e pressione Enter), instale o jogo (digite 1 no cmd e pressione Enter), desligue o modo de desenvolvedor (digite 4 no cmd e pressione Enter), e então execute o jogo pelo atalho no menu Iniciar. Ao entrar no jogo, serão solicitadas as informações de login com uma conta Microsoft—NÃO USE SUA CONTA EXISTENTE, POIS HÁ RISCO DE BANIMENTO; crie uma nova conta que você não se importe de utilizar. </span>
+                  </p>
+                </div>
+                <a href="https://megadb.net/32sojdqkqmqy" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-car-side"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Need for Speed Most Wanted Black Edition (2005)</h3>
+                  <p class="text-base opacity-85 mb-4">A edição especial do clássico de corrida de rua, com perseguições intensas.</p>
+                </div>
+                <a href="https://megadb.net/jk0v7yvtofig" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-car-side"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Need for Speed Underground</h3>
+                  <p class="text-base opacity-85 mb-4">O jogo que definiu a cultura de tunagem em corridas de rua.</p>
+                </div>
+                <!-- Agrupamento dos links para melhor espaçamento -->
+                <div class="flex flex-col gap-2 mt-4">
+                  <a href="https://www.mediafire.com/file/6hqrwow7nmvlj5y/Need_for_Speed_Underground_Win_Installed_EN.zip/file" target="_blank" rel="noopener noreferrer" class="!mt-0">Baixar Agora</a>
+                  <a href="https://1fichier.com/?bhc5plxo7tmj3vf3mfip" target="_blank" rel="noopener noreferrer" class="text-xs opacity-70 inline-block !mt-0">Link Alternativo (Com patches)</a>
+                </div>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-car-side"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Need for Speed Underground 2</h3>
+                  <p class="text-base opacity-85 mb-4">Expanda a experiência de corrida com um mundo aberto e mais opções de customização.</p>
+                </div>
+                <a href="https://megadb.net/6doau88zb1yg" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-car-side"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Need for Speed Carbon</h3>
+                  <p class="text-base opacity-85 mb-4">Corridas noturnas e domínio de território em desfiladeiros perigosos.</p>
+                </div>
+                <a href="https://megadb.net/srqgqxgcm52b" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-car-side"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Need for Speed: Porsche Unleashed</h3>
+                  <p class="text-base opacity-85 mb-4">Uma homenagem à lendária marca Porsche, com uma vasta coleção de carros.</p>
+                </div>
+                <a href="https://megadb.net/oask1xvmqyhg" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-gun"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">ULTRAKILL</h3>
+                  <p class="text-base opacity-85 mb-4">Um FPS frenético e ultraviolento com um estilo retrô.</p>
+                </div>
+                <a href="https://megadb.net/tiv0ngrfn54a" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-heart"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Undertale</h3>
+                  <p class="text-base opacity-85 mb-4">Um RPG único onde você não precisa matar ninguém.</p>
+                </div>
+                <a href="https://megadb.net/s358a5o8s4l4" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Deltarune</h3>
+                  <p class="text-base opacity-85 mb-4">O novo RPG do criador de Undertale, com uma nova história e personagens.</p>
+                </div>
+                <a href="https://megadb.net/g3gdq25cupnw" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-hammer"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Terraria</h3>
+                  <p class="text-base opacity-85 mb-4">Um jogo sandbox de aventura e exploração em um mundo 2D.</p>
+                </div>
+                <a href="https://megadb.net/d98p8nfao54t" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-mug-hot"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Cuphead</h3>
+                  <p class="text-base opacity-85 mb-4">Um jogo de plataforma e tiro com estilo de desenho animado dos anos 30.</p>
+                </div>
+                <a href="https://megadb.net/718u96mzjjuf" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-mask"></i>
+                    <!-- Ícone atualizado para Hollow Knight -->
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Hollow Knight</h3>
+                  <p class="text-base opacity-85 mb-4">Explore um vasto reino subterrâneo em um aclamado Metroidvania.</p>
+                </div>
+                <a href="https://megadb.net/d/3r" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-tractor"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Stardew Valley</h3>
+                  <p class="text-base opacity-85 mb-4">Crie sua fazenda, explore cavernas e construa relacionamentos em um RPG relaxante.</p>
+                </div>
+                <a href="https://megadb.net/gvjknv99gkvy" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-car"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">GTA San Andreas</h3>
+                  <p class="text-base opacity-85 mb-4">Versão portátil do clássico jogo de ação e aventura em mundo aberto.</p>
+                </div>
+                <a href="https://megadb.net/c5wbf1n1kwee" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+            </div>
+          </div>
+          <!-- Jogos de Navegador Section -->
+          <div class="jogos-navegador">
+            <h2 class="section-title">Jogos de Navegador</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Ball Bang</h3>
+                  <p class="text-base opacity-85 mb-4">Jogue este divertido jogo diretamente no seu navegador.</p>
+                </div>
+                <a href="https://ball-bang.github.io/" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">AI Royale</h3>
+                  <p class="text-base opacity-85 mb-4">Um jogo de batalha royale com inteligência artificial.</p>
+                </div>
+                <a href="https://airoyale007.github.io/" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Only Games</h3>
+                  <p class="text-base opacity-85 mb-4">Uma coleção de jogos para você se divertir online.</p>
+                </div>
+                <a href="https://only-games.github.io/" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Top Vaz Online</h3>
+                  <p class="text-base opacity-85 mb-4">Jogos online variados para todas as idades.</p>
+                </div>
+                <a href="https://top-vaz-online.github.io/" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Play Unblocked Games 76</h3>
+                  <p class="text-base opacity-85 mb-4">Acesse uma vasta biblioteca de jogos desbloqueados.</p>
+                </div>
+                <a href="https://play-unblocked-games76.github.io/" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Cool UBG</h3>
+                  <p class="text-base opacity-85 mb-4">Jogos desbloqueados e divertidos para o seu navegador.</p>
+                </div>
+                <a href="https://coolubg.github.io/" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Unblocked Games Premium 67</h3>
+                  <p class="text-base opacity-85 mb-4">Experiência premium com jogos desbloqueados.</p>
+                </div>
+                <a href="https://unblockedgamespremium67.github.io/" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">1000 Unblocked Games</h3>
+                  <p class="text-base opacity-85 mb-4">Milhares de jogos desbloqueados ao seu alcance.</p>
+                </div>
+                <a href="https://1000unblockedgames.github.io/" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Unblocked Games GG</h3>
+                  <p class="text-base opacity-85 mb-4">Sua plataforma para jogos desbloqueados.</p>
+                </div>
+                <a href="https://unblockedgamesgg.github.io/?ref=producthunt" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Unblocked Games At School</h3>
+                  <p class="text-base opacity-85 mb-4">Jogue seus jogos favoritos, mesmo na escola.</p>
+                </div>
+                <a href="https://unblocked-gamesatschool.github.io/" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Games 76</h3>
+                  <p class="text-base opacity-85 mb-4">Coleção de jogos online para diversão instantânea.</p>
+                </div>
+                <a href="https://games-76.github.io/" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Unblocked Games 6x Online</h3>
+                  <p class="text-base opacity-85 mb-4">Mais jogos desbloqueados para jogar online.</p>
+                </div>
+                <a href="https://unblockedgames6x-online.github.io/" target="_blank" rel="noopener noreferrer">Jogar Agora</a>
+              </div>
+            </div>
+          </div>
+          <!-- Hacks Section -->
+          <div class="hacks">
+            <h2 class="section-title">Hacks</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-tasks"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">TAREFA SALA DO FUTURO</h3>
+                  <p class="text-base opacity-85 mb-4">Ferramenta para auxiliar nas tarefas da Sala do Futuro.</p>
+                </div>
+                <a href="https://taskitos.cupiditys.lol/" target="_blank" rel="noopener noreferrer">Acessar</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-pen-nib"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">REDAÇÃO SALA DO FUTURO</h3>
+                  <p class="text-base opacity-85 mb-4">Recurso para ajudar na criação de redações.</p>
+                </div>
+                <a href="https://redacao.cupiditys.lol/" target="_blank" rel="noopener noreferrer">Acessar</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-calculator"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">MATIFIC</h3>
+                  <p class="text-base opacity-85 mb-4">Acesso a recursos avançados do Matific.</p>
+                </div>
+                <a href="https://matific.cupiditys.lol/dashboard" target="_blank" rel="noopener noreferrer">Acessar</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-microphone"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">SPEAK</h3>
+                  <p class="text-base opacity-85 mb-4">Melhore suas habilidades de fala com esta ferramenta.</p>
+                </div>
+                <a href="https://speakify.cupiditys.lol/install" target="_blank" rel="noopener noreferrer">Instalar</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-book-reader"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">LEIA SP</h3>
+                  <p class="text-base opacity-85 mb-4">Recursos para leitura e estudo do Leia SP.</p>
+                </div>
+                <a href="https://leiasp.cupiditys.lol/" target="_blank" rel="noopener noreferrer">Acessar</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-laptop-code"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">ALURA</h3>
+                  <p class="text-base opacity-85 mb-4">Acesso a cursos e conteúdos da plataforma Alura.</p>
+                </div>
+                <a href="https://crimsonstrauss.xyz/alura" target="_blank" rel="noopener noreferrer">Acessar</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-file-alt"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">APOSTILAS</h3>
+                  <p class="text-base opacity-85 mb-4">Coleção de apostilas e materiais de estudo.</p>
+                </div>
+                <a href="https://crimsonstrauss.xyz/livrodoestudante" target="_blank" rel="noopener noreferrer">Acessar</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">KHAN ACADEMY</h3>
+                  <p class="text-base opacity-85 mb-4">Script para recursos adicionais na Khan Academy. <br>
+                    <span class="text-sm opacity-70 mt-2 block"> Para usar, copie o script, adicione-o aos seus favoritos e clique nele com a Khan Academy aberta. </span>
+                  </p>
+                </div>
+                <button class="copy-script-btn" data-script='javascript:fetch("https://corsproxy.io/?url=https://raw.githubusercontent.com/DarkModde/Dark-Scripts/refs/heads/main/KhanResolver.js").then(t=>t.text()).then(eval);'>
+                  <i class="fas fa-copy"></i> Copiar Script </button>
+              </div>
+            </div>
+          </div>
+          <!-- Ferramentas Section -->
+          <div class="ferramentas">
+            <h2 class="section-title">Ferramentas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">SoftEther VPN Client + VPN Gate Client Plugin</h3>
+                  <p class="text-base opacity-85 mb-4">Cliente VPN robusto com plugin para VPN Gate.</p>
+                </div>
+                <a href="https://download.vpngate.jp/common/cd.aspx/vpngate-client-2025.07.20-build-9807.162312.zip" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-cloud"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Cloudflare WARP</h3>
+                  <p class="text-base opacity-85 mb-4">Serviço VPN para internet mais rápida e segura.</p>
+                </div>
+                <a href="https://www.mediafire.com/file/05lj3fged993twi/Cloudflare_WARP_2025.5.893.0.msi/file" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="noResultsMessage" class="hidden" aria-live="polite">
+          <i class="fas fa-search"></i>
+          <p>Ops! Nenhum resultado encontrado para a sua pesquisa.</p>
+          <p>Tente termos diferentes ou verifique a ortografia. Aventura continua!</p>
+        </div>
+      </div>
+      <footer class="footer">
+        <p>Ferramentas do Ninja © 2025 - Todos os direitos reservados</p>
+      </footer>
+    </div>
+    <!-- Botão de voltar ao topo -->
+    <div class="back-to-top" id="backToTop">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+    <!-- Mensagem de cópia do script -->
+    <div id="copyMessage" class="copy-message hidden">
+      <i class="fas fa-check-circle"></i> Script copiado! Adicione aos seus favoritos.
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Elementos do login
+        const loginOverlay = document.getElementById('loginOverlay');
+        const passwordInput = document.getElementById('passwordInput');
+        const loginButton = document.getElementById('loginButton');
+        const loginBtnText = document.getElementById('loginBtnText');
+        const loginSpinner = document.getElementById('loginSpinner');
+        const errorMessage = document.getElementById('errorMessage');
+        const togglePassword = document.getElementById('togglePassword');
+        const mainContainer = document.getElementById('mainContainer');
+        // Hash SHA-256 da senha
+        const correctPasswordHash = "1c704a8630b9fcf5f3a2e4460df609f78537d6bd05b2342ff2b68f0827b782d3";
+        // Inicialmente, assume que a tela de login deve ser visível e o scroll desabilitado
+        loginOverlay.classList.remove('hidden');
+        mainContainer.classList.remove('visible');
+        document.body.classList.add('no-scroll');
+        document.documentElement.classList.add('no-scroll');
+        passwordInput.focus();
+        // Função para tentar o login
+        async function tryLogin() {
+          const password = passwordInput.value;
+          const passwordHash = CryptoJS.SHA256(password).toString();
+          // Mostrar spinner e desabilitar botão
+          loginBtnText.classList.add('hidden');
+          loginSpinner.classList.remove('hidden');
+          loginButton.disabled = true;
+          // Simular um pequeno atraso para a animação do spinner (opcional, para UX)
+          await new Promise(resolve => setTimeout(resolve, 800));
+          if (passwordHash === correctPasswordHash) {
+            sessionStorage.setItem('isAuthenticated', 'true');
+            loginOverlay.classList.add('hidden');
+            mainContainer.classList.add('visible');
+            document.body.classList.remove('no-scroll');
+            document.documentElement.classList.remove('no-scroll');
+            initMainContent();
+          } else {
+            showError("Senha incorreta! Tente novamente.");
+            passwordInput.value = '';
+            passwordInput.focus();
+          }
+          // Esconder spinner e reabilitar botão
+          loginBtnText.classList.remove('hidden');
+          loginSpinner.classList.add('hidden');
+          loginButton.disabled = false;
+        }
+        // Função para mostrar mensagem de erro
+        function showError(message) {
+          errorMessage.textContent = message;
+          errorMessage.classList.add('visible');
+          void errorMessage.offsetWidth;
+          setTimeout(() => {
+            errorMessage.classList.remove('visible');
+          }, 3000);
+        }
+        // Event listeners para o login
+        loginButton.addEventListener('click', tryLogin);
+        passwordInput.addEventListener('keypress', (event) => {
+          if (event.key === 'Enter') {
+            tryLogin();
+          }
+        });
+        // Alternar visibilidade da senha
+        togglePassword.addEventListener('click', () => {
+          const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+          passwordInput.setAttribute('type', type);
+          togglePassword.querySelector('i').classList.toggle('fa-eye');
+          togglePassword.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+        // Verifica o estado de autenticação *após* a inicialização visual do login
+        if (sessionStorage.getItem('isAuthenticated') === 'true') {
+          loginOverlay.classList.add('hidden');
+          mainContainer.classList.add('visible');
+          document.body.classList.remove('no-scroll');
+          document.documentElement.classList.remove('no-scroll');
+          initMainContent();
+        }
+        // Função para inicializar o conteúdo principal (após login)
+        function initMainContent() {
+          const searchInput = document.getElementById('searchInput');
+          const linksContainer = document.getElementById('linksContainer');
+          const cards = linksContainer.querySelectorAll('.card');
+          const noResultsMessage = document.getElementById('noResultsMessage');
+          const categoryBtns = document.querySelectorAll('.category-btn');
+          const backToTopBtn = document.getElementById('backToTop');
+          const copyScriptBtns = document.querySelectorAll('.copy-script-btn');
+          const copyMessage = document.getElementById('copyMessage');
+          // Função debounce para otimizar a pesquisa
+          const debounce = (func, delay) => {
+            let timeout;
+            return function(...args) {
+              const context = this;
+              clearTimeout(timeout);
+              timeout = setTimeout(() => func.apply(context, args), delay);
+            };
+          };
+          // Botão de voltar ao topo
+          window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+              backToTopBtn.classList.add('visible');
+            } else {
+              backToTopBtn.classList.remove('visible');
+            }
+          });
+          backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          });
+          // Filtro de categorias
+          categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+              categoryBtns.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              const category = btn.dataset.category;
+              filterContent(category, searchInput.value.toLowerCase());
+              // Rolagem suave para a seção
+              if (category !== 'todos') {
+                const targetSection = document.querySelector(`.${category}`);
+                if (targetSection) {
+                  const sectionTitle = targetSection.querySelector('.section-title');
+                  if (sectionTitle) {
+                    sectionTitle.scrollIntoView({
+                      behavior: 'smooth',
+                      block: 'start'
+                    });
+                  }
+                }
+              } else {
+                // Para "Todos", rola para o topo do cabeçalho
+                document.querySelector('.header-glass').scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }
+            });
+          });
+          // Função para filtrar conteúdo
+          function filterContent(category, searchTerm = '') {
+            let anyCardVisible = false;
+            cards.forEach(card => {
+              // Encontra a div da seção pai (ex: .jogos-pc, .jogos-navegador)
+              const sectionDiv = card.closest('.jogos-pc, .jogos-navegador, .hacks, .ferramentas');
+              // Se não encontrar uma seção pai com essas classes, algo está errado na estrutura HTML ou o card não deveria ser filtrado por categoria.
+              // Para este caso, vamos assumir que todo card tem uma seção pai relevante.
+              if (!sectionDiv) {
+                card.style.display = 'none'; // Oculta se não estiver em uma seção categorizada
+                return; // Pula para o próximo card
+              }
+              const sectionCategoryClass = sectionDiv.classList[0]; // Pega a primeira classe da seção, que é a categoria
+              const title = card.querySelector('h3').textContent.toLowerCase();
+              const description = card.querySelector('p').textContent.toLowerCase();
+              const cardCategoryMatch = category === 'todos' || sectionCategoryClass === category;
+              const searchMatch = searchTerm === '' || title.includes(searchTerm) || description.includes(searchTerm);
+              if (cardCategoryMatch && searchMatch) {
+                card.style.display = 'flex'; /* Exibe o card */
+                anyCardVisible = true;
+              } else {
+                card.style.display = 'none'; /* Oculta o card e remove do fluxo */
+              }
+            });
+            // Ajusta a exibição das seções (Jogos PC, Navegador, etc.)
+            document.querySelectorAll('.jogos-pc, .jogos-navegador, .hacks, .ferramentas').forEach(section => {
+              const sectionCards = section.querySelectorAll('.card');
+              const visibleCardsInSection = Array.from(sectionCards).filter(c => c.style.display !== 'none');
+              if (visibleCardsInSection.length === 0) {
+                section.style.display = 'none';
+              } else {
+                section.style.display = 'block';
+              }
+            });
+            if (anyCardVisible) {
+              noResultsMessage.classList.remove('visible');
+              noResultsMessage.classList.add('hidden');
+            } else {
+              noResultsMessage.classList.remove('hidden');
+              void noResultsMessage.offsetWidth;
+              noResultsMessage.classList.add('visible');
+            }
+          }
+          // Pesquisa com debounce
+          searchInput.addEventListener('keyup', debounce((event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+            filterContent(activeCategory, searchTerm);
+          }, 300));
+          // Adiciona evento de clique para os botões de copiar script
+          copyScriptBtns.forEach(button => {
+            button.addEventListener('click', () => {
+              const scriptToCopy = button.dataset.script;
+              if (scriptToCopy) {
+                const textarea = document.createElement('textarea');
+                textarea.value = scriptToCopy;
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                  document.execCommand('copy');
+                  copyMessage.classList.add('visible');
+                  setTimeout(() => {
+                    copyMessage.classList.remove('visible');
+                  }, 3000);
+                } catch (err) {
+                  console.error('Falha ao copiar o script: ', err);
+                } finally {
+                  document.body.removeChild(textarea);
+                }
+              }
+            });
+          });
+          // Filtro inicial
+          filterContent('todos');
+          // Focar no campo de pesquisa após login (se já não estiver focado)
+          setTimeout(() => {
+            searchInput.focus();
+          }, 500);
+        }
+      });
+    </script>
+  </body>
 </html>
