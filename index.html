@@ -1490,7 +1490,7 @@
         </div>
       </div>
       <footer class="footer">
-        <p>Ferramentas Ninja © 2025 - Todos os direitos reservados</p>
+        <p>Ferramentas Ninja © 2023 - Todos os direitos reservados</p>
       </footer>
     </div>
     <!-- Botão de voltar ao topo -->
@@ -1556,7 +1556,7 @@
           await new Promise(resolve => setTimeout(resolve, 800));
 
           if (passwordHash === correctPasswordHash) {
-            sessionStorage.setItem('isAuthenticated', 'true');
+            // Removido: sessionStorage.setItem('isAuthenticated', 'true');
             passwordInput.value = ''; // Limpa o campo de senha após o login
             passwordInput.setAttribute('type', 'text'); // Volta para text após login
 
@@ -1616,14 +1616,14 @@
             noSavePasswordMessage.classList.remove('visible');
         });
 
-        // Verifica o estado de autenticação *após* a inicialização visual do login
-        if (sessionStorage.getItem('isAuthenticated') === 'true') {
-          loginOverlay.classList.add('hidden');
-          mainContainer.classList.add('visible');
-          document.body.classList.remove('no-scroll');
-          document.documentElement.classList.remove('no-scroll');
-          initMainContent();
-        }
+        // Removido: Verifica o estado de autenticação *após* a inicialização visual do login
+        // if (sessionStorage.getItem('isAuthenticated') === 'true') {
+        //   loginOverlay.classList.add('hidden');
+        //   mainContainer.classList.add('visible');
+        //   document.body.classList.remove('no-scroll');
+        //   document.documentElement.classList.remove('no-scroll');
+        //   initMainContent();
+        // }
 
         // Função para inicializar o conteúdo principal (após login)
         function initMainContent() {
