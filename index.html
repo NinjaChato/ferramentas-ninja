@@ -332,8 +332,7 @@
         transition: all var(--transition-time) cubic-bezier(0.25, 0.8, 0.25, 1);
         /* Transição geral */
         cursor: pointer;
-        display: flex;
-        /* Mantém flex para layout interno do card */
+        display: flex; /* Mantém flex para layout interno do card */
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
@@ -388,8 +387,7 @@
       /* Novo: Efeito de hover para links dentro dos cards */
       .card a:hover {
         filter: brightness(1.1);
-        transform: translateY(-2px);
-        /* Adicionado para um leve "lift" */
+        transform: translateY(-2px); /* Adicionado para um leve "lift" */
       }
 
       /* Botões coloridos por categoria */
@@ -653,14 +651,10 @@
         color: rgba(224, 231, 255, 0.6);
         font-size: 0.9rem;
         margin-top: auto;
-        display: flex;
-        /* Adicionado para centralizar o conteúdo do footer */
-        flex-direction: column;
-        /* Para empilhar texto e imagem verticalmente */
-        align-items: center;
-        /* Centraliza horizontalmente */
-        gap: 10px;
-        /* Espaço entre os elementos do footer */
+        display: flex; /* Adicionado para centralizar o conteúdo do footer */
+        flex-direction: column; /* Para empilhar texto e imagem verticalmente */
+        align-items: center; /* Centraliza horizontalmente */
+        gap: 10px; /* Espaço entre os elementos do footer */
       }
 
       /* Botões de categoria */
@@ -864,20 +858,17 @@
 
       /* Estilo para o easter egg no rodapé */
       .footer .easter-egg-img {
-        width: 80px;
-        /* Tamanho do easter egg */
+        width: 80px; /* Tamanho do easter egg */
         height: auto;
-        opacity: 0.2;
-        /* Sutilmente visível */
+        opacity: 0.2; /* Sutilmente visível */
         transition: opacity 0.3s ease-in-out;
-        margin-top: 10px;
-        /* Espaçamento do texto */
+        margin-top: 10px; /* Espaçamento do texto */
       }
 
       .footer .easter-egg-img:hover {
-        opacity: 1;
-        /* Fica totalmente visível ao passar o mouse */
+        opacity: 1; /* Fica totalmente visível ao passar o mouse */
       }
+
 
       /* Responsividade para telas menores */
       @media (max-width: 768px) {
@@ -972,8 +963,7 @@
         }
 
         .footer .easter-egg-img {
-          width: 60px;
-          /* Ajusta o tamanho para telas menores */
+          width: 60px; /* Ajusta o tamanho para telas menores */
         }
       }
 
@@ -1269,6 +1259,47 @@
                   <p class="text-base opacity-85 mb-4">Versão portátil do clássico jogo de ação e aventura em mundo aberto.</p>
                 </div>
                 <a href="https://megadb.net/c5wbf1n1kwee" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <!-- Novos jogos adicionados -->
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-crosshairs"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Far Cry</h3>
+                  <p class="text-base opacity-85 mb-4">Um jogo de tiro em primeira pessoa em um paraíso tropical perigoso.</p>
+                </div>
+                <a href="https://megadb.net/d/3U" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-user-graduate"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Bully: Scholarship Edition</h3>
+                  <p class="text-base opacity-85 mb-4">Explore a vida escolar em um jogo de mundo aberto com muita ação.</p>
+                </div>
+                <a href="https://megadb.net/n3r023b3seeo" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-skull-crossbones"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">Left 4 Dead</h3>
+                  <p class="text-base opacity-85 mb-4">Um jogo cooperativo de tiro em primeira pessoa contra hordas de zumbis.</p>
+                </div>
+                <a href="https://megadb.net/5ocsgftd87pp" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
+              </div>
+              <div class="card">
+                <div>
+                  <div class="card-icon">
+                    <i class="fas fa-music"></i>
+                  </div>
+                  <h3 class="text-2xl font-semibold mb-3">A Dance of Fire and Ice</h3>
+                  <p class="text-base opacity-85 mb-4">Um jogo de ritmo simples de um botão com desafios de tempo precisos.</p>
+                </div>
+                <a href="https://megadb.net/dpibku9ndat7" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
               </div>
             </div>
           </div>
