@@ -7,44 +7,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <!-- Overlay de login -->
-    <div class="login-overlay" id="loginOverlay">
-      <div class="login-box">
-        <div class="login-icon">
-          <i class="fas fa-lock"></i>
-        </div>
-        <h1 class="login-title">Acesso Restrito</h1>
-        <p class="login-subtitle">Digite a senha para acessar o conteúdo premium</p>
-        <form autocomplete="off">
-          <div class="password-container">
-            <input type="text" id="passwordInput" class="password-input" placeholder="Digite sua senha" autocomplete="new-password">
-            <span class="toggle-password" id="togglePassword" aria-label="Alternar visibilidade da senha">
-              <i class="fas fa-eye"></i>
-            </span>
-          </div>
-          <button type="submit" class="login-btn" id="loginButton">
-            <span id="loginBtnText">
-              <i class="fas fa-unlock-alt"></i> Acessar </span>
-            <span id="loginSpinner" class="hidden fas fa-spinner fa-spin"></span>
-          </button>
-        </form>
-        <div class="error-message" id="errorMessage"> Senha incorreta! Tente novamente. </div>
-      </div>
-    </div>
+    <!-- Container principal da aplicação -->
     <div class="main-container" id="mainContainer">
-      <!-- Header com efeito de vidro -->
+      <!-- Cabeçalho com efeito de vidro -->
       <div class="header-glass">
         <h1 class="main-title">Ferramentas Ninja</h1>
         <p class="subtitle">Seu portal seguro e estiloso para jogos, ferramentas e recursos essenciais.</p>
+        <!-- Barra de pesquisa -->
         <div class="search-container">
           <i class="fas fa-search search-icon"></i>
           <input type="text" id="searchInput" class="search-input" placeholder="Busque jogos, hacks, ferramentas..." aria-label="Pesquisar por jogos, hacks ou ferramentas">
         </div>
+        <!-- Botões de filtro de categoria -->
         <div class="category-buttons">
           <button class="category-btn active" data-category="todos">
             <i class="fas fa-th"></i> Todos </button>
@@ -58,9 +36,10 @@
             <i class="fas fa-tools"></i> Ferramentas </button>
         </div>
       </div>
+      <!-- Conteúdo principal com as seções de links -->
       <div class="container">
         <div id="linksContainer">
-          <!-- Jogos para PC Section -->
+          <!-- Seção de Jogos para PC -->
           <div class="jogos-pc">
             <h2 class="section-title">Jogos para PC</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
@@ -242,7 +221,6 @@
                 <div>
                   <div class="card-icon">
                     <i class="fas fa-mask"></i>
-                    <!-- Ícone atualizado para Hollow Knight -->
                   </div>
                   <h3 class="text-2xl font-semibold mb-3">Hollow Knight</h3>
                   <p class="text-base opacity-85 mb-4">Explore um vasto reino subterrâneo em um aclamado Metroidvania.</p>
@@ -312,7 +290,7 @@
               </div>
             </div>
           </div>
-          <!-- Jogos de Navegador Section -->
+          <!-- Seção de Jogos de Navegador -->
           <div class="jogos-navegador">
             <h2 class="section-title">Jogos de Navegador</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
@@ -438,7 +416,7 @@
               </div>
             </div>
           </div>
-          <!-- Hacks Section -->
+          <!-- Seção de Hacks -->
           <div class="hacks">
             <h2 class="section-title">Hacks</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
@@ -527,7 +505,7 @@
               </div>
             </div>
           </div>
-          <!-- Ferramentas Section -->
+          <!-- Seção de Ferramentas -->
           <div class="ferramentas">
             <h2 class="section-title">Ferramentas</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -554,31 +532,27 @@
             </div>
           </div>
         </div>
+        <!-- Mensagem de nenhum resultado encontrado -->
         <div id="noResultsMessage" class="hidden" aria-live="polite">
           <i class="fas fa-search"></i>
           <p>Ops! Nenhum resultado encontrado para a sua pesquisa.</p>
           <p>Tente termos diferentes ou verifique a ortografia. Aventura continua!</p>
         </div>
       </div>
+      <!-- Rodapé -->
       <footer class="footer">
         <p>Ferramentas Ninja © 2025 - Todos os direitos reservados</p>
-        <!-- Easter Egg Image movido para o rodapé -->
+        <!-- Imagem Easter Egg -->
         <img src="https://media.discordapp.net/attachments/1348033961170829433/1396538034383487026/Sem_titulo-removebg-preview.png?ex=687e72e5&is=687d2165&hm=6a5511a47b5e37c87e612f276b15dbec0b8f89690078cfa6d89d193bc9611cdf&=&format=webp&quality=lossless" class="easter-egg-img">
       </footer>
     </div>
-    <!-- Botão de voltar ao topo -->
+    <!-- Botão para voltar ao topo -->
     <div class="back-to-top" id="backToTop">
       <i class="fas fa-arrow-up"></i>
     </div>
-    <!-- Mensagem de cópia do script -->
+    <!-- Mensagem de script copiado -->
     <div id="copyMessage" class="copy-message hidden">
       <i class="fas fa-check-circle"></i> Script copiado! Adicione aos seus favoritos.
-    </div>
-    <!-- Mensagem para não salvar a senha -->
-    <div id="noSavePasswordMessage">
-      <i class="fas fa-exclamation-triangle"></i>
-      <p>Para evitar o vazamento de suas credenciais, por favor, não salve esta senha no navegador.</p>
-      <button id="dismissNoSavePassword">Entendi</button>
     </div>
     <!-- Link para o arquivo JavaScript externo -->
     <script src="script.js" defer></script>
