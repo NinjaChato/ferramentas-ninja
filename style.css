@@ -30,12 +30,6 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Garante que o scroll vertical seja ocultado em todo o documento quando a tela de login estiver ativa */
-body.no-scroll,
-body.no-scroll html {
-  overflow: hidden;
-}
-
 body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, var(--dark-bg-start) 0%, var(--dark-bg-end) 100%);
@@ -47,156 +41,7 @@ body {
   padding: 20px;
 }
 
-/* Overlay de login */
-.login-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(10, 0, 20, 0.95);
-  backdrop-filter: blur(10px);
-  z-index: 10000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-
-.login-overlay.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.login-box {
-  background: var(--glass-bg-color);
-  backdrop-filter: blur(30px);
-  border-radius: 2.5rem;
-  padding: 3.5rem;
-  box-shadow: 0 30px 80px var(--shadow-color), inset 0 0 0 1px var(--border-glass);
-  max-width: 500px;
-  width: 90%;
-  text-align: center;
-  transform: scale(0.95);
-  animation: loginAppear 0.6s ease-out forwards;
-}
-
-@keyframes loginAppear {
-  to {
-    transform: scale(1);
-  }
-}
-
-.login-icon {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.login-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.login-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 2.5rem;
-  opacity: 0.8;
-}
-
-.password-container {
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-.password-input {
-  width: 100%;
-  padding: 1.2rem 3.5rem 1.2rem 1.5rem;
-  border-radius: 1.8rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--border-glass);
-  color: var(--text-light);
-  font-size: 1.1rem;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.password-input:focus {
-  border-color: var(--primary-purple);
-  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.3);
-}
-
-.toggle-password {
-  position: absolute;
-  right: 1.2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: rgba(224, 231, 255, 0.6);
-  transition: color 0.2s ease;
-}
-
-.toggle-password:hover {
-  color: var(--primary-purple);
-}
-
-.login-btn {
-  background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
-  color: white;
-  border: none;
-  padding: 1.2rem 2.5rem;
-  border-radius: 1.8rem;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(167, 139, 250, 0.4);
-}
-
-.login-btn:active {
-  transform: translateY(1px);
-  box-shadow: 0 5px 15px rgba(167, 139, 250, 0.2);
-}
-
-/* Spinner para o botão de login */
-.login-btn .fa-spinner {
-  margin-left: 8px;
-}
-
-.login-btn .hidden {
-  display: none;
-}
-
-.error-message {
-  color: #ff6b6b;
-  margin-top: 1rem;
-  height: 1.5rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.error-message.visible {
-  opacity: 1;
-}
-
-/* Container principal ajustado */
+/* Container principal da aplicação */
 .main-container {
   width: 100%;
   max-width: 1200px;
@@ -204,14 +49,9 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 1; /* Removido o login, então visível por padrão */
+  transform: translateY(0); /* Removido o login, então sem transformação inicial */
   transition: all 0.5s ease 0.2s;
-}
-
-.main-container.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Animação para título e subtítulo */
@@ -230,13 +70,11 @@ body {
 .main-title {
   animation: fadeInSlideUp 0.8s ease-out forwards;
   animation-delay: 0.3s;
-  /* Atraso para aparecer após o container */
 }
 
 .subtitle {
   animation: fadeInSlideUp 0.8s ease-out forwards;
   animation-delay: 0.5s;
-  /* Atraso para aparecer após o título */
 }
 
 body::before,
@@ -284,7 +122,7 @@ body::after {
   }
 }
 
-/* Header com efeito de vidro */
+/* Cabeçalho com efeito de vidro */
 .header-glass {
   position: sticky;
   top: 20px;
@@ -294,18 +132,17 @@ body::after {
   border-radius: 3.5rem;
   padding: 2rem 4.5rem;
   box-shadow: 0 25px 70px var(--shadow-color), inset 0 0 0 1px var(--border-glass);
-  /* Sombra aprimorada */
   width: 100%;
   margin: 0 auto 40px;
 }
 
+/* Container de conteúdo */
 .container {
   background-color: var(--glass-bg-color);
   backdrop-filter: blur(30px) saturate(200%);
   border-radius: 3.5rem;
   padding: 4.5rem;
   box-shadow: 0 30px 80px var(--shadow-color), inset 0 0 0 1px var(--border-glass);
-  /* Sombra aprimorada */
   width: 100%;
   margin: 0 auto 40px;
   position: relative;
@@ -313,15 +150,15 @@ body::after {
   flex: 1;
 }
 
+/* Estilo do card de item */
 .card {
   background-color: var(--card-bg-color);
   border-radius: 2.8rem;
   padding: 2.8rem;
   margin-bottom: 1.8rem;
   transition: all var(--transition-time) cubic-bezier(0.25, 0.8, 0.25, 1);
-  /* Transição geral */
   cursor: pointer;
-  display: flex; /* Mantém flex para layout interno do card */
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
@@ -349,13 +186,11 @@ body::after {
 .card:hover {
   transform: translateY(-15px) scale(1.03);
   box-shadow: 0 45px 100px var(--shadow-color), inset 0 0 0 2px rgba(255, 255, 255, 0.4);
-  /* Sombra aprimorada no hover */
   background-color: rgba(30, 39, 50, 0.95);
 }
 
 .card h3 {
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  /* Sombra sutil no texto do título do card */
 }
 
 .card a {
@@ -373,13 +208,13 @@ body::after {
   z-index: 2;
 }
 
-/* Novo: Efeito de hover para links dentro dos cards */
+/* Efeito de hover para links dentro dos cards */
 .card a:hover {
   filter: brightness(1.1);
-  transform: translateY(-2px); /* Adicionado para um leve "lift" */
+  transform: translateY(-2px);
 }
 
-/* Botões coloridos por categoria */
+/* Estilos dos botões de download/acesso por categoria */
 .jogos-pc .card a {
   background: linear-gradient(45deg, var(--pc-green), #10B981);
 }
@@ -396,7 +231,7 @@ body::after {
   background: linear-gradient(45deg, var(--tools-orange), #EF4444);
 }
 
-/* Estilo específico para o botão de copiar script */
+/* Estilo para o botão de copiar script */
 .card .copy-script-btn {
   background: linear-gradient(45deg, #6B7280, #4B5563);
   color: white;
@@ -430,7 +265,6 @@ body::after {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
   filter: brightness(0.9);
   animation: pulse 0.3s ease-out;
-  /* Animação de pulso ao clicar */
 }
 
 @keyframes pulse {
@@ -447,12 +281,14 @@ body::after {
   }
 }
 
+/* Container da barra de pesquisa */
 .search-container {
   position: relative;
   width: 100%;
   margin-bottom: 3.5rem;
 }
 
+/* Campo de input da pesquisa */
 .search-input {
   background-color: rgba(255, 255, 255, 0.08);
   border: none;
@@ -471,7 +307,7 @@ body::after {
   box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 0 5px rgba(167, 139, 250, 0.7);
 }
 
-/* Posicionamento do ícone de busca */
+/* Ícone de busca */
 .search-icon {
   position: absolute;
   left: 1.5rem;
@@ -481,6 +317,7 @@ body::after {
   font-size: 1.35rem;
 }
 
+/* Título principal */
 .main-title {
   font-size: 4rem;
   font-weight: 800;
@@ -494,9 +331,7 @@ body::after {
   position: relative;
   display: inline-block;
   opacity: 0;
-  /* Inicialmente oculto para animação */
   transform: translateY(20px);
-  /* Inicialmente deslocado para animação */
 }
 
 .main-title::after {
@@ -511,6 +346,7 @@ body::after {
   border-radius: 3px;
 }
 
+/* Subtítulo */
 .subtitle {
   font-size: 1.6rem;
   font-weight: 400;
@@ -522,11 +358,10 @@ body::after {
   margin-left: auto;
   margin-right: auto;
   opacity: 0;
-  /* Inicialmente oculto para animação */
   transform: translateY(20px);
-  /* Inicialmente deslocado para animação */
 }
 
+/* Título de seção */
 .section-title {
   font-size: 3rem;
   font-weight: 700;
@@ -547,7 +382,7 @@ body::after {
   border-radius: 3px;
 }
 
-/* Cores diferentes para cada categoria */
+/* Cores de linha inferior para cada categoria */
 .jogos-pc .section-title::after {
   background: linear-gradient(90deg, var(--pc-green), #10B981);
 }
@@ -564,6 +399,7 @@ body::after {
   background: linear-gradient(90deg, var(--tools-orange), #EF4444);
 }
 
+/* Mensagem de nenhum resultado */
 #noResultsMessage {
   text-align: center;
   color: rgba(224, 231, 255, 0.9);
@@ -589,6 +425,7 @@ body::after {
   opacity: 1;
 }
 
+/* Ícone do card */
 .card-icon {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
@@ -632,7 +469,7 @@ body::after {
   -webkit-text-fill-color: transparent;
 }
 
-/* Footer ajustado */
+/* Rodapé */
 .footer {
   width: 100%;
   text-align: center;
@@ -640,10 +477,10 @@ body::after {
   color: rgba(224, 231, 255, 0.6);
   font-size: 0.9rem;
   margin-top: auto;
-  display: flex; /* Adicionado para centralizar o conteúdo do footer */
-  flex-direction: column; /* Para empilhar texto e imagem verticalmente */
-  align-items: center; /* Centraliza horizontalmente */
-  gap: 10px; /* Espaço entre os elementos do footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 /* Botões de categoria */
@@ -714,7 +551,7 @@ body::after {
   background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
 }
 
-/* Botão de voltar ao topo */
+/* Botão para voltar ao topo */
 .back-to-top {
   position: fixed;
   bottom: 30px;
@@ -746,7 +583,7 @@ body::after {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
 }
 
-/* Mensagem de cópia do script */
+/* Mensagem de script copiado */
 .copy-message {
   position: fixed;
   bottom: 100px;
@@ -793,71 +630,18 @@ body::after {
   }
 }
 
-/* Mensagem para não salvar a senha */
-#noSavePasswordMessage {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(15px);
-  color: var(--text-light);
-  padding: 30px 40px;
-  border-radius: 20px;
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-  z-index: 10002;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  max-width: 90%;
-}
-
-#noSavePasswordMessage.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-#noSavePasswordMessage i {
-  font-size: 2.5rem;
-  color: var(--hacks-yellow);
-}
-
-#noSavePasswordMessage button {
-  background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-#noSavePasswordMessage button:hover {
-  filter: brightness(1.1);
-  transform: translateY(-2px);
-}
-
 /* Estilo para o easter egg no rodapé */
 .footer .easter-egg-img {
-  width: 80px; /* Tamanho do easter egg */
+  width: 80px;
   height: auto;
-  opacity: 0.2; /* Sutilmente visível */
+  opacity: 0.2;
   transition: opacity 0.3s ease-in-out;
-  margin-top: 10px; /* Espaçamento do texto */
+  margin-top: 10px;
 }
 
 .footer .easter-egg-img:hover {
-  opacity: 1; /* Fica totalmente visível ao passar o mouse */
+  opacity: 1;
 }
-
 
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
@@ -870,15 +654,6 @@ body::after {
     padding: 2.5rem;
     border-radius: 2.5rem;
     margin: 0 auto 20px;
-  }
-
-  .login-box {
-    padding: 2.5rem;
-    border-radius: 2rem;
-  }
-
-  .login-title {
-    font-size: 2rem;
   }
 
   .main-title {
@@ -946,28 +721,14 @@ body::after {
     right: 20px;
   }
 
-  #noSavePasswordMessage {
-    font-size: 1.2rem;
-    padding: 20px 30px;
-  }
-
   .footer .easter-egg-img {
-    width: 60px; /* Ajusta o tamanho para telas menores */
+    width: 60px;
   }
 }
 
 @media (max-width: 480px) {
   .main-title {
     font-size: 2.5rem;
-  }
-
-  .login-title {
-    font-size: 1.8rem;
-  }
-
-  .login-box {
-    padding: 1.8rem;
-    border-radius: 1.8rem;
   }
 
   .section-title {
