@@ -1,0 +1,19 @@
+Ferramentas Ninja - Histórico de Atualizações
+
+23/07/2025
+> Criação do histórico
+> Adição de jogos
+ - The Binding of Isaac: Rebirth
+ - Getting Over It
+ - GTA Vice City
+ - Hotline Miami
+ - Hotline Miami 2: Wrong Number
+ - LEGO Batman: The Videogame
+ - Limbo
+ - Plague Inc: Evolved
+ - Plants vs Zombies (GOTY Edition)
+ - Portal
+ - Portal 2
+ - Super Meat Boy
+ - The Henry Stickmin Collection
+> Adição do Tor Browser nas Ferramentas
