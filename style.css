@@ -551,6 +551,37 @@ body::after {
   background: linear-gradient(45deg, var(--primary-purple), var(--secondary-pink));
 }
 
+/* Estilo para o botão Changelogs */
+.changelogs-btn {
+  background-color: rgba(0, 0, 0, 0.3); /* Um fundo mais transparente */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Borda sutil como os outros elementos de vidro */
+  color: var(--text-light); /* Cor do texto padrão */
+  padding: 16px 32px; /* Aumentado o padding para maior tamanho */
+  border-radius: 25px; /* Cantos mais arredondados */
+  font-weight: 600; /* Peso da fonte */
+  font-size: 1.2rem; /* Aumentado o tamanho da fonte */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Sombra mais suave */
+  text-decoration: none; /* Remover sublinhado */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Espaçamento entre ícone e texto */
+  /* Animação para carregar junto com o título */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInSlideUp 0.8s ease-out forwards;
+  animation-delay: 0.7s; /* Atraso para aparecer depois do título e subtítulo */
+}
+
+.changelogs-btn:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo um pouco mais escuro no hover */
+  border-color: rgba(255, 255, 255, 0.2); /* Borda mais visível no hover */
+  transform: translateY(-2px) scale(1.02); /* Efeito de leve levantamento e escala */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Sombra mais pronunciada no hover */
+}
+
+
 /* Botão para voltar ao topo */
 .back-to-top {
   position: fixed;
