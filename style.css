@@ -351,7 +351,7 @@ body::after {
   font-size: 1.6rem;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3.5rem; /* Mantido para espaçamento superior do botão */
   opacity: 0.98;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
   max-width: 800px;
@@ -553,32 +553,33 @@ body::after {
 
 /* Estilo para o botão Changelogs */
 .changelogs-btn {
-  background-color: rgba(0, 0, 0, 0.3); /* Um fundo mais transparente */
-  border: 1px solid rgba(255, 255, 255, 0.08); /* Borda sutil como os outros elementos de vidro */
-  color: var(--text-light); /* Cor do texto padrão */
-  padding: 16px 32px; /* Aumentado o padding para maior tamanho */
-  border-radius: 25px; /* Cantos mais arredondados */
-  font-weight: 600; /* Peso da fonte */
-  font-size: 1.2rem; /* Aumentado o tamanho da fonte */
+  background-color: var(--glass-bg-color); /* Usando a variável para consistência */
+  backdrop-filter: blur(10px); /* Adicionando um blur sutil para o efeito de vidro */
+  border: 1px solid var(--border-glass); /* Usando a variável para consistência */
+  color: var(--text-light);
+  padding: 18px 36px; /* Aumentado o padding para um tamanho maior */
+  border-radius: 30px; /* Cantos mais arredondados, mas não totalmente pílula */
+  font-weight: 600;
+  font-size: 1.3rem; /* Aumentado o tamanho da fonte */
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Sombra mais suave */
-  text-decoration: none; /* Remover sublinhado */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra mais suave e integrada */
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 8px; /* Espaçamento entre ícone e texto */
-  /* Animação para carregar junto com o título */
+  justify-content: center;
+  gap: 10px; /* Espaçamento entre ícone e texto */
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInSlideUp 0.8s ease-out forwards;
-  animation-delay: 0.7s; /* Atraso para aparecer depois do título e subtítulo */
+  animation-delay: 0.6s; /* Ajustado o atraso para aparecer depois do subtítulo */
 }
 
 .changelogs-btn:hover {
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo um pouco mais escuro no hover */
-  border-color: rgba(255, 255, 255, 0.2); /* Borda mais visível no hover */
-  transform: translateY(-2px) scale(1.02); /* Efeito de leve levantamento e escala */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Sombra mais pronunciada no hover */
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo um pouco mais escuro no hover */
+  border-color: rgba(255, 255, 255, 0.3); /* Borda mais visível no hover */
+  transform: translateY(-3px) scale(1.03); /* Efeito de leve levantamento e escala */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); /* Sombra mais pronunciada no hover */
 }
 
 
