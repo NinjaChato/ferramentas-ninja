@@ -1,6 +1,6 @@
 Ferramentas Ninja - Histórico de Atualizações
 
-23/07/2025
+(23/07/2025)
 > Criação do histórico
 > Adição de jogos
  - The Binding of Isaac: Rebirth
