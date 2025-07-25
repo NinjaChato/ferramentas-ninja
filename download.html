@@ -1,61 +1,136 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Redirecionando...</title>
-    <script>
-        // Extrai o ID da URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const resourceId = urlParams.get('id');
-        
-        if(!resourceId) {
-            document.body.innerHTML = "<h1>Erro: ID não especificado</h1>";
-            throw new Error("ID não especificado");
-        }
-
-        // Busca o link real
-        fetch('links.json')
-            .then(response => response.json())
-            .then(links => {
-                const targetUrl = links[resourceId];
-                
-                if(targetUrl) {
-                    // Ofuscação adicional: decodifica URL se estiver em Base64
-                    const finalUrl = targetUrl.startsWith('b64:') 
-                        ? atob(targetUrl.slice(4)) 
-                        : targetUrl;
-
-                    document.body.innerHTML = `
-                        <h1>Redirecionando...</h1>
-                        <p>Se não funcionar automaticamente, <a href="${finalUrl}" id="directLink">clique aqui</a></p>
-                    `;
-                    setTimeout(() => {
-                        window.location.href = finalUrl;
-                    }, 1500);
-                } else {
-                    document.body.innerHTML = "<h1>Erro: Link não encontrado</h1>";
-                }
-            })
-            .catch(error => {
-                document.body.innerHTML = `<h1>Erro: ${error.message}</h1>`;
-            });
-    </script>
+    <title>Redirecionamento Ninja</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
             text-align: center;
-            padding: 50px;
-            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #161b22;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
         h1 {
-            color: #333;
+            color: #58a6ff;
+            margin-bottom: 20px;
         }
-        a {
-            color: #0066cc;
+        #countdown {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #f85149;
+        }
+        .manual-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #238636;
+            color: white;
             text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .manual-link:hover {
+            background-color: #2ea043;
+        }
+        .ninja-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Processando requisição...</h1>
+    <div class="container">
+        <div class="ninja-icon">🕵️‍♂️</div>
+        <h1>Redirecionamento Secreto Ativado</h1>
+        <div id="countdown">5</div>
+        <p>Preparando conexão segura...</p>
+        <a href="#" id="manualLink" class="manual-link">Clique aqui se não redirecionar</a>
+    </div>
+
+    <script>
+        // Configuração avançada
+        const SECURITY_DELAY = 5000; // 5 segundos (aumente se necessário)
+        const USE_BASE64 = false;     // Ativar/desativar decodificação Base64
+
+        // Elementos da página
+        const countdownEl = document.getElementById("countdown");
+        const manualLink = document.getElementById("manualLink");
+
+        // Extrai o ID da URL
+        const getResourceId = () => {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('id');
+        };
+
+        // Contagem regressiva estilizada
+        const startCountdown = (seconds) => {
+            let counter = seconds;
+            const interval = setInterval(() => {
+                countdownEl.textContent = counter;
+                counter--;
+                if (counter < 0) clearInterval(interval);
+            }, 1000);
+        };
+
+        // Sistema principal
+        const init = async () => {
+            const resourceId = getResourceId();
+            
+            if (!resourceId) {
+                showError("ID não especificado na URL");
+                return;
+            }
+
+            startCountdown(Math.floor(SECURITY_DELAY / 1000));
+
+            try {
+                const response = await fetch('../links.json');
+                const links = await response.json();
+                const encodedUrl = links[resourceId];
+
+                if (!encodedUrl) {
+                    showError("Recurso não encontrado");
+                    return;
+                }
+
+                // Decodifica URL se estiver em Base64
+                const finalUrl = USE_BASE64 && encodedUrl.startsWith('b64:') 
+                    ? atob(encodedUrl.slice(4)) 
+                    : encodedUrl;
+
+                // Prepara link manual
+                manualLink.href = finalUrl;
+
+                // Redireciona após o delay
+                setTimeout(() => {
+                    window.location.href = finalUrl;
+                }, SECURITY_DELAY);
+
+            } catch (error) {
+                showError(`Erro: ${error.message}`);
+            }
+        };
+
+        const showError = (message) => {
+            document.querySelector(".container").innerHTML = `
+                <h1 style="color: #f85149;">⚠️ Erro Ninja</h1>
+                <p>${message}</p>
+                <a href="../" class="manual-link">Voltar ao site</a>
+            `;
+        };
+
+        // Inicia o sistema
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
 </body>
 </html>
