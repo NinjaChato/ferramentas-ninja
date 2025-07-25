@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecionando...</title>
+    <script>
+        // Extrai o ID da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const resourceId = urlParams.get('id');
+        
+        if(!resourceId) {
+            document.body.innerHTML = "<h1>Erro: ID não especificado</h1>";
+            throw new Error("ID não especificado");
+        }
+
+        // Busca o link real
+        fetch('links.json')
+            .then(response => response.json())
+            .then(links => {
+                const targetUrl = links[resourceId];
+                
+                if(targetUrl) {
+                    // Ofuscação adicional: decodifica URL se estiver em Base64
+                    const finalUrl = targetUrl.startsWith('b64:') 
+                        ? atob(targetUrl.slice(4)) 
+                        : targetUrl;
+
+                    document.body.innerHTML = `
+                        <h1>Redirecionando...</h1>
+                        <p>Se não funcionar automaticamente, <a href="${finalUrl}" id="directLink">clique aqui</a></p>
+                    `;
+                    setTimeout(() => {
+                        window.location.href = finalUrl;
+                    }, 1500);
+                } else {
+                    document.body.innerHTML = "<h1>Erro: Link não encontrado</h1>";
+                }
+            })
+            .catch(error => {
+                document.body.innerHTML = `<h1>Erro: ${error.message}</h1>`;
+            });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Processando requisição...</h1>
+</body>
+</html>
