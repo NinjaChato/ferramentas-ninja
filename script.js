@@ -9,11 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyScriptBtns = document.querySelectorAll('.copy-script-btn');
   const copyMessage = document.getElementById('copyMessage');
   const mainContainer = document.getElementById('mainContainer');
-
-  // Exibe o container principal imediatamente, já que não há login
-  mainContainer.classList.add('visible');
-  document.body.classList.remove('no-scroll');
-  document.documentElement.classList.remove('no-scroll');
+  // const insaneModeToggle = document.getElementById('insaneModeToggle'); // REMOVIDO: Modo Insano
 
   // Função debounce para otimizar a pesquisa
   const debounce = (func, delay) => {
@@ -61,10 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else {
         // Para "Todos", rola para o topo do cabeçalho
-        document.querySelector('.header-glass').scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+        const header = document.querySelector('.header-glass');
+        if (header) { // Adicionar verificação para garantir que o elemento existe
+          header.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
       }
     });
   });
@@ -109,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
       noResultsMessage.classList.add('hidden');
     } else {
       noResultsMessage.classList.remove('hidden');
-      void noResultsMessage.offsetWidth;
+      void noResultsMessage.offsetWidth; // Força reflow para transição
       noResultsMessage.classList.add('visible');
     }
   }
@@ -145,11 +144,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Efeito de luz nos cards ao mover o mouse
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--spotlight-x', `${x}px`);
+      card.style.setProperty('--spotlight-y', `${y}px`);
+    });
+    // Adicionar listener para remover opacidade do spotlight quando o mouse sair
+    card.addEventListener('mouseleave', () => {
+        card.style.setProperty('--spotlight-x', '0'); // Resetar para evitar brilho residual
+        card.style.setProperty('--spotlight-y', '0');
+        // O CSS já lida com a transição de opacidade ao sair
+    });
+  });
+
+  // REMOVIDO: Lógica para o Modo Insano
+
   // Filtro inicial ao carregar a página
   filterContent('todos');
 
-  // Focar no campo de pesquisa
-  setTimeout(() => {
-    searchInput.focus();
-  }, 500);
+  // O foco no campo de pesquisa foi movido para o script inline no index.html (window.onload)
+  // para garantir que ele ocorra após o loader desaparecer e o conteúdo estar visível.
 });
