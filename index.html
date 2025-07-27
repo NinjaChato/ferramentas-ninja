@@ -9,13 +9,72 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
+    <style>
+      /* Estilos para evitar scroll durante o carregamento */
+      body.no-scroll {
+        overflow: hidden;
+      }
+      html.no-scroll {
+        overflow: hidden;
+      }
+      /* Oculta o container principal por padrão para a animação de carregamento */
+      .main-container {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+      }
+      /* Classe adicionada por JS quando o conteúdo está carregado */
+      .main-container.loaded {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Estilos para o loader (ajustados do seu CSS) */
+      #loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--dark-bg); /* Usa a variável CSS */
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.5s ease;
+      }
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-top-color: var(--primary-purple); /* Usa a variável CSS */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        box-shadow: 0 0 10px var(--primary-purple); /* Usa a variável CSS */
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
-  <body>
+  <body class="no-scroll">
+    <!-- Loader inicial -->
+    <div id="loader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Fundo de Partículas -->
+    <div id="particles-js"></div>
+
     <!-- Container principal da aplicação -->
     <div class="main-container" id="mainContainer">
       <!-- Cabeçalho com efeito de vidro -->
       <div class="header-glass">
-        <h1 class="main-title">Ferramentas Ninja</h1>
+        <div class="header-top">
+          <h1 class="main-title">Ferramentas Ninja</h1>
+          <!-- Modo Insano Toggle REMOVIDO -->
+        </div>
         <p class="subtitle mb-12">Seu portal seguro e estiloso para jogos, ferramentas e recursos essenciais.</p>
         <!-- Botão Changelogs -->
         <div class="flex justify-center">
@@ -309,11 +368,8 @@
                   <h3 class="text-2xl font-semibold mb-3">Need for Speed Underground</h3>
                   <p class="text-base opacity-85 mb-4">O jogo que definiu a cultura de tunagem em corridas de rua.</p>
                 </div>
-                <!-- Agrupamento dos links para melhor espaçamento -->
-                <div class="flex flex-col gap-2 mt-4">
-                  <a href="https://1fichier.com/?bhc5plxo7tmj3vf3mfip" target="_blank" rel="noopener noreferrer" class="!mt-0">Baixar Agora</a>
-                  <a href="https://ninja-worker.workers.dev/?url=https://1fichier.com/?bhc5plxo7tmj3vf3mfip" target="_blank" rel="noopener noreferrer" class="text-xs opacity-70 inline-block !mt-0">Link Alternativo (Com patches)</a>
-                </div>
+                <!-- REMOVIDO: Link alternativo do NFS Underground, conforme solicitação -->
+                <a href="https://1fichier.com/?bhc5plxo7tmj3vf3mfip" target="_blank" rel="noopener noreferrer">Baixar Agora</a>
               </div>
               <div class="card">
                 <div>
@@ -722,7 +778,140 @@
     <div id="copyMessage" class="copy-message hidden">
       <i class="fas fa-check-circle"></i> Script copiado! Adicione aos seus favoritos.
     </div>
+    <!-- Link para o script de particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <!-- Link para o arquivo JavaScript externo -->
     <script src="script.js" defer></script>
+    <script>
+      // Este script é executado após o DOM ser carregado, mas antes do script.js diferido
+      // O window.onload é importante para garantir que TUDO, incluindo imagens, esteja carregado.
+      window.onload = function() {
+        // Inicializa particles.js
+        particlesJS('particles-js', {
+          "particles": {
+            "number": {
+              "value": 80,
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              // Usando suas variáveis de cor para as partículas
+              "value": ["#9333ea", "#db2777", "#2563eb", "#16a34a", "#d97706", "#ea580c", "#e2e8f0"]
+            },
+            "shape": {
+              "type": "circle",
+              "stroke": {
+                "width": 0,
+                "color": "#000000"
+              },
+              "polygon": {
+                "nb_sides": 5
+              },
+            },
+            "opacity": {
+              "value": 0.4,
+              "random": true,
+              "anim": {
+                "enable": true,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+              }
+            },
+            "size": {
+              "value": 3,
+              "random": true,
+              "anim": {
+                "enable": true,
+                "speed": 4,
+                "size_min": 0.3,
+                "sync": false
+              }
+            },
+            "line_linked": {
+              "enable": true,
+              "distance": 150,
+              "color": "#e2e8f0",
+              "opacity": 0.2,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 1,
+              "direction": "none",
+              "random": true,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false,
+              "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+              }
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": {
+                "enable": true,
+                "mode": "bubble"
+              },
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              },
+              "resize": true
+            },
+            "modes": {
+              "grab": {
+                "distance": 400,
+                "line_linked": {
+                  "opacity": 1
+                }
+              },
+              "bubble": {
+                "distance": 200,
+                "size": 6,
+                "duration": 2,
+                "opacity": 0.6,
+                "speed": 3
+              },
+              "repulse": {
+                "distance": 200,
+                "duration": 0.4
+              },
+              "push": {
+                "particles_nb": 4
+              },
+              "remove": {
+                "particles_nb": 2
+              }
+            }
+          },
+          "retina_detect": true
+        });
+
+        const loader = document.getElementById('loader');
+        const mainContainer = document.getElementById('mainContainer');
+        const body = document.body;
+        const html = document.documentElement;
+        const searchInput = document.getElementById('searchInput'); // Pegar o input aqui também
+
+        // Tempo extra para garantir que as partículas estejam visíveis antes de remover o loader
+        setTimeout(() => {
+          loader.style.opacity = '0';
+          setTimeout(() => {
+            loader.style.display = 'none';
+            mainContainer.classList.add('loaded'); // Adiciona a classe para animar o main-container
+            body.classList.remove('no-scroll');
+            html.classList.remove('no-scroll');
+            searchInput.focus(); // Focar no input após o carregamento
+          }, 500); // Espera a transição do loader terminar
+        }, 1000); // Tempo para o particles.js carregar e renderizar
+      };
+    </script>
   </body>
 </html>
