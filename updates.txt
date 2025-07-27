@@ -1,5 +1,21 @@
 Ferramentas Ninja - Histórico de Atualizações
 
+(27/07/2025)
+> Atualização de links dos jogos
+> Remoção de jogos cujos links são bloqueados (Não consegui achar outros para eles)
+- The Binding of Isaac: Rebirth
+- A Dance of Fire and Ice
+- Hotline Miami
+- Hotline Miami 2: Wrong Number
+- LEGO Batman: The Videogame
+- Limbo
+- Baldi's Basics Plus
+- Super Meat Boy
+- Portal
+- Portal 2
+- Plants vs Zombies (GOTY Edition)
+(OBS: Sei que é a maioria dos jogos adicionados no primeiro update, mas prometo que vou tentar providenciar um download acessível para eles. Mas por enquanto, eles ficam fora do site.)
+
 (23/07/2025)
 > Criação do histórico
 > Adição de jogos
