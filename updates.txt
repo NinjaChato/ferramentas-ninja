@@ -1,6 +1,12 @@
 Ferramentas Ninja - Histórico de Atualizações
 
+(29/07/2025)
+> Adição de 2 jogos
+- Minecraft (Sklauncher)
+- Trackmania Nations Forever
+
 (27/07/2025)
+> Novo visual
 > Atualização de links dos jogos
 > Remoção de jogos cujos links são bloqueados (Não consegui achar outros para eles)
 - The Binding of Isaac: Rebirth
