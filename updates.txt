@@ -1,5 +1,8 @@
 Ferramentas Ninja - Histórico de Atualizações
 
+(16/08/2025)
+> Atualização de alguns links
+
 (29/07/2025)
 > Adição de ferramenta Psiphon (Uma ferramenta de censura-bypassing para acesso irrestrito à internet.)
 > Adição de 2 jogos
