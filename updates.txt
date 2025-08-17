@@ -1,5 +1,10 @@
 Ferramentas Ninja - Histórico de Atualizações
 
+(17/08/2025)
+> Visual novo
+> Aviso de VPN quando entra no site
+> Descrições com informações importantes sobre os links estão destacadas
+
 (16/08/2025)
 > Atualização de alguns links
 
