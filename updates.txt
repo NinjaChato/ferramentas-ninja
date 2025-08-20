@@ -1,5 +1,8 @@
 Ferramentas Ninja - Histórico de Atualizações
 
+(19/08/2025)
+> Adicionado UltraSurf as ferramentas (Ferramenta para evitar censura)
+
 (17/08/2025)
 > Visual novo
 > Aviso de VPN quando entra no site
