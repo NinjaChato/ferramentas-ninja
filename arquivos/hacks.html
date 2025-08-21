@@ -15,6 +15,15 @@
 <body class="p-4">
     <div id="loader"><div class="spinner"></div></div>
     <div id="particles-js"></div>
+    <div id="psiphonNotice" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10001] flex items-center justify-center p-4 hidden">
+      <div class="glass-effect max-w-md w-full p-8 rounded-2xl text-center relative">
+        <button id="closeNoticeBtn" class="absolute top-4 right-4 text-muted hover:text-light transition-colors text-2xl">&times;</button>
+        <i class="fas fa-shield-alt text-5xl text-primary-glow mb-4"></i>
+        <h2 class="text-2xl font-bold mb-3">Navegação Segura</h2>
+        <p class="text-muted mb-6">Para acessar sites de download que possam estar bloqueados, recomendamos o uso de uma VPN como o <strong class="text-light">Psiphon</strong> (disponível na seção Ferramentas) para garantir seu acesso. </p>
+        <button id="understandBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">Entendi</button>
+      </div>
+    </div>
 
     <div id="mainContainer" class="max-w-6xl mx-auto w-full">
         <header class="fade-in-up glass-effect p-6 md:p-8 mb-12 rounded-2xl mt-4">
