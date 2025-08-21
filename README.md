@@ -69,8 +69,7 @@ O projeto está organizado da seguinte maneira para facilitar a manutenção:
 │       └── script.js           # Lógica de JavaScript principal
 │
 └── README.md                   # Este arquivo```
-
----
+```
 
 ## 🏁 Como Executar
 
