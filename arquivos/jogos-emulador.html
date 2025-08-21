@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogos de Navegador | Ferramentas Ninja</title>
+    <title>Jogos de Emulador | Ferramentas Ninja</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <link rel="stylesheet" href="lógica/style.css">
+    <style>
+        /* Estilos para a janela do jogo (modal) */
+        #gameModal {
+            transition: opacity 0.3s ease-in-out;
+        }
+        #gameModal iframe {
+            aspect-ratio: 4 / 3;
+            width: 100%;
+            max-height: 85vh;
+            background-color: #000;
+        }
+    </style>
 </head>
 <body class="p-4">
     <div id="loader"><div class="spinner"></div></div>
@@ -45,129 +57,206 @@
 
         <main class="fade-in-up container mx-auto px-4">
             <div id="linksContainer">
-                <section class="jogos-navegador mb-16">
-                    <h2 class="section-title text-center">Jogos de Navegador</h2>
+                <section class="jogos-emulador mb-16">
+                    <h2 class="section-title text-center">Jogos de Emulador</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                        
+                        <!-- Zelda Games -->
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-gamepad"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">1000 Unblocked Games</h3>
-                                <p class="text-muted mb-4">Milhares de jogos desbloqueados ao seu alcance.</p>
+                                <div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Zelda: A Link to the Past</h3>
+                                <p class="text-muted mb-4">Um clássico do SNES. Viaje entre dois mundos para salvar Hyrule.</p>
                               </div>
-                              <a href="https://1000unblockedgames.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=alinktothepast.sfc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-robot"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">AI Royale</h3>
-                                <p class="text-muted mb-4">Um jogo de batalha royale com inteligência artificial.</p>
+                                <div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Zelda: Link's Awakening DX</h3>
+                                <p class="text-muted mb-4">Aventura de Game Boy Color. Explore a misteriosa Ilha Koholint.</p>
                               </div>
-                              <a href="https://airoyale007.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=linksawakeningdx.gbc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-bowling-ball"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Ball Bang</h3>
-                                <p class="text-muted mb-4">Jogue este divertido jogo diretamente no seu navegador.</p>
+                                <div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Zelda: Oracle of Seasons</h3>
+                                <p class="text-muted mb-4">Controle as estações para resolver quebra-cabeças e derrotar o mal.</p>
                               </div>
-                              <a href="https://ball-bang.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=oracleofseasons.gbc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-dice-d20"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Cool UBG</h3>
-                                <p class="text-muted mb-4">Jogos desbloqueados e divertidos para o seu navegador.</p>
+                                <div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Zelda: Oracle of Ages</h3>
+                                <p class="text-muted mb-4">Viaje através do tempo para corrigir o passado e salvar o futuro.</p>
                               </div>
-                              <a href="https://coolubg.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=oracleofages.gbc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-gamepad"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Games 76</h3>
-                                <p class="text-muted mb-4">Coleção de jogos online para diversão instantânea.</p>
+                                <div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Zelda: The Minish Cap</h3>
+                                <p class="text-muted mb-4">Aventura de Game Boy Advance onde Link pode encolher ao tamanho dos Minish.</p>
                               </div>
-                              <a href="https://games-76.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=theminishcap.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
+                            </div>
+                        </div>
+
+                        <!-- Mario Kart Games -->
+                        <div class="card">
+                            <div class="card-content p-6 flex flex-col justify-between h-full">
+                              <div>
+                                <div class="text-3xl mb-4"><i class="fas fa-flag-checkered"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario Kart</h3>
+                                <p class="text-muted mb-4">O jogo original de corrida de karts que deu início a tudo no SNES.</p>
+                              </div>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=supermariokart.smc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-gamepad"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Only Games</h3>
-                                <p class="text-muted mb-4">Uma coleção de jogos para você se divertir online.</p>
+                                <div class="text-3xl mb-4"><i class="fas fa-flag-checkered"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Mario Kart: Super Circuit</h3>
+                                <p class="text-muted mb-4">Acelere com a turma do Mario no Game Boy Advance.</p>
                               </div>
-                              <a href="https://only-games.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=mariokartsupercircuit.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
+
+                        <!-- Mario Platformers -->
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-gamepad"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Play Unblocked Games 76</h3>
-                                <p class="text-muted mb-4">Acesse uma vasta biblioteca de jogos desbloqueados.</p>
+                                <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario Bros.</h3>
+                                <p class="text-muted mb-4">O clássico absoluto do NES. Salve a Princesa Peach de Bowser.</p>
                               </div>
-                              <a href="https://play-unblocked-games76.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=nestopia&rom=supermariobros.nes" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Top Vaz Online</h3>
-                                <p class="text-muted mb-4">Jogos online variados para todas as idades.</p>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario Bros. 2</h3>
+                                <p class="text-muted mb-4">Jogue com Mario, Luigi, Toad ou Peach nesta aventura única do NES.</p>
                               </div>
-                              <a href="https://top-vaz-online.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=nestopia&rom=supermariobros2.nes" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-gamepad"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Unblocked Games 6x Online</h3>
-                                <p class="text-muted mb-4">Mais jogos desbloqueados para jogar online.</p>
+                                <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario Bros. 3</h3>
+                                <p class="text-muted mb-4">Um dos melhores jogos do NES, com power-ups e mundos incríveis.</p>
                               </div>
-                              <a href="https://unblockedgames6x-online.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=nestopia&rom=supermariobros3.nes" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-school"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Unblocked Games At School</h3>
-                                <p class="text-muted mb-4">Jogue seus jogos favoritos, mesmo na escola.</p>
+                                <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario Land</h3>
+                                <p class="text-muted mb-4">A primeira aventura portátil de Mario no Game Boy.</p>
                               </div>
-                              <a href="https://unblocked-gamesatschool.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermarioland.gb" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-trophy"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Unblocked Games GG</h3>
-                                <p class="text-muted mb-4">Sua plataforma para jogos desbloqueados.</p>
+                                <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario Land DX</h3>
+                                <p class="text-muted mb-4">Uma versão colorida do clássico de Game Boy, feita por fãs.</p>
                               </div>
-                              <a href="https://unblockedgamesgg.github.io/?ref=producthunt" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermariolanddx.gbc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-crown"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Unblocked Games Premium 67</h3>
-                                <p class="text-muted mb-4">Experiência premium com jogos desbloqueados.</p>
+                                <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario World</h3>
+                                <p class="text-muted mb-4">Explore a Terra dos Dinossauros com Mario e Yoshi neste clássico do SNES.</p>
                               </div>
-                              <a href="https://unblockedgamespremium67.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=supermarioworld.smc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
                             </div>
                         </div>
+                        <div class="card">
+                            <div class="card-content p-6 flex flex-col justify-between h-full">
+                              <div>
+                                <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Yoshi's Island</h3>
+                                <p class="text-muted mb-4">Leve o Bebê Mario em segurança nesta prequela de Super Mario World.</p>
+                              </div>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=supermarioworld2.smc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content p-6 flex flex-col justify-between h-full">
+                              <div>
+                                <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario All Stars</h3>
+                                <p class="text-muted mb-4">A coletânea definitiva com remakes dos clássicos de NES para o SNES.</p>
+                              </div>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=supermarioallstars.sfc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content p-6 flex flex-col justify-between h-full">
+                              <div>
+                                <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario Advance</h3>
+                                <p class="text-muted mb-4">O remake de Super Mario Bros. 2 para o Game Boy Advance.</p>
+                              </div>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermarioadvance.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content p-6 flex flex-col justify-between h-full">
+                              <div>
+                                <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario Advance 2</h3>
+                                <p class="text-muted mb-4">Super Mario World no seu bolso, na versão para Game Boy Advance.</p>
+                              </div>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermarioadvance2.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content p-6 flex flex-col justify-between h-full">
+                              <div>
+                                <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario Advance 3</h3>
+                                <p class="text-muted mb-4">Yoshi's Island em versão portátil para o Game Boy Advance.</p>
+                              </div>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermarioadvance3.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content p-6 flex flex-col justify-between h-full">
+                              <div>
+                                <div class="text-3xl mb-4"><i class="fas fa-star"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Super Mario Advance 4</h3>
+                                <p class="text-muted mb-4">O remake de Super Mario Bros. 3 para o Game Boy Advance.</p>
+                              </div>
+                              <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermarioadvance4.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
+                            </div>
+                        </div>
+
                     </div>
                 </section>
             </div>
@@ -178,7 +267,56 @@
             </div>
         </main>
     </div>
+
+    <!-- Modal para exibir o jogo -->
+    <div id="gameModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[10001] flex items-center justify-center p-4 hidden opacity-0">
+        <div class="glass-effect max-w-4xl w-full p-4 md:p-6 rounded-2xl text-center relative">
+            <button id="closeModalBtn" class="absolute -top-3 -right-3 text-white bg-red-600 hover:bg-red-700 rounded-full w-10 h-10 flex items-center justify-center transition-colors text-2xl z-10 shadow-lg">&times;</button>
+            <div id="gameEmbedContainer" class="w-full bg-black rounded-lg overflow-hidden shadow-2xl">
+                <!-- O Iframe do jogo será injetado aqui -->
+            </div>
+        </div>
+    </div>
+
     <button id="backToTop" class="fixed bottom-[-100px] right-6 w-14 h-14 glass-effect rounded-full text-2xl z-50 opacity-0"><i class="fas fa-arrow-up"></i></button>
+    
     <script src="lógica/script.js"></script>
+    <script>
+        // Adiciona a funcionalidade para abrir e fechar a janela do jogo
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('gameModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const gameEmbedContainer = document.getElementById('gameEmbedContainer');
+            const playButtons = document.querySelectorAll('.play-emulator-btn');
+
+            playButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const gameSrc = button.dataset.src;
+                    if (gameSrc) {
+                        gameEmbedContainer.innerHTML = `<iframe src="${gameSrc}" width="100%" height="600px" frameborder="0" allowfullscreen></iframe>`;
+                        modal.classList.remove('hidden');
+                        setTimeout(() => modal.classList.remove('opacity-0'), 10);
+                    }
+                });
+            });
+
+            const closeModal = () => {
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    gameEmbedContainer.innerHTML = ''; // Limpa o iframe para parar o jogo
+                }, 300);
+            };
+
+            closeModalBtn.addEventListener('click', closeModal);
+
+            // Fecha o modal se clicar fora da janela do jogo
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
