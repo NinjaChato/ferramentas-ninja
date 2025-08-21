@@ -11,7 +11,6 @@ Bem-vindo ao repositório do Ferramentas Ninja, um portal web criado para centra
 
 ## 📸 Visão Geral
 
-<!-- Adicione aqui um screenshot da página inicial do seu site! -->
 ![Screenshot do Ferramentas Ninja](https://i.imgur.com/k6jrXsE.png) 
 
 ---
@@ -59,17 +58,20 @@ O projeto está organizado da seguinte maneira para facilitar a manutenção:
 
 ```
 / (raiz do projeto)
+├── index.html                  # Página de redirecionamento
 ├── arquivos/
-│   ├── index.html              # Página inicial
+│   ├── index.html              # Página inicial do conteúdo
 │   ├── jogos-pc.html           # Página da categoria Jogos de PC
-│   ├── jogos-navegador.html    # ... e assim por diante para as outras páginas
+│   ├── ... (e assim por diante para as outras páginas)
 │   │
 │   └── lógica/
 │       ├── style.css           # Folha de estilos principal
 │       └── script.js           # Lógica de JavaScript principal
 │
-└── README.md                   # Este arquivo```
+└── README.md                   # Este arquivo
 ```
+
+---
 
 ## 🏁 Como Executar
 
@@ -83,7 +85,7 @@ Por ser um projeto puramente front-end (HTML, CSS e JS), não há necessidade de
     ```sh
     cd ferramentas-ninja
     ```
-3.  Abra o arquivo `arquivos/index.html` no seu navegador de preferência.
+3.  Abra o arquivo `index.html` (da pasta raiz) no seu navegador de preferência para ver o redirecionamento, ou abra diretamente `arquivos/index.html` para ver o conteúdo.
 
 E pronto! O site estará funcionando localmente.
 
