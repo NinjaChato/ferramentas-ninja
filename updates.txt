@@ -1,6 +1,7 @@
 Ferramentas Ninja - Histórico de Atualizações
 
 (20/08/2025)
+> Todas as páginas estão em arquivos diferentes
 > Nova categoria com jogos de emulador
 - Fire Emblem
 - Final Fantasy 3
