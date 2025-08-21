@@ -1,0 +1,249 @@
+/* ==============================================
+ESTILOS GERAIS E CUSTOMIZAÇÕES MAXIMALISTAS
+==============================================
+*/
+:root {
+  --primary-glow: #a855f7;
+  --secondary-glow: #ec4899;
+  --dark-bg: #030712;
+  --glass-bg: rgba(17, 24, 39, 0.6);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-light: #f9fafb;
+  --text-muted: #9ca3af;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--dark-bg); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+  border-radius: 10px;
+  border: 3px solid var(--dark-bg);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+/* Animação de fundo com gradiente */
+@keyframes background-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(-45deg,
+      rgba(168, 85, 247, 0.1),
+      rgba(236, 72, 153, 0.1),
+      rgba(59, 130, 246, 0.1),
+      rgba(34, 197, 94, 0.1));
+  background-size: 400% 400%;
+  animation: background-pan 15s ease-in-out infinite;
+  z-index: -2;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+  z-index: -1;
+}
+
+/* Estilos do Loader */
+#loader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--dark-bg);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+.spinner {
+  width: 60px; height: 60px;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--primary-glow);
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Animações de entrada */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in-up.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efeito de Vidro (Glassmorphism) */
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+}
+
+/* Títulos com gradiente e sombra */
+.main-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  background: linear-gradient(90deg, #fff, var(--text-muted));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  padding-bottom: 1rem;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--primary-glow);
+  box-shadow: 0 0 15px var(--primary-glow);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Cores específicas por categoria */
+.jogos-pc .section-title::after { background: #22c55e; box-shadow: 0 0 15px #22c55e; }
+.jogos-pc .action-btn { background: #22c55e; box-shadow: 0 0 20px -5px #22c55e; }
+.jogos-navegador .section-title::after { background: #3b82f6; box-shadow: 0 0 15px #3b82f6; }
+.jogos-navegador .action-btn { background: #3b82f6; box-shadow: 0 0 20px -5px #3b82f6; }
+.jogos-emulador .section-title::after { background: #f59e0b; box-shadow: 0 0 15px #f59e0b; }
+.jogos-emulador .action-btn { background: #f59e0b; box-shadow: 0 0 20px -5px #f59e0b; }
+.hacks .section-title::after { background: #f97316; box-shadow: 0 0 15px #f97316; }
+.hacks .action-btn { background: #f97316; box-shadow: 0 0 20px -5px #f97316; }
+.ferramentas .section-title::after { background: #ef4444; box-shadow: 0 0 15px #ef4444; }
+.ferramentas .action-btn { background: #ef4444; box-shadow: 0 0 20px -5px #ef4444; }
+
+/* Cards */
+.card {
+  background: #111827;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle 300px at var(--spotlight-x) var(--spotlight-y), rgba(255, 255, 255, 0.08), transparent 80%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.card:hover::before { opacity: 1; }
+.card-content { position: relative; z-index: 1; }
+
+/* Botões */
+.action-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+.action-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 5px; height: 5px;
+  background: rgba(255, 255, 255, 0.7);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+.action-btn:hover::after { animation: ripple 0.6s ease-out; }
+@keyframes ripple {
+  from { transform: scale(0) translate(-50%, -50%); opacity: 0.7; }
+  to { transform: scale(40) translate(-50%, -50%); opacity: 0; }
+}
+
+/* Botão Voltar ao Topo */
+#backToTop { transition: opacity 0.4s ease, bottom 0.4s ease, transform 0.3s ease; }
+#backToTop:hover {
+  transform: scale(1.1) rotate(-10deg);
+  background: var(--primary-glow);
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+/* Mensagem de Script Copiado */
+#copyMessage { transition: opacity 0.4s ease, transform 0.4s ease; }
+
+/* Destaque de Senha */
+.password-highlight {
+  background-color: var(--primary-glow);
+  color: white;
+  padding: 0.2em 0.6em;
+  border-radius: 0.3em;
+  font-weight: bold;
+}
+
+/* Botões de Categoria (Navegação) */
+.category-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  display: inline-block;
+  text-decoration: none;
+}
+.category-btn:hover {
+  background: var(--primary-glow);
+  color: white;
+  border-color: var(--primary-glow);
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+.category-btn.active {
+  background: var(--primary-glow);
+  color: white;
+  border-color: var(--primary-glow);
+  box-shadow: 0 0 20px var(--primary-glow);
+  transform: scale(1.05);
+}
+
+/* Estilos do Modal de Aviso */
+#psiphonNotice.hidden { display: none; }
+#psiphonNotice > div { animation: modal-fade-in 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+@keyframes modal-fade-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
