@@ -15,7 +15,9 @@
 <body class="p-4">
     <div id="loader"><div class="spinner"></div></div>
     <div id="particles-js"></div>
-    <div id="psiphonNotice" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10001] flex items-center justify-center p-4 hidden">
+    
+    <!-- CORREÇÃO: Removida a classe "hidden" da linha abaixo para que o aviso apareça -->
+    <div id="psiphonNotice" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10001] flex items-center justify-center p-4">
       <div class="glass-effect max-w-md w-full p-8 rounded-2xl text-center relative">
         <button id="closeNoticeBtn" class="absolute top-4 right-4 text-muted hover:text-light transition-colors text-2xl">&times;</button>
         <i class="fas fa-info-circle text-5xl text-primary-glow mb-4"></i>
