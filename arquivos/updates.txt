@@ -1,5 +1,10 @@
 Ferramentas Ninja - Histórico de Atualizações
 
+(26/08/2025)
+> Nova ferramenta Canlite (Proxy para burlar censura, não sei se funciona)
+> Novos jogos de navegador
+- Aviso na página de jogos de navegador
+
 (20/08/2025)
 > Todas as páginas estão em arquivos diferentes
 > Nova categoria com jogos de emulador
