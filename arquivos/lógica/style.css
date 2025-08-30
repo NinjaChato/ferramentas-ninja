@@ -1,6 +1,6 @@
 /* =========================================================
-   TEMA POLISHED LUMINOUS (v5.0) - VERSÃO FINAL CORRIGIDA
-   Design estável, funcional e refinado.
+   TEMA POLISHED LUMINOUS (v5.1) - VERSÃO FINAL CORRIGIDA
+   Inclui estilos para modal de senha e notificação de cópia.
 ========================================================= */
 
 :root {
@@ -42,6 +42,12 @@
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+/* Animação de tremor para erro de senha */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
 }
 
 /* === ESTILOS GERAIS E DE BASE === */
@@ -96,11 +102,11 @@ body::before {
 }
 .fade-in-up.loaded { opacity: 1; transform: translateY(0); }
 
-/* === HEADER E COMPONENTES DE VIDRO (CORRIGIDOS) === */
+/* === HEADER E COMPONENTES DE VIDRO === */
 .glass-effect {
   background: var(--glass-bg);
   backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid transparent; /* A borda agora vem do border-image */
+  border: 1px solid transparent;
   border-image: linear-gradient(to right, var(--border-color), rgba(168, 85, 247, 0.5), var(--border-color)) 1;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
@@ -128,36 +134,34 @@ body::before {
   animation: pulse-glow 3s ease-in-out infinite;
 }
 
-/* === CARDS COM EFEITO 3D E ILUMINAÇÃO (CORRIGIDOS) === */
+/* === CARDS COM EFEITO 3D E ILUMINAÇÃO === */
 .grid { perspective: 1500px; }
 .card {
   background: #111827; border-radius: 1rem;
   position: relative; overflow: hidden;
   border: 1px solid var(--border-color);
   transition: transform 0.4s var(--swoosh), box-shadow 0.4s var(--swoosh);
-  transform: rotateX(0) rotateY(0); /* Estado inicial para o JS controlar */
+  transform: rotateX(0) rotateY(0);
   will-change: transform, box-shadow;
 }
-/* CORREÇÃO CRÍTICA: O ::after agora tem z-index 1 para ficar ATRÁS do conteúdo */
 .card::after {
   content: ''; position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   background-image: radial-gradient(circle 400px at var(--spotlight-x) var(--spotlight-y), rgba(255, 255, 255, 0.08), transparent 80%);
   opacity: 0;
   transition: opacity 0.4s ease;
-  z-index: 1; /* Fica acima do fundo do card */
+  z-index: 1;
 }
-/* CORREÇÃO CRÍTICA: O conteúdo do card tem z-index 2 para ficar ACIMA do ::after */
 .card-content {
   position: relative;
-  z-index: 2; /* Garante que o conteúdo e botões sejam clicáveis */
+  z-index: 2;
 }
 .card:hover::after { opacity: 1; }
 .card h3 { font-size: 1.6rem; }
 .card h3, .card .fas { transition: color 0.4s ease, text-shadow 0.4s ease; }
 .card p { line-height: 1.6; color: var(--text-muted); }
 
-/* === CORES E AURAS DINÂMICAS POR CATEGORIA (REFINADAS) === */
+/* === CORES E AURAS DINÂMICAS POR CATEGORIA === */
 .jogos-pc .card:hover { border-color: var(--color-pc); box-shadow: 0 10px 50px -15px var(--color-pc); }
 .jogos-pc .card:hover h3, .jogos-pc .card:hover .fas { color: var(--color-pc); text-shadow: 0 0 12px var(--color-pc); }
 
@@ -173,14 +177,14 @@ body::before {
 .ferramentas .card:hover { border-color: var(--color-ferramentas); box-shadow: 0 10px 50px -15px var(--color-ferramentas); }
 .ferramentas .card:hover h3, .ferramentas .card:hover .fas { color: var(--color-ferramentas); text-shadow: 0 0 12px var(--color-ferramentas); }
 
-/* === BOTÕES E INTERAÇÕES (REFINADOS) === */
+/* === BOTÕES E INTERAÇÕES === */
 .action-btn {
   position: relative; overflow: hidden;
   font-weight: 600;
   transition: all 0.3s ease;
   background-size: 250% auto;
   border: none;
-  border-radius: 0.5rem; /* Adicionado para consistência */
+  border-radius: 0.5rem;
 }
 .jogos-pc .action-btn { background-image: linear-gradient(90deg, #10b981 0%, #22c55e 50%, #10b981 100%); }
 .jogos-navegador .action-btn { background-image: linear-gradient(90deg, #3b82f6 0%, #60a5fa 50%, #3b82f6 100%); }
@@ -227,4 +231,12 @@ body::before {
   transform: scale(1.1) rotate(-10deg);
   background: var(--primary-glow);
   box-shadow: 0 0 20px var(--primary-glow);
+}
+
+/* === NOVOS ESTILOS PARA NOTIFICAÇÃO E SENHA === */
+#copyMessage {
+  transition: opacity 0.4s ease, transform 0.4s var(--swoosh);
+}
+.shake {
+  animation: shake 0.5s ease-in-out;
 }
