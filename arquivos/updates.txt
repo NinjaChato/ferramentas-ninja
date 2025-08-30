@@ -1,5 +1,15 @@
 Ferramentas Ninja - Histórico de Atualizações
 
+(30/08/2025)
+> Design melhorado
+> Layout novo na página inicial
+> Novos jogos
+- Ultimate Custom Night
+- Fifa 14
+- Freddy Fazbear's Pizzeria Simulator
+- OMORI
+- Rimworld
+
 (26/08/2025)
 > Nova ferramenta Canlite (Proxy para burlar censura, não sei se funciona)
 > Novos jogos de navegador
