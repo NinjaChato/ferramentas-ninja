@@ -1,3 +1,8 @@
+/* =========================================================
+   TEMA POLISHED LUMINOUS (v5.0) - VERSÃO FINAL CORRIGIDA
+   Design estável, funcional e refinado.
+========================================================= */
+
 :root {
   --primary-glow: #a855f7;
   --secondary-glow: #ec4899;
@@ -91,23 +96,13 @@ body::before {
 }
 .fade-in-up.loaded { opacity: 1; transform: translateY(0); }
 
-/* === HEADER E COMPONENTES DE VIDRO (MELHORADOS) === */
+/* === HEADER E COMPONENTES DE VIDRO (CORRIGIDOS) === */
 .glass-effect {
   background: var(--glass-bg);
   backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--border-color);
+  border: 1px solid transparent; /* A borda agora vem do border-image */
+  border-image: linear-gradient(to right, var(--border-color), rgba(168, 85, 247, 0.5), var(--border-color)) 1;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  position: relative; overflow: hidden;
-}
-/* BORDA DE LUZ ANIMADA PARA O HEADER */
-.glass-effect::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(120deg, transparent, var(--primary-glow), transparent);
-  animation: shimmer 8s ease-in-out infinite;
-  opacity: 0.5;
-  background-size: 200% 100%;
 }
 .main-title {
   font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
@@ -133,56 +128,59 @@ body::before {
   animation: pulse-glow 3s ease-in-out infinite;
 }
 
-/* === CARDS COM EFEITO 3D E ILUMINAÇÃO (MELHORADOS) === */
-.grid { transform-style: preserve-3d; }
+/* === CARDS COM EFEITO 3D E ILUMINAÇÃO (CORRIGIDOS) === */
+.grid { perspective: 1500px; }
 .card {
   background: #111827; border-radius: 1rem;
   position: relative; overflow: hidden;
   border: 1px solid var(--border-color);
-  transition: transform 0.6s var(--swoosh), box-shadow 0.6s var(--swoosh);
+  transition: transform 0.4s var(--swoosh), box-shadow 0.4s var(--swoosh);
+  transform: rotateX(0) rotateY(0); /* Estado inicial para o JS controlar */
   will-change: transform, box-shadow;
 }
-.card::after { /* Spotlight que segue o mouse */
+/* CORREÇÃO CRÍTICA: O ::after agora tem z-index 1 para ficar ATRÁS do conteúdo */
+.card::after {
   content: ''; position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   background-image: radial-gradient(circle 400px at var(--spotlight-x) var(--spotlight-y), rgba(255, 255, 255, 0.08), transparent 80%);
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.4s ease;
+  z-index: 1; /* Fica acima do fundo do card */
 }
-.card:hover {
-  transform: perspective(1000px) rotateX(5deg) translateY(-10px) scale(1.04);
+/* CORREÇÃO CRÍTICA: O conteúdo do card tem z-index 2 para ficar ACIMA do ::after */
+.card-content {
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo e botões sejam clicáveis */
 }
 .card:hover::after { opacity: 1; }
-.card-content {
-  position: relative; z-index: 1;
-  transition: transform 0.6s var(--swoosh);
-}
-.card:hover .card-content { transform: translateY(-5px); } /* Efeito de profundidade interna */
+.card h3 { font-size: 1.6rem; }
 .card h3, .card .fas { transition: color 0.4s ease, text-shadow 0.4s ease; }
 .card p { line-height: 1.6; color: var(--text-muted); }
 
-/* === CORES E AURAS DINÂMICAS POR CATEGORIA (MELHORADAS) === */
-.jogos-pc .card:hover { border-color: var(--color-pc); box-shadow: 0 0 40px -10px var(--color-pc); }
-.jogos-pc:hover h3, .jogos-pc:hover .fas { color: var(--color-pc); text-shadow: 0 0 10px var(--color-pc); }
+/* === CORES E AURAS DINÂMICAS POR CATEGORIA (REFINADAS) === */
+.jogos-pc .card:hover { border-color: var(--color-pc); box-shadow: 0 10px 50px -15px var(--color-pc); }
+.jogos-pc .card:hover h3, .jogos-pc .card:hover .fas { color: var(--color-pc); text-shadow: 0 0 12px var(--color-pc); }
 
-.jogos-navegador .card:hover { border-color: var(--color-navegador); box-shadow: 0 0 40px -10px var(--color-navegador); }
-.jogos-navegador:hover h3, .jogos-navegador:hover .fas { color: var(--color-navegador); text-shadow: 0 0 10px var(--color-navegador); }
+.jogos-navegador .card:hover { border-color: var(--color-navegador); box-shadow: 0 10px 50px -15px var(--color-navegador); }
+.jogos-navegador .card:hover h3, .jogos-navegador .card:hover .fas { color: var(--color-navegador); text-shadow: 0 0 12px var(--color-navegador); }
 
-.jogos-emulador .card:hover { border-color: var(--color-emulador); box-shadow: 0 0 40px -10px var(--color-emulador); }
-.jogos-emulador:hover h3, .jogos-emulador:hover .fas { color: var(--color-emulador); text-shadow: 0 0 10px var(--color-emulador); }
+.jogos-emulador .card:hover { border-color: var(--color-emulador); box-shadow: 0 10px 50px -15px var(--color-emulador); }
+.jogos-emulador .card:hover h3, .jogos-emulador .card:hover .fas { color: var(--color-emulador); text-shadow: 0 0 12px var(--color-emulador); }
 
-.hacks .card:hover { border-color: var(--color-hacks); box-shadow: 0 0 40px -10px var(--color-hacks); }
-.hacks:hover h3, .hacks:hover .fas { color: var(--color-hacks); text-shadow: 0 0 10px var(--color-hacks); }
+.hacks .card:hover { border-color: var(--color-hacks); box-shadow: 0 10px 50px -15px var(--color-hacks); }
+.hacks .card:hover h3, .hacks .card:hover .fas { color: var(--color-hacks); text-shadow: 0 0 12px var(--color-hacks); }
 
-.ferramentas .card:hover { border-color: var(--color-ferramentas); box-shadow: 0 0 40px -10px var(--color-ferramentas); }
-.ferramentas:hover h3, .ferramentas:hover .fas { color: var(--color-ferramentas); text-shadow: 0 0 10px var(--color-ferramentas); }
+.ferramentas .card:hover { border-color: var(--color-ferramentas); box-shadow: 0 10px 50px -15px var(--color-ferramentas); }
+.ferramentas .card:hover h3, .ferramentas .card:hover .fas { color: var(--color-ferramentas); text-shadow: 0 0 12px var(--color-ferramentas); }
 
-/* === BOTÕES E INTERAÇÕES (MELHORADOS) === */
+/* === BOTÕES E INTERAÇÕES (REFINADOS) === */
 .action-btn {
   position: relative; overflow: hidden;
   font-weight: 600;
-  transition: all 0.4s var(--swoosh);
+  transition: all 0.3s ease;
   background-size: 250% auto;
+  border: none;
+  border-radius: 0.5rem; /* Adicionado para consistência */
 }
 .jogos-pc .action-btn { background-image: linear-gradient(90deg, #10b981 0%, #22c55e 50%, #10b981 100%); }
 .jogos-navegador .action-btn { background-image: linear-gradient(90deg, #3b82f6 0%, #60a5fa 50%, #3b82f6 100%); }
@@ -191,7 +189,7 @@ body::before {
 .ferramentas .action-btn { background-image: linear-gradient(90deg, #ef4444 0%, #fca5a5 50%, #ef4444 100%); }
 .action-btn:hover {
   transform: scale(1.05); filter: brightness(1.2);
-  background-position: right center; /* Anima o gradiente */
+  background-position: right center;
   box-shadow: 0 0 25px 0px currentColor;
 }
 .category-btn {
