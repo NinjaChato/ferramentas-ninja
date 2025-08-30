@@ -1,6 +1,6 @@
 /* =========================================================
-   SCRIPT OTIMIZADO (v2.0) - PERFORMANCE E INTERATIVIDADE
-   Otimizado para o Tema "Luminous" (v4.5)
+   SCRIPT OTIMIZADO (v2.1) - PERFORMANCE E INTERATIVIDADE
+   Inclui lógica de "Copiar Script" e "Senha".
 ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -91,29 +91,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 4. FUNCIONALIDADE DE BUSCA (OTIMIZADA COM DEBOUNCE) ---
   const searchInput = document.getElementById('searchInput');
-  const linksContainer = document.getElementById('linksContainer');
-  const allCards = document.querySelectorAll('#linksContainer .card');
-  const noResultsMessage = document.getElementById('noResultsMessage');
-
-  const performSearch = () => {
-    const searchTerm = searchInput.value.toLowerCase().trim();
-    let cardsFound = 0;
-
-    allCards.forEach(card => {
-      const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
-      const description = card.querySelector('p')?.textContent.toLowerCase() || '';
-      const isVisible = title.includes(searchTerm) || description.includes(searchTerm);
-      
-      card.style.display = isVisible ? 'block' : 'none';
-      if (isVisible) cardsFound++;
-    });
-
-    const hasResults = cardsFound > 0;
-    if (linksContainer) linksContainer.style.display = hasResults ? 'block' : 'none';
-    if (noResultsMessage) noResultsMessage.style.display = hasResults ? 'none' : 'block';
-  };
-  
   if (searchInput) {
+    const linksContainer = document.getElementById('linksContainer');
+    const allCards = document.querySelectorAll('#linksContainer .card');
+    const noResultsMessage = document.getElementById('noResultsMessage');
+
+    const performSearch = () => {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      let cardsFound = 0;
+
+      allCards.forEach(card => {
+        const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+        const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+        const isVisible = title.includes(searchTerm) || description.includes(searchTerm);
+        
+        card.style.display = isVisible ? 'block' : 'none';
+        if (isVisible) cardsFound++;
+      });
+
+      const hasResults = cardsFound > 0;
+      if (linksContainer) linksContainer.style.display = hasResults ? 'block' : 'none';
+      if (noResultsMessage) noResultsMessage.style.display = hasResults ? 'none' : 'block';
+    };
+    
     searchInput.addEventListener('keyup', debounce(performSearch, 250));
   }
 
@@ -150,5 +150,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', throttle(handleScroll, 100));
     backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // --- 7. FUNCIONALIDADE DE COPIAR SCRIPT ---
+  const copyMessage = document.getElementById('copyMessage');
+  const copyScriptBtns = document.querySelectorAll('.copy-script-btn');
+  if (copyMessage && copyScriptBtns.length > 0) {
+    copyScriptBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const scriptToCopy = btn.dataset.script;
+        navigator.clipboard.writeText(scriptToCopy).then(() => {
+          copyMessage.style.opacity = '1';
+          copyMessage.style.transform = 'translate(-50%, 0)';
+          setTimeout(() => {
+            copyMessage.style.opacity = '0';
+            copyMessage.style.transform = 'translate(-50%, -2.5rem)';
+          }, 2000);
+        }).catch(err => {
+          console.error('Falha ao copiar script: ', err);
+        });
+      });
+    });
+  }
+
+  // --- 8. PROTEÇÃO DE SENHA PARA PÁGINA DE HACKS ---
+  const passwordModal = document.getElementById('passwordModal');
+  if (passwordModal) {
+    const protectedContent = document.getElementById('protectedContent');
+    const passwordForm = document.getElementById('passwordForm');
+    const passwordInput = document.getElementById('passwordInput');
+    const errorMessage = document.getElementById('errorMessage');
+
+    const unlockPage = () => {
+      passwordModal.style.opacity = '0';
+      setTimeout(() => {
+        passwordModal.style.display = 'none';
+      }, 500);
+      protectedContent.classList.remove('hidden');
+    };
+
+    if (sessionStorage.getItem('hacksAccessGranted') === 'true') {
+      unlockPage();
+    }
+
+    passwordForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // ==========================================
+      //  DEFINA SUA SENHA AQUI
+      // ==========================================
+      const correctPassword = 'ninja'; // <-- TROQUE 'ninja' PELA SENHA QUE VOCÊ QUISER
+      // ==========================================
+
+      if (passwordInput.value === correctPassword) {
+        sessionStorage.setItem('hacksAccessGranted', 'true');
+        unlockPage();
+      } else {
+        errorMessage.style.opacity = '1';
+        passwordModal.querySelector('.glass-effect').classList.add('shake');
+        passwordInput.value = '';
+        setTimeout(() => {
+          errorMessage.style.opacity = '0';
+          passwordModal.querySelector('.glass-effect').classList.remove('shake');
+        }, 2000);
+      }
+    });
   }
 });
