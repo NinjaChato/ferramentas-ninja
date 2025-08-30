@@ -36,11 +36,14 @@
                     <i class="fas fa-history fa-spin-pulse" style="--fa-animation-duration: 5s;"></i> Changelogs
                 </a>
             </div>
-            <!-- BARRA DE BUSCA MOVIDA PARA O HEADER PRINCIPAL -->
             <div class="mt-8">
-                <div class="relative">
-                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-muted text-xl"></i>
-                    <input type="text" id="searchInput" class="w-full bg-black/20 border border-white/10 rounded-lg py-4 pl-12 pr-4 text-lg text-light placeholder-muted focus:ring-2 focus:ring-primary-glow focus:border-primary-glow transition-all duration-300 outline-none" placeholder="Busque em todo o portal...">
+                <div class="category-buttons flex flex-wrap justify-center gap-2 md:gap-4">
+                    <a href="index.html" class="category-btn active"><i class="fas fa-home mr-2"></i>Início</a>
+                    <a href="jogos-pc.html" class="category-btn"><i class="fas fa-desktop mr-2"></i>Jogos PC</a>
+                    <a href="jogos-navegador.html" class="category-btn"><i class="fas fa-globe mr-2"></i>Navegador</a>
+                    <a href="jogos-emulador.html" class="category-btn"><i class="fas fa-ghost mr-2"></i>Emulador</a>
+                    <a href="hacks.html" class="category-btn"><i class="fas fa-user-secret mr-2"></i>Hacks</a>
+                    <a href="ferramentas.html" class="category-btn"><i class="fas fa-tools mr-2"></i>Ferramentas</a>
                 </div>
             </div>
         </header>
@@ -50,8 +53,8 @@
             <!-- SEÇÃO DE DESTAQUES -->
             <section id="featured" class="fade-in-up mb-16">
                 <h2 class="section-title text-center">Em Destaque</h2>
+                <p class="text-lg text-muted text-center mt-4 max-w-2xl mx-auto">Confira nossas principais recomendações, escolhidas a dedo para você.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                    <!-- Card de Destaque 1 (Exemplo: Jogo PC) -->
                     <div class="card jogos-pc">
                         <a href="jogos-pc.html" class="block h-full">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
@@ -64,7 +67,6 @@
                             </div>
                         </a>
                     </div>
-                    <!-- Card de Destaque 2 (Exemplo: Ferramenta) -->
                     <div class="card ferramentas">
                         <a href="ferramentas.html" class="block h-full">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
@@ -77,7 +79,6 @@
                             </div>
                         </a>
                     </div>
-                    <!-- Card de Destaque 3 (Exemplo: Jogo Emulador) - ATUALIZADO -->
                     <div class="card jogos-emulador">
                         <a href="jogos-emulador.html" class="block h-full">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
@@ -93,19 +94,50 @@
                 </div>
             </section>
             
-            <!-- SEÇÃO DE CATEGORIAS VISUAL -->
+            <!-- SEÇÃO DE CATEGORIAS VISUAL (MELHORADA) -->
             <section id="categories" class="fade-in-up mb-16">
                 <h2 class="section-title text-center">Explore as Categorias</h2>
+                <p class="text-lg text-muted text-center mt-4 max-w-2xl mx-auto">Navegue por nossas seções para encontrar exatamente o que você precisa.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mt-8">
-                    <a href="jogos-pc.html" class="card category-card jogos-pc"><div class="card-content text-center p-6"><i class="fas fa-desktop text-4xl mb-4"></i><h3 class="font-bold text-xl">Jogos PC</h3></div></a>
-                    <a href="jogos-navegador.html" class="card category-card jogos-navegador"><div class="card-content text-center p-6"><i class="fas fa-globe text-4xl mb-4"></i><h3 class="font-bold text-xl">Navegador</h3></div></a>
-                    <a href="jogos-emulador.html" class="card category-card jogos-emulador"><div class="card-content text-center p-6"><i class="fas fa-ghost text-4xl mb-4"></i><h3 class="font-bold text-xl">Emulador</h3></div></a>
-                    <a href="hacks.html" class="card category-card hacks"><div class="card-content text-center p-6"><i class="fas fa-user-secret text-4xl mb-4"></i><h3 class="font-bold text-xl">Hacks</h3></div></a>
-                    <a href="ferramentas.html" class="card category-card ferramentas"><div class="card-content text-center p-6"><i class="fas fa-tools text-4xl mb-4"></i><h3 class="font-bold text-xl">Ferramentas</h3></div></a>
+                    <a href="jogos-pc.html" class="card jogos-pc"><div class="card-content text-center p-6"><i class="fas fa-desktop text-4xl mb-4"></i><h3 class="font-bold text-xl">Jogos PC</h3><p class="text-sm text-muted mt-2">Clássicos e indies para baixar e jogar.</p></div></a>
+                    <a href="jogos-navegador.html" class="card jogos-navegador"><div class="card-content text-center p-6"><i class="fas fa-globe text-4xl mb-4"></i><h3 class="font-bold text-xl">Navegador</h3><p class="text-sm text-muted mt-2">Diversão instantânea, sem necessidade de instalação.</p></div></a>
+                    <a href="jogos-emulador.html" class="card jogos-emulador"><div class="card-content text-center p-6"><i class="fas fa-ghost text-4xl mb-4"></i><h3 class="font-bold text-xl">Emulador</h3><p class="text-sm text-muted mt-2">Reviva os maiores clássicos dos consoles.</p></div></a>
+                    <a href="hacks.html" class="card hacks"><div class="card-content text-center p-6"><i class="fas fa-user-secret text-4xl mb-4"></i><h3 class="font-bold text-xl">Hacks</h3><p class="text-sm text-muted mt-2">Modificações e vantagens para seus jogos.</p></div></a>
+                    <a href="ferramentas.html" class="card ferramentas"><div class="card-content text-center p-6"><i class="fas fa-tools text-4xl mb-4"></i><h3 class="font-bold text-xl">Ferramentas</h3><p class="text-sm text-muted mt-2">Utilitários essenciais para seu setup.</p></div></a>
+                </div>
+            </section>
+
+            <!-- NOVA SEÇÃO DE CONFIANÇA -->
+            <section id="why-us" class="fade-in-up mb-16">
+                <div class="glass-effect p-8 md:p-12 rounded-2xl">
+                    <h2 class="section-title text-center">Por Que Confiar?</h2>
+                    <p class="text-lg text-muted text-center mt-4 max-w-3xl mx-auto">Nossa missão é fornecer acesso fácil e seguro a conteúdo de qualidade, sem complicações.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 text-center">
+                        <div class="feature-item">
+                            <i class="fas fa-shield-virus text-4xl text-primary-glow mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Links Verificados</h3>
+                            <p class="text-muted">Cada link é testado e verificado para garantir sua segurança e funcionalidade.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-star text-4xl text-primary-glow mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Curadoria de Qualidade</h3>
+                            <p class="text-muted">Apenas os melhores e mais amados jogos e ferramentas entram em nosso portal.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bolt text-4xl text-primary-glow mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Downloads Diretos</h3>
+                            <p class="text-muted">Sem encurtadores, pop-ups ou anúncios. Acesso direto ao que você procura.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
         </main>
+
+        <!-- NOVO RODAPÉ -->
+        <footer class="text-center py-8 text-muted">
+            <p>&copy; 2025 Ferramentas Ninja. Todos os direitos reservados.</p>
+        </footer>
     </div>
 
     <button id="backToTop" class="fixed bottom-[-100px] right-6 w-14 h-14 glass-effect rounded-full text-2xl z-50 opacity-0"><i class="fas fa-arrow-up"></i></button>
