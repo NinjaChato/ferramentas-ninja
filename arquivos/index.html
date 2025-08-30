@@ -36,24 +36,75 @@
                     <i class="fas fa-history fa-spin-pulse" style="--fa-animation-duration: 5s;"></i> Changelogs
                 </a>
             </div>
+            <!-- BARRA DE BUSCA MOVIDA PARA O HEADER PRINCIPAL -->
             <div class="mt-8">
-                <div class="category-buttons flex flex-wrap justify-center gap-2 md:gap-4 mt-6">
-                    <a href="index.html" class="category-btn"><i class="fas fa-home mr-2"></i>Início</a>
-                    <a href="jogos-pc.html" class="category-btn"><i class="fas fa-desktop mr-2"></i>Jogos PC</a>
-                    <a href="jogos-navegador.html" class="category-btn"><i class="fas fa-globe mr-2"></i>Navegador</a>
-                    <a href="jogos-emulador.html" class="category-btn"><i class="fas fa-ghost mr-2"></i>Emulador</a>
-                    <a href="hacks.html" class="category-btn"><i class="fas fa-user-secret mr-2"></i>Hacks</a>
-                    <a href="ferramentas.html" class="category-btn"><i class="fas fa-tools mr-2"></i>Ferramentas</a>
+                <div class="relative">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-muted text-xl"></i>
+                    <input type="text" id="searchInput" class="w-full bg-black/20 border border-white/10 rounded-lg py-4 pl-12 pr-4 text-lg text-light placeholder-muted focus:ring-2 focus:ring-primary-glow focus:border-primary-glow transition-all duration-300 outline-none" placeholder="Busque em todo o portal...">
                 </div>
             </div>
         </header>
 
-        <main class="fade-in-up container mx-auto px-4">
-            <div class="text-center glass-effect p-12 my-16 rounded-2xl">
-                <i class="fas fa-compass text-6xl text-primary-glow mb-6 animate-pulse"></i>
-                <h2 class="text-3xl font-bold mb-2">Bem-vindo ao Portal Ninja!</h2>
-                <p class="text-muted text-lg">Navegue pelas categorias acima para encontrar o que procura.</p>
-            </div>
+        <main class="container mx-auto px-4">
+            
+            <!-- SEÇÃO DE DESTAQUES -->
+            <section id="featured" class="fade-in-up mb-16">
+                <h2 class="section-title text-center">Em Destaque</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                    <!-- Card de Destaque 1 (Exemplo: Jogo PC) -->
+                    <div class="card jogos-pc">
+                        <a href="jogos-pc.html" class="block h-full">
+                            <div class="card-content p-6 flex flex-col justify-between h-full">
+                              <div>
+                                <div class="text-3xl mb-4"><i class="fas fa-skull-crossbones"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">ULTRAKILL</h3>
+                                <p class="text-muted mb-4">Um FPS frenético e ultraviolento com um estilo retrô. Ação pura para os fãs do gênero.</p>
+                              </div>
+                              <span class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4 inline-block">Ver em Jogos PC</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Card de Destaque 2 (Exemplo: Ferramenta) -->
+                    <div class="card ferramentas">
+                        <a href="ferramentas.html" class="block h-full">
+                            <div class="card-content p-6 flex flex-col justify-between h-full">
+                              <div>
+                                <div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Psiphon</h3>
+                                <p class="text-muted mb-4">Garanta seu acesso a qualquer site com esta VPN gratuita e essencial para navegação segura.</p>
+                              </div>
+                              <span class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4 inline-block">Ver em Ferramentas</span>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Card de Destaque 3 (Exemplo: Jogo Emulador) - ATUALIZADO -->
+                    <div class="card jogos-emulador">
+                        <a href="jogos-emulador.html" class="block h-full">
+                            <div class="card-content p-6 flex flex-col justify-between h-full">
+                              <div>
+                                <div class="text-3xl mb-4"><i class="fas fa-fire"></i></div>
+                                <h3 class="text-2xl font-bold mb-2">Pokemon Fire Red</h3>
+                                <p class="text-muted mb-4">Reviva a jornada clássica de Kanto com gráficos melhorados neste amado remake para GBA.</p>
+                              </div>
+                              <span class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4 inline-block">Ver em Emulador</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- SEÇÃO DE CATEGORIAS VISUAL -->
+            <section id="categories" class="fade-in-up mb-16">
+                <h2 class="section-title text-center">Explore as Categorias</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mt-8">
+                    <a href="jogos-pc.html" class="card category-card jogos-pc"><div class="card-content text-center p-6"><i class="fas fa-desktop text-4xl mb-4"></i><h3 class="font-bold text-xl">Jogos PC</h3></div></a>
+                    <a href="jogos-navegador.html" class="card category-card jogos-navegador"><div class="card-content text-center p-6"><i class="fas fa-globe text-4xl mb-4"></i><h3 class="font-bold text-xl">Navegador</h3></div></a>
+                    <a href="jogos-emulador.html" class="card category-card jogos-emulador"><div class="card-content text-center p-6"><i class="fas fa-ghost text-4xl mb-4"></i><h3 class="font-bold text-xl">Emulador</h3></div></a>
+                    <a href="hacks.html" class="card category-card hacks"><div class="card-content text-center p-6"><i class="fas fa-user-secret text-4xl mb-4"></i><h3 class="font-bold text-xl">Hacks</h3></div></a>
+                    <a href="ferramentas.html" class="card category-card ferramentas"><div class="card-content text-center p-6"><i class="fas fa-tools text-4xl mb-4"></i><h3 class="font-bold text-xl">Ferramentas</h3></div></a>
+                </div>
+            </section>
+
         </main>
     </div>
 
