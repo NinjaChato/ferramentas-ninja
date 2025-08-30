@@ -1,31 +1,45 @@
-/* =========================================================
-   TEMA CYBER-NINJA (v6) - A IDENTIDADE VISUAL DEFINITIVA
-   Design Coeso por: Gemini AI
-========================================================= */
-
 :root {
-  /* Paleta Cyber-Ninja */
-  --primary: #00f2ea; /* Ciano Elétrico */
-  --primary-glow: rgba(0, 242, 234, 0.5);
-  --dark-bg: #0a0a0a;
-  --panel-bg: #141414;
-  --glass-bg: rgba(20, 20, 20, 0.7);
-  --border-color: rgba(0, 242, 234, 0.2);
-  --text-light: #EAEAEA;
-  --text-muted: #888888;
+  --primary-glow: #a855f7;
+  --secondary-glow: #ec4899;
+  --dark-bg: #030712;
+  --glass-bg: rgba(17, 24, 39, 0.8);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-light: #f9fafb;
+  --text-muted: #9ca3af;
+
+  /* Cores por Categoria */
+  --color-pc: #22c55e;
+  --color-navegador: #3b82f6;
+  --color-emulador: #f59e0b;
+  --color-hacks: #f97316;
+  --color-ferramentas: #ef4444;
+
+  /* Curva de animação para fluidez máxima */
+  --swoosh: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* === KEYFRAMES GLOBAIS === */
+/* === KEYFRAMES PARA ANIMAÇÕES GLOBAIS === */
+@keyframes background-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes shimmer {
-  from { text-shadow: -2px -2px 10px var(--primary-glow), 2px 2px 10px var(--primary-glow); }
-  to { text-shadow: 2px 2px 10px var(--primary-glow), -2px -2px 10px var(--primary-glow); }
+  from { background-position: 200% center; }
+  to { background-position: -200% center; }
 }
-@keyframes border-trace {
-  100% { stroke-dashoffset: 0; }
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px -2px var(--primary-glow); }
+  50% { box-shadow: 0 0 25px 2px var(--primary-glow); }
+}
+@keyframes highlight-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* === BASE E FUNDO COM TEXTURA SUTIL === */
+/* === ESTILOS GERAIS E DE BASE === */
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Poppins', sans-serif;
@@ -34,16 +48,29 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Textura sutil de aço escovado */
-  background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 30px 30px;
 }
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--dark-bg); }
-::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 0; }
-#particles-js { display: none; } /* Ocultado para um look mais clean e focado */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+  border-radius: 10px;
+  border: 2px solid var(--dark-bg);
+}
 
-/* === LOADER TECNOLÓGICO === */
+/* === FUNDO ANIMADO E PARTÍCULAS === */
+body::before {
+  content: ''; position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(-45deg,
+      rgba(168, 85, 247, 0.08), rgba(236, 72, 153, 0.08),
+      rgba(59, 130, 246, 0.08), rgba(34, 197, 94, 0.08));
+  background-size: 400% 400%;
+  animation: background-pan 30s ease-in-out infinite;
+  z-index: -2;
+}
+#particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
+
+/* === LOADER E ANIMAÇÕES DE ENTRADA === */
 #loader {
   position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;
@@ -53,140 +80,153 @@ body {
 }
 .spinner {
   width: 60px; height: 60px;
-  border: 4px solid var(--border-color);
-  border-top-color: var(--primary);
-  border-radius: 50%; animation: spin 1.5s linear infinite;
-  box-shadow: 0 0 20px var(--primary-glow);
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--primary-glow);
+  border-radius: 50%; animation: spin 1.2s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+  box-shadow: 0 0 25px var(--primary-glow);
 }
 .fade-in-up {
-  opacity: 0; transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 1s var(--swoosh), transform 1s var(--swoosh);
 }
 .fade-in-up.loaded { opacity: 1; transform: translateY(0); }
 
-/* === ESTÉTICA CHANFRADA E CONSISTENTE === */
-.glass-effect, .card, .action-btn, .category-btn, .password-highlight {
-  clip-path: polygon(0 10px, 10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-}
-
-/* === HEADER E TÍTULOS ESTILO HUD === */
+/* === HEADER E COMPONENTES DE VIDRO (MELHORADOS) === */
 .glass-effect {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--border-color);
-  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  position: relative; overflow: hidden;
 }
-.main-title {
-  font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700;
-  letter-spacing: -1px;
-  color: var(--text-light);
-  animation: shimmer 5s ease-in-out infinite alternate;
-}
-.section-title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 600;
-  text-transform: uppercase;
-  color: var(--primary);
-  position: relative;
-  padding-left: 25px; /* Espaço para o marcador HUD */
-}
-.section-title::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 50%;
-  transform: translateY(-50%);
-  width: 15px; height: 15px;
-  border: 2px solid var(--primary);
-  clip-path: polygon(0 5px, 5px 0, 100% 0, 100% 100%, 0 100%);
-}
-.section-title::after { display: none; }
-
-/* === CARDS QUE "LIGAM" === */
-.card {
-  background: var(--panel-bg);
-  border: 1px solid transparent;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.4s ease, border-color 0.4s ease;
-}
-.card::before { /* Brilho de fundo no hover */
+/* BORDA DE LUZ ANIMADA PARA O HEADER */
+.glass-effect::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle 500px at var(--spotlight-x) var(--spotlight-y), var(--primary-glow), transparent 80%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  background: linear-gradient(120deg, transparent, var(--primary-glow), transparent);
+  animation: shimmer 8s ease-in-out infinite;
+  opacity: 0.5;
+  background-size: 200% 100%;
 }
-.card:hover {
-  transform: translateY(-10px);
-  border-color: var(--primary);
+.main-title {
+  font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
+  background: linear-gradient(110deg, #fff 30%, var(--text-muted) 50%, #fff 70%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  letter-spacing: -1.5px;
+  background-size: 250% auto;
+  animation: shimmer 10s linear infinite;
 }
-.card:hover::before { opacity: 1; }
-.card-content {
-  display: flex; flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  position: relative; padding-bottom: 1rem;
 }
-.card h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary);
+.section-title::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 4px; border-radius: 2px;
+  background: var(--primary-glow);
+  animation: pulse-glow 3s ease-in-out infinite;
 }
 
-/* === BOTÕES E INTERAÇÕES === */
-.action-btn, .category-btn {
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--text-light);
+/* === CARDS COM EFEITO 3D E ILUMINAÇÃO (MELHORADOS) === */
+.grid { transform-style: preserve-3d; }
+.card {
+  background: #111827; border-radius: 1rem;
+  position: relative; overflow: hidden;
   border: 1px solid var(--border-color);
-  background-color: transparent;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.4s ease, border-color 0.4s ease;
-  text-decoration: none;
+  transition: transform 0.6s var(--swoosh), box-shadow 0.6s var(--swoosh);
+  will-change: transform, box-shadow;
 }
-.action-btn::before, .category-btn::before { /* Efeito de onda de energia */
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 10px; height: 10px;
-  background: var(--primary);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.5s ease;
-  opacity: 0.3;
+.card::after { /* Spotlight que segue o mouse */
+  content: ''; position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(circle 400px at var(--spotlight-x) var(--spotlight-y), rgba(255, 255, 255, 0.08), transparent 80%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
-.action-btn:hover, .category-btn:hover, .category-btn.active {
-  color: var(--dark-bg);
-  border-color: var(--primary);
-  text-shadow: none;
+.card:hover {
+  transform: perspective(1000px) rotateX(5deg) translateY(-10px) scale(1.04);
 }
-.action-btn:hover::before, .category-btn:hover::before, .category-btn.active::before {
-  transform: translate(-50%, -50%) scale(30);
+.card:hover::after { opacity: 1; }
+.card-content {
+  position: relative; z-index: 1;
+  transition: transform 0.6s var(--swoosh);
 }
+.card:hover .card-content { transform: translateY(-5px); } /* Efeito de profundidade interna */
+.card h3, .card .fas { transition: color 0.4s ease, text-shadow 0.4s ease; }
+.card p { line-height: 1.6; color: var(--text-muted); }
+
+/* === CORES E AURAS DINÂMICAS POR CATEGORIA (MELHORADAS) === */
+.jogos-pc .card:hover { border-color: var(--color-pc); box-shadow: 0 0 40px -10px var(--color-pc); }
+.jogos-pc:hover h3, .jogos-pc:hover .fas { color: var(--color-pc); text-shadow: 0 0 10px var(--color-pc); }
+
+.jogos-navegador .card:hover { border-color: var(--color-navegador); box-shadow: 0 0 40px -10px var(--color-navegador); }
+.jogos-navegador:hover h3, .jogos-navegador:hover .fas { color: var(--color-navegador); text-shadow: 0 0 10px var(--color-navegador); }
+
+.jogos-emulador .card:hover { border-color: var(--color-emulador); box-shadow: 0 0 40px -10px var(--color-emulador); }
+.jogos-emulador:hover h3, .jogos-emulador:hover .fas { color: var(--color-emulador); text-shadow: 0 0 10px var(--color-emulador); }
+
+.hacks .card:hover { border-color: var(--color-hacks); box-shadow: 0 0 40px -10px var(--color-hacks); }
+.hacks:hover h3, .hacks:hover .fas { color: var(--color-hacks); text-shadow: 0 0 10px var(--color-hacks); }
+
+.ferramentas .card:hover { border-color: var(--color-ferramentas); box-shadow: 0 0 40px -10px var(--color-ferramentas); }
+.ferramentas:hover h3, .ferramentas:hover .fas { color: var(--color-ferramentas); text-shadow: 0 0 10px var(--color-ferramentas); }
+
+/* === BOTÕES E INTERAÇÕES (MELHORADOS) === */
 .action-btn {
-  background: var(--panel-bg);
+  position: relative; overflow: hidden;
+  font-weight: 600;
+  transition: all 0.4s var(--swoosh);
+  background-size: 250% auto;
+}
+.jogos-pc .action-btn { background-image: linear-gradient(90deg, #10b981 0%, #22c55e 50%, #10b981 100%); }
+.jogos-navegador .action-btn { background-image: linear-gradient(90deg, #3b82f6 0%, #60a5fa 50%, #3b82f6 100%); }
+.jogos-emulador .action-btn { background-image: linear-gradient(90deg, #f59e0b 0%, #fcd34d 50%, #f59e0b 100%); }
+.hacks .action-btn { background-image: linear-gradient(90deg, #f97316 0%, #fdba74 50%, #f97316 100%); }
+.ferramentas .action-btn { background-image: linear-gradient(90deg, #ef4444 0%, #fca5a5 50%, #ef4444 100%); }
+.action-btn:hover {
+  transform: scale(1.05); filter: brightness(1.2);
+  background-position: right center; /* Anima o gradiente */
+  box-shadow: 0 0 25px 0px currentColor;
+}
+.category-btn {
+  padding: 0.75rem 1.5rem; border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: transparent; border: 1px solid var(--border-color);
+  color: var(--text-muted);
+}
+.category-btn:hover {
+  background: var(--primary-glow); color: white;
+  border-color: var(--primary-glow);
+  box-shadow: 0 0 15px var(--primary-glow);
+  transform: translateY(-3px);
+}
+.category-btn.active {
+  background: var(--primary-glow); color: white;
+  border-color: var(--primary-glow);
+  box-shadow: 0 0 20px var(--primary-glow), inset 0 2px 5px rgba(0,0,0,0.3);
+  transform: scale(1.05) translateY(-2px);
 }
 .password-highlight {
-  background: var(--primary);
-  color: var(--dark-bg);
-  font-weight: 700;
-  padding: 0.2em 0.6em;
-  transition: transform 0.3s ease;
+  background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow), var(--primary-glow));
+  background-size: 250% 250%;
+  animation: highlight-pan 6s ease-in-out infinite;
+  color: white; padding: 0.3em 0.7em;
+  border-radius: 5px; font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.password-highlight:hover { transform: scale(1.05); }
-#searchInput:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 15px var(--primary-glow);
-}
-#backToTop {
-  transition: opacity 0.4s ease, bottom 0.4s ease, transform 0.3s ease;
-}
+.password-highlight:hover { transform: scale(1.05); box-shadow: 0 0 15px 0px var(--primary-glow); }
+#searchInput:focus { box-shadow: 0 0 25px -5px var(--primary-glow); border-color: var(--primary-glow); }
 #backToTop:hover {
-  transform: scale(1.1);
-  background: var(--primary);
+  transform: scale(1.1) rotate(-10deg);
+  background: var(--primary-glow);
   box-shadow: 0 0 20px var(--primary-glow);
-  color: var(--dark-bg);
 }
-/* REMOÇÃO COMPLETA DAS CORES DE CATEGORIA PARA CONSISTÊNCIA TOTAL */
-/* As seções abaixo, que coloriam os botões, foram intencionalmente removidas. */
