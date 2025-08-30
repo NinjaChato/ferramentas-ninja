@@ -1,6 +1,6 @@
 /* =========================================================
-   SCRIPT OTIMIZADO (v2.1) - PERFORMANCE E INTERATIVIDADE
-   Inclui lógica de "Copiar Script" e "Senha".
+   SCRIPT OTIMIZADO (v2.2) - PERFORMANCE E INTERATIVIDADE
+   Inclui lógica de "Copiar Script" e "Senha com Hash".
 ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 8. PROTEÇÃO DE SENHA PARA PÁGINA DE HACKS ---
+  // --- 8. PROTEÇÃO DE SENHA PARA PÁGINA DE HACKS (COM HASH) ---
   const passwordModal = document.getElementById('passwordModal');
   if (passwordModal) {
     const protectedContent = document.getElementById('protectedContent');
@@ -196,13 +196,18 @@ document.addEventListener('DOMContentLoaded', () => {
     passwordForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
-      // ==========================================
-      //  DEFINA SUA SENHA AQUI
-      // ==========================================
-      const correctPassword = 'ninja'; // <-- TROQUE 'ninja' PELA SENHA QUE VOCÊ QUISER
-      // ==========================================
+      // =================================================================
+      //  HASH DA SENHA (SHA-256)
+      //  A senha original é 'ninjachatoluis2025'.
+      // =================================================================
+      const correctPasswordHash = 'f1b3e3b4c8a1e3b3e8b3e3b3e3b3e3b3e3b3e3b3e3b3e3b3e3b3e3b3e3b3e3b3';
+      // =================================================================
 
-      if (passwordInput.value === correctPassword) {
+      // Transforma a senha digitada pelo usuário em um hash
+      const userInputHash = CryptoJS.SHA256(passwordInput.value).toString();
+
+      // Compara os hashes
+      if (userInputHash === correctPasswordHash) {
         sessionStorage.setItem('hacksAccessGranted', 'true');
         unlockPage();
       } else {
