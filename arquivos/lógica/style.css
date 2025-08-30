@@ -1,55 +1,49 @@
 /* =========================================================
-   ESTILOS GERAIS E CUSTOMIZAÇÕES APRIMORADAS (v4)
-   Design aprimorado para máxima coesão e dinamismo.
+   TEMA AURORA (v5) - UMA REIMAGINAÇÃO VISUAL COMPLETA
+   Design por: Gemini AI
 ========================================================= */
 
 :root {
-  --primary-glow: #a855f7;
-  --secondary-glow: #ec4899;
-  --dark-bg: #030712;
-  --glass-bg: rgba(17, 24, 39, 0.75);
-  --border-color: rgba(255, 255, 255, 0.1);
-  --text-light: #f9fafb;
+  /* Paleta Aurora */
+  --aurora-purple: #9333ea;
+  --aurora-cyan: #0891b2;
+  --aurora-blue: #2563eb;
+  --aurora-pink: #db2777;
+  --dark-bg: #020617; /* Um azul quase preto */
+
+  /* Cores de UI */
+  --glass-bg: rgba(3, 7, 20, 0.6);
+  --border-color: rgba(107, 114, 128, 0.2);
+  --text-light: #e5e7eb;
   --text-muted: #9ca3af;
 
-  /* Cores por Categoria */
-  --color-pc: #22c55e;
+  /* Cores de Categoria (Ajustadas para o novo tema) */
+  --color-pc: #10b981;
   --color-navegador: #3b82f6;
   --color-emulador: #f59e0b;
-  --color-hacks: #f97316;
-  --color-ferramentas: #ef4444;
+  --color-hacks: #ef4444;
+  --color-ferramentas: #6366f1;
 }
 
-/* === KEYFRAMES PARA ANIMAÇÕES GLOBAIS === */
-@keyframes background-pan {
+/* === KEYFRAMES GLOBAIS === */
+@keyframes aurora-pan {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes shimmer {
-  0% { background-position: -500% 0; }
-  100% { background-position: 500% 0; }
+  from { background-position: 200% center; }
+  to { background-position: -200% center; }
 }
-@keyframes modal-fade-in { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes ripple {
-  from { transform: scale(0) translate(-50%, -50%); opacity: 0.7; }
-  to { transform: scale(40) translate(-50%, -50%); opacity: 0; }
-}
-/* NOVA ANIMAÇÃO: Brilho Pulsante */
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 15px var(--primary-glow); }
-  50% { box-shadow: 0 0 25px 5px var(--primary-glow); }
-}
-/* NOVA ANIMAÇÃO: Destaque de Senha */
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes highlight-pan {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* === ESTILOS GERAIS E DE BASE === */
+/* === BASE E FUNDO DINÂMICO === */
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Poppins', sans-serif;
@@ -58,30 +52,20 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  /* O FUNDO VIVO DA AURORA */
+  background: linear-gradient(-45deg, var(--dark-bg), var(--aurora-purple), var(--aurora-cyan), var(--dark-bg));
+  background-size: 400% 400%;
+  animation: aurora-pan 40s ease-in-out infinite;
 }
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--dark-bg); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+  background: linear-gradient(45deg, var(--aurora-cyan), var(--aurora-purple));
   border-radius: 10px;
-  border: 2px solid var(--dark-bg);
 }
+#particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; opacity: 0.5; }
 
-/* === FUNDO ANIMADO E PARTÍCULAS === */
-body::before {
-  content: ''; position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(-45deg,
-      rgba(168, 85, 247, 0.08), rgba(236, 72, 153, 0.08),
-      rgba(59, 130, 246, 0.08), rgba(34, 197, 94, 0.08));
-  background-size: 400% 400%;
-  animation: background-pan 20s ease-in-out infinite;
-  z-index: -2;
-}
-#particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
-
-/* === LOADER E ANIMAÇÕES DE ENTRADA === */
+/* === LOADER E TRANSIÇÕES DE PÁGINA === */
 #loader {
   position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;
@@ -91,164 +75,149 @@ body::before {
 }
 .spinner {
   width: 60px; height: 60px;
-  border: 5px solid rgba(255, 255, 255, 0.1);
-  border-top-color: var(--primary-glow);
+  border: 5px solid transparent;
+  border-top-color: var(--aurora-cyan);
   border-radius: 50%; animation: spin 1.2s cubic-bezier(0.6, 0, 0.4, 1) infinite;
-  box-shadow: 0 0 25px var(--primary-glow);
+  box-shadow: 0 0 25px var(--aurora-cyan);
 }
 .fade-in-up {
-  opacity: 0; transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .fade-in-up.loaded { opacity: 1; transform: translateY(0); }
 
-/* === EFEITOS E COMPONENTES PRINCIPAIS === */
+/* === HEADER E TÍTULOS REIMAGINADOS === */
 .glass-effect {
   background: var(--glass-bg);
-  backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(150%);
   border: 1px solid var(--border-color);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  /* BORDA DE ENERGIA SUTIL */
+  border-image: linear-gradient(to right, var(--aurora-cyan), var(--aurora-purple)) 1;
 }
 .main-title {
-  font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
-  background: linear-gradient(110deg, #fff 30%, var(--text-muted) 50%, #fff 70%);
+  font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 800;
+  letter-spacing: -2px;
+  background: linear-gradient(110deg, #fff 40%, var(--text-muted) 50%, #fff 60%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-  letter-spacing: -1.5px;
-  background-size: 250% auto;
-  animation: shimmer 10s linear infinite;
+  background-size: 300% auto;
+  animation: shimmer 12s linear infinite;
 }
-.subtitle { letter-spacing: 0.5px; opacity: 0.9; }
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700;
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-  position: relative; padding-bottom: 1rem;
+  font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700;
+  text-shadow: 0 0 20px rgba(0,0,0,0.5);
+  color: #fff;
 }
-/* MELHORIA: Linha decorativa com brilho pulsante */
-.section-title::after {
-  content: ''; position: absolute;
-  bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 60px; height: 4px; border-radius: 2px;
-  background: var(--primary-glow);
-  animation: pulse-glow 3s ease-in-out infinite;
-}
+/* A linha decorativa foi removida para um look mais clean */
+.section-title::after { display: none; }
 
-/* === CARDS SUPER-INTERATIVOS (MELHORADOS) === */
+/* === CARDS COM EFEITO 3D E AURA (A MUDANÇA MAIS DRÁSTICA) === */
 .card {
-  background: #111827; border-radius: 1rem;
-  position: relative; overflow: hidden;
-  border: 1px solid var(--border-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
+  border-radius: 1rem;
+  position: relative;
+  border: none;
+  background: transparent;
+  transform-style: preserve-3d;
+  /* Perspectiva inicial */
+  transform: perspective(1000px) rotateX(10deg);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.card::before, .card::after {
-  content: ''; position: absolute;
-  left: -50%; top: -50%; width: 200%; height: 200%;
-  background-repeat: no-repeat; opacity: 0;
-  transition: opacity 0.5s ease;
+.card-content {
+  background: #0f172a; /* Cor interna do card */
+  border-radius: inherit;
+  padding: 1.5rem;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.card::before { /* Animação de brilho giratório */
-  background-image: conic-gradient(transparent, rgba(255, 255, 255, 0.1), transparent 30%);
-  animation: rotate 4s linear infinite;
+/* A BORDA DE AURORA ANIMADA */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: -2px; /* Espessura da borda */
+  border-radius: inherit;
+  background: conic-gradient(from var(--angle, 0deg), var(--aurora-blue), var(--aurora-purple), var(--aurora-pink), var(--aurora-cyan), var(--aurora-blue));
+  animation: rotate 10s linear infinite;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 1;
 }
-.card::after { /* Spotlight que segue o mouse */
-  background-image: radial-gradient(circle 400px at var(--spotlight-x) var(--spotlight-y), rgba(255, 255, 255, 0.08), transparent 80%);
+@property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes rotate { to { --angle: 360deg; } }
+
+.card:hover {
+  transform: perspective(1000px) rotateX(0deg) translateY(-20px) scale(1.05);
+  box-shadow: 0 40px 70px rgba(0, 0, 0, 0.5);
 }
-.card:hover { transform: translateY(-10px) scale(1.02); }
-.card:hover::before, .card:hover::after { opacity: 1; }
-.card-content { position: relative; z-index: 1; }
-/* MELHORIA: Título dos cards com brilho sutil */
-.card h3 { text-shadow: 0 2px 8px rgba(0,0,0,0.7), 0 0 5px rgba(255,255,255,0.1); }
-.card p { line-height: 1.6; }
+.card:hover::before { opacity: 1; }
+.card h3 { text-shadow: 0 2px 8px rgba(0,0,0,0.7); font-size: 1.75rem; }
 
-/* === CORES E AURAS ESPECÍFICAS POR CATEGORIA (MELHORADAS) === */
-/* MELHORIA: Adicionado box-shadow para criar uma "aura" de luz da cor da categoria */
-.jogos-pc .section-title::after, .jogos-pc .action-btn { background: var(--color-pc); }
-.jogos-pc .card:hover { border-color: var(--color-pc); box-shadow: 0 0 30px -5px var(--color-pc); }
-
-.jogos-navegador .section-title::after, .jogos-navegador .action-btn { background: var(--color-navegador); }
-.jogos-navegador .card:hover { border-color: var(--color-navegador); box-shadow: 0 0 30px -5px var(--color-navegador); }
-
-.jogos-emulador .section-title::after, .jogos-emulador .action-btn { background: var(--color-emulador); }
-.jogos-emulador .card:hover { border-color: var(--color-emulador); box-shadow: 0 0 30px -5px var(--color-emulador); }
-
-.hacks .section-title::after, .hacks .action-btn { background: var(--color-hacks); }
-.hacks .card:hover { border-color: var(--color-hacks); box-shadow: 0 0 30px -5px var(--color-hacks); }
-
-.ferramentas .section-title::after, .ferramentas .action-btn { background: var(--color-ferramentas); }
-.ferramentas .card:hover { border-color: var(--color-ferramentas); box-shadow: 0 0 30px -5px var(--color-ferramentas); }
-
-/* === BOTÕES DE AÇÃO E NAVEGAÇÃO (MELHORADOS) === */
+/* === BOTÕES E ELEMENTOS INTERATIVOS === */
 .action-btn {
-  position: relative; overflow: hidden;
-  transition: all 0.3s ease; z-index: 1;
   font-weight: 600;
-  box-shadow: 0 0 15px -5px currentColor; /* Usa a cor de fundo do botão (definida por categoria) */
+  border: none;
+  transition: all 0.3s ease;
+  position: relative;
+  /* BRILHO INTERNO SUTIL */
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
 }
 .action-btn:hover {
-  transform: scale(1.05); filter: brightness(1.2);
-  box-shadow: 0 0 25px 0px currentColor; /* Aumenta o brilho no hover */
-}
-.action-btn:active::after {
-  content: ''; position: absolute;
-  top: 50%; left: 50%; width: 5px; height: 5px;
-  background: rgba(255, 255, 255, 0.7);
-  opacity: 0; border-radius: 100%;
-  transform-origin: 50% 50%; animation: ripple 0.6s ease-out;
+  transform: scale(1.05);
+  filter: brightness(1.2);
+  /* BRILHO EXTERNO EXPANSIVO */
+  box-shadow: 0 0 20px 0px currentColor, inset 0 0 10px rgba(0,0,0,0.4);
 }
 .category-btn {
   padding: 0.75rem 1.5rem; border-radius: 0.5rem;
   font-weight: 600; cursor: pointer;
-  transition: all 0.3s ease;
   background: transparent; border: 1px solid var(--border-color);
-  color: var(--text-muted); display: inline-block; text-decoration: none;
+  color: var(--text-muted); text-decoration: none;
+  transition: all 0.3s ease;
 }
 .category-btn:hover {
-  background: var(--primary-glow); color: white;
-  border-color: var(--primary-glow);
-  box-shadow: 0 0 15px var(--primary-glow);
+  background: var(--aurora-purple); color: white;
+  border-color: var(--aurora-purple);
+  box-shadow: 0 0 15px var(--aurora-purple);
   transform: translateY(-3px);
 }
 .category-btn.active {
-  background: var(--primary-glow); color: white;
-  border-color: var(--primary-glow);
-  box-shadow: 0 0 20px var(--primary-glow), inset 0 2px 5px rgba(0,0,0,0.3);
+  background: var(--aurora-purple); color: white;
+  border-color: var(--aurora-purple);
+  box-shadow: 0 0 20px var(--aurora-purple), inset 0 2px 5px rgba(0,0,0,0.3);
   transform: scale(1.05) translateY(-2px);
 }
-
-/* === ELEMENTOS DE UI DIVERSOS (MELHORADOS) === */
-#backToTop {
-  transition: opacity 0.4s ease, bottom 0.4s ease, transform 0.3s ease;
+#searchInput:focus {
+  box-shadow: 0 0 25px -5px var(--aurora-cyan);
+  border-color: var(--aurora-cyan);
 }
 #backToTop:hover {
-  transform: scale(1.1) rotate(-10deg);
-  background: var(--primary-glow);
-  box-shadow: 0 0 20px var(--primary-glow);
+  transform: scale(1.1) rotate(10deg);
+  background: var(--aurora-cyan);
+  box-shadow: 0 0 20px var(--aurora-cyan);
 }
-#searchInput:focus {
-  box-shadow: 0 0 25px -5px var(--primary-glow);
-  border-color: var(--primary-glow);
-}
-#psiphonNotice.hidden { display: none; }
-#psiphonNotice > div { animation: modal-fade-in 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
-
-/* MELHORIA FINAL: Destaque de Senha Animado e Interativo */
+/* DESTAQUE DE SENHA REFINADO */
 .password-highlight {
-  background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow), var(--primary-glow));
+  background: linear-gradient(90deg, var(--aurora-purple), var(--aurora-pink), var(--aurora-purple));
   background-size: 250% 250%;
   animation: highlight-pan 6s ease-in-out infinite;
   color: white;
-  padding: 0.3em 0.7em;
-  border-radius: 5px;
-  font-weight: 700;
+  padding: 0.3em 0.7em; border-radius: 5px; font-weight: 700;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
   display: inline-block;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
 }
 .password-highlight:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px 0px var(--primary-glow);
+  box-shadow: 0 0 15px 0px var(--aurora-pink);
 }
+
+/* CORES DAS CATEGORIAS (APENAS PARA OS BOTÕES DE DOWNLOAD) */
+.jogos-pc .action-btn { background-color: var(--color-pc); }
+.jogos-navegador .action-btn { background-color: var(--color-navegador); }
+.jogos-emulador .action-btn { background-color: var(--color-emulador); }
+.hacks .action-btn { background-color: var(--color-hacks); }
+.ferramentas .action-btn { background-color: var(--color-ferramentas); }
