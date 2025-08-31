@@ -11,7 +11,7 @@ Bem-vindo ao repositório do Ferramentas Ninja, um portal web criado para centra
 
 ## 📸 Visão Geral
 
-![Screenshot do Ferramentas Ninja](https://i.imgur.com/k6jrXsE.png) 
+![Screenshot do Ferramentas Ninja](https://i.imgur.com/zvFovo8.png) 
 
 ---
 
