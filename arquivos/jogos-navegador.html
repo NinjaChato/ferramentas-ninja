@@ -16,7 +16,6 @@
     <div id="loader"><div class="spinner"></div></div>
     <div id="particles-js"></div>
     
-    <!-- CORREÇÃO: Removida a classe "hidden" da linha abaixo para que o aviso apareça -->
     <div id="psiphonNotice" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10001] flex items-center justify-center p-4">
       <div class="glass-effect max-w-md w-full p-8 rounded-2xl text-center relative">
         <button id="closeNoticeBtn" class="absolute top-4 right-4 text-muted hover:text-light transition-colors text-2xl">&times;</button>
@@ -34,9 +33,14 @@
                     <h1 class="main-title">Ferramentas Ninja</h1>
                     <p class="subtitle text-lg text-muted mt-2 max-w-2xl">Seu portal seguro e estiloso para jogos, ferramentas e recursos essenciais.</p>
                 </div>
-                <a href="updates.txt" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap">
-                    <i class="fas fa-history fa-spin-pulse" style="--fa-animation-duration: 5s;"></i> Changelogs
-                </a>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="updates.txt" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap">
+                        <i class="fas fa-history fa-spin-pulse" style="--fa-animation-duration: 5s;"></i> Changelogs
+                    </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAZWO2G9LR6KtmJu74Ep9YAFMMIUeV07Hkoj56UyQcIhi4JA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap">
+                        <i class="fas fa-lightbulb"></i> Sugestões
+                    </a>
+                </div>
             </div>
             <div class="mt-8">
                 <div class="relative">
@@ -46,7 +50,7 @@
                 <div class="category-buttons flex flex-wrap justify-center gap-2 md:gap-4 mt-6">
                     <a href="index.html" class="category-btn"><i class="fas fa-home mr-2"></i>Início</a>
                     <a href="jogos-pc.html" class="category-btn"><i class="fas fa-desktop mr-2"></i>Jogos PC</a>
-                    <a href="jogos-navegador.html" class="category-btn"><i class="fas fa-globe mr-2"></i>Navegador</a>
+                    <a href="jogos-navegador.html" class="category-btn active"><i class="fas fa-globe mr-2"></i>Navegador</a>
                     <a href="jogos-emulador.html" class="category-btn"><i class="fas fa-ghost mr-2"></i>Emulador</a>
                     <a href="hacks.html" class="category-btn"><i class="fas fa-user-secret mr-2"></i>Hacks</a>
                     <a href="ferramentas.html" class="category-btn"><i class="fas fa-tools mr-2"></i>Ferramentas</a>
