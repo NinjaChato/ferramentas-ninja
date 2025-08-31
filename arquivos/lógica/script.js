@@ -204,13 +204,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       } catch (error) {
         console.error("Decryption error:", error);
-        errorMessage.style.opacity = '1';
-        passwordModal.querySelector('.glass-effect').classList.add('shake');
-        passwordInput.value = '';
-        setTimeout(() => {
-          errorMessage.style.opacity = '0';
-          passwordModal.querySelector('.glass-effect').classList.remove('shake');
-        }, 2000);
+        // Limpa a chave da sessão em caso de erro para forçar nova tentativa
+        sessionStorage.removeItem('hacksAccessKey');
+        
+        // Mostra a mensagem de erro apenas se o modal ainda estiver visível
+        if (passwordModal.style.display !== 'none') {
+            errorMessage.style.opacity = '1';
+            passwordModal.querySelector('.glass-effect').classList.add('shake');
+            passwordInput.value = '';
+            setTimeout(() => {
+              errorMessage.style.opacity = '0';
+              passwordModal.querySelector('.glass-effect').classList.remove('shake');
+            }, 2000);
+        }
       }
     };
 
