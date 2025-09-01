@@ -37,13 +37,7 @@
                     <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-muted text-xl"></i>
                     <input type="text" id="searchInput" class="w-full bg-black/20 border border-white/10 rounded-lg py-4 pl-12 pr-4 text-lg text-light placeholder-muted focus:ring-2 focus:ring-primary-glow focus:border-primary-glow transition-all duration-300 outline-none" placeholder="Busque jogos nesta categoria...">
                 </div>
-                <!-- FILTROS DE TAGS ADICIONADOS -->
-                <div id="tagFilters" class="flex flex-wrap justify-center gap-3 mt-6">
-                    <button class="category-btn filter-btn active" data-filter="all">Todos</button>
-                    <button class="category-btn filter-btn" data-filter="leve">Leves</button>
-                    <button class="category-btn filter-btn" data-filter="pesado">Pesados</button>
-                </div>
-                <div class="category-buttons flex flex-wrap justify-center gap-2 md:gap-4 mt-4">
+                <div class="category-buttons flex flex-wrap justify-center gap-2 md:gap-4 mt-6">
                     <a href="index.html" class="category-btn"><i class="fas fa-home mr-2"></i>Início</a>
                     <a href="jogos-pc.html" class="category-btn active"><i class="fas fa-desktop mr-2"></i>Jogos PC</a>
                     <a href="jogos-navegador.html" class="category-btn"><i class="fas fa-globe mr-2"></i>Navegador</a>
@@ -58,9 +52,18 @@
             <div id="linksContainer">
                 <section class="jogos-pc mb-16">
                     <h2 class="section-title text-center">Jogos para PC</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                        <!-- CARDS COM DATA-TAGS -->
+                    
+                    <!-- [LAYOUT MELHORADO] FILTROS MOVIDOS PARA CÁ -->
+                    <div id="tagFilters" class="flex flex-wrap justify-center gap-3 my-8">
+                        <button class="category-btn filter-btn active" data-filter="all">Todos</button>
+                        <button class="category-btn filter-btn" data-filter="leve">Leves</button>
+                        <button class="category-btn filter-btn" data-filter="pesado">Pesados</button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- [NOVO] CARDS COM INDICADORES VISUAIS -->
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-users"></i></div>
@@ -71,6 +74,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-graduation-cap"></i></div>
@@ -81,6 +85,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-mountain"></i></div>
@@ -91,6 +96,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-mug-hot"></i></div>
@@ -101,6 +107,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-magic"></i></div>
@@ -111,6 +118,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-futbol"></i></div>
@@ -121,6 +129,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-gun"></i></div>
@@ -131,6 +140,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
@@ -141,6 +151,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
@@ -151,6 +162,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
@@ -161,6 +173,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
@@ -171,6 +184,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-pizza-slice"></i></div>
@@ -181,6 +195,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-cube"></i></div>
@@ -191,6 +206,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-person-falling"></i></div>
@@ -204,6 +220,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car"></i></div>
@@ -217,6 +234,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-city"></i></div>
@@ -227,6 +245,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-bug"></i></div>
@@ -237,6 +256,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
@@ -247,6 +267,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
@@ -257,6 +278,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
@@ -267,6 +289,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
@@ -277,6 +300,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
@@ -287,6 +311,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-brain"></i></div>
@@ -297,6 +322,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-microscope"></i></div>
@@ -307,6 +333,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-rocket"></i></div>
@@ -317,6 +344,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-cube"></i></div>
@@ -327,6 +355,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-tractor"></i></div>
@@ -337,6 +366,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-hammer"></i></div>
@@ -347,6 +377,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-hat-wizard"></i></div>
@@ -357,6 +388,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-road"></i></div>
@@ -367,6 +399,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="pesado">
+                            <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-skull-crossbones"></i></div>
@@ -377,6 +410,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-crown"></i></div>
@@ -387,6 +421,7 @@
                             </div>
                         </div>
                         <div class="card" data-tags="leve">
+                            <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-heart"></i></div>
