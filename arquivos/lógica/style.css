@@ -1,3 +1,4 @@
+/* === ESTILOS EXISTENTES (NÃO MODIFICADOS) === */
 :root {
   --primary-glow: #a855f7;
   --secondary-glow: #ec4899;
@@ -223,4 +224,68 @@ body::before {
 }
 #copyMessage {
   transition: opacity 0.4s ease, transform 0.4s var(--swoosh);
+}
+
+/* === [NOVO] INDICADOR DE TAGS PARA CARDS (LEVE/PESADO) === */
+.card-tag-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem 0.75rem;
+  background: rgba(17, 24, 39, 0.7); /* --glass-bg com mais opacidade */
+  border-bottom-left-radius: 0.75rem;
+  border-left: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(5px);
+  font-size: 0.9rem;
+  z-index: 3;
+  cursor: help;
+  transition: all 0.3s ease;
+}
+
+.card-tag-indicator .fas {
+  transition: all 0.3s ease;
+}
+
+.card-tag-indicator.leve .fas {
+  color: var(--color-pc);
+}
+
+.card-tag-indicator.pesado .fas {
+  color: var(--color-hacks);
+}
+
+.card-tag-indicator:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px 0px currentColor;
+}
+
+.card-tag-indicator.leve:hover { color: var(--color-pc); }
+.card-tag-indicator.pesado:hover { color: var(--color-hacks); }
+
+/* Tooltip para o indicador */
+.card-tag-indicator::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background-color: #111827;
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+.card-tag-indicator:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
