@@ -1,5 +1,8 @@
 Ferramentas Ninja - Histórico de Atualizações
 
+(31/08/2025)
+> Header possui botão de sugestões (Google Forms)
+
 (30/08/2025)
 > Design melhorado
 > Layout novo na página inicial
