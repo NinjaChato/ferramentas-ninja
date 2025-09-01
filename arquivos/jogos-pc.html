@@ -15,15 +15,6 @@
 <body class="p-4">
     <div id="loader"><div class="spinner"></div></div>
     <div id="particles-js"></div>
-    <div id="psiphonNotice" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10001] flex items-center justify-center p-4 hidden">
-      <div class="glass-effect max-w-md w-full p-8 rounded-2xl text-center relative">
-        <button id="closeNoticeBtn" class="absolute top-4 right-4 text-muted hover:text-light transition-colors text-2xl">&times;</button>
-        <i class="fas fa-shield-alt text-5xl text-primary-glow mb-4"></i>
-        <h2 class="text-2xl font-bold mb-3">Navegação Segura</h2>
-        <p class="text-muted mb-6">Para acessar sites de download que possam estar bloqueados, recomendamos o uso de uma VPN como o <strong class="text-light">Psiphon</strong> (disponível na seção Ferramentas) para garantir seu acesso. </p>
-        <button id="understandBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">Entendi</button>
-      </div>
-    </div>
 
     <div id="mainContainer" class="max-w-6xl mx-auto w-full">
         <header class="fade-in-up glass-effect p-6 md:p-8 mb-12 rounded-2xl mt-4">
@@ -46,7 +37,13 @@
                     <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-muted text-xl"></i>
                     <input type="text" id="searchInput" class="w-full bg-black/20 border border-white/10 rounded-lg py-4 pl-12 pr-4 text-lg text-light placeholder-muted focus:ring-2 focus:ring-primary-glow focus:border-primary-glow transition-all duration-300 outline-none" placeholder="Busque jogos nesta categoria...">
                 </div>
-                <div class="category-buttons flex flex-wrap justify-center gap-2 md:gap-4 mt-6">
+                <!-- FILTROS DE TAGS ADICIONADOS -->
+                <div id="tagFilters" class="flex flex-wrap justify-center gap-3 mt-6">
+                    <button class="category-btn filter-btn active" data-filter="all">Todos</button>
+                    <button class="category-btn filter-btn" data-filter="leve">Leves</button>
+                    <button class="category-btn filter-btn" data-filter="pesado">Pesados</button>
+                </div>
+                <div class="category-buttons flex flex-wrap justify-center gap-2 md:gap-4 mt-4">
                     <a href="index.html" class="category-btn"><i class="fas fa-home mr-2"></i>Início</a>
                     <a href="jogos-pc.html" class="category-btn active"><i class="fas fa-desktop mr-2"></i>Jogos PC</a>
                     <a href="jogos-navegador.html" class="category-btn"><i class="fas fa-globe mr-2"></i>Navegador</a>
@@ -62,7 +59,8 @@
                 <section class="jogos-pc mb-16">
                     <h2 class="section-title text-center">Jogos para PC</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                        <div class="card">
+                        <!-- CARDS COM DATA-TAGS -->
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-users"></i></div>
@@ -72,7 +70,7 @@
                               <a href="https://gofile.io/d/1gmsiO" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-graduation-cap"></i></div>
@@ -82,7 +80,7 @@
                               <a href="https://gofile.io/d/41UQkD" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-mountain"></i></div>
@@ -92,7 +90,7 @@
                               <a href="https://gofile.io/d/OQEUes" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-mug-hot"></i></div>
@@ -102,7 +100,7 @@
                               <a href="https://gofile.io/d/jzaTbm" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-magic"></i></div>
@@ -112,7 +110,7 @@
                               <a href="https://gofile.io/d/9ja9fm" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-futbol"></i></div>
@@ -122,7 +120,7 @@
                               <a href="https://1fichier.com/?dbd0kww55pv2etpuo29l" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-gun"></i></div>
@@ -132,7 +130,7 @@
                               <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
@@ -142,7 +140,7 @@
                               <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys2.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
@@ -152,7 +150,7 @@
                               <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys3.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
@@ -162,7 +160,7 @@
                               <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys4.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
@@ -172,7 +170,7 @@
                               <a href="https://archive.org/download/fnaf1ucn/SisterLocation.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-pizza-slice"></i></div>
@@ -182,7 +180,7 @@
                               <a href="https://1fichier.com/?vvclwvfnytwul4l0mnm0" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-cube"></i></div>
@@ -192,7 +190,7 @@
                               <a href="https://1fichier.com/?qebxx2t4sph1583a6uuh" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-person-falling"></i></div>
@@ -205,7 +203,7 @@
                               </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car"></i></div>
@@ -218,7 +216,7 @@
                               </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-city"></i></div>
@@ -228,7 +226,7 @@
                               <a href="https://1fichier.com/?1iyueh96onjb6fg3rs6l" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-bug"></i></div>
@@ -238,7 +236,7 @@
                               <a href="https://gofile.io/d/4XiCAc" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
@@ -248,7 +246,7 @@
                               <a href="https://1fichier.com/?idgjp4xj752dyikhp3iz" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
@@ -258,7 +256,7 @@
                               <a href="https://1fichier.com/?cxwhnowjsqre8f0eyemw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
@@ -268,7 +266,7 @@
                               <a href="https://1fichier.com/?dvi1pehq13udj4l8c8yz" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
@@ -278,7 +276,7 @@
                               <a href="https://1fichier.com/?wg3v32cqoelm5x062dpw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
@@ -288,7 +286,7 @@
                               <a href="https://1fichier.com/?bhc5plxo7tmj3vf3mfip" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-brain"></i></div>
@@ -298,7 +296,7 @@
                               <a href="https://1fichier.com/?hsyx4eh1qp6cqjiq00pl" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-microscope"></i></div>
@@ -308,7 +306,7 @@
                               <a href="https://gofile.io/d/bUP8fR" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-rocket"></i></div>
@@ -318,7 +316,7 @@
                               <a href="https://1fichier.com/?t4s9xj0i15953usq4ghh" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-cube"></i></div>
@@ -328,7 +326,7 @@
                               <a href="https://www.mediafire.com/file/5uq1yz36gw94cl7/SKlauncher-3.2.12.jar/file" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-tractor"></i></div>
@@ -338,7 +336,7 @@
                               <a href="https://gofile.io/d/ENzmk4" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-hammer"></i></div>
@@ -348,7 +346,7 @@
                               <a href="https://gofile.io/d/ylmvvO" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-hat-wizard"></i></div>
@@ -358,7 +356,7 @@
                               <a href="https://archive.org/download/the-henry-stickmin-collection/The.Henry.Stickmin.Collection.zip" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-road"></i></div>
@@ -368,7 +366,7 @@
                               <a href="https://archive.org/download/TrackMania_Nations_Forever/TMNForever.rar" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="pesado">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-skull-crossbones"></i></div>
@@ -378,7 +376,7 @@
                               <a href="https://gofile.io/d/R4fSuu" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-crown"></i></div>
@@ -388,7 +386,7 @@
                               <a href="https://1fichier.com/?11xxjbkq48b2jup14sfi" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" data-tags="leve">
                             <div class="card-content p-6 flex flex-col justify-between h-full">
                               <div>
                                 <div class="text-3xl mb-4"><i class="fas fa-heart"></i></div>
