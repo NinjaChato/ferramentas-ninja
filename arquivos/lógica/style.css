@@ -1,4 +1,3 @@
-/* === ESTILOS EXISTENTES (NÃO MODIFICADOS) === */
 :root {
   --primary-glow: #a855f7;
   --secondary-glow: #ec4899;
@@ -167,6 +166,19 @@ body::before {
 .ferramentas .card:hover { border-color: var(--color-ferramentas); box-shadow: 0 10px 50px -15px var(--color-ferramentas); }
 .ferramentas .card:hover h3, .ferramentas .card:hover .fas { color: var(--color-ferramentas); text-shadow: 0 0 12px var(--color-ferramentas); }
 
+/* === [NOVO E CORRIGIDO] REGRAS PARA PROTEGER A COR DOS ÍCONES DE TAG === */
+/* Esta regra garante que o ícone de tag LEVE permaneça VERDE no hover do card */
+.jogos-pc .card:hover .card-tag-indicator.leve .fas {
+  color: var(--color-pc);
+  text-shadow: none; /* Remove o brilho para manter o ícone limpo */
+}
+/* Esta regra garante que o ícone de tag PESADO permaneça LARANJA no hover do card */
+.jogos-pc .card:hover .card-tag-indicator.pesado .fas {
+  color: var(--color-hacks);
+  text-shadow: none; /* Remove o brilho para manter o ícone limpo */
+}
+
+
 /* === BOTÕES E INTERAÇÕES === */
 .action-btn {
   position: relative; overflow: hidden;
@@ -226,7 +238,7 @@ body::before {
   transition: opacity 0.4s ease, transform 0.4s var(--swoosh);
 }
 
-/* === [NOVO] INDICADOR DE TAGS PARA CARDS (LEVE/PESADO) === */
+/* === INDICADOR DE TAGS PARA CARDS (LEVE/PESADO) === */
 .card-tag-indicator {
   position: absolute;
   top: 0;
