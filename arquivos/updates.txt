@@ -2,6 +2,7 @@ Ferramentas Ninja - Histórico de Atualizações
 
 (31/08/2025)
 > Header possui botão de sugestões (Google Forms)
+> Jogos de PC agora tem filtros de acordo com o tamanho do jogo (Pesado e Leve)
 
 (30/08/2025)
 > Design melhorado
