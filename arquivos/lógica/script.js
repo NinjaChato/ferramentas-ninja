@@ -1,7 +1,7 @@
 /* =========================================================
-   SCRIPT OTIMIZADO (v2.2) - PERFORMANCE E INTERATIVIDADE
-   - Lógica de aviso removida para ser controlada por scripts locais.
-   - Mantida a funcionalidade de busca e filtro de tags.
+   SCRIPT OTIMIZADO (v2.3) - PERFORMANCE E INTERATIVIDADE
+   - Lógica de aviso completamente removida.
+   - Funcionalidades de busca e filtro mantidas.
 ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
