@@ -16,7 +16,7 @@
     <div id="loader"><div class="spinner"></div></div>
     <div id="particles-js"></div>
     
-    <div id="psiphonNotice" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10001] flex items-center justify-center p-4">
+    <div id="psiphonNotice" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10001] flex items-center justify-center p-4 hidden">
       <div class="glass-effect max-w-md w-full p-8 rounded-2xl text-center relative">
         <button id="closeNoticeBtn" class="absolute top-4 right-4 text-muted hover:text-light transition-colors text-2xl">&times;</button>
         <i class="fas fa-info-circle text-5xl text-primary-glow mb-4"></i>
@@ -239,5 +239,35 @@
     </div>
     <button id="backToTop" class="fixed bottom-[-100px] right-6 w-14 h-14 glass-effect rounded-full text-2xl z-50 opacity-0"><i class="fas fa-arrow-up"></i></button>
     <script src="lógica/script.js"></script>
+
+    <!-- SCRIPT LOCAL PARA CONTROLE DO AVISO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const psiphonNotice = document.getElementById('psiphonNotice');
+            if (psiphonNotice) {
+                const closeNoticeBtn = document.getElementById('closeNoticeBtn');
+                const understandBtn = document.getElementById('understandBtn');
+
+                // A lógica aqui é um pouco diferente, o aviso aparece imediatamente
+                // mas só se não tiver sido fechado antes.
+                if (!localStorage.getItem('psiphonNoticeClosed')) {
+                    psiphonNotice.classList.remove('hidden');
+                    psiphonNotice.style.opacity = '1';
+                } else {
+                    // Se já foi fechado, garante que ele não apareça
+                    psiphonNotice.classList.add('hidden');
+                }
+
+                const closeNotice = () => {
+                    psiphonNotice.style.opacity = '0';
+                    setTimeout(() => psiphonNotice.classList.add('hidden'), 300);
+                    localStorage.setItem('psiphonNoticeClosed', 'true');
+                };
+
+                if (closeNoticeBtn) closeNoticeBtn.addEventListener('click', closeNotice);
+                if (understandBtn) understandBtn.addEventListener('click', closeNotice);
+            }
+        });
+    </script>
 </body>
 </html>
