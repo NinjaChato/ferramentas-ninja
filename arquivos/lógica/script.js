@@ -1,6 +1,7 @@
 /* =========================================================
-   SCRIPT OTIMIZADO (v2.0) - PERFORMANCE E INTERATIVIDADE
-   Versão estável sem lógica de senha.
+   SCRIPT OTIMIZADO (v2.1) - PERFORMANCE E INTERATIVIDADE
+   - Adicionada lógica de filtro por tags.
+   - Removida lógica de aviso (Psiphon).
 ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -89,22 +90,30 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // --- 4. FUNCIONALIDADE DE BUSCA (OTIMIZADA COM DEBOUNCE) ---
+  // --- 4. FUNCIONALIDADE DE BUSCA E FILTRO (OTIMIZADA) ---
   const searchInput = document.getElementById('searchInput');
   if (searchInput) {
     const linksContainer = document.getElementById('linksContainer');
     const allCards = document.querySelectorAll('#linksContainer .card');
     const noResultsMessage = document.getElementById('noResultsMessage');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    let activeFilter = 'all'; // Filtro padrão
 
-    const performSearch = () => {
+    const updateVisibleCards = () => {
       const searchTerm = searchInput.value.toLowerCase().trim();
       let cardsFound = 0;
 
       allCards.forEach(card => {
         const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
         const description = card.querySelector('p')?.textContent.toLowerCase() || '';
-        const isVisible = title.includes(searchTerm) || description.includes(searchTerm);
+        const tags = card.dataset.tags || '';
+
+        const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+        const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
+
+        const isVisible = matchesSearch && matchesFilter;
         
+        // O grid cuida do layout, então 'block' ou 'none' é suficiente.
         card.style.display = isVisible ? 'block' : 'none';
         if (isVisible) cardsFound++;
       });
@@ -114,32 +123,24 @@ document.addEventListener('DOMContentLoaded', () => {
       if (noResultsMessage) noResultsMessage.style.display = hasResults ? 'none' : 'block';
     };
     
-    searchInput.addEventListener('keyup', debounce(performSearch, 250));
-  }
+    searchInput.addEventListener('keyup', debounce(updateVisibleCards, 250));
 
+    if (filterButtons.length > 0) {
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Atualiza a classe 'active' nos botões
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
 
-  // --- 5. AVISO DE NAVEGAÇÃO SEGURA (PSIPHON) ---
-  const psiphonNotice = document.getElementById('psiphonNotice');
-  if (psiphonNotice) {
-    const closeNoticeBtn = document.getElementById('closeNoticeBtn');
-    const understandBtn = document.getElementById('understandBtn');
-
-    if (!localStorage.getItem('psiphonNoticeClosed')) {
-      setTimeout(() => psiphonNotice.classList.remove('hidden'), 1500);
+          // Define o filtro ativo e atualiza a visualização
+          activeFilter = button.dataset.filter;
+          updateVisibleCards();
+        });
+      });
     }
-
-    const closeNotice = () => {
-      psiphonNotice.style.opacity = '0';
-      setTimeout(() => psiphonNotice.classList.add('hidden'), 300);
-      localStorage.setItem('psiphonNoticeClosed', 'true');
-    };
-
-    if (closeNoticeBtn) closeNoticeBtn.addEventListener('click', closeNotice);
-    if (understandBtn) understandBtn.addEventListener('click', closeNotice);
   }
 
-
-  // --- 6. BOTÃO "VOLTAR AO TOPO" (OTIMIZADO COM THROTTLE) ---
+  // --- 5. BOTÃO "VOLTAR AO TOPO" (OTIMIZADO COM THROTTLE) ---
   const backToTopButton = document.getElementById('backToTop');
   if (backToTopButton) {
     const handleScroll = () => {
@@ -152,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
-  // --- 7. FUNCIONALIDADE DE COPIAR SCRIPT ---
+  // --- 6. FUNCIONALIDADE DE COPIAR SCRIPT ---
   const copyMessage = document.getElementById('copyMessage');
   const copyScriptBtns = document.querySelectorAll('.copy-script-btn');
   if (copyMessage && copyScriptBtns.length > 0) {
