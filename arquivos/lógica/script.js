@@ -1,7 +1,7 @@
 /* =========================================================
-   SCRIPT OTIMIZADO (v2.1) - PERFORMANCE E INTERATIVIDADE
-   - Adicionada lógica de filtro por tags.
-   - Removida lógica de aviso (Psiphon).
+   SCRIPT OTIMIZADO (v2.2) - PERFORMANCE E INTERATIVIDADE
+   - Lógica de aviso removida para ser controlada por scripts locais.
+   - Mantida a funcionalidade de busca e filtro de tags.
 ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        const rotateX = ((y - centerY) / centerY) * -6; // Inclinação vertical
-        const rotateY = ((x - centerX) / centerX) * 6;  // Inclinação horizontal
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
 
         card.style.setProperty('--spotlight-x', `${x}px`);
         card.style.setProperty('--spotlight-y', `${y}px`);
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const allCards = document.querySelectorAll('#linksContainer .card');
     const noResultsMessage = document.getElementById('noResultsMessage');
     const filterButtons = document.querySelectorAll('.filter-btn');
-    let activeFilter = 'all'; // Filtro padrão
+    let activeFilter = 'all';
 
     const updateVisibleCards = () => {
       const searchTerm = searchInput.value.toLowerCase().trim();
@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const isVisible = matchesSearch && matchesFilter;
         
-        // O grid cuida do layout, então 'block' ou 'none' é suficiente.
         card.style.display = isVisible ? 'block' : 'none';
         if (isVisible) cardsFound++;
       });
@@ -128,11 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (filterButtons.length > 0) {
       filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-          // Atualiza a classe 'active' nos botões
           filterButtons.forEach(btn => btn.classList.remove('active'));
           button.classList.add('active');
-
-          // Define o filtro ativo e atualiza a visualização
           activeFilter = button.dataset.filter;
           updateVisibleCards();
         });
