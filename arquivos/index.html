@@ -16,7 +16,7 @@
     <div id="loader"><div class="spinner"></div></div>
     <div id="particles-js"></div>
     
-    <!-- AVISO DE NAVEGAÇÃO SEGURA (PSIPHON) ADICIONADO AQUI -->
+    <!-- AVISO DE NAVEGAÇÃO SEGURA (APARECE TODA VEZ) -->
     <div id="psiphonNotice" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10001] flex items-center justify-center p-4 hidden">
       <div class="glass-effect max-w-md w-full p-8 rounded-2xl text-center relative">
         <button id="closeNoticeBtn" class="absolute top-4 right-4 text-muted hover:text-light transition-colors text-2xl">&times;</button>
@@ -151,29 +151,26 @@
     
     <script src="lógica/script.js"></script>
 
-    <!-- SCRIPT LOCAL PARA CONTROLE DO AVISO -->
+    <!-- SCRIPT LOCAL PARA AVISO (APARECE TODA VEZ) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const psiphonNotice = document.getElementById('psiphonNotice');
             if (psiphonNotice) {
-                const closeNoticeBtn = document.getElementById('closeNoticeBtn');
-                const understandBtn = document.getElementById('understandBtn');
+                const closeNoticeBtn = psiphonNotice.querySelector('#closeNoticeBtn');
+                const understandBtn = psiphonNotice.querySelector('#understandBtn');
 
-                // Verifica se o aviso já foi fechado antes
-                if (!localStorage.getItem('psiphonNoticeClosed')) {
-                    setTimeout(() => {
-                        psiphonNotice.classList.remove('hidden');
-                        psiphonNotice.style.opacity = '1'; // Para transição suave
-                    }, 1500);
-                }
-
+                // Ação para fechar o aviso
                 const closeNotice = () => {
                     psiphonNotice.style.opacity = '0';
                     setTimeout(() => psiphonNotice.classList.add('hidden'), 300);
-                    // Marca no navegador do usuário que o aviso foi fechado
-                    localStorage.setItem('psiphonNoticeClosed', 'true');
                 };
 
+                // Mostra o aviso após um pequeno delay, TODA VEZ, sem verificar localStorage
+                setTimeout(() => {
+                    psiphonNotice.classList.remove('hidden');
+                }, 1500);
+
+                // Adiciona os eventos de clique para fechar
                 if (closeNoticeBtn) closeNoticeBtn.addEventListener('click', closeNotice);
                 if (understandBtn) understandBtn.addEventListener('click', closeNotice);
             }
