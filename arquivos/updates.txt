@@ -1,5 +1,16 @@
 Ferramentas Ninja - Histórico de Atualizações
 
+(02/09/2025)
+> NOVOS JOGOS
+- Ender Lilies
+- Blasphemous 1 e 2
+- Volcano Princess
+- OneShot
+- Life is Strange (um monte de jogo spin-off sei lá)
+- Enigma do Medo
+- Persona 5 Striker
+- Red Dead Redemption 2 (amanhã coloco o 1)
+
 (31/08/2025)
 > Header possui botão de sugestões (Google Forms)
 > Jogos de PC agora tem filtros de acordo com o tamanho do jogo (Pesado e Leve). Agora me sinto mais livre pra por jogos pesados
