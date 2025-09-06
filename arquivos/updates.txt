@@ -1,128 +1,85 @@
 Ferramentas Ninja - Histórico de Atualizações
 
+(05/09/2025)
+> ATUALIZAÇÃO GERAL DE QUALIDADE E PERFORMANCE
+- **Melhorias Estruturais e de Performance:**
+  - Todo o código CSS foi centralizado em um único arquivo (`lógica/style.css`) para garantir consistência visual em todo o site.
+  - Todo o código JavaScript foi unificado em um arquivo (`lógica/script.js`), removendo todos os scripts inline das páginas HTML.
+  - Otimização de performance: o emulador de jogos agora é completamente desativado ao fechar a janela, economizando recursos do sistema do usuário.
+- **Design e Experiência do Usuário (UX):**
+  - Layout de grade de cards (`.card-grid`) e rodapé padronizados em todas as páginas.
+  - Substituição de todos os pop-ups intrusivos por "modais" que são ativados pelo usuário através de um ícone de informação, melhorando a experiência de navegação.
+  - Adicionada animação suave de fade-in/fade-out ao filtrar e buscar itens nas páginas.
+- **Correções:**
+  - Corrigidas diversas inconsistências de layout e espaçamento entre as páginas.
+  - Padronizado o comportamento de todos os botões e componentes interativos.
+
 (02/09/2025)
 > NOVOS JOGOS
-- FNAF - Into the Pit
-- Ender Lilies
-- Blasphemous 1 e 2
-- Volcano Princess
-- OneShot
-- Life is Strange (um monte de jogo spin-off sei lá)
-- Enigma do Medo
-- Persona 5 Striker
-- Red Dead Redemption 2 (amanhã coloco o 1)
+- Adicionado: FNAF - Into the Pit
+- Adicionado: Ender Lilies
+- Adicionado: Blasphemous 1 e 2
+- Adicionado: Volcano Princess
+- Adicionado: OneShot
+- Adicionado: Série Life is Strange (Remastered, Before the Storm, 2, True Colors, Double Exposure)
+- Adicionado: Enigma do Medo
+- Adicionado: Persona 5 Strikers
+- Adicionado: Red Dead Redemption 2
 
 (31/08/2025)
-> Header possui botão de sugestões (Google Forms)
-> Jogos de PC agora tem filtros de acordo com o tamanho do jogo (Pesado e Leve). Agora me sinto mais livre pra por jogos pesados
+> NOVOS RECURSOS E MELHORIAS
+- **Recurso:** Adicionado botão de sugestões (via Google Forms) no cabeçalho.
+- **Melhoria:** Implementado sistema de filtros (Leve/Pesado) na página de Jogos PC.
 
 (30/08/2025)
-> Design melhorado
-> Layout novo na página inicial
-> Novos jogos
-- Ultimate Custom Night
-- Fifa 14
-- Freddy Fazbear's Pizzeria Simulator
-- OMORI
-- Rimworld
+> ATUALIZAÇÃO DE CONTEÚDO E DESIGN
+- **Design:** Layout da página inicial aprimorado com novas seções.
+- **Novos Jogos:**
+  - Adicionado: Ultimate Custom Night
+  - Adicionado: Fifa 14
+  - Adicionado: Freddy Fazbear's Pizzeria Simulator
+  - Adicionado: OMORI
+  - Adicionado: Rimworld
 
 (26/08/2025)
-> Nova ferramenta Canlite (Proxy para burlar censura, não sei se funciona)
-> Novos jogos de navegador
-- Aviso na página de jogos de navegador
+> NOVOS CONTEÚDOS
+- **Nova Ferramenta:** Adicionado Canlite (Proxy Web).
+- **Melhoria:** Adicionado um aviso na página de Jogos de Navegador sobre a variedade de links.
 
 (20/08/2025)
-> Todas as páginas estão em arquivos diferentes
-> Nova categoria com jogos de emulador
-- Fire Emblem
-- Final Fantasy 3
-- Earthbound
-- Metroid
-- Super Metroid
-- Metroid Fusion
-- Metroid: Zero Mission
-- Donkey Kong Country
-- Pokemon Crystal
-- Pokemon FireRed
-- Pokemon Emerald
-- Sonic the Hedgehog
-- Sonic 2
-- Sonic 3
-- Streets of Rage 2
-- Mortal Kombat
-- Mortal Kombat 2
-- Mortal Kombat 3
-- Tetris
-- The Legend of Zelda
-- The Adventure of Link
-- The Legend of Zelda: A Link to the Past
-- Link's Awakening DX
-- The Legend of Zelda: Oracle of Seasons
-- The Legend of Zelda: Oracle of Ages
-- The Legend of Zelda: The Minish Cap
-- Super Mario Kart
-- Mario Kart: Super Circuit
-- Super Mario Bros.
-- Super Mario Bros. 2
-- Super Mario Bros. 3
-- Super Mario Land
-- Super Mario Land DX
-- Super Mario World
-- Super Mario World 2: Yoshi's Island
-- Super Mario All Stars
-- Super Mario Advance
-- Super Mario Advance 2
-- Super Mario Advance 3
-- Super Mario Advance 4
+> EXPANSÃO MASSIVA DE CONTEÚDO
+- **Nova Categoria:** Lançada a seção de Jogos de Emulador.
+- **Novos Jogos (Emulador):** Adicionada uma vasta coleção inicial, incluindo clássicos das séries Mario, Zelda, Pokémon, Metroid, Sonic e mais.
 
 (19/08/2025)
-> Adicionado UltraSurf as ferramentas (Ferramenta para evitar censura)
+> NOVAS FERRAMENTAS
+- Adicionado: UltraSurf (Ferramenta de privacidade).
 
 (17/08/2025)
-> Visual novo
-> Aviso de VPN quando entra no site
-> Descrições com informações importantes sobre os links estão destacadas
+> ATUALIZAÇÃO VISUAL
+- **Design:** Implementado novo visual com efeitos "glass" e fundo animado.
+- **Melhoria:** Adicionado aviso de VPN na entrada do site.
+- **Melhoria:** Descrições importantes agora são destacadas.
 
 (16/08/2025)
-> Atualização de alguns links
+> MANUTENÇÃO
+- Atualização de links de download quebrados.
 
 (29/07/2025)
-> Adição de ferramenta Psiphon (Uma ferramenta de censura-bypassing para acesso irrestrito à internet.)
-> Adição de 2 jogos
-- Minecraft (Sklauncher)
-- Trackmania Nations Forever
+> NOVOS CONTEÚDOS
+- **Nova Ferramenta:** Adicionado Psiphon.
+- **Novos Jogos:**
+  - Adicionado: Minecraft (SKlauncher)
+  - Adicionado: Trackmania Nations Forever
 
 (27/07/2025)
-> Novo visual
-> Atualização de links dos jogos
-> Remoção de jogos cujos links são bloqueados (Não consegui achar outros para eles)
-- The Binding of Isaac: Rebirth
-- A Dance of Fire and Ice
-- Hotline Miami
-- Hotline Miami 2: Wrong Number
-- LEGO Batman: The Videogame
-- Limbo
-- Baldi's Basics Plus
-- Super Meat Boy
-- Portal
-- Portal 2
-- Plants vs Zombies (GOTY Edition)
-(OBS: Sei que é a maioria dos jogos adicionados no primeiro update, mas prometo que vou tentar providenciar um download acessível para eles. Mas por enquanto, eles ficam fora do site.)
+> MANUTENÇÃO E ATUALIZAÇÃO DE CONTEÚDO
+- **Design:** Implementado o primeiro grande redesenho visual.
+- **Manutenção:** Links de jogos atualizados.
+- **Conteúdo Removido:** Vários jogos foram temporariamente removidos devido a links de download instáveis (ex: The Binding of Isaac, Portal 1 & 2, etc.).
 
 (23/07/2025)
-> Criação do histórico
-> Adição de jogos
- - The Binding of Isaac: Rebirth
- - Getting Over It
- - GTA Vice City
- - Hotline Miami
- - Hotline Miami 2: Wrong Number
- - LEGO Batman: The Videogame
- - Limbo
- - Plague Inc: Evolved
- - Plants vs Zombies (GOTY Edition)
- - Portal
- - Portal 2
- - Super Meat Boy
- - The Henry Stickmin Collection
-> Adição do Tor Browser nas Ferramentas
+> LANÇAMENTO E PRIMEIROS CONTEÚDOS
+- **Recurso:** Criação do histórico de atualizações (`updates.txt`).
+- **Nova Ferramenta:** Adicionado Tor Browser.
+- **Novos Jogos:** Adicionada a primeira leva de jogos para PC.
