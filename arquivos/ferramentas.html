@@ -10,19 +10,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Link para o nosso novo CSS centralizado -->
     <link rel="stylesheet" href="lógica/style.css">
 </head>
 <body class="p-4">
     <div id="loader"><div class="spinner"></div></div>
     <div id="particles-js"></div>
-    <div id="psiphonNotice" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10001] flex items-center justify-center p-4 hidden">
-      <div class="glass-effect max-w-md w-full p-8 rounded-2xl text-center relative">
-        <button id="closeNoticeBtn" class="absolute top-4 right-4 text-muted hover:text-light transition-colors text-2xl">&times;</button>
-        <i class="fas fa-shield-alt text-5xl text-primary-glow mb-4"></i>
-        <h2 class="text-2xl font-bold mb-3">Navegação Segura</h2>
-        <p class="text-muted mb-6">Para acessar sites de download que possam estar bloqueados, recomendamos o uso de uma VPN como o <strong class="text-light">Psiphon</strong> (disponível na seção Ferramentas) para garantir seu acesso. </p>
-        <button id="understandBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">Entendi</button>
-      </div>
+
+    <!-- MODAL DE AVISO DE NAVEGAÇÃO SEGURA -->
+    <div id="vpnNoticeModal" class="modal-overlay">
+        <div class="modal-content glass-effect">
+            <button class="modal-close-btn">&times;</button>
+            <i class="fas fa-shield-alt text-5xl text-primary-glow mb-4"></i>
+            <h2 class="text-2xl font-bold mb-3">Navegação Segura</h2>
+            <p class="text-muted mb-6">Para acessar sites de download que possam estar bloqueados, recomendamos o uso de uma VPN como o <strong class="text-light">Psiphon</strong> para garantir seu acesso irrestrito.</p>
+            <button class="action-btn modal-close-btn text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">Entendi</button>
+        </div>
     </div>
 
     <div id="mainContainer" class="max-w-6xl mx-auto w-full">
@@ -58,88 +61,93 @@
         </header>
 
         <main class="fade-in-up container mx-auto px-4">
-            <div id="linksContainer">
-                <section class="ferramentas mb-16">
-                    <h2 class="section-title text-center">Ferramentas</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                        
-                        <div class="card">
-                            <div class="card-content p-6 flex flex-col justify-between h-full">
-                              <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Cloudflare WARP</h3>
-                                <p class="text-muted mb-4">Uma VPN gratuita que torna sua internet mais privada e segura.</p>
-                              </div>
-                              <a href="https://www.mediafire.com/file/05lj3fged993twi/Cloudflare_WARP_2025.5.893.0.msi/file" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                            </div>
+            <section class="ferramentas mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="section-title inline-block">Ferramentas</h2>
+                    <!-- Botão para acionar o modal de aviso -->
+                    <button data-modal-target="#vpnNoticeModal" class="ml-2 text-blue-400 hover:text-blue-300 transition-colors" title="Recomendação de Segurança">
+                        <i class="fas fa-info-circle"></i>
+                    </button>
+                </div>
+                
+                <div class="card-grid" id="linksContainer">
+                    <div class="card">
+                        <div class="card-content p-6 flex flex-col justify-between h-full">
+                          <div>
+                            <div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                            <h3 class="text-2xl font-bold mb-2">Cloudflare WARP</h3>
+                            <p class="text-muted mb-4">Uma VPN gratuita que torna sua internet mais privada e segura.</p>
+                          </div>
+                          <a href="https://www.mediafire.com/file/05lj3fged993twi/Cloudflare_WARP_2025.5.893.0.msi/file" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
                         </div>
-
-                        <div class="card">
-                            <div class="card-content p-6 flex flex-col justify-between h-full">
-                              <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Psiphon</h3>
-                                <p class="text-muted mb-4">Ferramenta de evasão que utiliza tecnologias de VPN, SSH e Proxy HTTP.</p>
-                              </div>
-                              <a href="https://1fichier.com/?593yavv7parm3rj1z79t" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-content p-6 flex flex-col justify-between h-full">
-                              <div>
-                                <div class="text-3xl mb-4"><i class="fab fa-tor-project"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Navegador Tor</h3>
-                                <p class="text-muted mb-4">Navegue com privacidade e anonimato, protegendo-se contra rastreamento.</p>
-                              </div>
-                              <a href="https://www.mediafire.com/file/ikq388uyxhf9x5l/tor-browser-windows-x86_64-portable-14.5.5.exe/file" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-content p-6 flex flex-col justify-between h-full">
-                              <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-wind"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Ultrasurf</h3>
-                                <p class="text-muted mb-4">Proxy para contornar a censura na internet e proteger sua privacidade online.</p>
-                              </div>
-                              <a href="https://1fichier.com/?gsslz2l1a2ryvt8xppmo" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-content p-6 flex flex-col justify-between h-full">
-                              <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-door-open"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">VPN Gate</h3>
-                                <p class="text-muted mb-4">Um serviço de VPN acadêmico e gratuito para uma navegação segura.</p>
-                              </div>
-                              <a href="https://www.mediafire.com/file/l0u586eqiq5hkqd/vpngate-client-2025.07.29-build-9807.162381.zip/file" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-content p-6 flex flex-col justify-between h-full">
-                              <div>
-                                <div class="text-3xl mb-4"><i class="fas fa-link"></i></div>
-                                <h3 class="text-2xl font-bold mb-2">Canlite</h3>
-                                <p class="text-muted mb-4">Um proxy web para acessar sites bloqueados de forma rápida e fácil.</p>
-                              </div>
-                              <a href="https://canlite.org" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Acessar Agora</a>
-                            </div>
-                        </div>
-
                     </div>
-                </section>
-            </div>
+                    <div class="card">
+                        <div class="card-content p-6 flex flex-col justify-between h-full">
+                          <div>
+                            <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
+                            <h3 class="text-2xl font-bold mb-2">Psiphon</h3>
+                            <p class="text-muted mb-4">Ferramenta de evasão que utiliza tecnologias de VPN, SSH e Proxy HTTP.</p>
+                          </div>
+                          <a href="https://1fichier.com/?593yavv7parm3rj1z79t" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content p-6 flex flex-col justify-between h-full">
+                          <div>
+                            <div class="text-3xl mb-4"><i class="fab fa-tor-project"></i></div>
+                            <h3 class="text-2xl font-bold mb-2">Navegador Tor</h3>
+                            <p class="text-muted mb-4">Navegue com privacidade e anonimato, protegendo-se contra rastreamento.</p>
+                          </div>
+                          <a href="https://www.mediafire.com/file/ikq388uyxhf9x5l/tor-browser-windows-x86_64-portable-14.5.5.exe/file" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content p-6 flex flex-col justify-between h-full">
+                          <div>
+                            <div class="text-3xl mb-4"><i class="fas fa-wind"></i></div>
+                            <h3 class="text-2xl font-bold mb-2">Ultrasurf</h3>
+                            <p class="text-muted mb-4">Proxy para contornar a censura na internet e proteger sua privacidade online.</p>
+                          </div>
+                          <a href="https://1fichier.com/?gsslz2l1a2ryvt8xppmo" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content p-6 flex flex-col justify-between h-full">
+                          <div>
+                            <div class="text-3xl mb-4"><i class="fas fa-door-open"></i></div>
+                            <h3 class="text-2xl font-bold mb-2">VPN Gate</h3>
+                            <p class="text-muted mb-4">Um serviço de VPN acadêmico e gratuito para uma navegação segura.</p>
+                          </div>
+                          <a href="https://www.mediafire.com/file/l0u586eqiq5hkqd/vpngate-client-2025.07.29-build-9807.162381.zip/file" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content p-6 flex flex-col justify-between h-full">
+                          <div>
+                            <div class="text-3xl mb-4"><i class="fas fa-link"></i></div>
+                            <h3 class="text-2xl font-bold mb-2">Canlite</h3>
+                            <p class="text-muted mb-4">Um proxy web para acessar sites bloqueados de forma rápida e fácil.</p>
+                          </div>
+                          <a href="https://canlite.org" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Acessar Agora</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <div id="noResultsMessage" class="hidden text-center glass-effect p-12 my-16 rounded-2xl">
                 <i class="fas fa-ghost text-6xl text-primary-glow mb-6 animate-bounce"></i>
                 <h3 class="text-3xl font-bold mb-2">Nenhum ninja por aqui!</h3>
                 <p class="text-muted text-lg">Não encontramos nada com esse termo. Tente uma nova busca!</p>
             </div>
         </main>
+
+        <!-- RODAPÉ PADRONIZADO -->
+        <footer class="site-footer">
+            <p>&copy; 2025 Ferramentas Ninja. Todos os direitos reservados.</p>
+        </footer>
     </div>
     <button id="backToTop" class="fixed bottom-[-100px] right-6 w-14 h-14 glass-effect rounded-full text-2xl z-50 opacity-0"><i class="fas fa-arrow-up"></i></button>
+    
+    <!-- Link para o nosso novo JS centralizado -->
     <script src="lógica/script.js"></script>
 </body>
 </html>
