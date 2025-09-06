@@ -171,12 +171,17 @@ body::before {
 }
 
 /* === CARDS E GRID === */
+/* AQUI ESTÁ A MUDANÇA PARA CORRIGIR O FILTRO */
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   perspective: 1500px;
 }
+.card-grid > .card {
+  flex: 1 1 300px;
+}
+
 .card {
   background: #111827;
   border-radius: 1rem;
