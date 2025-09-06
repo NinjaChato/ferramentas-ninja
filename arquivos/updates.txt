@@ -1,85 +1,85 @@
 Ferramentas Ninja - Histórico de Atualizações
 
 (05/09/2025)
-> ATUALIZAÇÃO GERAL DE QUALIDADE E PERFORMANCE
-- **Melhorias Estruturais e de Performance:**
-  - Todo o código CSS foi centralizado em um único arquivo (`lógica/style.css`) para garantir consistência visual em todo o site.
-  - Todo o código JavaScript foi unificado em um arquivo (`lógica/script.js`), removendo todos os scripts inline das páginas HTML.
-  - Otimização de performance: o emulador de jogos agora é completamente desativado ao fechar a janela, economizando recursos do sistema do usuário.
-- **Design e Experiência do Usuário (UX):**
-  - Layout de grade de cards (`.card-grid`) e rodapé padronizados em todas as páginas.
-  - Substituição de todos os pop-ups intrusivos por "modais" que são ativados pelo usuário através de um ícone de informação, melhorando a experiência de navegação.
-  - Adicionada animação suave de fade-in/fade-out ao filtrar e buscar itens nas páginas.
-- **Correções:**
-  - Corrigidas diversas inconsistências de layout e espaçamento entre as páginas.
-  - Padronizado o comportamento de todos os botões e componentes interativos.
+> ATUALIZACAO GERAL DE QUALIDADE E PERFORMANCE
+
+  - Estrutura e Performance:
+    - Todo o codigo CSS foi centralizado em um unico arquivo (logica/style.css).
+    - Todo o codigo JavaScript foi unificado em um arquivo (logica/script.js), removendo scripts das paginas HTML.
+    - Otimizacao de performance: o emulador de jogos agora e desativado ao fechar a janela, economizando recursos.
+    - Corrigido o bug de reorganizacao dos cards ao usar os filtros.
+
+  - Design e Experiencia do Usuario (UX):
+    - Layout de grade de cards e rodape padronizados em todas as paginas.
+    - Substituicao de pop-ups intrusivos por "modais" que sao ativados pelo usuario.
+    - Adicionada animacao suave de fade-in/fade-out ao filtrar e buscar itens.
 
 (02/09/2025)
 > NOVOS JOGOS
-- Adicionado: FNAF - Into the Pit
-- Adicionado: Ender Lilies
-- Adicionado: Blasphemous 1 e 2
-- Adicionado: Volcano Princess
-- Adicionado: OneShot
-- Adicionado: Série Life is Strange (Remastered, Before the Storm, 2, True Colors, Double Exposure)
-- Adicionado: Enigma do Medo
-- Adicionado: Persona 5 Strikers
-- Adicionado: Red Dead Redemption 2
+  - Adicionado: FNAF - Into the Pit
+  - Adicionado: Ender Lilies
+  - Adicionado: Blasphemous 1 e 2
+  - Adicionado: Volcano Princess
+  - Adicionado: OneShot
+  - Adicionado: Serie Life is Strange (Remastered, Before the Storm, 2, True Colors, Double Exposure)
+  - Adicionado: Enigma do Medo
+  - Adicionado: Persona 5 Strikers
+  - Adicionado: Red Dead Redemption 2
 
 (31/08/2025)
 > NOVOS RECURSOS E MELHORIAS
-- **Recurso:** Adicionado botão de sugestões (via Google Forms) no cabeçalho.
-- **Melhoria:** Implementado sistema de filtros (Leve/Pesado) na página de Jogos PC.
+  - Recurso: Adicionado botao de sugestoes (via Google Forms) no cabecalho.
+  - Melhoria: Implementado sistema de filtros (Leve/Pesado) na pagina de Jogos PC.
 
 (30/08/2025)
-> ATUALIZAÇÃO DE CONTEÚDO E DESIGN
-- **Design:** Layout da página inicial aprimorado com novas seções.
-- **Novos Jogos:**
-  - Adicionado: Ultimate Custom Night
-  - Adicionado: Fifa 14
-  - Adicionado: Freddy Fazbear's Pizzeria Simulator
-  - Adicionado: OMORI
-  - Adicionado: Rimworld
+> ATUALIZACAO DE CONTEUDO E DESIGN
+  - Design: Layout da pagina inicial aprimorado com novas secoes.
+  - Novos Jogos:
+    - Adicionado: Ultimate Custom Night
+    - Adicionado: Fifa 14
+    - Adicionado: Freddy Fazbear's Pizzeria Simulator
+    - Adicionado: OMORI
+    - Adicionado: Rimworld
 
 (26/08/2025)
-> NOVOS CONTEÚDOS
-- **Nova Ferramenta:** Adicionado Canlite (Proxy Web).
-- **Melhoria:** Adicionado um aviso na página de Jogos de Navegador sobre a variedade de links.
+> NOVOS CONTEUDOS
+  - Nova Ferramenta: Adicionado Canlite (Proxy Web).
+  - Melhoria: Adicionado um aviso na pagina de Jogos de Navegador sobre a variedade de links.
 
 (20/08/2025)
-> EXPANSÃO MASSIVA DE CONTEÚDO
-- **Nova Categoria:** Lançada a seção de Jogos de Emulador.
-- **Novos Jogos (Emulador):** Adicionada uma vasta coleção inicial, incluindo clássicos das séries Mario, Zelda, Pokémon, Metroid, Sonic e mais.
+> EXPANSÃO MASSIVA DE CONTEUDO
+  - Nova Categoria: Lancada a secao de Jogos de Emulador.
+  - Novos Jogos (Emulador): Adicionada uma vasta colecao inicial, incluindo classicos das series Mario, Zelda, Pokemon, Metroid, Sonic e mais.
 
 (19/08/2025)
 > NOVAS FERRAMENTAS
-- Adicionado: UltraSurf (Ferramenta de privacidade).
+  - Adicionado: UltraSurf (Ferramenta de privacidade).
 
 (17/08/2025)
-> ATUALIZAÇÃO VISUAL
-- **Design:** Implementado novo visual com efeitos "glass" e fundo animado.
-- **Melhoria:** Adicionado aviso de VPN na entrada do site.
-- **Melhoria:** Descrições importantes agora são destacadas.
+> ATUALIZACAO VISUAL
+  - Design: Implementado novo visual com efeitos "glass" e fundo animado.
+  - Melhoria: Adicionado aviso de VPN na entrada do site.
+  - Melhoria: Descricoes importantes agora sao destacadas.
 
 (16/08/2025)
-> MANUTENÇÃO
-- Atualização de links de download quebrados.
+> MANUTENCAO
+  - Atualizacao de links de download quebrados.
 
 (29/07/2025)
-> NOVOS CONTEÚDOS
-- **Nova Ferramenta:** Adicionado Psiphon.
-- **Novos Jogos:**
-  - Adicionado: Minecraft (SKlauncher)
-  - Adicionado: Trackmania Nations Forever
+> NOVOS CONTEUDOS
+  - Nova Ferramenta: Adicionado Psiphon.
+  - Novos Jogos:
+    - Adicionado: Minecraft (SKlauncher)
+    - Adicionado: Trackmania Nations Forever
 
 (27/07/2025)
-> MANUTENÇÃO E ATUALIZAÇÃO DE CONTEÚDO
-- **Design:** Implementado o primeiro grande redesenho visual.
-- **Manutenção:** Links de jogos atualizados.
-- **Conteúdo Removido:** Vários jogos foram temporariamente removidos devido a links de download instáveis (ex: The Binding of Isaac, Portal 1 & 2, etc.).
+> MANUTENCAO E ATUALIZACAO DE CONTEUDO
+  - Design: Implementado o primeiro grande redesenho visual.
+  - Manutencao: Links de jogos atualizados.
+  - Conteudo Removido: Varios jogos foram temporariamente removidos devido a links instaveis.
 
 (23/07/2025)
-> LANÇAMENTO E PRIMEIROS CONTEÚDOS
-- **Recurso:** Criação do histórico de atualizações (`updates.txt`).
-- **Nova Ferramenta:** Adicionado Tor Browser.
-- **Novos Jogos:** Adicionada a primeira leva de jogos para PC.
+> LANCAMENTO E PRIMEIROS CONTEUDOS
+  - Recurso: Criacao do historico de atualizacoes (updates.txt).
+  - Nova Ferramenta: Adicionado Tor Browser.
+  - Novos Jogos: Adicionada a primeira leva de jogos para PC.
