@@ -1,5 +1,5 @@
 /* =========================================================
-   SCRIPT NINJA OTIMIZADO (v3.0)
+   SCRIPT NINJA OTIMIZADO (v3.1) - CORREÇÃO DE FILTRO
    - Sistema de Modal Centralizado e Reutilizável
    - Animações de Filtro Suaves
    - Otimizações de Performance
@@ -138,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     let activeFilter = 'all';
 
+    // AQUI ESTÁ A FUNÇÃO ATUALIZADA PARA CORRIGIR O FILTRO
     const updateVisibleCards = () => {
       const searchTerm = searchInput.value.toLowerCase().trim();
       let cardsFound = 0;
@@ -151,7 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
 
         const shouldBeVisible = matchesSearch && matchesFilter;
-        card.classList.toggle('is-hidden', !shouldBeVisible);
+        
+        // Altera o 'display' para remover/adicionar o card ao layout
+        card.style.display = shouldBeVisible ? 'flex' : 'none';
 
         if (shouldBeVisible) cardsFound++;
       });
