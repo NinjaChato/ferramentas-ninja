@@ -1,4 +1,5 @@
 :root {
+  /* Paleta Principal */
   --primary-glow: #a855f7;
   --secondary-glow: #ec4899;
   --dark-bg: #030712;
@@ -7,15 +8,17 @@
   --text-light: #f9fafb;
   --text-muted: #9ca3af;
 
-  /* Cores por Categoria */
+  /* Cores por Categoria (para hovers e destaques) */
   --color-pc: #22c55e;
   --color-navegador: #3b82f6;
   --color-emulador: #f59e0b;
   --color-hacks: #f97316;
   --color-ferramentas: #ef4444;
 
-  /* Curva de animação para fluidez máxima */
+  /* Animações e Transições */
   --swoosh: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.3s ease;
+  --transition-medium: 0.5s ease;
 }
 
 /* === KEYFRAMES PARA ANIMAÇÕES GLOBAIS === */
@@ -24,7 +27,10 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 @keyframes shimmer {
   from { background-position: 200% center; }
   to { background-position: -200% center; }
@@ -40,7 +46,9 @@
 }
 
 /* === ESTILOS GERAIS E DE BASE === */
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--dark-bg);
@@ -49,8 +57,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--dark-bg); }
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
   border-radius: 10px;
@@ -59,7 +71,8 @@ body {
 
 /* === FUNDO ANIMADO E PARTÍCULAS === */
 body::before {
-  content: ''; position: fixed;
+  content: '';
+  position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(-45deg,
       rgba(168, 85, 247, 0.08), rgba(236, 72, 153, 0.08),
@@ -68,30 +81,49 @@ body::before {
   animation: background-pan 30s ease-in-out infinite;
   z-index: -2;
 }
-#particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
 /* === LOADER E ANIMAÇÕES DE ENTRADA === */
 #loader {
-  position: fixed; top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: var(--dark-bg); z-index: 9999;
-  display: flex; justify-content: center; align-items: center;
-  transition: opacity 0.5s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--dark-bg);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity var(--transition-medium);
 }
 .spinner {
-  width: 60px; height: 60px;
+  width: 60px;
+  height: 60px;
   border: 5px solid rgba(255, 255, 255, 0.1);
   border-top-color: var(--primary-glow);
-  border-radius: 50%; animation: spin 1.2s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+  border-radius: 50%;
+  animation: spin 1.2s cubic-bezier(0.6, 0, 0.4, 1) infinite;
   box-shadow: 0 0 25px var(--primary-glow);
 }
 .fade-in-up {
-  opacity: 0; transform: translateY(40px);
+  opacity: 0;
+  transform: translateY(40px);
   transition: opacity 1s var(--swoosh), transform 1s var(--swoosh);
 }
-.fade-in-up.loaded { opacity: 1; transform: translateY(0); }
+.fade-in-up.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* === HEADER E COMPONENTES DE VIDRO === */
+/* === COMPONENTES GLOBAIS (HEADER, FOOTER, TÍTULOS) === */
 .glass-effect {
   background: var(--glass-bg);
   backdrop-filter: blur(20px) saturate(180%);
@@ -100,9 +132,11 @@ body::before {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 .main-title {
-  font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
   background: linear-gradient(110deg, #fff 30%, var(--text-muted) 50%, #fff 70%);
-  -webkit-background-clip: text; background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
   letter-spacing: -1.5px;
@@ -110,109 +144,132 @@ body::before {
   animation: shimmer 10s linear infinite;
 }
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-  position: relative; padding-bottom: 1rem;
+  position: relative;
+  padding-bottom: 1rem;
 }
 .section-title::after {
-  content: ''; position: absolute;
-  bottom: 0; left: 50%;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
   transform: translateX(-50%);
-  width: 60px; height: 4px; border-radius: 2px;
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
   background: var(--primary-glow);
   animation: pulse-glow 3s ease-in-out infinite;
 }
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+}
 
-/* === CARDS COM EFEITO 3D E ILUMINAÇÃO === */
-.grid { perspective: 1500px; }
+/* === CARDS E GRID === */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  perspective: 1500px;
+}
 .card {
-  background: #111827; border-radius: 1rem;
-  position: relative; overflow: hidden;
+  background: #111827;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--border-color);
-  transition: transform 0.4s var(--swoosh), box-shadow 0.4s var(--swoosh);
-  transform: rotateX(0) rotateY(0);
+  transition: transform 0.4s var(--swoosh), box-shadow 0.4s var(--swoosh), opacity var(--transition-medium);
+  transform-style: preserve-3d;
   will-change: transform, box-shadow;
 }
+.card.is-hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
 .card::after {
-  content: ''; position: absolute;
+  content: '';
+  position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   background-image: radial-gradient(circle 400px at var(--spotlight-x) var(--spotlight-y), rgba(255, 255, 255, 0.08), transparent 80%);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity var(--transition-fast);
   z-index: 1;
 }
 .card-content {
   position: relative;
   z-index: 2;
 }
-.card:hover::after { opacity: 1; }
-.card h3 { font-size: 1.6rem; }
-.card h3, .card .fas { transition: color 0.4s ease, text-shadow 0.4s ease; }
-.card p { line-height: 1.6; color: var(--text-muted); }
+.card:hover::after {
+  opacity: 1;
+}
+.card h3 {
+  font-size: 1.6rem;
+  transition: color var(--transition-fast), text-shadow var(--transition-fast);
+}
+.card p {
+  line-height: 1.6;
+  color: var(--text-muted);
+}
 
-/* === CORES E AURAS DINÂMICAS POR CATEGORIA === */
+/* Card Hovers por Categoria */
 .jogos-pc .card:hover { border-color: var(--color-pc); box-shadow: 0 10px 50px -15px var(--color-pc); }
-.jogos-pc .card:hover h3, .jogos-pc .card:hover .fas { color: var(--color-pc); text-shadow: 0 0 12px var(--color-pc); }
+.jogos-pc .card:hover h3, .jogos-pc .card:hover .card-content > div > .fas { color: var(--color-pc); text-shadow: 0 0 12px var(--color-pc); }
 
 .jogos-navegador .card:hover { border-color: var(--color-navegador); box-shadow: 0 10px 50px -15px var(--color-navegador); }
-.jogos-navegador .card:hover h3, .jogos-navegador .card:hover .fas { color: var(--color-navegador); text-shadow: 0 0 12px var(--color-navegador); }
+.jogos-navegador .card:hover h3, .jogos-navegador .card:hover .card-content > div > .fas { color: var(--color-navegador); text-shadow: 0 0 12px var(--color-navegador); }
 
 .jogos-emulador .card:hover { border-color: var(--color-emulador); box-shadow: 0 10px 50px -15px var(--color-emulador); }
-.jogos-emulador .card:hover h3, .jogos-emulador .card:hover .fas { color: var(--color-emulador); text-shadow: 0 0 12px var(--color-emulador); }
+.jogos-emulador .card:hover h3, .jogos-emulador .card:hover .card-content > div > .fas { color: var(--color-emulador); text-shadow: 0 0 12px var(--color-emulador); }
 
 .hacks .card:hover { border-color: var(--color-hacks); box-shadow: 0 10px 50px -15px var(--color-hacks); }
-.hacks .card:hover h3, .hacks .card:hover .fas { color: var(--color-hacks); text-shadow: 0 0 12px var(--color-hacks); }
+.hacks .card:hover h3, .hacks .card:hover .card-content > div > .fas { color: var(--color-hacks); text-shadow: 0 0 12px var(--color-hacks); }
 
 .ferramentas .card:hover { border-color: var(--color-ferramentas); box-shadow: 0 10px 50px -15px var(--color-ferramentas); }
-.ferramentas .card:hover h3, .ferramentas .card:hover .fas { color: var(--color-ferramentas); text-shadow: 0 0 12px var(--color-ferramentas); }
-
-/* === [NOVO E CORRIGIDO] REGRAS PARA PROTEGER A COR DOS ÍCONES DE TAG === */
-/* Esta regra garante que o ícone de tag LEVE permaneça VERDE no hover do card */
-.jogos-pc .card:hover .card-tag-indicator.leve .fas {
-  color: var(--color-pc);
-  text-shadow: none; /* Remove o brilho para manter o ícone limpo */
-}
-/* Esta regra garante que o ícone de tag PESADO permaneça LARANJA no hover do card */
-.jogos-pc .card:hover .card-tag-indicator.pesado .fas {
-  color: var(--color-hacks);
-  text-shadow: none; /* Remove o brilho para manter o ícone limpo */
-}
-
+.ferramentas .card:hover h3, .ferramentas .card:hover .card-content > div > .fas { color: var(--color-ferramentas); text-shadow: 0 0 12px var(--color-ferramentas); }
 
 /* === BOTÕES E INTERAÇÕES === */
 .action-btn {
-  position: relative; overflow: hidden;
+  position: relative;
+  overflow: hidden;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast);
   background-size: 250% auto;
   border: none;
   border-radius: 0.5rem;
+  background-image: linear-gradient(90deg, var(--primary-glow) 0%, var(--secondary-glow) 50%, var(--primary-glow) 100%);
 }
-.jogos-pc .action-btn { background-image: linear-gradient(90deg, #10b981 0%, #22c55e 50%, #10b981 100%); }
-.jogos-navegador .action-btn { background-image: linear-gradient(90deg, #3b82f6 0%, #60a5fa 50%, #3b82f6 100%); }
-.jogos-emulador .action-btn { background-image: linear-gradient(90deg, #f59e0b 0%, #fcd34d 50%, #f59e0b 100%); }
-.hacks .action-btn { background-image: linear-gradient(90deg, #f97316 0%, #fdba74 50%, #f97316 100%); }
-.ferramentas .action-btn { background-image: linear-gradient(90deg, #ef4444 0%, #fca5a5 50%, #ef4444 100%); }
 .action-btn:hover {
-  transform: scale(1.05); filter: brightness(1.2);
+  transform: scale(1.05);
+  filter: brightness(1.2);
   background-position: right center;
-  box-shadow: 0 0 25px 0px currentColor;
+  box-shadow: 0 0 25px 0px var(--primary-glow);
 }
 .category-btn {
-  padding: 0.75rem 1.5rem; border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
   font-weight: 600;
-  transition: all 0.3s ease;
-  background: transparent; border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+  background: transparent;
+  border: 1px solid var(--border-color);
   color: var(--text-muted);
+  cursor: pointer;
 }
 .category-btn:hover {
-  background: var(--primary-glow); color: white;
+  background: var(--primary-glow);
+  color: white;
   border-color: var(--primary-glow);
   box-shadow: 0 0 15px var(--primary-glow);
   transform: translateY(-3px);
 }
 .category-btn.active {
-  background: var(--primary-glow); color: white;
+  background: var(--primary-glow);
+  color: white;
   border-color: var(--primary-glow);
   box-shadow: 0 0 20px var(--primary-glow), inset 0 2px 5px rgba(0,0,0,0.3);
   transform: scale(1.05) translateY(-2px);
@@ -221,14 +278,25 @@ body::before {
   background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow), var(--primary-glow));
   background-size: 250% 250%;
   animation: highlight-pan 6s ease-in-out infinite;
-  color: white; padding: 0.3em 0.7em;
-  border-radius: 5px; font-weight: 700;
+  color: white;
+  padding: 0.3em 0.7em;
+  border-radius: 5px;
+  font-weight: 700;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
   display: inline-block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
-.password-highlight:hover { transform: scale(1.05); box-shadow: 0 0 15px 0px var(--primary-glow); }
-#searchInput:focus { box-shadow: 0 0 25px -5px var(--primary-glow); border-color: var(--primary-glow); }
+.password-highlight:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px 0px var(--primary-glow);
+}
+#searchInput:focus {
+  box-shadow: 0 0 25px -5px var(--primary-glow);
+  border-color: var(--primary-glow);
+}
+#backToTop {
+  transition: opacity var(--transition-fast), bottom var(--transition-fast), transform var(--transition-fast);
+}
 #backToTop:hover {
   transform: scale(1.1) rotate(-10deg);
   background: var(--primary-glow);
@@ -244,7 +312,7 @@ body::before {
   top: 0;
   right: 0;
   padding: 0.5rem 0.75rem;
-  background: rgba(17, 24, 39, 0.7); /* --glass-bg com mais opacidade */
+  background: rgba(17, 24, 39, 0.7);
   border-bottom-left-radius: 0.75rem;
   border-left: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
@@ -252,30 +320,19 @@ body::before {
   font-size: 0.9rem;
   z-index: 3;
   cursor: help;
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast);
 }
-
 .card-tag-indicator .fas {
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast);
 }
-
-.card-tag-indicator.leve .fas {
-  color: var(--color-pc);
-}
-
-.card-tag-indicator.pesado .fas {
-  color: var(--color-hacks);
-}
-
+.card-tag-indicator.leve .fas { color: var(--color-pc); }
+.card-tag-indicator.pesado .fas { color: var(--color-hacks); }
 .card-tag-indicator:hover {
   transform: scale(1.1);
   box-shadow: 0 0 15px 0px currentColor;
 }
-
 .card-tag-indicator.leve:hover { color: var(--color-pc); }
 .card-tag-indicator.pesado:hover { color: var(--color-hacks); }
-
-/* Tooltip para o indicador */
 .card-tag-indicator::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -292,12 +349,93 @@ body::before {
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
   z-index: 10;
 }
-
 .card-tag-indicator:hover::after {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+/* === MODAIS (AVISOS, JOGO, ETC) === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-fast), visibility var(--transition-fast);
+}
+.modal-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-content {
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  position: relative;
+  transform: scale(0.95);
+  transition: transform var(--transition-fast);
+}
+.modal-overlay.is-visible .modal-content {
+  transform: scale(1);
+}
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.modal-close-btn:hover {
+  color: var(--text-light);
+  transform: rotate(90deg);
+}
+
+/* Estilos específicos para o Modal de Jogo */
+#gameModal .modal-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  padding: 1rem;
+}
+#gameEmbedContainer {
+  width: 100%;
+  background-color: #000;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+#gameEmbedContainer iframe {
+  display: block;
+  border: none;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+#gameModal .modal-close-btn {
+  background-color: #ef4444;
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  top: -0.75rem;
+  right: -0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
