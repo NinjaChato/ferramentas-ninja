@@ -4,49 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Meta tag para redirecionar após 1.5 segundos -->
-    <meta http-equiv="refresh" content="1.5; url=./arquivos/index.html">
+    <!-- Redirecionamento (aumentei um pouco para a animação completar) -->
+    <meta http-equiv="refresh" content="2; url=./arquivos/index.html">
     
-    <title>Carregando Ferramentas Ninja...</title>
+    <title>Bem-vindo ao Ferramentas Ninja</title>
     
-    <!-- Links para fontes e ícones (iguais aos das outras páginas) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- SEO -->
+    <link rel="canonical" href="./arquivos/index.html">
+    
+    <!-- Pré-conexão para carregar a fonte mais rápido -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
     
-    <!-- Biblioteca Particles.js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    
-    <!-- ATENÇÃO: O caminho para o CSS precisa incluir "arquivos/" aqui -->
-    <link rel="stylesheet" href="arquivos/lógica/style.css">
-    
-    <!-- Link canônico para SEO, informando ao Google a página principal -->
-    <link rel="canonical" href="./arquivos/index.html">
-</head>
-<body class="p-4">
+    <!-- CSS Embutido para Performance e Estilo -->
+    <style>
+        /* Keyframes para as animações */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes shimmer {
+            from { background-position: 200% center; }
+            to { background-position: -200% center; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDelay {
+            0%, 50% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
-    <!-- Loader (a parte mais importante para a experiência visual) -->
-    <div id="loader" style="opacity: 1; display: flex;">
-        <div class="spinner"></div>
-    </div>
+        /* Estilos Gerais */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #030712;
+            color: #f9fafb;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        /* Container Principal da Animação */
+        .loading-container {
+            animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Título Principal (estilo idêntico ao do site) */
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(110deg, #fff 30%, #9ca3af 50%, #fff 70%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1.5px;
+            background-size: 250% auto;
+            animation: shimmer 10s linear infinite;
+            margin: 0;
+        }
+
+        /* Subtítulo */
+        p {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            margin: 0.5rem 0 2rem 0;
+            animation: fadeInDelay 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Spinner */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #a855f7;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        /* Fundo de Partículas */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        /* Link de Fallback (menos proeminente) */
+        .fallback-link {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+        .fallback-link a {
+            color: #a855f7;
+            text-decoration: none;
+        }
+        .fallback-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
 
     <!-- Fundo de Partículas -->
     <div id="particles-js"></div>
+
+    <!-- Conteúdo Principal da Splash Screen -->
+    <div class="loading-container">
+        <h1>Ferramentas Ninja</h1>
+        <p>Seu portal de recursos essenciais.</p>
+        <div class="spinner"></div>
+    </div>
     
     <!-- Mensagem de fallback caso o redirecionamento falhe -->
-    <div class="max-w-6xl mx-auto w-full text-center mt-20">
-        <h1 class="main-title">Carregando o Portal Ninja...</h1>
-        <p class="text-muted mt-4">
-            Você será redirecionado em breve. Se nada acontecer, 
-            <a href="./arquivos/index.html" class="text-purple-400 hover:underline">clique aqui</a>.
+    <div class="fallback-link">
+        <p>
+            Não foi redirecionado? 
+            <a href="./arquivos/index.html">Clique aqui</a>.
         </p>
     </div>
 
-    <!-- Script para inicializar o Particles.js -->
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        // Esta parte do script é necessária para o fundo animado funcionar
         document.addEventListener('DOMContentLoaded', () => {
             particlesJS('particles-js', {
                 "particles": { "number": { "value": 60, "density": { "enable": true, "value_area": 800 } }, "color": { "value": ["#a855f7", "#ec4899", "#3b82f6", "#22c55e"] }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.1, "width": 1 }, "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out" } },
