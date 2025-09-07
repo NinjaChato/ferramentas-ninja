@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogos de PC | Ferramentas Ninja</title>
@@ -10,626 +10,818 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- Link para o nosso novo CSS centralizado -->
     <link rel="stylesheet" href="lógica/style.css">
-</head>
-<body class="p-4">
-    <div id="loader"><div class="spinner"></div></div>
+  </head>
+  <body class="p-4">
+    <div id="loader">
+      <div class="spinner"></div>
+    </div>
     <div id="particles-js"></div>
-
-    <!-- MODAL DE AVISO DE NAVEGAÇÃO SEGURA -->
     <div id="vpnNoticeModal" class="modal-overlay">
-        <div class="modal-content glass-effect">
-            <button class="modal-close-btn">&times;</button>
-            <i class="fas fa-shield-alt text-5xl text-primary-glow mb-4"></i>
-            <h2 class="text-2xl font-bold mb-3">Navegação Segura</h2>
-            <p class="text-muted mb-6">Para acessar sites de download que possam estar bloqueados, recomendamos o uso de uma VPN como o <strong class="text-light">Psiphon</strong> (disponível na seção Ferramentas) para garantir seu acesso.</p>
-            <a href="ferramentas.html" class="action-btn text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">Ver Ferramentas</a>
-        </div>
+      <div class="modal-content glass-effect">
+        <button class="modal-close-btn js-close-modal">&times;</button>
+        <i class="fas fa-shield-alt text-5xl text-primary-glow mb-4"></i>
+        <h2 class="text-2xl font-bold mb-3">Navegação Segura</h2>
+        <p class="text-muted mb-6">Para acessar sites de download que possam estar bloqueados, recomendamos o uso de uma VPN como o <strong class="text-light">Psiphon</strong> (disponível na seção Ferramentas) para garantir seu acesso. </p>
+        <a href="ferramentas.html" class="action-btn text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">Ver Ferramentas</a>
+      </div>
     </div>
-
     <div id="mainContainer" class="max-w-6xl mx-auto w-full">
-        <header class="fade-in-up glass-effect p-6 md:p-8 mb-12 rounded-2xl mt-4">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+      <header class="fade-in-up glass-effect p-6 md:p-8 mb-12 rounded-2xl mt-4">
+        <!-- Seção Superior: Título e Ações Principais -->
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+          <div>
+            <h1 class="main-title">Ferramentas Ninja</h1>
+            <p class="subtitle text-lg text-muted mt-2 max-w-2xl">Seu portal seguro e estiloso para jogos, ferramentas e recursos essenciais.</p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="https://discord.gg/ATS3E9ZeR7" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap" title="Junte-se à nossa comunidade no Discord!">
+              <i class="fab fa-discord"></i> Discord </a>
+            <a href="updates.txt" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap">
+              <i class="fas fa-history fa-spin-pulse" style="--fa-animation-duration: 5s;"></i> Changelogs </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAZWO2G9LR6KtmJu74Ep9YAFMMIUeV07Hkoj56UyQcIhi4JA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap">
+              <i class="fas fa-lightbulb"></i> Sugestões </a>
+          </div>
+        </div>
+        <!-- Seção Inferior: Painel de Navegação -->
+        <div class="mt-8 pt-8 border-t border-white/10">
+          <div class="relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-muted text-xl"></i>
+            <input type="text" id="searchInput" class="w-full bg-black/20 border border-white/10 rounded-lg py-4 pl-12 pr-4 text-lg text-light placeholder-muted focus:ring-2 focus:ring-primary-glow focus:border-primary-glow transition-all duration-300 outline-none" placeholder="Busque jogos nesta categoria...">
+          </div>
+          <div class="category-buttons flex flex-wrap justify-center gap-2 md:gap-4 mt-6">
+            <a href="index.html" class="category-btn">
+              <i class="fas fa-home mr-2"></i>Início </a>
+            <a href="jogos-pc.html" class="category-btn active">
+              <i class="fas fa-desktop mr-2"></i>Jogos PC </a>
+            <a href="jogos-navegador.html" class="category-btn">
+              <i class="fas fa-globe mr-2"></i>Navegador </a>
+            <a href="jogos-emulador.html" class="category-btn">
+              <i class="fas fa-ghost mr-2"></i>Emulador </a>
+            <a href="hacks.html" class="category-btn">
+              <i class="fas fa-user-secret mr-2"></i>Hacks </a>
+            <a href="ferramentas.html" class="category-btn">
+              <i class="fas fa-tools mr-2"></i>Ferramentas </a>
+          </div>
+        </div>
+      </header>
+      <main class="fade-in-up container mx-auto px-4">
+        <section class="jogos-pc mb-16">
+          <div class="text-center">
+            <h2 class="section-title inline-block">Jogos para PC</h2>
+            <button data-modal-target="#vpnNoticeModal" class="ml-2 text-blue-400 hover:text-blue-300 transition-colors" title="Recomendação de Segurança">
+              <i class="fas fa-info-circle"></i>
+            </button>
+          </div>
+          <div id="tagFilters" class="flex flex-wrap justify-center gap-3 my-8">
+            <button class="category-btn filter-btn active" data-filter="all">Todos</button>
+            <button class="category-btn filter-btn" data-filter="leve">Leves</button>
+            <button class="category-btn filter-btn" data-filter="pesado">Pesados</button>
+          </div>
+          <div class="card-grid" id="linksContainer">
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
                 <div>
-                    <h1 class="main-title">Ferramentas Ninja</h1>
-                    <p class="subtitle text-lg text-muted mt-2 max-w-2xl">Seu portal seguro e estiloso para jogos, ferramentas e recursos essenciais.</p>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Among Us</h3>
+                  <p class="text-muted mb-4">Um jogo de dedução social e trabalho em equipe... ou traição.</p>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="updates.txt" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap">
-                        <i class="fas fa-history fa-spin-pulse" style="--fa-animation-duration: 5s;"></i> Changelogs
-                    </a>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAZWO2G9LR6KtmJu74Ep9YAFMMIUeV07Hkoj56UyQcIhi4JA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap">
-                        <i class="fas fa-lightbulb"></i> Sugestões
-                    </a>
-                </div>
+                <a href="https://gofile.io/d/1gmsiO" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
             </div>
-            <div class="mt-8">
-                <div class="relative">
-                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-muted text-xl"></i>
-                    <input type="text" id="searchInput" class="w-full bg-black/20 border border-white/10 rounded-lg py-4 pl-12 pr-4 text-lg text-light placeholder-muted focus:ring-2 focus:ring-primary-glow focus:border-primary-glow transition-all duration-300 outline-none" placeholder="Busque jogos nesta categoria...">
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-khanda"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Blasphemous</h3>
+                  <p class="text-muted mb-4">Enfrente criaturas grotescas e penitência em um mundo amaldiçoado neste metroidvania desafiador.</p>
                 </div>
-                <div class="category-buttons flex flex-wrap justify-center gap-2 md:gap-4 mt-6">
-                    <a href="index.html" class="category-btn"><i class="fas fa-home mr-2"></i>Início</a>
-                    <a href="jogos-pc.html" class="category-btn active"><i class="fas fa-desktop mr-2"></i>Jogos PC</a>
-                    <a href="jogos-navegador.html" class="category-btn"><i class="fas fa-globe mr-2"></i>Navegador</a>
-                    <a href="jogos-emulador.html" class="category-btn"><i class="fas fa-ghost mr-2"></i>Emulador</a>
-                    <a href="hacks.html" class="category-btn"><i class="fas fa-user-secret mr-2"></i>Hacks</a>
-                    <a href="ferramentas.html" class="category-btn"><i class="fas fa-tools mr-2"></i>Ferramentas</a>
-                </div>
+                <a href="https://1fichier.com/?84zje6r4lo4vnil6jhfz" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
             </div>
-        </header>
-
-        <main class="fade-in-up container mx-auto px-4">
-            <section class="jogos-pc mb-16">
-                <div class="text-center">
-                    <h2 class="section-title inline-block">Jogos para PC</h2>
-                    <!-- Botão para acionar o modal de aviso -->
-                    <button data-modal-target="#vpnNoticeModal" class="ml-2 text-blue-400 hover:text-blue-300 transition-colors" title="Recomendação de Segurança">
-                        <i class="fas fa-info-circle"></i>
-                    </button>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-khanda"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Blasphemous 2</h3>
+                  <p class="text-muted mb-4">A sequela do aclamado metroidvania de ação brutal com temática sombria.</p>
                 </div>
-                
-                <div id="tagFilters" class="flex flex-wrap justify-center gap-3 my-8">
-                    <button class="category-btn filter-btn active" data-filter="all">Todos</button>
-                    <button class="category-btn filter-btn" data-filter="leve">Leves</button>
-                    <button class="category-btn filter-btn" data-filter="pesado">Pesados</button>
-                </div>
-
-                <div class="card-grid" id="linksContainer">
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-users"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Among Us</h3>
-                            <p class="text-muted mb-4">Um jogo de dedução social e trabalho em equipe... ou traição.</p>
-                          </div>
-                          <a href="https://gofile.io/d/1gmsiO" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-khanda"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Blasphemous</h3>
-                            <p class="text-muted mb-4">Enfrente criaturas grotescas e penitência em um mundo amaldiçoado neste metroidvania desafiador.</p>
-                          </div>
-                          <a href="https://1fichier.com/?84zje6r4lo4vnil6jhfz" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-khanda"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Blasphemous 2</h3>
-                            <p class="text-muted mb-4">A sequela do aclamado metroidvania de ação brutal com temática sombria.</p>
-                          </div>
-                          <a href="https://1fichier.com/?ug9flqak1zcoihnqozsc" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-graduation-cap"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Bully: Scholarship Edition</h3>
-                            <p class="text-muted mb-4">Explore a vida escolar em um jogo de mundo aberto com muita ação.</p>
-                          </div>
-                          <a href="https://gofile.io/d/41UQkD" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-mountain"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Celeste</h3>
-                            <p class="text-muted mb-4">Um desafiador jogo de plataforma sobre superar obstáculos.</p>
-                          </div>
-                          <a href="https://gofile.io/d/OQEUes" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-mug-hot"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Cuphead</h3>
-                            <p class="text-muted mb-4">Um jogo de plataforma e tiro com estilo de desenho animado dos anos 30.</p>
-                          </div>
-                          <a href="https://gofile.io/d/jzaTbm" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-magic"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Deltarune</h3>
-                            <p class="text-muted mb-4">O novo RPG do criador de Undertale, com uma nova história e personagens.</p>
-                          </div>
-                          <a href="https://gofile.io/d/9ja9fm" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Ender Lilies</h3>
-                            <p class="text-muted mb-4">Desvende os mistérios de um reino em ruínas neste belo e sombrio metroidvania de fantasia.</p>
-                          </div>
-                          <a href="https://1fichier.com/?4ar5aubbpmo0r3znhc1w" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-puzzle-piece"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Enigma do Medo</h3>
-                            <p class="text-muted mb-4">Explore o misterioso mundo de 'Ordem Paranormal' neste RPG de exploração e quebra-cabeças.</p>
-                          </div>
-                          <a href="https://1fichier.com/?ff6jvriods0il49uyqyw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-futbol"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">FIFA 14</h3>
-                            <p class="text-muted mb-4">Um clássico do futebol com jogabilidade aprimorada e realismo.</p>
-                          </div>
-                          <a href="https://1fichier.com/?dbd0kww55pv2etpuo29l" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-gun"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">FNAF 1</h3>
-                            <p class="text-muted mb-4">O primeiro jogo da aterrorizante série Five Nights at Freddy's.</p>
-                          </div>
-                          <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">FNAF 2</h3>
-                            <p class="text-muted mb-4">A sequência ainda mais assustadora de Five Nights at Freddy's.</p>
-                          </div>
-                          <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys2.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">FNAF 3</h3>
-                            <p class="text-muted mb-4">O terceiro capítulo da saga de terror dos animatrônicos.</p>
-                          </div>
-                          <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys3.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">FNAF 4</h3>
-                            <p class="text-muted mb-4">O final da história original de Five Nights at Freddy's.</p>
-                          </div>
-                          <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys4.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-dungeon"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">FNAF - Into the Pit</h3>
-                            <p class="text-muted mb-4">Viaje no tempo para a pizzaria amaldiçoada neste novo jogo de terror da série FNAF.</p>
-                          </div>
-                          <a href="https://1fichier.com/?tr3jyw7x09rriu68krk3" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-ghost"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">FNAF SL</h3>
-                            <p class="text-muted mb-4">Five Nights at Freddy's: Sister Location, com novos personagens e mistérios.</p>
-                          </div>
-                          <a href="https://archive.org/download/fnaf1ucn/SisterLocation.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-pizza-slice"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Freddy Fazbear's Pizzeria Simulator (FNAF 6)</h3>
-                            <p class="text-muted mb-4">Gerencie sua própria pizzaria durante o dia e sobreviva aos animatrônicos à noite.</p>
-                          </div>
-                          <a href="https://1fichier.com/?vvclwvfnytwul4l0mnm0" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-cube"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Geometry Dash</h3>
-                            <p class="text-muted mb-4">Um jogo de ritmo baseado em plataforma com desafios intensos.</p>
-                          </div>
-                          <a href="https://1fichier.com/?qebxx2t4sph1583a6uuh" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-person-falling"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Getting Over It</h3>
-                            <p class="text-muted mb-4">Um jogo de escalada frustrante, mas recompensador.</p>
-                          </div>
-                          <div class="flex gap-2 mt-4">
-                            <a href="https://archive.org/download/getting.-over.-it.with.-bennett.-foddy.v-1.7/Getting.Over.It.with.Bennett.Foddy.v1.7.zip" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center">Baixar</a>
-                            <a href="https://buzzheavier.com/yhkamej7f5nl" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center">Alternativo</a>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-car"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">GTA San Andreas</h3>
-                            <p class="text-muted mb-4">Versão portátil do clássico jogo de ação e aventura em mundo aberto.</p>
-                          </div>
-                          <div class="flex gap-2 mt-4">
-                            <a href="https://archive.org/download/gta-san-andreas-full-game/GTA%20San%20Andreas%20full%20game.zip" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center">Baixar</a>
-                            <a href="https://1fichier.com/?2iapgspay50xkc9m2p5t" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center">Alternativo</a>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-city"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">GTA Vice City</h3>
-                            <p class="text-muted mb-4">Explore a vibrante Vice City dos anos 80 neste clássico de mundo aberto.</p>
-                          </div>
-                          <a href="https://1fichier.com/?1iyueh96onjb6fg3rs6l" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-bug"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Hollow Knight</h3>
-                            <p class="text-muted mb-4">Explore um vasto reino subterrâneo em um aclamado Metroidvania.</p>
-                          </div>
-                          <a href="https://gofile.io/d/4XiCAc" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-camera-retro"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Life is Strange 2</h3>
-                            <p class="text-muted mb-4">Dois irmãos fogem de casa após um trágico incidente, descobrindo um poder telecinético.</p>
-                          </div>
-                          <a href="https://1fichier.com/?cqa5j206oxeerbw65u9x" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-camera-retro"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Life is Strange Before the Storm</h3>
-                            <p class="text-muted mb-4">Jogue como Chloe Price e descubra sua amizade com Rachel Amber nesta emocionante prequela.</p>
-                          </div>
-                          <a href="https://1fichier.com/?sqcsvuyngkp8nj6zozl5" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-camera-retro"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Life is Strange Before the Storm Remastered</h3>
-                            <p class="text-muted mb-4">A versão remasterizada da história de Chloe Price antes dos eventos do primeiro jogo.</p>
-                          </div>
-                          <a href="https://1fichier.com/?ybmzwk9djw001z2c9p9d" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-camera-retro"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Life is Strange Double Exposure</h3>
-                            <p class="text-muted mb-4">Max Caulfield retorna com um novo poder para resolver um assassinato que atravessa duas linhas do tempo.</p>
-                          </div>
-                          <a href="https://1fichier.com/?498sofmtr3w6zhq3gjr8" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-camera-retro"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Life is Strange Remastered</h3>
-                            <p class="text-muted mb-4">Reviva a história original de Max e Chloe com visuais e animações aprimorados.</p>
-                          </div>
-                          <a href="https://1fichier.com/?uyzvqj7p2yt8haxekmlx" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-heart-pulse"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Life is Strange True Colors</h3>
-                            <p class="text-muted mb-4">Use o poder da empatia para desvendar segredos sombrios em uma pequena cidade.</p>
-                          </div>
-                          <a href="https://1fichier.com/?7sqtl9apcnmls4zxs4f2" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Need For Speed Carbon</h3>
-                            <p class="text-muted mb-4">Corridas noturnas e domínio de território em desfiladeiros perigosos. <span class="password-highlight">Senha: chemical</span></p>
-                          </div>
-                          <a href="https://1fichier.com/?idgjp4xj752dyikhp3iz" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Need For Speed: Hot Pursuit 2</h3>
-                            <p class="text-muted mb-4">Corridas de alta velocidade e perseguições policiais emocionantes.</p>
-                          </div>
-                          <a href="https://1fichier.com/?cxwhnowjsqre8f0eyemw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Need For Speed Most Wanted (2005)</h3>
-                            <p class="text-muted mb-4">A edição especial do clássico de corrida de rua, com perseguições intensas. <span class="password-highlight">Senha: chemical</span></p>
-                          </div>
-                          <a href="https://1fichier.com/?dvi1pehq13udj4l8c8yz" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Need For Speed Underground</h3>
-                            <p class="text-muted mb-4">O jogo que definiu a cultura de tunagem em corridas de rua.</p>
-                          </div>
-                          <a href="https://1fichier.com/?wg3v32cqoelm5x062dpw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-car-side"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Need For Speed Underground 2</h3>
-                            <p class="text-muted mb-4">Expanda a experiência de corrida com um mundo aberto e mais opções de customização.</p>
-                          </div>
-                          <a href="https://1fichier.com/?bhc5plxo7tmj3vf3mfip" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-brain"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">OMORI</h3>
-                            <p class="text-muted mb-4">Um RPG de terror psicológico surreal sobre explorar um mundo estranho e seus medos.</p>
-                          </div>
-                          <a href="https://1fichier.com/?hsyx4eh1qp6cqjiq00pl" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-lightbulb"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">OneShot</h3>
-                            <p class="text-muted mb-4">Guie uma criança por um mundo misterioso em uma missão para restaurar seu sol.</p>
-                          </div>
-                          <a href="https://1fichier.com/?lj7jz730ewi0710ed0nw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-mask"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Persona 5 Strikers</h3>
-                            <p class="text-muted mb-4">Junte-se aos Phantom Thieves em um combate de ação explosivo neste RPG estiloso.</p>
-                          </div>
-                          <a href="https://1fichier.com/?d76bdb84jp3x5oqy8lzq" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-microscope"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Plague Inc: Evolved</h3>
-                            <p class="text-muted mb-4">Crie e evolua uma praga para aniquilar a humanidade.</p>
-                          </div>
-                          <a href="https://gofile.io/d/bUP8fR" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-hat-cowboy"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Red Dead Redemption 2</h3>
-                            <p class="text-muted mb-4">Uma história épica de honra e lealdade no alvorecer da era moderna no Velho Oeste.</p>
-                          </div>
-                          <a href="https://1fichier.com/?3u05ujylcoauiq7ltxjz" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-rocket"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Rimworld</h3>
-                            <p class="text-muted mb-4">Um simulador de colônia de ficção científica com histórias geradas por IA.</p>
-                          </div>
-                          <a href="https://1fichier.com/?t4s9xj0i15953usq4ghh" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-cube"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">SKlauncher</h3>
-                            <p class="text-muted mb-4">Um launcher de Minecraft customizável e fácil de usar.</p>
-                          </div>
-                          <a href="https://www.mediafire.com/file/5uq1yz36gw94cl7/SKlauncher-3.2.12.jar/file" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-tractor"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Stardew Valley</h3>
-                            <p class="text-muted mb-4">Crie sua fazenda, explore cavernas e construa relacionamentos em um RPG relaxante.</p>
-                          </div>
-                          <a href="https://gofile.io/d/ENzmk4" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-hammer"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Terraria</h3>
-                            <p class="text-muted mb-4">Um jogo sandbox de aventura e exploração em um mundo 2D.</p>
-                          </div>
-                          <a href="https://gofile.io/d/ylmvvO" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-hat-wizard"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">The Henry Stickmin Collection</h3>
-                            <p class="text-muted mb-4">Uma coleção de jogos de aventura com escolhas divertidas e múltiplos finais.</p>
-                          </div>
-                          <a href="https://archive.org/download/the-henry-stickmin-collection/The.Henry.Stickmin.Collection.zip" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-road"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Trackmania Nations Forever</h3>
-                            <p class="text-muted mb-4">Um jogo de corrida com pistas malucas e alta velocidade.</p>
-                          </div>
-                          <a href="https://archive.org/download/TrackMania_Nations_Forever/TMNForever.rar" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="pesado">
-                        <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado"><i class="fas fa-microchip"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-skull-crossbones"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">ULTRAKILL</h3>
-                            <p class="text-muted mb-4">Um FPS frenético e ultraviolento com um estilo retrô.</p>
-                          </div>
-                          <a href="https://gofile.io/d/R4fSuu" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-crown"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Ultimate Custom Night</h3>
-                            <p class="text-muted mb-4">O mashup definitivo de FNAF, onde você cria seus próprios desafios de terror.</p>
-                          </div>
-                          <a href="https://1fichier.com/?11xxjbkq48b2jup14sfi" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-heart"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Undertale</h3>
-                            <p class="text-muted mb-4">Um RPG único onde você não precisa matar ninguém.</p>
-                          </div>
-                          <a href="https://gofile.io/d/8N6Cuw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                    <div class="card" data-tags="leve">
-                        <div class="card-tag-indicator leve" data-tooltip="Jogo Leve"><i class="fas fa-feather-alt"></i></div>
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div>
-                            <div class="text-3xl mb-4"><i class="fas fa-crown"></i></div>
-                            <h3 class="text-2xl font-bold mb-2">Volcano Princess</h3>
-                            <p class="text-muted mb-4">Crie sua filha em um mundo de fantasia, moldando seu futuro através de suas escolhas.</p>
-                          </div>
-                          <a href="https://1fichier.com/?c5g4wy0rj0qylgcc9sba" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <div id="noResultsMessage" class="hidden text-center glass-effect p-12 my-16 rounded-2xl">
-                <i class="fas fa-ghost text-6xl text-primary-glow mb-6 animate-bounce"></i>
-                <h3 class="text-3xl font-bold mb-2">Nenhum ninja por aqui!</h3>
-                <p class="text-muted text-lg">Não encontramos nada com esse termo. Tente uma nova busca!</p>
+                <a href="https://1fichier.com/?ug9flqak1zcoihnqozsc" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
             </div>
-        </main>
-
-        <!-- RODAPÉ PADRONIZADO -->
-        <footer class="site-footer">
-            <p>&copy; 2025 Ferramentas Ninja. Todos os direitos reservados.</p>
-        </footer>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Bully: Scholarship Edition</h3>
+                  <p class="text-muted mb-4">Explore a vida escolar em um jogo de mundo aberto com muita ação.</p>
+                </div>
+                <a href="https://gofile.io/d/41UQkD" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-mountain"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Celeste</h3>
+                  <p class="text-muted mb-4">Um desafiador jogo de plataforma sobre superar obstáculos.</p>
+                </div>
+                <a href="https://gofile.io/d/OQEUes" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-mug-hot"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Cuphead</h3>
+                  <p class="text-muted mb-4">Um jogo de plataforma e tiro com estilo de desenho animado dos anos 30.</p>
+                </div>
+                <a href="https://gofile.io/d/jzaTbm" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-magic"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Deltarune</h3>
+                  <p class="text-muted mb-4">O novo RPG do criador de Undertale, com uma nova história e personagens.</p>
+                </div>
+                <a href="https://gofile.io/d/9ja9fm" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-ghost"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Ender Lilies</h3>
+                  <p class="text-muted mb-4">Desvende os mistérios de um reino em ruínas neste belo e sombrio metroidvania de fantasia.</p>
+                </div>
+                <a href="https://1fichier.com/?4ar5aubbpmo0r3znhc1w" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-puzzle-piece"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Enigma do Medo</h3>
+                  <p class="text-muted mb-4">Explore o misterioso mundo de 'Ordem Paranormal' neste RPG de exploração e quebra-cabeças.</p>
+                </div>
+                <a href="https://1fichier.com/?ff6jvriods0il49uyqyw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-futbol"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">FIFA 14</h3>
+                  <p class="text-muted mb-4">Um clássico do futebol com jogabilidade aprimorada e realismo.</p>
+                </div>
+                <a href="https://1fichier.com/?dbd0kww55pv2etpuo29l" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-gun"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">FNAF 1</h3>
+                  <p class="text-muted mb-4">O primeiro jogo da aterrorizante série Five Nights at Freddy's.</p>
+                </div>
+                <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-ghost"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">FNAF 2</h3>
+                  <p class="text-muted mb-4">A sequência ainda mais assustadora de Five Nights at Freddy's.</p>
+                </div>
+                <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys2.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-ghost"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">FNAF 3</h3>
+                  <p class="text-muted mb-4">O terceiro capítulo da saga de terror dos animatrônicos.</p>
+                </div>
+                <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys3.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-ghost"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">FNAF 4</h3>
+                  <p class="text-muted mb-4">O final da história original de Five Nights at Freddy's.</p>
+                </div>
+                <a href="https://archive.org/download/fnaf1ucn/FiveNightsatFreddys4.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-dungeon"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">FNAF - Into the Pit</h3>
+                  <p class="text-muted mb-4">Viaje no tempo para a pizzaria amaldiçoada neste novo jogo de terror da série FNAF.</p>
+                </div>
+                <a href="https://1fichier.com/?tr3jyw7x09rriu68krk3" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-ghost"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">FNAF SL</h3>
+                  <p class="text-muted mb-4">Five Nights at Freddy's: Sister Location, com novos personagens e mistérios.</p>
+                </div>
+                <a href="https://archive.org/download/fnaf1ucn/SisterLocation.exe" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-pizza-slice"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Freddy Fazbear's Pizzeria Simulator (FNAF 6)</h3>
+                  <p class="text-muted mb-4">Gerencie sua própria pizzaria durante o dia e sobreviva aos animatrônicos à noite.</p>
+                </div>
+                <a href="https://1fichier.com/?vvclwvfnytwul4l0mnm0" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-cube"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Geometry Dash</h3>
+                  <p class="text-muted mb-4">Um jogo de ritmo baseado em plataforma com desafios intensos.</p>
+                </div>
+                <a href="https://1fichier.com/?qebxx2t4sph1583a6uuh" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-person-falling"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Getting Over It</h3>
+                  <p class="text-muted mb-4">Um jogo de escalada frustrante, mas recompensador.</p>
+                </div>
+                <div class="flex gap-2 mt-4">
+                  <a href="https://archive.org/download/getting.-over.-it.with.-bennett.-foddy.v-1.7/Getting.Over.It.with.Bennett.Foddy.v1.7.zip" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center">Baixar</a>
+                  <a href="https://buzzheavier.com/yhkamej7f5nl" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center">Alternativo</a>
+                </div>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-car"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">GTA San Andreas</h3>
+                  <p class="text-muted mb-4">Versão portátil do clássico jogo de ação e aventura em mundo aberto.</p>
+                </div>
+                <div class="flex gap-2 mt-4">
+                  <a href="https://archive.org/download/gta-san-andreas-full-game/GTA%20San%20Andreas%20full%20game.zip" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center">Baixar</a>
+                  <a href="https://1fichier.com/?2iapgspay50xkc9m2p5t" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center">Alternativo</a>
+                </div>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-city"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">GTA Vice City</h3>
+                  <p class="text-muted mb-4">Explore a vibrante Vice City dos anos 80 neste clássico de mundo aberto.</p>
+                </div>
+                <a href="https://1fichier.com/?1iyueh96onjb6fg3rs6l" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-bug"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Hollow Knight</h3>
+                  <p class="text-muted mb-4">Explore um vasto reino subterrâneo em um aclamado Metroidvania.</p>
+                </div>
+                <a href="https://gofile.io/d/4XiCAc" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-camera-retro"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Life is Strange 2</h3>
+                  <p class="text-muted mb-4">Dois irmãos fogem de casa após um trágico incidente, descobrindo um poder telecinético.</p>
+                </div>
+                <a href="https://1fichier.com/?cqa5j206oxeerbw65u9x" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-camera-retro"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Life is Strange Before the Storm</h3>
+                  <p class="text-muted mb-4">Jogue como Chloe Price e descubra sua amizade com Rachel Amber nesta emocionante prequela.</p>
+                </div>
+                <a href="https://1fichier.com/?sqcsvuyngkp8nj6zozl5" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-camera-retro"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Life is Strange Before the Storm Remastered</h3>
+                  <p class="text-muted mb-4">A versão remasterizada da história de Chloe Price antes dos eventos do primeiro jogo.</p>
+                </div>
+                <a href="https://1fichier.com/?ybmzwk9djw001z2c9p9d" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-camera-retro"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Life is Strange Double Exposure</h3>
+                  <p class="text-muted mb-4">Max Caulfield retorna com um novo poder para resolver um assassinato que atravessa duas linhas do tempo.</p>
+                </div>
+                <a href="https://1fichier.com/?498sofmtr3w6zhq3gjr8" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-camera-retro"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Life is Strange Remastered</h3>
+                  <p class="text-muted mb-4">Reviva a história original de Max e Chloe com visuais e animações aprimorados.</p>
+                </div>
+                <a href="https://1fichier.com/?uyzvqj7p2yt8haxekmlx" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-heart-pulse"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Life is Strange True Colors</h3>
+                  <p class="text-muted mb-4">Use o poder da empatia para desvendar segredos sombrios em uma pequena cidade.</p>
+                </div>
+                <a href="https://1fichier.com/?7sqtl9apcnmls4zxs4f2" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-car-side"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Need For Speed Carbon</h3>
+                  <p class="text-muted mb-4">Corridas noturnas e domínio de território em desfiladeiros perigosos. <span class="password-highlight">Senha: chemical</span>
+                  </p>
+                </div>
+                <a href="https://1fichier.com/?idgjp4xj752dyikhp3iz" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-car-side"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Need For Speed: Hot Pursuit 2</h3>
+                  <p class="text-muted mb-4">Corridas de alta velocidade e perseguições policiais emocionantes.</p>
+                </div>
+                <a href="https://1fichier.com/?cxwhnowjsqre8f0eyemw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-car-side"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Need For Speed Most Wanted (2005)</h3>
+                  <p class="text-muted mb-4">A edição especial do clássico de corrida de rua, com perseguições intensas. <span class="password-highlight">Senha: chemical</span>
+                  </p>
+                </div>
+                <a href="https://1fichier.com/?dvi1pehq13udj4l8c8yz" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-car-side"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Need For Speed Underground</h3>
+                  <p class="text-muted mb-4">O jogo que definiu a cultura de tunagem em corridas de rua.</p>
+                </div>
+                <a href="https://1fichier.com/?wg3v32cqoelm5x062dpw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-car-side"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Need For Speed Underground 2</h3>
+                  <p class="text-muted mb-4">Expanda a experiência de corrida com um mundo aberto e mais opções de customização.</p>
+                </div>
+                <a href="https://1fichier.com/?bhc5plxo7tmj3vf3mfip" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-brain"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">OMORI</h3>
+                  <p class="text-muted mb-4">Um RPG de terror psicológico surreal sobre explorar um mundo estranho e seus medos.</p>
+                </div>
+                <a href="https://1fichier.com/?hsyx4eh1qp6cqjiq00pl" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">OneShot</h3>
+                  <p class="text-muted mb-4">Guie uma criança por um mundo misterioso em uma missão para restaurar seu sol.</p>
+                </div>
+                <a href="https://1fichier.com/?lj7jz730ewi0710ed0nw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-mask"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Persona 5 Strikers</h3>
+                  <p class="text-muted mb-4">Junte-se aos Phantom Thieves em um combate de ação explosivo neste RPG estiloso.</p>
+                </div>
+                <a href="https://1fichier.com/?d76bdb84jp3x5oqy8lzq" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-microscope"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Plague Inc: Evolved</h3>
+                  <p class="text-muted mb-4">Crie e evolua uma praga para aniquilar a humanidade.</p>
+                </div>
+                <a href="https://gofile.io/d/bUP8fR" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-hat-cowboy"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Red Dead Redemption 2</h3>
+                  <p class="text-muted mb-4">Uma história épica de honra e lealdade no alvorecer da era moderna no Velho Oeste.</p>
+                </div>
+                <a href="https://1fichier.com/?3u05ujylcoauiq7ltxjz" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-rocket"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Rimworld</h3>
+                  <p class="text-muted mb-4">Um simulador de colônia de ficção científica com histórias geradas por IA.</p>
+                </div>
+                <a href="https://1fichier.com/?t4s9xj0i15953usq4ghh" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-cube"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">SKlauncher</h3>
+                  <p class="text-muted mb-4">Um launcher de Minecraft customizável e fácil de usar.</p>
+                </div>
+                <a href="https://www.mediafire.com/file/5uq1yz36gw94cl7/SKlauncher-3.2.12.jar/file" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-tractor"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Stardew Valley</h3>
+                  <p class="text-muted mb-4">Crie sua fazenda, explore cavernas e construa relacionamentos em um RPG relaxante.</p>
+                </div>
+                <a href="https://gofile.io/d/ENzmk4" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-hammer"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Terraria</h3>
+                  <p class="text-muted mb-4">Um jogo sandbox de aventura e exploração em um mundo 2D.</p>
+                </div>
+                <a href="https://gofile.io/d/ylmvvO" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-hat-wizard"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">The Henry Stickmin Collection</h3>
+                  <p class="text-muted mb-4">Uma coleção de jogos de aventura com escolhas divertidas e múltiplos finais.</p>
+                </div>
+                <a href="https://archive.org/download/the-henry-stickmin-collection/The.Henry.Stickmin.Collection.zip" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-road"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Trackmania Nations Forever</h3>
+                  <p class="text-muted mb-4">Um jogo de corrida com pistas malucas e alta velocidade.</p>
+                </div>
+                <a href="https://archive.org/download/TrackMania_Nations_Forever/TMNForever.rar" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="pesado">
+              <div class="card-tag-indicator pesado" data-tooltip="Jogo Pesado">
+                <i class="fas fa-microchip"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-skull-crossbones"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">ULTRAKILL</h3>
+                  <p class="text-muted mb-4">Um FPS frenético e ultraviolento com um estilo retrô.</p>
+                </div>
+                <a href="https://gofile.io/d/R4fSuu" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-crown"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Ultimate Custom Night</h3>
+                  <p class="text-muted mb-4">O mashup definitivo de FNAF, onde você cria seus próprios desafios de terror.</p>
+                </div>
+                <a href="https://1fichier.com/?11xxjbkq48b2jup14sfi" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-heart"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Undertale</h3>
+                  <p class="text-muted mb-4">Um RPG único onde você não precisa matar ninguém.</p>
+                </div>
+                <a href="https://gofile.io/d/8N6Cuw" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+            <div class="card" data-tags="leve">
+              <div class="card-tag-indicator leve" data-tooltip="Jogo Leve">
+                <i class="fas fa-feather-alt"></i>
+              </div>
+              <div class="card-content p-6 flex flex-col justify-between h-full">
+                <div>
+                  <div class="text-3xl mb-4">
+                    <i class="fas fa-crown"></i>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2">Volcano Princess</h3>
+                  <p class="text-muted mb-4">Crie sua filha em um mundo de fantasia, moldando seu futuro através de suas escolhas.</p>
+                </div>
+                <a href="https://1fichier.com/?c5g4wy0rj0qylgcc9sba" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Baixar Agora</a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div id="noResultsMessage" class="hidden text-center glass-effect p-12 my-16 rounded-2xl">
+          <i class="fas fa-ghost text-6xl text-primary-glow mb-6 animate-bounce"></i>
+          <h3 class="text-3xl font-bold mb-2">Nenhum ninja por aqui!</h3>
+          <p class="text-muted text-lg">Não encontramos nada com esse termo. Tente uma nova busca!</p>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <p>&copy; 2025 Ferramentas Ninja. Todos os direitos reservados.</p>
+      </footer>
     </div>
-
-    <button id="backToTop" class="fixed bottom-[-100px] right-6 w-14 h-14 glass-effect rounded-full text-2xl z-50 opacity-0"><i class="fas fa-arrow-up"></i></button>
-    
-    <!-- Link para o nosso novo JS centralizado -->
+    <button id="backToTop" class="fixed bottom-[-100px] right-6 w-14 h-14 glass-effect rounded-full text-2xl z-50 opacity-0">
+      <i class="fas fa-arrow-up"></i>
+    </button>
     <script src="lógica/script.js"></script>
-</body>
+  </body>
 </html>
-
