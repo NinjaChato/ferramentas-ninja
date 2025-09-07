@@ -10,25 +10,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- Link para o nosso novo CSS centralizado -->
     <link rel="stylesheet" href="lógica/style.css">
 </head>
 <body class="p-4">
     <div id="loader"><div class="spinner"></div></div>
     <div id="particles-js"></div>
 
-    <!-- MODAL DE AVISO DE NAVEGAÇÃO SEGURA -->
     <div id="vpnNoticeModal" class="modal-overlay">
         <div class="modal-content glass-effect">
-            <button class="modal-close-btn">&times;</button>
+            <!-- Botão '×' com a classe de estilo E a nova classe de função -->
+            <button class="modal-close-btn js-close-modal">&times;</button>
             <i class="fas fa-shield-alt text-5xl text-primary-glow mb-4"></i>
             <h2 class="text-2xl font-bold mb-3">Navegação Segura</h2>
             <p class="text-muted mb-6">Para acessar sites de download que possam estar bloqueados, recomendamos o uso de uma VPN como o <strong class="text-light">Psiphon</strong> para garantir seu acesso irrestrito.</p>
-            <button class="action-btn modal-close-btn text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">Entendi</button>
+            <!-- Botão 'Entendi' APENAS com a nova classe de função -->
+            <button class="action-btn js-close-modal text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">Entendi</button>
         </div>
     </div>
 
     <div id="mainContainer" class="max-w-6xl mx-auto w-full">
+        <!-- O resto do arquivo continua igual... -->
         <header class="fade-in-up glass-effect p-6 md:p-8 mb-12 rounded-2xl mt-4">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
                 <div>
@@ -59,17 +60,14 @@
                 </div>
             </div>
         </header>
-
         <main class="fade-in-up container mx-auto px-4">
             <section class="ferramentas mb-16">
                 <div class="text-center mb-8">
                     <h2 class="section-title inline-block">Ferramentas</h2>
-                    <!-- Botão para acionar o modal de aviso -->
                     <button data-modal-target="#vpnNoticeModal" class="ml-2 text-blue-400 hover:text-blue-300 transition-colors" title="Recomendação de Segurança">
                         <i class="fas fa-info-circle"></i>
                     </button>
                 </div>
-                
                 <div class="card-grid" id="linksContainer">
                     <div class="card">
                         <div class="card-content p-6 flex flex-col justify-between h-full">
@@ -139,15 +137,11 @@
                 <p class="text-muted text-lg">Não encontramos nada com esse termo. Tente uma nova busca!</p>
             </div>
         </main>
-
-        <!-- RODAPÉ PADRONIZADO -->
         <footer class="site-footer">
             <p>&copy; 2025 Ferramentas Ninja. Todos os direitos reservados.</p>
         </footer>
     </div>
     <button id="backToTop" class="fixed bottom-[-100px] right-6 w-14 h-14 glass-effect rounded-full text-2xl z-50 opacity-0"><i class="fas fa-arrow-up"></i></button>
-    
-    <!-- Link para o nosso novo JS centralizado -->
     <script src="lógica/script.js"></script>
 </body>
 </html>
