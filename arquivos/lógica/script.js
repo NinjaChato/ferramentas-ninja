@@ -1,5 +1,5 @@
 /* =========================================================
-   SCRIPT NINJA OTIMIZADO (v3.1) - CORREÇÃO DE FILTRO
+   SCRIPT NINJA OTIMIZADO (v3.2) - CORREÇÃO DE BOTÃO DO MODAL
    - Sistema de Modal Centralizado e Reutilizável
    - Animações de Filtro Suaves
    - Otimizações de Performance
@@ -79,7 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 3. SISTEMA DE MODAL CENTRALIZADO ---
   const modalTriggers = document.querySelectorAll('[data-modal-target]');
-  const closeButtons = document.querySelectorAll('.modal-close-btn');
+  // AQUI ESTÁ A MUDANÇA: Usamos a nova classe 'js-close-modal'
+  const closeButtons = document.querySelectorAll('.js-close-modal');
   const gameModal = document.getElementById('gameModal');
   const gameEmbedContainer = document.getElementById('gameEmbedContainer');
 
@@ -90,9 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeModal = (modal) => {
     if (modal) {
       modal.classList.remove('is-visible');
-      // Limpa o iframe do jogo ao fechar para parar a execução e economizar recursos
       if (modal.id === 'gameModal' && gameEmbedContainer) {
-        setTimeout(() => { gameEmbedContainer.innerHTML = ''; }, 300); // Atraso para coincidir com a animação
+        setTimeout(() => { gameEmbedContainer.innerHTML = ''; }, 300);
       }
     }
   };
@@ -119,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Lógica específica para o Modal de Jogo de Emulador
   document.querySelectorAll('.play-emulator-btn').forEach(button => {
     button.addEventListener('click', () => {
       const gameSrc = button.dataset.src;
@@ -138,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     let activeFilter = 'all';
 
-    // AQUI ESTÁ A FUNÇÃO ATUALIZADA PARA CORRIGIR O FILTRO
     const updateVisibleCards = () => {
       const searchTerm = searchInput.value.toLowerCase().trim();
       let cardsFound = 0;
@@ -153,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const shouldBeVisible = matchesSearch && matchesFilter;
         
-        // Altera o 'display' para remover/adicionar o card ao layout
         card.style.display = shouldBeVisible ? 'flex' : 'none';
 
         if (shouldBeVisible) cardsFound++;
