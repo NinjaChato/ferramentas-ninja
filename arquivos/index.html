@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- Link para o nosso novo CSS centralizado -->
     <link rel="stylesheet" href="lógica/style.css">
 </head>
 <body class="p-4">
@@ -19,12 +18,16 @@
 
     <div id="mainContainer" class="max-w-6xl mx-auto w-full">
         <header class="fade-in-up glass-effect p-6 md:p-8 mb-12 rounded-2xl mt-4">
+            <!-- Seção Superior: Título e Ações Principais -->
             <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
                 <div>
                     <h1 class="main-title">Ferramentas Ninja</h1>
                     <p class="subtitle text-lg text-muted mt-2 max-w-2xl">Seu portal seguro e estiloso para jogos, ferramentas e recursos essenciais.</p>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://discord.gg/ATS3E9ZeR7" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap" title="Junte-se à nossa comunidade no Discord!">
+                        <i class="fab fa-discord"></i> Discord
+                    </a>
                     <a href="updates.txt" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap">
                         <i class="fas fa-history fa-spin-pulse" style="--fa-animation-duration: 5s;"></i> Changelogs
                     </a>
@@ -33,7 +36,8 @@
                     </a>
                 </div>
             </div>
-            <div class="mt-8">
+            <!-- Seção Inferior: Painel de Navegação -->
+            <div class="mt-8 pt-8 border-t border-white/10">
                 <div class="category-buttons flex flex-wrap justify-center gap-2 md:gap-4">
                     <a href="index.html" class="category-btn active"><i class="fas fa-home mr-2"></i>Início</a>
                     <a href="jogos-pc.html" class="category-btn"><i class="fas fa-desktop mr-2"></i>Jogos PC</a>
@@ -46,12 +50,9 @@
         </header>
 
         <main class="container mx-auto px-4">
-            
-            <!-- SEÇÃO DE DESTAQUES -->
             <section id="featured" class="fade-in-up mb-16">
                 <h2 class="section-title text-center">Em Destaque</h2>
                 <p class="text-lg text-muted text-center mt-4 max-w-2xl mx-auto">Confira nossas principais recomendações, escolhidas a dedo para você.</p>
-                <!-- Usando a nova classe .card-grid para consistência -->
                 <div class="card-grid mt-8">
                     <div class="card jogos-pc">
                         <a href="jogos-pc.html" class="block h-full">
@@ -91,12 +92,9 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- SEÇÃO DE CATEGORIAS -->
             <section id="categories" class="fade-in-up mb-16">
                 <h2 class="section-title text-center">Explore as Categorias</h2>
                 <p class="text-lg text-muted text-center mt-4 max-w-2xl mx-auto">Navegue por nossas seções para encontrar exatamente o que você precisa.</p>
-                <!-- Usando a nova classe .card-grid para consistência -->
                 <div class="card-grid mt-8">
                     <a href="jogos-pc.html" class="card jogos-pc"><div class="card-content text-center p-6"><i class="fas fa-desktop text-4xl mb-4"></i><h3 class="font-bold text-xl">Jogos PC</h3><p class="text-sm text-muted mt-2">Clássicos e indies para baixar e jogar.</p></div></a>
                     <a href="jogos-navegador.html" class="card jogos-navegador"><div class="card-content text-center p-6"><i class="fas fa-globe text-4xl mb-4"></i><h3 class="font-bold text-xl">Navegador</h3><p class="text-sm text-muted mt-2">Diversão instantânea, sem instalação.</p></div></a>
@@ -105,8 +103,6 @@
                     <a href="ferramentas.html" class="card ferramentas"><div class="card-content text-center p-6"><i class="fas fa-tools text-4xl mb-4"></i><h3 class="font-bold text-xl">Ferramentas</h3><p class="text-sm text-muted mt-2">Utilitários essenciais para seu setup.</p></div></a>
                 </div>
             </section>
-
-            <!-- SEÇÃO DE CONFIANÇA -->
             <section id="why-us" class="fade-in-up mb-16">
                 <div class="glass-effect p-8 md:p-12 rounded-2xl">
                     <h2 class="section-title text-center">Por Que Confiar?</h2>
@@ -130,18 +126,12 @@
                     </div>
                 </div>
             </section>
-
         </main>
-
-        <!-- RODAPÉ PADRONIZADO -->
         <footer class="site-footer">
             <p>&copy; 2025 Ferramentas Ninja. Todos os direitos reservados.</p>
         </footer>
     </div>
-
     <button id="backToTop" class="fixed bottom-[-100px] right-6 w-14 h-14 glass-effect rounded-full text-2xl z-50 opacity-0"><i class="fas fa-arrow-up"></i></button>
-    
-    <!-- Link para o nosso novo JS centralizado -->
     <script src="lógica/script.js"></script>
 </body>
 </html>
