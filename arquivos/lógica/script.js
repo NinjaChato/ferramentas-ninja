@@ -1,5 +1,5 @@
 /* =========================================================
-   SCRIPT NINJA OTIMIZADO (v3.2) - CORREÇÃO DE BOTÃO DO MODAL
+   SCRIPT NINJA OTIMIZADO (v3.3) - BOTÃO FULLSCREEN RESTAURADO
    - Sistema de Modal Centralizado e Reutilizável
    - Animações de Filtro Suaves
    - Otimizações de Performance
@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 3. SISTEMA DE MODAL CENTRALIZADO ---
   const modalTriggers = document.querySelectorAll('[data-modal-target]');
-  // AQUI ESTÁ A MUDANÇA: Usamos a nova classe 'js-close-modal'
   const closeButtons = document.querySelectorAll('.js-close-modal');
   const gameModal = document.getElementById('gameModal');
   const gameEmbedContainer = document.getElementById('gameEmbedContainer');
@@ -119,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Lógica específica para o Modal de Jogo de Emulador
   document.querySelectorAll('.play-emulator-btn').forEach(button => {
     button.addEventListener('click', () => {
       const gameSrc = button.dataset.src;
@@ -128,6 +128,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // NOVA SEÇÃO: LÓGICA DO BOTÃO DE TELA CHEIA
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', () => {
+      const iframe = gameEmbedContainer.querySelector('iframe');
+      if (!iframe) return;
+
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.webkitRequestFullscreen) { /* Safari */
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) { /* IE11 */
+        iframe.msRequestFullscreen();
+      }
+    });
+  }
 
   // --- 4. FUNCIONALIDADE DE BUSCA E FILTRO (OTIMIZADA) ---
   const searchInput = document.getElementById('searchInput');
