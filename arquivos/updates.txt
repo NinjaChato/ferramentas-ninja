@@ -1,5 +1,11 @@
 Ferramentas Ninja - Histórico de Atualizações
 
+(26/09/2025)
+> REFINAMENTO DE CONTEÚDO E AJUSTES DE LAYOUT
+  - Conteúdo (Jogos PC): A lista de jogos foi otimizada para focar em títulos mais leves e clássicos. Jogos pesados que exigem atualizações constantes foram removidos para garantir uma melhor experiência.
+  - Design e UX (Jogos PC): O sistema de filtros foi alterado de 'Leve/Pesado' para 'Novos/Antigos', com novas etiquetas e ícones para uma organização mais intuitiva.
+  - Design (Geral): O layout dos botões de ação no cabeçalho (Discord, Changelogs, etc.) foi ajustado para um formato vertical em todas as páginas, melhorando a consistência.
+
 (05/09/2025)
 > ATUALIZACAO GERAL DE QUALIDADE E PERFORMANCE
 
