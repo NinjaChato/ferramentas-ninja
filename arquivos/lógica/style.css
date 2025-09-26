@@ -171,7 +171,6 @@ body::before {
 }
 
 /* === CARDS E GRID === */
-/* AQUI ESTÁ A MUDANÇA PARA CORRIGIR O FILTRO */
 .card-grid {
   display: flex;
   flex-wrap: wrap;
@@ -192,6 +191,9 @@ body::before {
   transform-style: preserve-3d;
   will-change: transform, box-shadow;
 }
+a.card {
+  cursor: pointer;
+}
 .card.is-hidden {
   opacity: 0;
   transform: scale(0.9);
@@ -209,6 +211,9 @@ body::before {
 .card-content {
   position: relative;
   z-index: 2;
+}
+.card-content .fas {
+    transition: all var(--transition-fast);
 }
 .card:hover::after {
   opacity: 1;
@@ -311,7 +316,7 @@ body::before {
   transition: opacity 0.4s ease, transform 0.4s var(--swoosh);
 }
 
-/* === INDICADOR DE TAGS PARA CARDS (LEVE/PESADO) === */
+/* === INDICADOR DE TAGS PARA CARDS (NOVO/ANTIGO) === */
 .card-tag-indicator {
   position: absolute;
   top: 0;
@@ -330,14 +335,16 @@ body::before {
 .card-tag-indicator .fas {
   transition: all var(--transition-fast);
 }
-.card-tag-indicator.leve .fas { color: var(--color-pc); }
-.card-tag-indicator.pesado .fas { color: var(--color-hacks); }
+.card-tag-indicator.novo .fas { color: var(--color-emulador); }
+.card-tag-indicator.antigo .fas { color: var(--color-navegador); }
+
 .card-tag-indicator:hover {
   transform: scale(1.1);
   box-shadow: 0 0 15px 0px currentColor;
 }
-.card-tag-indicator.leve:hover { color: var(--color-pc); }
-.card-tag-indicator.pesado:hover { color: var(--color-hacks); }
+.card-tag-indicator.novo:hover { color: var(--color-emulador); }
+.card-tag-indicator.antigo:hover { color: var(--color-navegador); }
+
 .card-tag-indicator::after {
   content: attr(data-tooltip);
   position: absolute;
