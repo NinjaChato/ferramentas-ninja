@@ -1,13 +1,16 @@
 /* =========================================================
-   SCRIPT NINJA OTIMIZADO (v3.3) - BOTÃO FULLSCREEN RESTAURADO
+   SCRIPT NINJA OTIMIZADO (v3.4)
+   - Lógica de filtro adaptável (funciona com 'novo'/'antigo')
+   - Comentários adicionados para clareza e manutenção
    - Sistema de Modal Centralizado e Reutilizável
-   - Animações de Filtro Suaves
-   - Otimizações de Performance
+   - Otimizações de Performance com Debounce e Throttle
 ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   // --- FUNÇÕES DE OTIMIZAÇÃO (DEBOUNCE & THROTTLE) ---
+  // Debounce: Atrasa a execução de uma função até que um certo tempo tenha passado sem que ela seja chamada.
+  // Útil para a barra de busca, para não filtrar a cada tecla pressionada.
   const debounce = (func, delay) => {
     let timeout;
     return function(...args) {
@@ -16,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   };
 
+  // Throttle: Garante que uma função não seja executada mais de uma vez a cada X milissegundos.
+  // Útil para eventos de scroll, para não sobrecarregar o navegador.
   const throttle = (func, limit) => {
     let inThrottle;
     return function(...args) {
@@ -32,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fadeInElements = document.querySelectorAll('.fade-in-up');
   const particlesEl = document.getElementById('particles-js');
 
-  // Loader
+  // Oculta o loader quando a página termina de carregar
   window.addEventListener('load', () => {
     if (loader) {
       loader.style.opacity = '0';
@@ -40,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Animações de entrada com Intersection Observer
+  // Animações de entrada para elementos usando Intersection Observer para melhor performance
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -51,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   fadeInElements.forEach(el => observer.observe(el));
 
-  // Partículas
+  // Inicializa o efeito de partículas no fundo
   if (particlesEl) {
     particlesJS("particles-js", { "particles":{ "number":{ "value":80,"density":{ "enable":true,"value_area":800 } },"color":{ "value":"#ffffff" },"shape":{ "type":"circle" },"opacity":{ "value":0.5,"random":true,"anim":{ "enable":true,"speed":1,"opacity_min":0.1,"sync":false } },"size":{ "value":3,"random":true },"line_linked":{ "enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1 },"move":{ "enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false } },"interactivity":{ "detect_on":"canvas","events":{ "onhover":{ "enable":true,"mode":"repulse" },"onclick":{ "enable":true,"mode":"push" },"resize":true },"modes":{ "repulse":{ "distance":200,"duration":0.4 },"push":{ "particles_nb":4 } } },"retina_detect":true });
   }
@@ -65,13 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const y = e.clientY - rect.top;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -6;
+      // Calcula a rotação com base na posição do mouse dentro do card
+      const rotateX = ((y - centerY) / centerY) * -6; // Inverte para rotação natural
       const rotateY = ((x - centerX) / centerX) * 6;
 
+      // Atualiza as variáveis CSS para o efeito de spotlight e a transformação 3D
       card.style.setProperty('--spotlight-x', `${x}px`);
       card.style.setProperty('--spotlight-y', `${y}px`);
       card.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.04)`;
     });
+    // Reseta o card para a posição original quando o mouse sai
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'perspective(1500px) rotateX(0) rotateY(0) translateY(0) scale(1)';
     });
@@ -90,12 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeModal = (modal) => {
     if (modal) {
       modal.classList.remove('is-visible');
+      // Se for o modal do jogo, limpa o conteúdo para parar a execução do emulador
       if (modal.id === 'gameModal' && gameEmbedContainer) {
-        setTimeout(() => { gameEmbedContainer.innerHTML = ''; }, 300);
+        setTimeout(() => { gameEmbedContainer.innerHTML = ''; }, 300); // Atraso para a animação de saída
       }
     }
   };
 
+  // Adiciona evento de clique para todos os botões que abrem modais
   modalTriggers.forEach(button => {
     button.addEventListener('click', () => {
       const modal = document.querySelector(button.dataset.modalTarget);
@@ -103,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Permite fechar o modal clicando fora da caixa de conteúdo
   document.querySelectorAll('.modal-overlay').forEach(overlay => {
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) {
@@ -111,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Adiciona evento de clique para todos os botões de fechar
   closeButtons.forEach(button => {
     button.addEventListener('click', () => {
       const modal = button.closest('.modal-overlay');
@@ -129,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // NOVA SEÇÃO: LÓGICA DO BOTÃO DE TELA CHEIA
+  // Lógica do botão de Tela Cheia para o iframe do jogo
   const fullscreenBtn = document.getElementById('fullscreenBtn');
   if (fullscreenBtn) {
     fullscreenBtn.addEventListener('click', () => {
@@ -166,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
         const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
 
+        // O card só é visível se corresponder à busca E ao filtro ativo
         const shouldBeVisible = matchesSearch && matchesFilter;
         
         card.style.display = shouldBeVisible ? 'flex' : 'none';
@@ -173,19 +186,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (shouldBeVisible) cardsFound++;
       });
 
+      // Mostra ou esconde a mensagem de "nenhum resultado"
       if (noResultsMessage) {
         noResultsMessage.style.display = cardsFound > 0 ? 'none' : 'block';
       }
     };
 
+    // Usa debounce para evitar sobrecarga ao digitar
     searchInput.addEventListener('keyup', debounce(updateVisibleCards, 300));
 
+    // Adiciona evento de clique aos botões de filtro
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
         activeFilter = button.dataset.filter;
-        updateVisibleCards();
+        updateVisibleCards(); // Atualiza a exibição com o novo filtro
       });
     });
   }
@@ -198,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
       backToTopButton.style.opacity = isVisible ? '1' : '0';
       backToTopButton.style.bottom = isVisible ? '1.5rem' : '-100px';
     };
+    // Usa throttle para otimizar o evento de scroll
     window.addEventListener('scroll', throttle(handleScroll, 150));
     backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
@@ -208,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const scriptToCopy = btn.dataset.script;
       navigator.clipboard.writeText(scriptToCopy).then(() => {
+        // Mostra uma mensagem de sucesso animada
         if (copyMessage) {
           copyMessage.style.opacity = '1';
           copyMessage.style.transform = 'translate(-50%, 0)';
