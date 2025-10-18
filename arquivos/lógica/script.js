@@ -1,3 +1,11 @@
+/* =========================================================
+   SCRIPT NINJA OTIMIZADO (v3.9 - FINAL)
+   - Lógica de aplicação de efeitos unificada para todas as páginas.
+   - Efeito de hover 3D suavizado e consistente.
+   - Carregamento de jogos via games.json.
+   - Modal de jogo e outras funcionalidades mantidas.
+========================================================= */
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // --- FUNÇÕES DE OTIMIZAÇÃO (DEBOUNCE & THROTTLE) ---
@@ -46,28 +54,34 @@ document.addEventListener('DOMContentLoaded', () => {
     particlesJS("particles-js", { "particles":{ "number":{ "value":80,"density":{ "enable":true,"value_area":800 } },"color":{ "value":"#ffffff" },"shape":{ "type":"circle" },"opacity":{ "value":0.5,"random":true,"anim":{ "enable":true,"speed":1,"opacity_min":0.1,"sync":false } },"size":{ "value":3,"random":true },"line_linked":{ "enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1 },"move":{ "enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false } },"interactivity":{ "detect_on":"canvas","events":{ "onhover":{ "enable":true,"mode":"repulse" },"onclick":{ "enable":true,"mode":"push" },"resize":true },"modes":{ "repulse":{ "distance":200,"duration":0.4 },"push":{ "particles_nb":4 } } },"retina_detect":true });
   }
 
-  // --- 2. EFEITO 3D E SPOTLIGHT NOS CARDS ---
+  // --- 2. EFEITO 3D E SPOTLIGHT NOS CARDS (COM VALORES SUAVIZADOS) ---
   const setupCardEffects = () => {
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
+        // Evita adicionar o mesmo listener múltiplas vezes
+        if (card.dataset.hoverEffectApplied) return;
+
         card.addEventListener('mousemove', (e) => {
           const rect = card.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * -6;
-          const rotateY = ((x - centerX) / centerX) * 6;
+          
+          const rotateX = ((y - centerY) / centerY) * -4; // Rotação sutil
+          const rotateY = ((x - centerX) / centerX) * 4;   // Rotação sutil
 
           card.style.setProperty('--spotlight-x', `${x}px`);
           card.style.setProperty('--spotlight-y', `${y}px`);
-          // CORREÇÃO AQUI: Removido 'perspective(1500px)' da transformação individual
-          card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.04)`;
+          
+          card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px) scale(1.02)`;
         });
+
         card.addEventListener('mouseleave', () => {
-          // CORREÇÃO AQUI: Removido 'perspective(1500px)' da transformação individual
           card.style.transform = 'rotateX(0) rotateY(0) translateY(0) scale(1)';
         });
+
+        card.dataset.hoverEffectApplied = 'true';
       });
   };
   
@@ -113,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
 
-      // Lógica para abrir QUALQUER jogo (Emulador ou Navegador)
       document.body.addEventListener('click', (e) => {
         const targetButton = e.target.closest('.play-emulator-btn, .play-game-btn');
         if (targetButton) {
@@ -217,42 +230,42 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   };
   
-  // --- 7. LÓGICA ESPECIAL PARA A PÁGINA DE JOGOS DE NAVEGADOR ---
-  const loadBrowserGames = async () => {
-    const linksContainer = document.getElementById('linksContainer');
-    if (!linksContainer || !window.location.pathname.includes('jogos-navegador.html')) {
-      return;
+  // --- 7. LÓGICA DE CARREGAMENTO DE CONTEÚDO DINÂMICO ---
+  const loadDynamicContent = async () => {
+    // Se estiver na página de jogos de navegador, carrega os jogos do JSON
+    if (window.location.pathname.includes('jogos-navegador.html')) {
+        const linksContainer = document.getElementById('linksContainer');
+        if (!linksContainer) return;
+
+        try {
+            const response = await fetch('games.json');
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const games = await response.json();
+            
+            linksContainer.innerHTML = ''; 
+
+            games.forEach(game => {
+                const cardHTML = `
+                <div class="card">
+                    <div class="card-content p-6 flex flex-col justify-between h-full">
+                    <div>
+                        <img src="${game.game_image_icon}" alt="${game.name}" class="game-card-image">
+                        <h3 class="text-2xl font-bold mb-2">${game.name}</h3>
+                    </div>
+                    <button data-src="${game.game_url}" class="play-game-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
+                    </div>
+                </div>
+                `;
+                linksContainer.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        } catch (error) {
+            console.error('Erro ao carregar ou processar games.json:', error);
+            linksContainer.innerHTML = '<p class="text-center text-red-500 col-span-full">Ocorreu um erro ao carregar os jogos.</p>';
+        }
     }
-
-    try {
-      const response = await fetch('games.json');
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      
-      const games = await response.json();
-      
-      linksContainer.innerHTML = ''; 
-
-      games.forEach(game => {
-        const cardHTML = `
-          <div class="card">
-            <div class="card-content p-6 flex flex-col justify-between h-full">
-              <div>
-                <img src="${game.game_image_icon}" alt="${game.name}" class="game-card-image">
-                <h3 class="text-2xl font-bold mb-2">${game.name}</h3>
-              </div>
-              <button data-src="${game.game_url}" class="play-game-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-            </div>
-          </div>
-        `;
-        linksContainer.insertAdjacentHTML('beforeend', cardHTML);
-      });
-
-      setupCardEffects();
-
-    } catch (error) {
-      console.error('Erro ao carregar ou processar games.json:', error);
-      linksContainer.innerHTML = '<p class="text-center text-red-500 col-span-full">Ocorreu um erro ao carregar os jogos. Tente novamente mais tarde.</p>';
-    }
+    
+    // NO FINAL DE TUDO, APLICA O EFEITO EM TODOS OS CARDS PRESENTES NA PÁGINA
+    setupCardEffects();
   };
 
   // --- INICIALIZAÇÃO DE TODAS AS FUNÇÕES ---
@@ -260,6 +273,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSearchAndFilters();
   setupBackToTop();
   setupCopyScript();
-  loadBrowserGames();
-  setupCardEffects();
+  loadDynamicContent(); // Esta função agora cuida de carregar o conteúdo e aplicar os efeitos.
 });
