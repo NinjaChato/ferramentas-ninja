@@ -61,10 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
           card.style.setProperty('--spotlight-x', `${x}px`);
           card.style.setProperty('--spotlight-y', `${y}px`);
-          card.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.04)`;
+          // CORREÇÃO AQUI: Removido 'perspective(1500px)' da transformação individual
+          card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.04)`;
         });
         card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(1500px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+          // CORREÇÃO AQUI: Removido 'perspective(1500px)' da transformação individual
+          card.style.transform = 'rotateX(0) rotateY(0) translateY(0) scale(1)';
         });
       });
   };
@@ -218,22 +220,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 7. LÓGICA ESPECIAL PARA A PÁGINA DE JOGOS DE NAVEGADOR ---
   const loadBrowserGames = async () => {
     const linksContainer = document.getElementById('linksContainer');
-    // Executa apenas se estiver na página correta
-    if (!linksContainer || !window.location.pathname.endsWith('jogos-navegador.html')) {
+    if (!linksContainer || !window.location.pathname.includes('jogos-navegador.html')) {
       return;
     }
 
     try {
-      // MUDANÇA: Carrega o arquivo JSON em vez do Markdown
       const response = await fetch('games.json');
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       
-      // MUDANÇA: O browser já converte o JSON para um objeto/array
       const games = await response.json();
       
-      linksContainer.innerHTML = ''; // Limpa a área para adicionar os novos cards
+      linksContainer.innerHTML = ''; 
 
-      // MUDANÇA: Itera sobre o array de jogos e usa as chaves do JSON
       games.forEach(game => {
         const cardHTML = `
           <div class="card">
@@ -249,7 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
         linksContainer.insertAdjacentHTML('beforeend', cardHTML);
       });
 
-      // Re-aplica os efeitos nos cards recém-criados
       setupCardEffects();
 
     } catch (error) {
@@ -263,6 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSearchAndFilters();
   setupBackToTop();
   setupCopyScript();
-  loadBrowserGames(); // Carrega os jogos de navegador se estiver na página certa
-  setupCardEffects(); // Aplica os efeitos nos cards de qualquer página
+  loadBrowserGames();
+  setupCardEffects();
 });
