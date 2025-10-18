@@ -462,3 +462,24 @@ a.card {
   background-color: #27272a; /* Cor de fundo enquanto a imagem carrega */
   border: 1px solid var(--border-color); /* Adiciona uma borda sutil */
 }
+
+/* === CORREÇÃO PARA TELA CHEIA (FULLSCREEN) DO JOGO === */
+#gameEmbedContainer iframe:fullscreen {
+  aspect-ratio: auto; /* Remove a restrição de proporção */
+  width: 100%;
+  height: 100%;
+}
+
+/* Para compatibilidade com navegadores mais antigos (Safari) */
+#gameEmbedContainer iframe:-webkit-full-screen {
+  aspect-ratio: auto;
+  width: 100%;
+  height: 100%;
+}
+
+/* Para compatibilidade com navegadores mais antigos (Firefox) */
+#gameEmbedContainer iframe:-moz-full-screen {
+  aspect-ratio: auto;
+  width: 100%;
+  height: 100%;
+}
