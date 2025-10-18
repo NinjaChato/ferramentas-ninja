@@ -451,3 +451,14 @@ a.card {
   justify-content: center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
+
+/* === ESTILOS PARA CARDS DE JOGOS DE NAVEGADOR === */
+.game-card-image {
+  width: 100%;
+  height: 160px; /* Define uma altura fixa para todas as imagens */
+  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+  border-radius: 0.75rem; /* Bordas arredondadas para combinar com o card */
+  margin-bottom: 1rem;
+  background-color: #27272a; /* Cor de fundo enquanto a imagem carrega */
+  border: 1px solid var(--border-color); /* Adiciona uma borda sutil */
+}
