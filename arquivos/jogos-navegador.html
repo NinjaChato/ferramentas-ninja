@@ -17,15 +17,6 @@
       <div class="spinner"></div>
     </div>
     <div id="particles-js"></div>
-    <div id="browserGamesNoticeModal" class="modal-overlay">
-      <div class="modal-content glass-effect">
-        <button class="modal-close-btn js-close-modal">&times;</button>
-        <i class="fas fa-info-circle text-5xl text-primary-glow mb-4"></i>
-        <h2 class="text-2xl font-bold mb-3">Aviso Importante</h2>
-        <p class="text-muted mb-6">Nossa coleção de links é vasta para garantir seu acesso. Se um site ou um jogo específico não carregar, não se preocupe! Apenas volte e tente outro link da nossa lista. Com tantas opções, você certamente encontrará uma que funcione.</p>
-        <button class="action-btn js-close-modal text-white font-bold py-3 px-6 rounded-lg transition-all duration-300">Entendi</button>
-      </div>
-    </div>
     <div id="mainContainer" class="max-w-6xl mx-auto w-full">
       <header class="fade-in-up glass-effect p-6 md:p-8 mb-12 rounded-2xl mt-4">
         <!-- Seção Superior: Título e Ações Principais -->
@@ -69,203 +60,20 @@
         <section class="jogos-navegador mb-16">
           <div class="text-center mb-8">
             <h2 class="section-title inline-block">Jogos de Navegador</h2>
-            <button data-modal-target="#browserGamesNoticeModal" class="ml-2 text-blue-400 hover:text-blue-300 transition-colors" title="Aviso Importante">
-              <i class="fas fa-info-circle"></i>
-            </button>
           </div>
+          <!-- O JavaScript irá popular os cards dos jogos aqui -->
           <div class="card-grid" id="linksContainer">
+            <!-- Exemplo de como o card será gerado:
             <div class="card">
               <div class="card-content p-6 flex flex-col justify-between h-full">
                 <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">1000 Unblocked Games</h3>
-                  <p class="text-muted mb-4">Milhares de jogos desbloqueados ao seu alcance.</p>
+                  <img src="..." alt="..." class="game-card-image">
+                  <h3 class="text-2xl font-bold mb-2">Nome do Jogo</h3>
                 </div>
-                <a href="https://1000unblockedgames.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
+                <button data-src="..." class="play-game-btn action-btn ...">Jogar Agora</button>
               </div>
             </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-robot"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">AI Royale</h3>
-                  <p class="text-muted mb-4">Um jogo de batalha royale com inteligência artificial.</p>
-                </div>
-                <a href="https://airoyale007.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-bowling-ball"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Ball Bang</h3>
-                  <p class="text-muted mb-4">Jogue este divertido jogo diretamente no seu navegador.</p>
-                </div>
-                <a href="https://ball-bang.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-dice-d20"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Cool UBG</h3>
-                  <p class="text-muted mb-4">Jogos desbloqueados e divertidos para o seu navegador.</p>
-                </div>
-                <a href="https://coolubg.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Games 76</h3>
-                  <p class="text-muted mb-4">Coleção de jogos online para diversão instantânea.</p>
-                </div>
-                <a href="https://games-76.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Only Games</h3>
-                  <p class="text-muted mb-4">Uma coleção de jogos para você se divertir online.</p>
-                </div>
-                <a href="https://only-games.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Play Unblocked Games 76</h3>
-                  <p class="text-muted mb-4">Acesse uma vasta biblioteca de jogos desbloqueados.</p>
-                </div>
-                <a href="https://play-unblocked-games76.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Top Vaz Online</h3>
-                  <p class="text-muted mb-4">Jogos online variados para todas as idades.</p>
-                </div>
-                <a href="https://top-vaz-online.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Unblocked Games 6x Online</h3>
-                  <p class="text-muted mb-4">Mais jogos desbloqueados para jogar online.</p>
-                </div>
-                <a href="https://unblockedgames6x-online.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-school"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Unblocked Games At School</h3>
-                  <p class="text-muted mb-4">Jogue seus jogos favoritos, mesmo na escola.</p>
-                </div>
-                <a href="https://unblocked-gamesatschool.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-trophy"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Unblocked Games GG</h3>
-                  <p class="text-muted mb-4">Sua plataforma para jogos desbloqueados.</p>
-                </div>
-                <a href="https://unblockedgamesgg.github.io/?ref=producthunt" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-crown"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Unblocked Games Premium 67</h3>
-                  <p class="text-muted mb-4">Experiência premium com jogos desbloqueados.</p>
-                </div>
-                <a href="https://unblockedgamespremium67.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-calendar-alt"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Arcade 2025</h3>
-                  <p class="text-muted mb-4">Uma coleção atualizada de jogos desbloqueados para 2025.</p>
-                </div>
-                <a href="https://unblocked-2025.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-network-wired"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Arena .IO 2025</h3>
-                  <p class="text-muted mb-4">Domine a arena nos melhores jogos .IO multiplayer do momento.</p>
-                </div>
-                <a href="https://io-games-2025.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Estação 76-77</h3>
-                  <p class="text-muted mb-4">Acesso duplo às melhores coleções de jogos 76 e 77.</p>
-                </div>
-                <a href="https://unblocked-76-77.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content p-6 flex flex-col justify-between h-full">
-                <div>
-                  <div class="text-3xl mb-4">
-                    <i class="fas fa-user-friends"></i>
-                  </div>
-                  <h3 class="text-2xl font-bold mb-2">Jogos de 2 Jogadores</h3>
-                  <p class="text-muted mb-4">Desafie um amigo com esta seleção especial de jogos para dois.</p>
-                </div>
-                <a href="https://2-player-games-online.github.io/" target="_blank" rel="noopener noreferrer" class="action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</a>
-              </div>
-            </div>
+            -->
           </div>
         </section>
         <div id="noResultsMessage" class="hidden text-center glass-effect p-12 my-16 rounded-2xl">
@@ -278,9 +86,23 @@
         <p>&copy; 2025 Ferramentas Ninja. Todos os direitos reservados.</p>
       </footer>
     </div>
+
+    <!-- MODAL PARA EXIBIR O JOGO (COM BOTÃO DE TELA CHEIA) -->
+    <div id="gameModal" class="modal-overlay">
+        <div class="modal-content glass-effect">
+            <button id="fullscreenBtn" class="absolute -top-3 right-12 text-white bg-blue-600 hover:bg-blue-700 rounded-full w-10 h-10 flex items-center justify-center transition-colors text-lg z-10 shadow-lg" title="Tela Cheia">
+                <i class="fas fa-expand"></i>
+            </button>
+            <button class="modal-close-btn js-close-modal">&times;</button>
+            <div id="gameEmbedContainer">
+                <!-- O Iframe do jogo será injetado aqui pelo script.js -->
+            </div>
+        </div>
+    </div>
+
     <button id="backToTop" class="fixed bottom-[-100px] right-6 w-14 h-14 glass-effect rounded-full text-2xl z-50 opacity-0">
       <i class="fas fa-arrow-up"></i>
     </button>
     <script src="lógica/script.js"></script>
   </body>
-</html>```
+</html>
