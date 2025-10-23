@@ -31,7 +31,9 @@
             
             if (queries.rom) {
                 var link = document.createElement("a");
-                link.href = "arquivos/roms/" + queries.rom;
+                // CORREÇÃO AQUI: O caminho agora é relativo à localização do player.html
+                // Como player.html e roms/ estão ambos dentro de /arquivos/, o caminho correto é apenas "roms/".
+                link.href = "roms/" + queries.rom;
                 queries.rom = link.href;
             }
             
@@ -48,7 +50,6 @@
             const rom = params.get('rom');
 
             if (system && rom) {
-                // CORREÇÃO FINAL E DEFINITIVA: Este é o link raiz do projeto WebRetro no GitHub Pages.
                 const webretroPath = "https://binbashbanana.github.io/webretro/";
                 webretroEmbed(gameContainer, webretroPath, { system: system, rom: rom });
             } else {
