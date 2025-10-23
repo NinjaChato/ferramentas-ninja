@@ -31,9 +31,10 @@
             
             if (queries.rom) {
                 var link = document.createElement("a");
-                // Este caminho está correto, assumindo que player.html está na raiz do projeto.
-                // Se player.html estiver em /arquivos/, o caminho deve ser "roms/" + queries.rom
-                link.href = "arquivos/roms/" + queries.rom;
+                // CORREÇÃO FINAL: O caminho agora é relativo à localização do player.html.
+                // Como player.html e a pasta roms estão ambos dentro de /arquivos/,
+                // o caminho correto a partir do player.html é simplesmente "roms/".
+                link.href = "roms/" + queries.rom;
                 queries.rom = link.href;
             }
             
@@ -47,13 +48,11 @@
             const gameContainer = document.getElementById('game-container');
             const params = new URLSearchParams(window.location.search);
             
-            // MUDANÇA AQUI: Lendo 'core' da URL em vez de 'system'
             const core = params.get('core');
             const rom = params.get('rom');
 
             if (core && rom) {
                 const webretroPath = "https://binbashbanana.github.io/webretro/";
-                // MUDANÇA AQUI: Passando o objeto com a chave 'core'
                 webretroEmbed(gameContainer, webretroPath, { core: core, rom: rom });
             } else {
                 document.body.innerHTML = "<p style='color: white; text-align: center; padding-top: 2rem;'>Erro: Jogo não encontrado.</p>";
