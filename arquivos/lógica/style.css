@@ -170,12 +170,15 @@ body::before {
   border-top: 1px solid var(--border-color);
 }
 
-/* === CARDS E GRID === */
+/* === CARDS E GRID (CORREÇÃO AQUI) === */
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: flex; /* MUDANÇA: Voltamos para 'flex' */
+  flex-wrap: wrap; /* Para quebrar a linha em telas menores */
   gap: 2rem;
   perspective: 1500px;
+}
+.card-grid > .card {
+  flex: 1 1 300px; /* Permite que os cards cresçam e encolham de forma flexível */
 }
 
 .card {
@@ -187,7 +190,7 @@ body::before {
   transition: transform 0.4s var(--swoosh), box-shadow 0.4s var(--swoosh), opacity var(--transition-medium);
   transform-style: preserve-3d;
   will-change: transform, box-shadow;
-  display: flex; /* Garante que o card se comporte como flex container */
+  display: flex;
 }
 a.card {
   cursor: pointer;
