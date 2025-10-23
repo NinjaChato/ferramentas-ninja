@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- Link para o nosso novo CSS centralizado -->
     <link rel="stylesheet" href="lógica/style.css">
 </head>
 <body class="p-4">
@@ -20,21 +19,15 @@
     <div id="mainContainer" class="max-w-6xl mx-auto w-full">
         <header class="fade-in-up glass-effect p-6 md:p-8 mb-12 rounded-2xl mt-4">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-                <div>
-                    <h1 class="main-title">Ferramentas Ninja</h1>
-                    <p class="subtitle text-lg text-muted mt-2 max-w-2xl">Seu portal seguro e estiloso para jogos, ferramentas e recursos essenciais.</p>
-                </div>
-                <div class="flex flex-col gap-4">
-                    <a href="https://discord.gg/ATS3E9ZeR7" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap" title="Junte-se à nossa comunidade no Discord!">
-                        <i class="fab fa-discord"></i> Discord
-                    </a>
-                    <a href="updates.txt" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap">
-                        <i class="fas fa-history fa-spin-pulse" style="--fa-animation-duration: 5s;"></i> Changelogs
-                    </a>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAZWO2G9LR6KtmJu74Ep9YAFMMIUeV07Hkoj56UyQcIhi4JA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap">
-                        <i class="fas fa-lightbulb"></i> Sugestões
-                    </a>
-                </div>
+              <div>
+                <h1 class="main-title">Ferramentas Ninja</h1>
+                <p class="subtitle text-lg text-muted mt-2 max-w-2xl">Seu portal seguro e estiloso para jogos, ferramentas e recursos essenciais.</p>
+              </div>
+              <div class="flex flex-col gap-4">
+                <a href="https://discord.gg/ATS3E9ZeR7" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap" title="Junte-se à nossa comunidade no Discord!"><i class="fab fa-discord"></i> Discord </a>
+                <a href="updates.txt" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap"><i class="fas fa-history fa-spin-pulse" style="--fa-animation-duration: 5s;"></i> Changelogs </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAZWO2G9LR6KtmJu74Ep9YAFMMIUeV07Hkoj56UyQcIhi4JA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="changelogs-btn bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg whitespace-nowrap"><i class="fas fa-lightbulb"></i> Sugestões </a>
+              </div>
             </div>
             <div class="mt-8 pt-8 border-t border-white/10">
                 <div class="relative">
@@ -55,266 +48,7 @@
         <main class="fade-in-up container mx-auto px-4">
             <section class="jogos-emulador mb-16">
                 <h2 class="section-title text-center">Jogos de Emulador</h2>
-                
-                <div class="card-grid mt-8" id="linksContainer">
-                    <!-- RPGs -->
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-dragon"></i></div><h3 class="text-2xl font-bold mb-2">Fire Emblem</h3><p class="text-muted mb-4">Um aclamado RPG de estratégia para GBA. Lidere seu exército à vitória.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=fireemblem.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-gem"></i></div><h3 class="text-2xl font-bold mb-2">Final Fantasy 3</h3><p class="text-muted mb-4">A versão de SNES (VI no Japão) de um dos maiores RPGs de todos os tempos.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=finalfantasy3.sfc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-globe-americas"></i></div><h3 class="text-2xl font-bold mb-2">Earthbound</h3><p class="text-muted mb-4">Um RPG cult e peculiar para SNES sobre crianças salvando o mundo.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=earthbound.sfc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-
-                    <!-- Metroid -->
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-user-astronaut"></i></div><h3 class="text-2xl font-bold mb-2">Metroid</h3><p class="text-muted mb-4">A aventura original de Samus Aran no planeta Zebes. Um clássico do NES.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=nestopia&rom=metroid.nes" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-user-astronaut"></i></div><h3 class="text-2xl font-bold mb-2">Super Metroid</h3><p class="text-muted mb-4">Uma obra-prima do SNES que definiu o gênero Metroidvania.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=supermetroid.sfc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-user-astronaut"></i></div><h3 class="text-2xl font-bold mb-2">Metroid Fusion</h3><p class="text-muted mb-4">Aventura de GBA com foco em terror e perseguição pelo SA-X.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=metroidfusion.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-user-astronaut"></i></div><h3 class="text-2xl font-bold mb-2">Metroid: Zero Mission</h3><p class="text-muted mb-4">O remake do primeiro Metroid para GBA, com jogabilidade aprimorada.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=metroidzeromission.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-
-                    <!-- Pokémon -->
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-dot-circle"></i></div><h3 class="text-2xl font-bold mb-2">Pokemon Crystal</h3><p class="text-muted mb-4">A versão definitiva da Geração II para Game Boy Color. Explore Johto e Kanto.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=pokemoncrystal.gbc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-dot-circle"></i></div><h3 class="text-2xl font-bold mb-2">Pokemon FireRed</h3><p class="text-muted mb-4">O remake do clássico Red para GBA. Capture todos os 151 originais!</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=pokemonfirered.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-dot-circle"></i></div><h3 class="text-2xl font-bold mb-2">Pokemon Emerald</h3><p class="text-muted mb-4">A versão definitiva da Geração III para GBA, com a Battle Frontier.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=pokemonemerald.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-
-                    <!-- Sonic -->
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-bolt"></i></div><h3 class="text-2xl font-bold mb-2">Sonic the Hedgehog</h3><p class="text-muted mb-4">O início de tudo. Acelere pelo Green Hill Zone no Mega Drive.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=genesis_plus_gx&rom=sonic.md" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-bolt"></i></div><h3 class="text-2xl font-bold mb-2">Sonic 2</h3><p class="text-muted mb-4">Junte-se a Tails nesta sequência clássica do Mega Drive.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=genesis_plus_gx&rom=sonic2.md" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-bolt"></i></div><h3 class="text-2xl font-bold mb-2">Sonic 3</h3><p class="text-muted mb-4">A aventura continua com a introdução de Knuckles. Jogue no Mega Drive.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=genesis_plus_gx&rom=sonic3.md" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-
-                    <!-- Fighting Games -->
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-fist-raised"></i></div><h3 class="text-2xl font-bold mb-2">Streets of Rage 2</h3><p class="text-muted mb-4">Um dos melhores beat 'em ups de todos os tempos, direto do Mega Drive.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=genesis_plus_gx&rom=streetsofrage2.md" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-fist-raised"></i></div><h3 class="text-2xl font-bold mb-2">Mortal Kombat</h3><p class="text-muted mb-4">O jogo de luta que chocou o mundo. Versão do Mega Drive.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=genesis_plus_gx&rom=mortalkombat.md" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-fist-raised"></i></div><h3 class="text-2xl font-bold mb-2">Mortal Kombat 2</h3><p class="text-muted mb-4">A sequência aclamada com mais personagens e fatalidades. Para Mega Drive.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=genesis_plus_gx&rom=mortalkombat2.md" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-fist-raised"></i></div><h3 class="text-2xl font-bold mb-2">Mortal Kombat 3</h3><p class="text-muted mb-4">A invasão de Outworld começa nesta versão para Mega Drive.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=genesis_plus_gx&rom=mortalkombat3.md" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-
-                    <!-- Clássicos -->
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-drum"></i></div><h3 class="text-2xl font-bold mb-2">Donkey Kong Country</h3><p class="text-muted mb-4">Gráficos revolucionários e jogabilidade incrível neste clássico de SNES.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=donkeykongcountry.smc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-cubes"></i></div><h3 class="text-2xl font-bold mb-2">Tetris</h3><p class="text-muted mb-4">O puzzle mais famoso do mundo na sua versão icônica para Game Boy.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=tetris.gb" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-
-                    <!-- Zelda -->
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div><h3 class="text-2xl font-bold mb-2">The Legend of Zelda</h3><p class="text-muted mb-4">Onde tudo começou. A primeira jornada épica de Link no NES.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=nestopia&rom=thelegendofzelda.nes" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div><h3 class="text-2xl font-bold mb-2">The Adventure of Link</h3><p class="text-muted mb-4">A sequência de Zelda para NES com elementos de RPG e visão lateral.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=nestopia&rom=theadventureoflink.nes" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div><h3 class="text-2xl font-bold mb-2">Zelda: A Link to the Past</h3><p class="text-muted mb-4">Um clássico do SNES. Viaje entre dois mundos para salvar Hyrule.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=alinktothepast.sfc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div><h3 class="text-2xl font-bold mb-2">Zelda: Link's Awakening DX</h3><p class="text-muted mb-4">Aventura de Game Boy Color. Explore a misteriosa Ilha Koholint.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=linksawakeningdx.gbc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div><h3 class="text-2xl font-bold mb-2">Zelda: Oracle of Seasons</h3><p class="text-muted mb-4">Controle as estações para resolver quebra-cabeças e derrotar o mal.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=oracleofseasons.gbc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div><h3 class="text-2xl font-bold mb-2">Zelda: Oracle of Ages</h3><p class="text-muted mb-4">Viaje através do tempo para corrigir o passado e salvar o futuro.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=oracleofages.gbc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-shield-alt"></i></div><h3 class="text-2xl font-bold mb-2">Zelda: The Minish Cap</h3><p class="text-muted mb-4">Aventura de GBA onde Link pode encolher ao tamanho dos Minish.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=theminishcap.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-
-                    <!-- Mario Kart -->
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-flag-checkered"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario Kart</h3><p class="text-muted mb-4">O jogo original de corrida de karts que deu início a tudo no SNES.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=supermariokart.smc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-flag-checkered"></i></div><h3 class="text-2xl font-bold mb-2">Mario Kart: Super Circuit</h3><p class="text-muted mb-4">Acelere com a turma do Mario no Game Boy Advance.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=mariokartsupercircuit.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-
-                    <!-- Mario Platformers -->
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario Bros.</h3><p class="text-muted mb-4">O clássico absoluto do NES. Salve a Princesa Peach de Bowser.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=nestopia&rom=supermariobros.nes" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario Bros. 2</h3><p class="text-muted mb-4">Jogue com Mario, Luigi, Toad ou Peach nesta aventura única do NES.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=nestopia&rom=supermariobros2.nes" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario Bros. 3</h3><p class="text-muted mb-4">Um dos melhores jogos do NES, com power-ups e mundos incríveis.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=nestopia&rom=supermariobros3.nes" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario Land</h3><p class="text-muted mb-4">A primeira aventura portátil de Mario no Game Boy.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermarioland.gb" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario Land DX</h3><p class="text-muted mb-4">Uma versão colorida do clássico de Game Boy, feita por fãs.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermariolanddx.gbc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario World</h3><p class="text-muted mb-4">Explore a Terra dos Dinossauros com Mario e Yoshi neste clássico do SNES.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=supermarioworld.smc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Yoshi's Island</h3><p class="text-muted mb-4">Leve o Bebê Mario em segurança nesta prequela de Super Mario World.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=supermarioworld2.smc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario All Stars</h3><p class="text-muted mb-4">A coletânea definitiva com remakes dos clássicos de NES para o SNES.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=snes9x&rom=supermarioallstars.sfc" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario Advance</h3><p class="text-muted mb-4">O remake de Super Mario Bros. 2 para o Game Boy Advance.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermarioadvance.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario Advance 2</h3><p class="text-muted mb-4">Super Mario World no seu bolso, na versão para Game Boy Advance.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermarioadvance2.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario Advance 3</h3><p class="text-muted mb-4">Yoshi's Island em versão portátil para o Game Boy Advance.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermarioadvance3.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-content p-6 flex flex-col justify-between h-full">
-                          <div><div class="text-3xl mb-4"><i class="fas fa-star"></i></div><h3 class="text-2xl font-bold mb-2">Super Mario Advance 4</h3><p class="text-muted mb-4">O remake de Super Mario Bros. 3 para o Game Boy Advance.</p></div>
-                          <button data-src="https://chstextbook.github.io/archive/gfiles/rarch/index.html?romshift=128&core=mgba&rom=supermarioadvance4.gba" class="play-emulator-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
-                        </div>
-                    </div>
-                </div>
+                <div class="card-grid mt-8" id="linksContainer"></div>
             </section>
             <div id="noResultsMessage" class="hidden text-center glass-effect p-12 my-16 rounded-2xl">
                 <i class="fas fa-ghost text-6xl text-primary-glow mb-6 animate-bounce"></i>
@@ -328,21 +62,7 @@
         </footer>
     </div>
 
-    <!-- MODAL PARA EXIBIR O JOGO (COM BOTÃO DE TELA CHEIA) -->
-    <div id="gameModal" class="modal-overlay">
-        <div class="modal-content glass-effect">
-            <button id="fullscreenBtn" class="absolute -top-3 right-12 text-white bg-blue-600 hover:bg-blue-700 rounded-full w-10 h-10 flex items-center justify-center transition-colors text-lg z-10 shadow-lg" title="Tela Cheia">
-                <i class="fas fa-expand"></i>
-            </button>
-            <button class="modal-close-btn js-close-modal">&times;</button>
-            <div id="gameEmbedContainer">
-                <!-- O Iframe do jogo será injetado aqui pelo script.js -->
-            </div>
-        </div>
-    </div>
-
     <button id="backToTop" class="fixed bottom-[-100px] right-6 w-14 h-14 glass-effect rounded-full text-2xl z-50 opacity-0"><i class="fas fa-arrow-up"></i></button>
-    
     <script src="lógica/script.js"></script>
 </body>
 </html>
