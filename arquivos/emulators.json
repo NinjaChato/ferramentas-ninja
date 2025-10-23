@@ -1,0 +1,135 @@
+[
+  {
+    "name": "Super Mario All-Stars",
+    "description": "A coletânea definitiva com remakes dos clássicos de NES para o SNES.",
+    "icon": "fas fa-star",
+    "system": "snes",
+    "rom": "mario/supermarioallstars.sfc"
+  },
+  {
+    "name": "Super Mario Bros.",
+    "description": "O clássico absoluto do NES. Salve a Princesa Peach de Bowser.",
+    "icon": "fas fa-star",
+    "system": "nes",
+    "rom": "mario/supermariobros.nes"
+  },
+  {
+    "name": "Super Mario Bros. 2",
+    "description": "Jogue com Mario, Luigi, Toad ou Peach nesta aventura única do NES.",
+    "icon": "fas fa-star",
+    "system": "nes",
+    "rom": "mario/supermariobros2.nes"
+  },
+  {
+    "name": "Super Mario Bros. 3",
+    "description": "Um dos melhores jogos do NES, com power-ups e mundos incríveis.",
+    "icon": "fas fa-star",
+    "system": "nes",
+    "rom": "mario/supermariobros3.nes"
+  },
+  {
+    "name": "Super Mario Kart",
+    "description": "O jogo original de corrida de karts que deu início a tudo no SNES.",
+    "icon": "fas fa-flag-checkered",
+    "system": "snes",
+    "rom": "mario/supermariokart.sfc"
+  },
+  {
+    "name": "Super Mario World",
+    "description": "Explore a Terra dos Dinossauros com Mario e Yoshi neste clássico do SNES.",
+    "icon": "fas fa-star",
+    "system": "snes",
+    "rom": "mario/supermarioworld.sfc"
+  },
+  {
+    "name": "Yoshi's Island",
+    "description": "Leve o Bebê Mario em segurança nesta prequela de Super Mario World.",
+    "icon": "fas fa-child",
+    "system": "snes",
+    "rom": "mario/supermarioworld2.sfc"
+  },
+  {
+    "name": "Pokémon Blue",
+    "description": "Comece sua jornada em Kanto e tente capturar todos os 151 Pokémon.",
+    "icon": "fas fa-tint",
+    "system": "gb",
+    "rom": "pokemon/pokemonblue.gb"
+  },
+  {
+    "name": "Pokémon Crystal",
+    "description": "A versão definitiva da Geração II. Explore Johto e Kanto.",
+    "icon": "fas fa-gem",
+    "system": "gbc",
+    "rom": "pokemon/pokemoncrystal.gbc"
+  },
+  {
+    "name": "Pokémon Emerald",
+    "description": "A versão definitiva da Geração III para GBA, com a Battle Frontier.",
+    "icon": "fas fa-gem",
+    "system": "gba",
+    "rom": "pokemon/pokemonemerald.gba"
+  },
+  {
+    "name": "Pokémon FireRed",
+    "description": "O remake do clássico Red para GBA. Capture todos os 151 originais!",
+    "icon": "fas fa-fire",
+    "system": "gba",
+    "rom": "pokemon/pokemonfirered.gba"
+  },
+  {
+    "name": "Pokémon Gold",
+    "description": "Explore a nova região de Johto e descubra 100 novos Pokémon.",
+    "icon": "fas fa-sun",
+    "system": "gbc",
+    "rom": "pokemon/pokemongold.gbc"
+  },
+  {
+    "name": "Pokémon Green",
+    "description": "A versão original japonesa que deu início a tudo.",
+    "icon": "fas fa-leaf",
+    "system": "gb",
+    "rom": "pokemon/pokemongreen.gb"
+  },
+  {
+    "name": "Pokémon LeafGreen",
+    "description": "Reviva a aventura de Kanto com este remake para GBA.",
+    "icon": "fas fa-leaf",
+    "system": "gba",
+    "rom": "pokemon/pokemonleafgreen.gba"
+  },
+  {
+    "name": "Pokémon Red",
+    "description": "Onde tudo começou! Escolha seu inicial e torne-se um Mestre Pokémon.",
+    "icon": "fas fa-fire-alt",
+    "system": "gb",
+    "rom": "pokemon/pokemonred.gb"
+  },
+  {
+    "name": "Pokémon Ruby",
+    "description": "Explore a região de Hoenn e enfrente a Equipe Magma.",
+    "icon": "fas fa-gem",
+    "system": "gba",
+    "rom": "pokemon/pokemonruby.gba"
+  },
+  {
+    "name": "Pokémon Sapphire",
+    "description": "Explore a região de Hoenn e enfrente a Equipe Aqua.",
+    "icon": "fas fa-tint",
+    "system": "gba",
+    "rom": "pokemon/pokemonsapphire.gba"
+  },
+  {
+    "name": "Pokémon Silver",
+    "description": "Continue a jornada por Johto com o lendário Lugia.",
+    "icon": "fas fa-moon",
+    "system": "gbc",
+    "rom": "pokemon/pokemonsilver.gbc"
+  },
+  {
+    "name": "Pokémon Yellow",
+    "description": "Reviva a história do anime com Pikachu como seu companheiro inicial.",
+    "icon": "fas fa-bolt",
+    "system": "gb",
+    "rom": "pokemon/pokemonyellow.gb"
+  }
+]
