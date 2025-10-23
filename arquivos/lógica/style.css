@@ -170,15 +170,15 @@ body::before {
   border-top: 1px solid var(--border-color);
 }
 
-/* === CARDS E GRID (CORREÇÃO AQUI) === */
+/* === CARDS E GRID (VERSÃO CORRIGIDA COM FLEXBOX) === */
 .card-grid {
-  display: flex; /* MUDANÇA: Voltamos para 'flex' */
-  flex-wrap: wrap; /* Para quebrar a linha em telas menores */
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   perspective: 1500px;
 }
 .card-grid > .card {
-  flex: 1 1 300px; /* Permite que os cards cresçam e encolham de forma flexível */
+  flex: 1 1 300px;
 }
 
 .card {
