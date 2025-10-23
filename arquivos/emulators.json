@@ -131,5 +131,26 @@
     "icon": "fas fa-bolt",
     "core": "mgba",
     "rom": "pokemon/pokemonyellow.gb"
+  },
+  {
+    "name": "Super Bomberman",
+    "description": "O clássico jogo de batalha e labirinto para Super Nintendo.",
+    "icon": "fas fa-bomb",
+    "core": "snes9x",
+    "rom": "bomberman/superbomberman.sfc"
+  },
+  {
+    "name": "Super Bomberman 2",
+    "description": "A sequência com novos power-ups, arenas e modos de batalha.",
+    "icon": "fas fa-bomb",
+    "core": "snes9x",
+    "rom": "bomberman/superbomberman2.sfc"
+  },
+  {
+    "name": "Super Bomberman 3",
+    "description": "Introduz novos personagens e montarias para uma jogabilidade ainda mais caótica.",
+    "icon": "fas fa-bomb",
+    "core": "snes9x",
+    "rom": "bomberman/superbomberman3.sfc"
   }
 ]
