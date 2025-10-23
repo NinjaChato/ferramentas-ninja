@@ -1,7 +1,8 @@
 /* =========================================================
-   SCRIPT NINJA OTIMIZADO (v5.1 - CORREÇÃO FINAL)
-   - Corrigida a criação do link do emulador para usar 'core' em vez de 'system'.
-   - Lógica de carregamento de JSON mantida.
+   SCRIPT NINJA OTIMIZADO (v5.2 - UNIFICADO E CORRIGIDO)
+   - Carrega emulators.json na página de emuladores.
+   - Carrega games.json na página de jogos de navegador.
+   - Corrige a inicialização de todos os efeitos em todas as páginas.
 ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   };
 
-  // --- INICIALIZAÇÃO GERAL ---
+  // --- 1. INICIALIZAÇÃO GERAL ---
   const loader = document.getElementById('loader');
   const fadeInElements = document.querySelectorAll('.fade-in-up');
   const particlesEl = document.getElementById('particles-js');
@@ -34,9 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('load', () => { if (loader) { loader.style.opacity = '0'; setTimeout(() => loader.style.display = 'none', 500); } });
   const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('loaded'); observer.unobserve(entry.target); } }); }, { threshold: 0.1 });
   fadeInElements.forEach(el => observer.observe(el));
-  if (particlesEl) { particlesJS("particles-js", { /* ...config do particles... */ }); }
+  
+  // Configuração completa e correta das partículas
+  if (particlesEl) { 
+    particlesJS("particles-js", { "particles":{ "number":{ "value":80,"density":{ "enable":true,"value_area":800 } },"color":{ "value":"#ffffff" },"shape":{ "type":"circle" },"opacity":{ "value":0.5,"random":true,"anim":{ "enable":true,"speed":1,"opacity_min":0.1,"sync":false } },"size":{ "value":3,"random":true },"line_linked":{ "enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1 },"move":{ "enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false } },"interactivity":{ "detect_on":"canvas","events":{ "onhover":{ "enable":true,"mode":"repulse" },"onclick":{ "enable":true,"mode":"push" },"resize":true },"modes":{ "repulse":{ "distance":200,"duration":0.4 },"push":{ "particles_nb":4 } } },"retina_detect":true }); 
+  }
 
-  // --- EFEITO 3D NOS CARDS ---
+  // --- 2. EFEITO 3D NOS CARDS ---
   const setupCardEffects = () => {
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
@@ -58,20 +63,53 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   };
   
-  // --- SISTEMA DE MODAL (PARA AVISOS, ETC) ---
+  // --- 3. SISTEMA DE MODAL (PARA JOGOS DE NAVEGADOR E AVISOS) ---
   const setupModals = () => {
       const modalTriggers = document.querySelectorAll('[data-modal-target]');
       const closeButtons = document.querySelectorAll('.js-close-modal');
-      
+      const gameModal = document.getElementById('gameModal');
+      const gameEmbedContainer = document.getElementById('gameEmbedContainer');
+      let currentFrame = null;
+
       const openModal = (modal) => { if (modal) modal.classList.add('is-visible'); };
-      const closeModal = (modal) => { if (modal) modal.classList.remove('is-visible'); };
+      const closeModal = (modal) => {
+        if (modal) {
+          modal.classList.remove('is-visible');
+          if (modal.id === 'gameModal' && gameEmbedContainer) {
+            setTimeout(() => { gameEmbedContainer.innerHTML = ''; currentFrame = null; }, 300);
+          }
+        }
+      };
 
       modalTriggers.forEach(button => { button.addEventListener('click', () => { const modal = document.querySelector(button.dataset.modalTarget); openModal(modal); }); });
       document.querySelectorAll('.modal-overlay').forEach(overlay => { overlay.addEventListener('click', (e) => { if (e.target === overlay) { closeModal(overlay); } }); });
       closeButtons.forEach(button => { button.addEventListener('click', () => { const modal = button.closest('.modal-overlay'); closeModal(modal); }); });
+
+      // Lógica específica para abrir jogos de NAVEGADOR no modal
+      document.body.addEventListener('click', (e) => {
+        const targetButton = e.target.closest('.play-game-btn');
+        if (targetButton) {
+            const gameSrc = targetButton.dataset.src;
+            if (gameSrc && gameEmbedContainer && gameModal) {
+                gameEmbedContainer.innerHTML = `<iframe src="${gameSrc}" allowfullscreen></iframe>`;
+                currentFrame = gameEmbedContainer.querySelector('iframe');
+                openModal(gameModal);
+            }
+        }
+      });
+      
+      const fullscreenBtn = document.getElementById('fullscreenBtn');
+      if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', () => {
+          if (!currentFrame) return;
+          if (currentFrame.requestFullscreen) currentFrame.requestFullscreen();
+          else if (currentFrame.webkitRequestFullscreen) currentFrame.webkitRequestFullscreen();
+          else if (currentFrame.msRequestFullscreen) currentFrame.msRequestFullscreen();
+        });
+      }
   };
 
-  // --- BUSCA E FILTRO ---
+  // --- 4. BUSCA E FILTRO ---
   const setupSearchAndFilters = () => {
     const searchInput = document.getElementById('searchInput');
     if (!searchInput) return;
@@ -95,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('keyup', debounce(updateVisibleCards, 300));
   };
   
-  // --- BOTÃO "VOLTAR AO TOPO" ---
+  // --- 5. BOTÃO "VOLTAR AO TOPO" ---
   const setupBackToTop = () => {
     const backToTopButton = document.getElementById('backToTop');
     if (!backToTopButton) return;
@@ -108,18 +146,41 @@ document.addEventListener('DOMContentLoaded', () => {
     backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   };
   
-  // --- CARREGAMENTO DE CONTEÚDO DINÂMICO ---
+  // --- 6. CARREGAMENTO DE CONTEÚDO DINÂMICO ---
   const loadDynamicContent = async () => {
-    if (window.location.pathname.includes('jogos-emulador.html')) {
-        const linksContainer = document.getElementById('linksContainer');
-        if (!linksContainer) return;
+    const linksContainer = document.getElementById('linksContainer');
+    if (!linksContainer) return;
 
-        try {
+    const path = window.location.pathname;
+
+    try {
+        // LÓGICA PARA JOGOS DE NAVEGADOR
+        if (path.includes('jogos-navegador.html')) {
+            const response = await fetch('games.json');
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const games = await response.json();
+            linksContainer.innerHTML = ''; 
+            games.forEach(game => {
+                const cardHTML = `
+                <div class="card">
+                    <div class="card-content p-6 flex flex-col justify-between h-full">
+                        <div>
+                            <img src="${game.game_image_icon}" alt="${game.name}" class="game-card-image">
+                            <h3 class="text-2xl font-bold mb-2">${game.name}</h3>
+                        </div>
+                        <button data-src="${game.game_url}" class="play-game-btn action-btn text-white font-bold py-3 px-4 rounded-lg w-full text-center mt-4">Jogar Agora</button>
+                    </div>
+                </div>`;
+                linksContainer.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        } 
+        // LÓGICA PARA JOGOS DE EMULADOR
+        else if (path.includes('jogos-emulador.html')) {
             const response = await fetch('emulators.json');
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const games = await response.json();
             linksContainer.innerHTML = '';
             games.forEach(game => {
-                // MUDANÇA AQUI: Trocado ${game.system} por ${game.core}
                 const cardHTML = `
                 <div class="card">
                     <div class="card-content p-6 flex flex-col justify-between h-full">
@@ -133,11 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
                 linksContainer.insertAdjacentHTML('beforeend', cardHTML);
             });
-        } catch (error) {
-            console.error('Erro ao carregar emulators.json:', error);
-            linksContainer.innerHTML = '<p class="text-center text-red-500 col-span-full">Ocorreu um erro ao carregar a lista de jogos.</p>';
         }
+    } catch (error) {
+        console.error('Erro ao carregar dados JSON:', error);
+        linksContainer.innerHTML = '<p class="text-center text-red-500 col-span-full">Ocorreu um erro ao carregar a lista de jogos.</p>';
     }
+    
     setupCardEffects();
   };
 
