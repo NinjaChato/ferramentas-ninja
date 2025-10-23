@@ -172,13 +172,10 @@ body::before {
 
 /* === CARDS E GRID === */
 .card-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   perspective: 1500px;
-}
-.card-grid > .card {
-  flex: 1 1 300px;
 }
 
 .card {
@@ -190,6 +187,7 @@ body::before {
   transition: transform 0.4s var(--swoosh), box-shadow 0.4s var(--swoosh), opacity var(--transition-medium);
   transform-style: preserve-3d;
   will-change: transform, box-shadow;
+  display: flex; /* Garante que o card se comporte como flex container */
 }
 a.card {
   cursor: pointer;
@@ -455,29 +453,25 @@ a.card {
 /* === ESTILOS PARA CARDS DE JOGOS DE NAVEGADOR === */
 .game-card-image {
   width: 100%;
-  height: 160px; /* Define uma altura fixa para todas as imagens */
-  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
-  border-radius: 0.75rem; /* Bordas arredondadas para combinar com o card */
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0.75rem;
   margin-bottom: 1rem;
-  background-color: #27272a; /* Cor de fundo enquanto a imagem carrega */
-  border: 1px solid var(--border-color); /* Adiciona uma borda sutil */
+  background-color: #27272a;
+  border: 1px solid var(--border-color);
 }
 
 /* === CORREÇÃO PARA TELA CHEIA (FULLSCREEN) DO JOGO === */
 #gameEmbedContainer iframe:fullscreen {
-  aspect-ratio: auto; /* Remove a restrição de proporção */
+  aspect-ratio: auto;
   width: 100%;
   height: 100%;
 }
-
-/* Para compatibilidade com navegadores mais antigos (Safari) */
 #gameEmbedContainer iframe:-webkit-full-screen {
   aspect-ratio: auto;
   width: 100%;
   height: 100%;
 }
-
-/* Para compatibilidade com navegadores mais antigos (Firefox) */
 #gameEmbedContainer iframe:-moz-full-screen {
   aspect-ratio: auto;
   width: 100%;
