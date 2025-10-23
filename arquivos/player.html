@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <title>Jogando... | Ferramentas Ninja</title>
     <style>
-        /* Remove qualquer margem, preenchimento e barra de rolagem */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #000; /* Fundo preto para imersão total */
+            background-color: #000;
         }
-        /* O container do jogo também ocupa 100% do espaço */
         #game-container {
             width: 100%;
             height: 100%;
@@ -25,17 +23,16 @@
     <div id="game-container"></div>
 
     <script>
-        // Função do WebRetro para criar o embed
         function webretroEmbed(node, path, queries) {
             node.innerHTML = '';
             var frame = document.createElement("iframe");
-            // Adiciona a permissão 'fullscreen' ao iframe
             frame.setAttribute('allow', 'fullscreen');
             frame.style = "border: none; display: block; width: 100%; height: 100%;";
             
             if (queries.rom) {
                 var link = document.createElement("a");
-                link.href = (/^(https?:)?\/\//i).test(queries.rom) ? queries.rom : "roms/" + queries.rom;
+                // MUDANÇA AQUI: O caminho base agora é "arquivos/roms/"
+                link.href = "arquivos/roms/" + queries.rom;
                 queries.rom = link.href;
             }
             
@@ -45,7 +42,6 @@
             return frame;
         }
 
-        // Lógica para carregar o jogo a partir da URL
         window.addEventListener('load', () => {
             const gameContainer = document.getElementById('game-container');
             const params = new URLSearchParams(window.location.search);
@@ -56,7 +52,6 @@
                 const webretroPath = "https://binbash.dev/webretro-builds/stable/";
                 webretroEmbed(gameContainer, webretroPath, { system: system, rom: rom });
             } else {
-                // Mensagem de erro simples caso a URL esteja incompleta
                 document.body.innerHTML = "<p style='color: white; text-align: center; padding-top: 2rem;'>Erro: Jogo não encontrado.</p>";
             }
         });
